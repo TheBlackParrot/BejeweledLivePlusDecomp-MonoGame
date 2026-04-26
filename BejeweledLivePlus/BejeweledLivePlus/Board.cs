@@ -3193,6 +3193,7 @@ namespace BejeweledLivePlus
 			if (!mGameFinished && !mWantLevelup && mHyperspace == null && mGameOverCount <= 0)
 			{
 				GameState.Level = mLevel + 2;
+				GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
 				
 				GlobalMembers.gApp.LogStatString($"LevelUp Level={mLevel + 2} Misc.Points={mPoints} Seconds={mGameStats[0]}\n");
 				mWantLevelup = true;
@@ -3223,6 +3224,7 @@ namespace BejeweledLivePlus
 				}
 				mLevelPointsTotal = 0;
 				mMoveCounter = 0;
+				GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
 				break;
 			case HYPERSPACEEVENT.HYPERSPACEEVENT_ZoomIn:
 				mBackground.mVisible = true;
@@ -3263,6 +3265,7 @@ namespace BejeweledLivePlus
 				{
 					GlobalMembers.gApp.DisableOptionsButtons(false);
 				}
+				GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
 				break;
 			}
 			}
