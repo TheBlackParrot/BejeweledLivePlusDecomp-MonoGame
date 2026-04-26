@@ -3094,32 +3094,23 @@ namespace BejeweledLivePlus
 			{
 				return null;
 			}
-			float num = mPointMultiplier;
-			if (!usePointMultiplier)
+			
+			float multiplier = usePointMultiplier ? mPointMultiplier : 1f;
+			int scaledPoints = (int)(thePoints * multiplier);
+			
+			int modeMultipliedPoints = (int)(scaledPoints * GetModePointMultiplier());
+			AddToStat(1, modeMultipliedPoints, theMoveCreditId, true);
+			mPoints += modeMultipliedPoints;
+			if (mPoints < 0)
 			{
-				num = 1f;
+				mPoints = int.MaxValue;
 			}
-			int num2 = (int)((float)thePoints * num);
-			while (num2 > 0)
+			
+			if (addtotube)
 			{
-				int num3 = Math.Min(num2, 10);
-				double y = GlobalMembers.M(0.8);
-				int num4 = (int)((float)GetMoveStat(theMoveCreditId, 1) / GetModePointMultiplier());
-				double num5 = Math.Pow(num4 + num3, y) - Math.Pow(num4, y);
-				num5 *= GlobalMembers.M(3.0);
-				if (addtotube)
-				{
-					mLevelPointsTotal += (int)num5;
-				}
-				num2 -= num3;
-				int num6 = (int)((float)num3 * GetModePointMultiplier());
-				AddToStat(1, num6, theMoveCreditId, true);
-				mPoints += num6;
-				if (mPoints < 0)
-				{
-					mPoints = int.MaxValue;
-				}
+				mLevelPointsTotal += modeMultipliedPoints;
 			}
+			
 			return mPointsManager.Add(theX, theY, thePoints, theColor, theId, usePointMultiplier, theMoveCreditId, theForceAdd);
 		}
 

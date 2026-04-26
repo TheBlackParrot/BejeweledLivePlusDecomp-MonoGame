@@ -10,7 +10,12 @@ namespace BejeweledLivePlus
 		{
 			mParams["Title"] = "Zen";
 		}
-		
+
+		public override int GetLevelPoints()
+		{
+			return 4375 + ((mLevel + 1) * 625);
+		}
+
 		public override void UnloadContent()
 		{
 			BejeweledLivePlusApp.UnloadContent("GamePlay_UI_Normal");

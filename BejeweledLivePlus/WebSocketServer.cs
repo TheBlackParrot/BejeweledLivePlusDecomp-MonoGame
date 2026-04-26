@@ -40,7 +40,7 @@ public static class GameState
         }
     }
 
-    private static CancellationTokenSource? _scoreUpdateToken;
+    /*private static CancellationTokenSource? _scoreUpdateToken;
     private static async Task CheckToSendScoreUpdate()
     {
         try
@@ -65,7 +65,7 @@ public static class GameState
         
         GameWebSocket.Send("score", _score);
         _scoreUpdateToken.Dispose();
-    }
+    }*/
     private static int _score;
     public static int Score
     {
@@ -77,7 +77,8 @@ public static class GameState
             }
             
             _score = value;
-            _ = CheckToSendScoreUpdate();
+            GameWebSocket.Send("score", _score);
+            //_ = CheckToSendScoreUpdate();
         }
     }
 
