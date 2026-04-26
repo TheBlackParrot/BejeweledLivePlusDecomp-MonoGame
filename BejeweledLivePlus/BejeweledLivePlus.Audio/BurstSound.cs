@@ -10,8 +10,6 @@ namespace BejeweledLivePlus.Audio
 
 		private bool mPaused;
 
-		private bool mUnloadSource;
-
 		private int mPan;
 
 		private float mPitch;
@@ -131,7 +129,6 @@ namespace BejeweledLivePlus.Audio
 
 		public override void EnableAutoUnload()
 		{
-			mUnloadSource = true;
 		}
 	}
 }

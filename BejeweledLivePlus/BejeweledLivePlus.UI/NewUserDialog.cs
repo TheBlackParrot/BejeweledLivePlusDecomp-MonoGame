@@ -170,8 +170,7 @@ namespace BejeweledLivePlus.UI
 		{
 			if (theText.Length == 1 && !mHasForcedUppercase)
 			{
-				mNameWidget.mString = mNameWidget.mString;
-				mNameWidget.mString.ToArray()[0].ToString().ToUpper();
+				mNameWidget.mString = mNameWidget.mString.ToArray()[0].ToString().ToUpper();
 				mHasForcedUppercase = true;
 			}
 			return true;

@@ -48,12 +48,6 @@ namespace BejeweledLivePlus.UI
 
 		private bool mIsBack;
 
-		private bool mShowCheckbox;
-
-		private bool mHasDrawn;
-
-		private bool mFirstDraw;
-
 		private List<ResourceRef> mAnimRefVector = new List<ResourceRef>();
 
 		private Bej3Checkbox mCheckbox;
@@ -415,7 +409,6 @@ namespace BejeweledLivePlus.UI
 		{
 			Bej3Widget.DrawDialogBox(g, mWidth);
 			Bej3Widget.DrawSwipeInlay(g, mScrollWidget.mY, mScrollWidget.mHeight - 75, mWidth, true);
-			mHasDrawn = true;
 		}
 
 		public override void DrawOverlay(Graphics g)
@@ -527,8 +520,6 @@ namespace BejeweledLivePlus.UI
 			{
 				mAnimRefVector[i].GetPopAnim().Play();
 			}
-			mFirstDraw = true;
-			mHasDrawn = false;
 		}
 
 		public void SetHelpDialogState(HELPDIALOG_STATE state)

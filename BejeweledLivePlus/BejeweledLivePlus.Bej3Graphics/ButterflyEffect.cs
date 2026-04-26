@@ -90,7 +90,6 @@ namespace BejeweledLivePlus.Bej3Graphics
 			mTargetX.IncInVal();
 			mTargetY.IncInVal();
 			int mCurrentReleasedButterfly = mOwner.mCurrentReleasedButterflies;
-			int num3 = 0;
 		}
 
 		public override void Draw(Graphics g)

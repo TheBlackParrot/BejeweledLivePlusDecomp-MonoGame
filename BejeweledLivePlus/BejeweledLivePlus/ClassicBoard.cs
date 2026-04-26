@@ -13,8 +13,6 @@ namespace BejeweledLivePlus
 
 		public override void Dispose()
 		{
-			int mGameOverCount2 = mGameOverCount;
-			int num = 0;
 			base.Dispose();
 		}
 
@@ -66,7 +64,6 @@ namespace BejeweledLivePlus
 		public override void HyperspaceEvent(HYPERSPACEEVENT inEvent)
 		{
 			base.HyperspaceEvent(inEvent);
-			int num = 5;
 		}
 
 		public override string GetSavedGameName()

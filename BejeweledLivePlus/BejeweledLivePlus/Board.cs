@@ -1707,11 +1707,7 @@ namespace BejeweledLivePlus
 
 		public bool CheckLoad()
 		{
-			if (true)
-			{
-				return LoadGame();
-			}
-			return false;
+			return LoadGame();
 		}
 
 		public static void ParseGridLayout(string theStr, List<GridData> outGrid, bool theEnforceStdGridSize)
@@ -8382,7 +8378,6 @@ namespace BejeweledLivePlus
 			}
 		}
 
-		private static float _lastPercentComplete = 0f;
 		public void UpdateLevelBar()
 		{
 			if (mLevelBarPIEffect == null)

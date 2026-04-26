@@ -58,8 +58,6 @@ namespace BejeweledLivePlus.UI
 
 		private ArrowButton Tst2Button;
 
-		private int mCrystalBallCountdown;
-
 		private PAGE_NUM mCurrentPage;
 
 		public ScrollWidget mScrollWidget;
@@ -76,7 +74,6 @@ namespace BejeweledLivePlus.UI
 			: base(Menu_Type.MENU_MAINMENU, false, Bej3ButtonType.TOP_BUTTON_TYPE_NONE)
 		{
 			mButtons = new List<CrystalBall>();
-			mCrystalBallCountdown = 150;
 			mDoesSlideInFromBottom = (mCanAllowSlide = false);
 			mZenButton = new CrystalBall(GlobalMembers._ID("ZEN", 3366), GlobalMembers._ID("", 3367), GlobalMembers._ID("", 3368), 1, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_ZEN_SCALE + 0.1f);
 			mButtons.Add(mZenButton);

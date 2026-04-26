@@ -23,8 +23,6 @@ namespace BejeweledLivePlus.UI
 
 		private Bej3Button mOptionsButton;
 
-		private Bej3Button mHelpButton;
-
 		private Bej3Button mBackButton;
 
 		private Label mPlayerNameLabel;
@@ -47,9 +45,6 @@ namespace BejeweledLivePlus.UI
 			int num = 15;
 			mPlayerHeight = 460;
 			int num2 = 450;
-			int num3 = 220;
-			int num4 = -130;
-			float num5 = 1.3f;
 			int num6 = 84;
 			mPlayerNameLabel = new Label(GlobalMembersResources.FONT_DIALOG);
 			mPlayerNameLabel.Resize(ConstantsWP.PROFILEMENU_NAME_LABEL_X, ConstantsWP.PROFILEMENU_NAME_LABEL_Y + num2 - num6 - num, 0, 0);

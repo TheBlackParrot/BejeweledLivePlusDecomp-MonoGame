@@ -14,8 +14,6 @@ namespace BejeweledLivePlus.UI
 
 		private Label mExtraMessageLabel4;
 
-		private Label mExtraMessageLabel5;
-
 		public IntroDialog()
 			: base(58, true, GlobalMembers._ID("WELCOME TO BEJEWELED", 3347), "", GlobalMembers._ID("CONTINUE", 3348), 3, Bej3ButtonType.BUTTON_TYPE_LONG, Bej3ButtonType.BUTTON_TYPE_LONG, Bej3ButtonType.TOP_BUTTON_TYPE_DISMISS)
 		{

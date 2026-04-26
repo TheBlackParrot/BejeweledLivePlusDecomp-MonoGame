@@ -582,7 +582,6 @@ namespace BejeweledLivePlus
 				mShakeOfsX = (mShakeOfsY = 0f);
 			}
 			float mElectrocutePercent2 = mElectrocutePercent;
-			float num19 = 0f;
 			if (IsFlagSet(128u) && !mBoard.IsPieceSwapping(this) && (mId * 10 + mBoard.mUpdateCnt) % 400 == 0)
 			{
 				switch (BejeweledLivePlus.Misc.Common.Rand(3))

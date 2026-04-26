@@ -25,8 +25,6 @@ namespace BejeweledLivePlus.Widget
 
 		private Point mIconOffset = default(Point);
 
-		private Rect mButtonSrcRect = default(Rect);
-
 		private float mTypeImageRotation;
 
 		private float mTargetTypeImageRotation;
@@ -40,8 +38,6 @@ namespace BejeweledLivePlus.Widget
 		private static bool mSlideGlowBrightening = true;
 
 		private static float mSlideGlow = 0f;
-
-		private static int mSlideGlowTimer = 0;
 
 		private static float mTopButtonGlow = 0f;
 

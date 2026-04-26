@@ -19,8 +19,6 @@ namespace BejeweledLivePlus.Widget
 
 		private Image mOutlineImage;
 
-		private float mAlpha;
-
 		private float mTimer;
 
 		private int mTextX;

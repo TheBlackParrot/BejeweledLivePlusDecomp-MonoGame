@@ -18,10 +18,6 @@ namespace BejeweledLivePlus.Widget
 
 		private CheckboxListener mCheckListener;
 
-		private Checkbox mCheckbox;
-
-		private Bej3Button mBej3Button;
-
 		private int mExpandedHeight;
 
 		private int mTargetHeight;
@@ -281,7 +277,6 @@ namespace BejeweledLivePlus.Widget
 
 		public virtual void CheckboxChecked(int theId, bool checked1)
 		{
-			int num = 2;
 			mCheckListener.CheckboxChecked(mId, checked1);
 			LinkUpAssets();
 		}

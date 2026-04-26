@@ -21,12 +21,9 @@ namespace BejeweledLivePlus.UI
 
 		private List<int> mRelevantStats = new List<int>();
 
-		private int mCurrentStatIndex;
-
 		public ProfileMenuButtonStats(Bej3ButtonListener theListener)
 			: base(6, theListener, GlobalMembers._ID("STATS", 3432))
 		{
-			mCurrentStatIndex = -1;
 			MakeChildrenTouchInvisible();
 			SetNextStat();
 		}

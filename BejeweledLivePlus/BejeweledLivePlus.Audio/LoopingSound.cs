@@ -8,8 +8,6 @@ namespace BejeweledLivePlus.Audio
 
 		private bool mPaused;
 
-		private bool mUnloadSource;
-
 		private float mVolume = 1f;
 
 		public LoopingSound(int inSoundID, SoundManager inSoundManager)
@@ -109,7 +107,6 @@ namespace BejeweledLivePlus.Audio
 
 		public override void EnableAutoUnload()
 		{
-			mUnloadSource = true;
 		}
 	}
 }

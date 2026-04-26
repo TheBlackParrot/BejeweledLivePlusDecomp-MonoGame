@@ -299,10 +299,6 @@ namespace BejeweledLivePlus.UI
 
 		public void SetMode(GameMode mode, GAMEDETAILMENU_STATE state)
 		{
-			if (mode == GameMode.MODE_ZEN)
-			{
-				int num = 1;
-			}
 			if (mIgnoreSetMode)
 			{
 				return;

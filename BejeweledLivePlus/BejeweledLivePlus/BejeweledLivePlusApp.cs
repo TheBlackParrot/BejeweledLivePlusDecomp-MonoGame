@@ -266,10 +266,6 @@ namespace BejeweledLivePlus
 
 		private static bool mIsLoadingCompleted = false;
 
-		private int SfxUpdateCount;
-
-		private int LastSfxId = -1;
-
 		public int ElapsedTime { get; set; }
 
 		public bool WantExit
@@ -1049,7 +1045,6 @@ namespace BejeweledLivePlus
 			{
 				mBoard.DeleteSavedGame();
 			}
-			bool flag = false;
 			int num = 0;
 			num = GetTutorialFlagsForMode(mCurrentGameMode);
 			if (!HasClearedTutorial(num))

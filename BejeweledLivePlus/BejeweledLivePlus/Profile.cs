@@ -21,8 +21,6 @@ namespace BejeweledLivePlus
 
 		private List<int> pointRanges = new List<int>();
 
-		private Image mProfilePicture;
-
 		private int mImageNumber;
 
 		private uint mProfileId;
@@ -131,7 +129,6 @@ namespace BejeweledLivePlus
 			}
 			mLocalDataMap.Clear();
 			mImageNumber = 0;
-			mProfilePicture = null;
 			mAutoHint = true;
 			mHasSeenIntro = false;
 			mTotalGamesPlayed = 0uL;

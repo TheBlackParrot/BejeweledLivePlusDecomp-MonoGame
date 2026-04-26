@@ -120,8 +120,6 @@ public class QuestObject
 
 	private int mQuestObjIdx;
 
-	private double mTransitionGlowAlpha;
-
 	public QuestObject(QuestMenu theQuestMenu, int theId, int theCountCompleted)
 	{
 		mQuestMenu = theQuestMenu;
@@ -555,7 +553,6 @@ public class QuestObject
 				imageConfig.mCompletePct += num;
 				theUpdatePct -= num;
 				float mCompletePct = imageConfig.mCompletePct;
-				float num2 = 1f;
 			}
 		}
 		return theUpdatePct;
