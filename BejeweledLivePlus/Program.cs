@@ -16,21 +16,12 @@ Console.SetError(consoleStream);
 
 GameWebSocket.Start();
 
+GameMain game = new GameMain();
+game.Activated += GameOnActivated;
+game.Deactivated += GameOnDeactivated;
+
 try
 {
-    using GameMain game = new GameMain();
-
-    game.Activated += (sender, eventArgs) =>
-    {
-        Console.WriteLine("Game activated");
-        game._paused = false;
-    };
-    game.Deactivated += (sender, eventArgs) =>
-    {
-        Console.WriteLine("Game deactivated");
-        game._paused = true;
-    };
-
     game.Run();
 }
 catch (Exception e)
@@ -40,6 +31,17 @@ catch (Exception e)
 }
 
 return;
+
+void GameOnActivated(object sender, EventArgs e)
+{
+    Console.WriteLine("Game activated");
+    game._paused = false;
+}
+void GameOnDeactivated(object sender, EventArgs e)
+{
+    Console.WriteLine("Game deactivated");
+    game._paused = true;
+}
 
 [DllImport("kernel32")]
 static extern bool AllocConsole();
