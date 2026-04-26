@@ -124,8 +124,6 @@ namespace BejeweledLivePlus
 					point.mY += (int)piece.CY();
 				}
 			}
-			
-			GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
 		}
 
 		public override void Pause()

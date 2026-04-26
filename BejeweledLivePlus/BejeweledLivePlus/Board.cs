@@ -151,6 +151,7 @@ namespace BejeweledLivePlus
 			set
 			{
 				_points = value;
+
 				GameState.Score = value;
 			}
 		}
@@ -3163,6 +3164,7 @@ namespace BejeweledLivePlus
 			Points result = DoAddPoints(theX, theY, thePoints, theColor, theId, addtotube, usePointMultiplier, theMoveCreditId, theForceAdd, thePointType);
 			int num2 = mPoints - num;
 			mPointsBreakdown[mPointsBreakdown.Count - 1][thePointType] += num2;
+			GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
 			return result;
 		}
 

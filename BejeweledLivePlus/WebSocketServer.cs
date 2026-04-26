@@ -39,33 +39,7 @@ public static class GameState
             _levelPercentComplete = value;
         }
     }
-
-    /*private static CancellationTokenSource? _scoreUpdateToken;
-    private static async Task CheckToSendScoreUpdate()
-    {
-        try
-        {
-            _scoreUpdateToken?.Cancel();
-        }
-        catch (ObjectDisposedException)
-        {
-            // do nothing
-        }
-
-        _scoreUpdateToken = new CancellationTokenSource();
-
-        try
-        {
-            await Task.Delay(100, _scoreUpdateToken.Token);
-        }
-        catch (OperationCanceledException)
-        {
-            return;
-        }
-        
-        GameWebSocket.Send("score", _score);
-        _scoreUpdateToken.Dispose();
-    }*/
+    
     private static int _score;
     public static int Score
     {
@@ -78,7 +52,6 @@ public static class GameState
             
             _score = value;
             GameWebSocket.Send("score", _score);
-            //_ = CheckToSendScoreUpdate();
         }
     }
 
