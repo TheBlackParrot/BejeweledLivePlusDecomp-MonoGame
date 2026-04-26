@@ -704,10 +704,10 @@ namespace BejeweledLivePlus
 				mMusicInterface.OnActived();
 				mMusicInterface.ResumeAllMusic();
 			}
-			if (mInterfaceState == InterfaceState.INTERFACE_STATE_PAUSEMENU && mMenus[7].mTargetPos == ConstantsWP.MENU_Y_POS_HIDDEN && mMenus[7].mTopButton.mType != Bej3ButtonType.TOP_BUTTON_TYPE_CLOSED)
+			/*if (mInterfaceState == InterfaceState.INTERFACE_STATE_PAUSEMENU && mMenus[7].mTargetPos == ConstantsWP.MENU_Y_POS_HIDDEN && mMenus[7].mTopButton.mType != Bej3ButtonType.TOP_BUTTON_TYPE_CLOSED)
 			{
 				mMenus[7].ButtonDepress(10001);
-			}
+			}*/
 		}
 
 		public void OnDeactivated()
@@ -746,8 +746,8 @@ namespace BejeweledLivePlus
 				}
 				if (mBoard.mInReplay)
 				{
-					mBoard.BackToGame();
-					mMenus[7].ButtonDepress(10001);
+					//mBoard.BackToGame();
+					//mMenus[7].ButtonDepress(10001);
 				}
 				else if (GlobalMembers.gApp.mCurrentGameMode != GameMode.MODE_ZEN || GlobalMembers.gApp.mMenus[19].mY == ConstantsWP.MENU_Y_POS_HIDDEN || GlobalMembers.gApp.mMenus[19].mY == 0)
 				{
@@ -756,7 +756,7 @@ namespace BejeweledLivePlus
 					Bej3Widget bej3Widget2 = mMenus[8];
 					if (mInterfaceState == InterfaceState.INTERFACE_STATE_INGAME && mInterfaceState != InterfaceState.INTERFACE_STATE_PAUSEMENU && mDialogMap.Count == 0 && (!mMenus[8].mVisible || !mBoard.mWantLevelup))
 					{
-						mMenus[7].ButtonDepress(10001);
+						//mMenus[7].ButtonDepress(10001);
 					}
 				}
 			}

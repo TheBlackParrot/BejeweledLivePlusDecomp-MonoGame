@@ -478,6 +478,8 @@ namespace BejeweledLivePlus
 			{
 				FireAffirmation();
 			}
+			
+			GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
 		}
 
 		public override HYPERSPACETRANS GetHyperspaceTransType()
@@ -860,6 +862,40 @@ namespace BejeweledLivePlus
 				return num / den;
 			}
 			return -1;
+		}
+
+		public override void SetVisible(bool isVisible)
+		{
+			if (isVisible && !mVisible)
+			{
+				GameWebSocket.Send("started");	
+			}
+			base.SetVisible(isVisible);
+		}
+
+		public override void Pause()
+		{
+			GameWebSocket.Send("paused");	
+			base.Pause();
+		}
+		
+		public override void Unpause()
+		{
+			GameWebSocket.Send("resumed");	
+			base.Unpause();
+		}
+
+		public override bool LoadGame(Serialiser theBuffer, bool resetReplay)
+		{
+			bool result = base.LoadGame(theBuffer, resetReplay);
+
+			GameState.Level = mLevel + 1;
+			GameState.LevelPercentComplete = GetLevelPct();
+			GameState.Score = mPoints;
+			// (how many we have, needed to clear)
+			GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
+			
+			return result;
 		}
 	}
 }

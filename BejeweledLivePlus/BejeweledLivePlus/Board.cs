@@ -9,6 +9,7 @@ using SexyFramework.Graphics;
 using SexyFramework.Misc;
 using SexyFramework.Sound;
 using SexyFramework.Widget;
+using WebSocketSharp.Server;
 
 namespace BejeweledLivePlus
 {
@@ -142,7 +143,17 @@ namespace BejeweledLivePlus
 
 		public int mLevelCompleteCount;
 
-		public int mPoints;
+		public int _points;
+
+		public int mPoints
+		{
+			get => _points;
+			set
+			{
+				_points = value;
+				GameState.Score = value;
+			}
+		}
 
 		public bool mInLoadSave;
 
@@ -1994,6 +2005,7 @@ namespace BejeweledLivePlus
 
 		public virtual bool LoadGame(Serialiser theBuffer, bool resetReplay)
 		{
+			Active = this;
 			mInLoadSave = true;
 			theBuffer.SeekFront();
 			int GameVersion;
@@ -2074,7 +2086,7 @@ namespace BejeweledLivePlus
 			mNextPieceId = num + 1;
 			mGameStats = new int[40];
 			theBuffer.ReadArrayPair(40, mGameStats);
-			theBuffer.ReadValuePair(out mPoints);
+			theBuffer.ReadValuePair(out _points);
 			mDispPoints = mPoints;
 			int num6;
 			theBuffer.ReadSpecialBlock(out num5, out num6);
@@ -2207,6 +2219,8 @@ namespace BejeweledLivePlus
 			mInLoadSave = false;
 			return true;
 		}
+
+		public static Board Active { get; set; }
 
 		public bool LoadGame()
 		{
@@ -3202,6 +3216,8 @@ namespace BejeweledLivePlus
 		{
 			if (!mGameFinished && !mWantLevelup && mHyperspace == null && mGameOverCount <= 0)
 			{
+				GameState.Level = mLevel + 2;
+				
 				GlobalMembers.gApp.LogStatString($"LevelUp Level={mLevel + 2} Misc.Points={mPoints} Seconds={mGameStats[0]}\n");
 				mWantLevelup = true;
 				mLevelup = true;
@@ -3562,6 +3578,12 @@ namespace BejeweledLivePlus
 
 		public virtual void SetupBackground(int theDeltaIdx)
 		{
+			string empty = string.Empty;
+			int num2 = mBackgroundIdx;
+			empty = GlobalMembers.gBackgroundNames[0];
+			empty = ((empty.IndexOf(".pam") == -1) ? ($"images\\{GlobalMembers.gApp.mArtRes}\\backgrounds\\" + empty) : ($"images\\{GlobalMembers.gApp.mArtRes}\\backgrounds\\" + BejeweledLivePlus.Misc.Common.GetFileName(empty, true) + "\\" + empty));
+			SetBackground(empty);
+			/*
 			if (theDeltaIdx == 0 && mBackgroundIdx >= 0 && mBackground != null)
 			{
 				return;
@@ -3604,6 +3626,7 @@ namespace BejeweledLivePlus
 				empty = GlobalMembers.gApp.mTestBkg;
 			}
 			SetBackground(empty);
+			*/
 		}
 
 		public void SetBackground(string Path)
@@ -3754,6 +3777,8 @@ namespace BejeweledLivePlus
 					GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_HYPERCUBE_CREATE);
 				}
 			}
+			
+			GameWebSocket.Send("hypercubeCreated");
 		}
 
 		public virtual void Laserify(Piece thePiece)
@@ -8376,6 +8401,7 @@ namespace BejeweledLivePlus
 			}
 		}
 
+		private static float _lastPercentComplete = 0f;
 		public void UpdateLevelBar()
 		{
 			if (mLevelBarPIEffect == null)
@@ -8400,6 +8426,8 @@ namespace BejeweledLivePlus
 			}
 			UpdateLevelBarEffect();
 			CheckWin();
+
+			GameState.LevelPercentComplete = levelPct;
 		}
 
 		public virtual void UpdateLevelBarEffect()

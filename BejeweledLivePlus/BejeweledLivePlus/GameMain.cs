@@ -100,57 +100,25 @@ namespace BejeweledLivePlus
 		{
 		}
 
+		public bool _paused = false;
 		protected override void Update(GameTime gameTime)
 		{
 			if (theApp.WantExit)
 			{
 				Exit();
 			}
+
 			base.Update(gameTime);
-			// try
-			// {
-			// 	 if (!Guide.IsVisible)
-			// 	 {
-			// 		base.Update(gameTime);
-			// 	 }
-			// }
-			// catch (GameUpdateRequiredException ex)
-			// {
-			// 	theApp.HandleGameUpdateRequired(ex);
-			// }
-			UpdateInput(gameTime);
-			// try
-			// {
-			// 	UpdateInput(gameTime);
-			// }
-			// catch (GameUpdateRequiredException ex2)
-			// {
-			// 	theApp.HandleGameUpdateRequired(ex2);
-			// }
-			// try
-			// {
-			// 	if (Guide.IsVisible)
-			// 	{
-			// 		return;
-			// 	}
-			// }
-			// catch (Exception)
-			// {
-			// }
+			
+			if (!_paused)
+			{
+				UpdateInput(gameTime);
+			}
+			
 			if (!mIsLoading)
 			{
 				theApp.Update(gameTime.ElapsedGameTime.Seconds);
 				return;
-				// try
-				// {
-				// 	theApp.Update(gameTime.ElapsedGameTime.Seconds);
-				// 	return;
-				// }
-				// catch (GameUpdateRequiredException ex4)
-				// {
-				// 	theApp.HandleGameUpdateRequired(ex4);
-				// 	return;
-				// }
 			}
 			mElipseTime += gameTime.ElapsedGameTime.TotalSeconds;
 			if (!mInitBegin)
