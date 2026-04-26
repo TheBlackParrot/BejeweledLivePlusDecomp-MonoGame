@@ -12,7 +12,6 @@ namespace BejeweledLivePlus.UI
 		{
 			mClassicBoard = theBoard;
 			NudgeButtons(GlobalMembers.MS(-40));
-			mRankBar.mY += GlobalMembers.MS(30);
 		}
 
 		public override void Update()

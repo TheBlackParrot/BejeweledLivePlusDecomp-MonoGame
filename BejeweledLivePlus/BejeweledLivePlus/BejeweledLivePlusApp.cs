@@ -1291,17 +1291,6 @@ namespace BejeweledLivePlus
 			}
 		}
 
-		public void DoBadgeMenu(int state, List<int> deferredBadgeVector)
-		{
-			BadgeMenu badgeMenu = (BadgeMenu)mMenus[11];
-			badgeMenu.SetMode((BadgeMenu.BADGEMENU_STATE)state, deferredBadgeVector);
-			GoToInterfaceState(InterfaceState.INTERFACE_STATE_BADGEMENU);
-			if (state == 1)
-			{
-				badgeMenu.ShowBackButton(false);
-			}
-		}
-
 		public Dialog DoXBLErrorDialog()
 		{
 			return DoDialog(57, true, GlobalMembers._ID("ERROR", 4900), GlobalMembers._ID("Unable to connect to Xbox LIVE at this time. Please check your connection.", 4901), GlobalMembers._ID("OK", 414), 3);
@@ -1885,7 +1874,7 @@ namespace BejeweledLivePlus
 			}
 			mInterfaceState = newState;
 			int num = -1;
-			bool flag = (mInterfaceState == InterfaceState.INTERFACE_STATE_GAMEDETAILMENU && ((GameDetailMenu)mMenus[6]).GetGameMenuState() == GameDetailMenu.GAMEDETAILMENU_STATE.STATE_PRE_GAME) || (mInterfaceState == InterfaceState.INTERFACE_STATE_BADGEMENU && ((BadgeMenu)mMenus[11]).GetState() == 0);
+			bool flag = (mInterfaceState == InterfaceState.INTERFACE_STATE_GAMEDETAILMENU && ((GameDetailMenu)mMenus[6]).GetGameMenuState() == GameDetailMenu.GAMEDETAILMENU_STATE.STATE_PRE_GAME);
 			for (int i = 0; i < 20; i++)
 			{
 				if (mMenus[i] == null)
@@ -1985,7 +1974,7 @@ namespace BejeweledLivePlus
 			SetContentSpecificConstants();
 			mMenus[13] = new StatsMenu();
 			mMenus[2] = mMainMenu;
-			mMenus[11] = new BadgeMenu(true);
+			mMenus[11] = null;
 			mMenus[5] = new MainMenuOptions();
 			mMenus[7] = new PauseMenu();
 			mMenus[14] = new HighScoresMenu();
@@ -2065,10 +2054,6 @@ namespace BejeweledLivePlus
 		public override void LostFocus()
 		{
 			bool flag = mBoard != null && mBoard.mGameOverCount == 0 && mGameInProgress;
-			if (flag)
-			{
-				mBoard.SyncUnAwardedBadges(mProfile.mDeferredBadgeVector);
-			}
 			mProfile.WriteProfile();
 			WriteToRegistry();
 			if (flag)

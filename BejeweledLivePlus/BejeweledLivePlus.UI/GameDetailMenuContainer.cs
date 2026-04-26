@@ -24,8 +24,6 @@ namespace BejeweledLivePlus.UI
 
 		private Label mSpecialGemsHeadingLabel;
 
-		private RankBarWidget mRankBarWidget1;
-
 		public HighScoresWidget mHighScoresWidgetPostGame;
 
 		private string[] mSpecialStatsStrings = new string[3];
@@ -57,12 +55,6 @@ namespace BejeweledLivePlus.UI
 				theWidth = ConstantsWP.GAMEDETAILMENU_POST_GAME_RANKBAR_1_WIDTH;
 				theX = ConstantsWP.GAMEDETAILMENU_POST_GAME_RANKBAR_1_X;
 			}
-			mRankBarWidget1 = new RankBarWidget(theWidth);
-			mRankBarWidget1.Resize(theX, ConstantsWP.GAMEDETAILMENU_POST_GAME_RANKBAR_1_Y, theWidth, 100);
-			mRankBarWidget1.mDrawCrown = true;
-			mRankBarWidget1.mTobleroning = true;
-			mRankBarWidget1.mDrawText = true;
-			AddWidget(mRankBarWidget1);
 			if (GlobalMembers.gApp.mGameCenterIsAvailable)
 			{
 				mGameCenterButton = new Bej3Button(0, this, Bej3ButtonType.BUTTON_TYPE_GAMECENTER);
@@ -263,7 +255,6 @@ namespace BejeweledLivePlus.UI
 
 		public override void HideCompleted()
 		{
-			mRankBarWidget1.Shown(null);
 			base.HideCompleted();
 			mHighScoresWidgetPostGame.UnNewScore();
 		}
@@ -358,7 +349,6 @@ namespace BejeweledLivePlus.UI
 				mSpecialStatsStrings[2] = string.Format(GlobalMembers._ID("x {0}", 3333), theBoard.mGameStats[19]);
 				break;
 			}
-			mRankBarWidget1.Shown(theBoard);
 		}
 
 		public override void ButtonDepress(int theId)

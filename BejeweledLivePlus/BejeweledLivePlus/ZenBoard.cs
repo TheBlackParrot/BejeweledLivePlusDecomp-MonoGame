@@ -319,14 +319,6 @@ namespace BejeweledLivePlus
 			base.HyperspaceEvent(inEvent);
 			switch (inEvent)
 			{
-			case HYPERSPACEEVENT.HYPERSPACEEVENT_OldLevelClear:
-				CalcBadges();
-				mBadgeManager.SyncBadges();
-				if (Common.size(GlobalMembers.gApp.mProfile.mDeferredBadgeVector) > 0)
-				{
-					mZenDoBadgeAward = true;
-				}
-				break;
 			case HYPERSPACEEVENT.HYPERSPACEEVENT_Finish:
 			{
 				if (mLevel + 1 >= 5 && !GlobalMembers.gApp.mProfile.mEndlessModeUnlocked[1])

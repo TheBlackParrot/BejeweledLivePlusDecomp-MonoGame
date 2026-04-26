@@ -29,8 +29,6 @@ namespace BejeweledLivePlus.UI
 
 		private Label mPlayerNameLabel;
 
-		private RankBarWidget mRankBarWidget;
-
 		public bool mExpandOnShow;
 
 		public bool mCanSlideIn;
@@ -56,11 +54,6 @@ namespace BejeweledLivePlus.UI
 			mPlayerNameLabel = new Label(GlobalMembersResources.FONT_DIALOG);
 			mPlayerNameLabel.Resize(ConstantsWP.PROFILEMENU_NAME_LABEL_X, ConstantsWP.PROFILEMENU_NAME_LABEL_Y + num2 - num6 - num, 0, 0);
 			AddWidget(mPlayerNameLabel);
-			mRankBarWidget = new RankBarWidget(ConstantsWP.PROFILEMENU_RANKBAR_WIDTH);
-			mRankBarWidget.mDrawRankName = false;
-			mRankBarWidget.mDrawCrown = false;
-			mRankBarWidget.Resize(ConstantsWP.PROFILEMENU_RANKBAR_X + num4, ConstantsWP.PROFILEMENU_RANKBAR_Y + num3, (int)((float)ConstantsWP.PROFILEMENU_RANKBAR_WIDTH * num5), 0);
-			AddWidget(mRankBarWidget);
 			Resize(0, GlobalMembers.gApp.mHeight, GlobalMembers.gApp.mWidth, GlobalMembers.gApp.mHeight);
 			mFinalY = ConstantsWP.MENU_Y_POS_HIDDEN;
 			mPlayerImage = new ImageWidget(712, true);

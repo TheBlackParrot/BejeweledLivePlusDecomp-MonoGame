@@ -323,11 +323,7 @@ namespace BejeweledLivePlus.UI
 				}
 				break;
 			case 8:
-				if (mIsFullGame)
-				{
-					GlobalMembers.gApp.DoBadgeMenu(2, GlobalMembers.gApp.mProfile.mDeferredBadgeVector);
-				}
-				else
+				if (!mIsFullGame)
 				{
 					GlobalMembers.gApp.DoTrialDialog(theId);
 				}

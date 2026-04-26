@@ -597,8 +597,6 @@ namespace BejeweledLivePlus
 
 		public Messager mMessager;
 
-		public BadgeManager mBadgeManager;
-
 		public bool mDoRankUp;
 
 		public bool mZenDoBadgeAward;
@@ -628,10 +626,6 @@ namespace BejeweledLivePlus
 		public Piece mForcedReleasedBflyPiece;
 
 		public int mNOfIntentionalMatchesDuringCascade;
-
-		private List<AchievementHint> mAchievementHints = new List<AchievementHint>();
-
-		protected AchievementHint mCurrentHint;
 
 		public readonly int aMenuYPosHidden = ConstantsWP.MENU_Y_POS_HIDDEN;
 
@@ -846,7 +840,6 @@ namespace BejeweledLivePlus
 				mNewGemColors.Add(l);
 				mNewGemColors.Add(l);
 			}
-			mBadgeManager = BadgeManager.GetBadgeManagerInstance();
 			mMessager = null;
 			mMessager = new Messager();
 			mMessager.Init(GlobalMembersResources.FONT_DIALOG);
@@ -1289,7 +1282,6 @@ namespace BejeweledLivePlus
 			InitUI();
 			mZenDoBadgeAward = false;
 			mDoRankUp = false;
-			mBadgeManager.LinkBoard(this);
 			mWantTimeAnnouncement = false;
 			mTimeDelayCount = 0;
 			mReadyDelayCount = 0;
@@ -1889,10 +1881,6 @@ namespace BejeweledLivePlus
 		{
 			if (GlobalMembers.gApp != null && GlobalMembers.gApp.mProfile != null)
 			{
-				if (mGameClosing)
-				{
-					SyncUnAwardedBadges(GlobalMembers.gApp.mProfile.mDeferredBadgeVector);
-				}
 				if (mGameClosing && !IsGameIdle())
 				{
 					GlobalMembers.gApp.mProfile.mStats.Swap(false);
@@ -3473,15 +3461,9 @@ namespace BejeweledLivePlus
 				HideReplayWidget();
 				mHasReplayData = false;
 				mGameOverCount = 1;
-				CalcBadges();
 				GlobalMembers.gApp.mProfile.mTotalGamesPlayed++;
 				GlobalMembers.gApp.mProfile.WriteProfile();
 			}
-		}
-
-		public virtual void CalcBadges()
-		{
-			SyncUnAwardedBadges(GlobalMembers.gApp.mProfile.mDeferredBadgeVector);
 		}
 
 		public virtual void BombExploded(Piece thePiece)
@@ -8744,11 +8726,6 @@ namespace BejeweledLivePlus
 					LoadGame(mPreReplaySave, false);
 					GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eBOARD_REPLAY_FADEOUT_TO_CLEAR, mReplayFadeout);
 					mInReplay = false;
-					if (mCurrentHint != null)
-					{
-						OnAchievementHintFinished(mCurrentHint);
-						mCurrentHint = null;
-					}
 					((PauseMenu)GlobalMembers.gApp.mMenus[7]).SetTopButtonType(mReplayWasTutorial ? Bej3ButtonType.TOP_BUTTON_TYPE_DISMISS : Bej3ButtonType.TOP_BUTTON_TYPE_MENU);
 					DisableUI(false);
 					GlobalMembers.gApp.DisableOptionsButtons(false);
@@ -8771,11 +8748,6 @@ namespace BejeweledLivePlus
 			else if (!mIsWholeGameReplay || mGameOverCount >= 350)
 			{
 				mInReplay = false;
-				if (mCurrentHint != null)
-				{
-					OnAchievementHintFinished(mCurrentHint);
-					mCurrentHint = null;
-				}
 				DisableUI(false);
 				if (!mReplayWasTutorial)
 				{
@@ -8794,11 +8766,6 @@ namespace BejeweledLivePlus
 			GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eBOARD_REPLAY_FADEOUT_TO_CLEAR, mReplayFadeout);
 			double num3 = (double)mReplayFadeout;
 			mInReplay = false;
-			if (mCurrentHint != null)
-			{
-				OnAchievementHintFinished(mCurrentHint);
-				mCurrentHint = null;
-			}
 			((PauseMenu)GlobalMembers.gApp.mMenus[7]).SetTopButtonType(mReplayWasTutorial ? Bej3ButtonType.TOP_BUTTON_TYPE_DISMISS : Bej3ButtonType.TOP_BUTTON_TYPE_MENU);
 			DisableUI(false);
 			GlobalMembers.gApp.DisableOptionsButtons(false);
@@ -9308,7 +9275,7 @@ namespace BejeweledLivePlus
 				UpdateCountdownBar();
 			}
 			UpdateHint();
-			if (GlobalMembers.gApp.mMenus[8].GetState() == Bej3WidgetState.STATE_OUT && GlobalMembers.gApp.mMenus[11].GetState() == Bej3WidgetState.STATE_OUT && mGameOverCount > 0)
+			if (GlobalMembers.gApp.mMenus[8].GetState() == Bej3WidgetState.STATE_OUT && mGameOverCount > 0)
 			{
 				mDeferredTutorialVector.Clear();
 				if (++mGameOverCount >= GetGameOverCountTreshold() && GlobalMembers.gApp.mInterfaceState != InterfaceState.INTERFACE_STATE_GAMEDETAILMENU && GlobalMembers.gApp.mDialogList.Count == 0 && !mQuestPortalPct.IsDoingCurve() && GlobalMembers.gApp.mProfile.mDeferredBadgeVector.Count == 0)
@@ -9978,11 +9945,6 @@ namespace BejeweledLivePlus
 			if ((mUReplayLastTick == 0 && mUReplayBuffer.AtEnd()) || mUpdateCnt == mUReplayTotalTicks)
 			{
 				mInReplay = false;
-				if (mCurrentHint != null)
-				{
-					OnAchievementHintFinished(mCurrentHint);
-					mCurrentHint = null;
-				}
 				((PauseMenu)GlobalMembers.gApp.mMenus[7]).SetTopButtonType(mReplayWasTutorial ? Bej3ButtonType.TOP_BUTTON_TYPE_DISMISS : Bej3ButtonType.TOP_BUTTON_TYPE_MENU);
 				GlobalMembers.gApp.DisableOptionsButtons(false);
 				ToggleReplayPulse(false);
@@ -10196,35 +10158,6 @@ namespace BejeweledLivePlus
 			if (GlobalMembers.gApp.GetDialog(18) != null)
 			{
 				GlobalMembers.gGR.mRecordDraws = false;
-			}
-			if (((GlobalMembers.gApp.mProfile.mDeferredBadgeVector.Count > 0 && (mGameFinished || (GlobalMembers.gApp.mCurrentGameMode == GameMode.MODE_ZEN && mZenDoBadgeAward))) || mDoRankUp) && (mGameOverCount == 0 || mGameOverCount >= GlobalMembers.M(300)))
-			{
-				GlobalMembers.gGR.mRecordDraws = false;
-				RankBarWidget rankBarWidget = (RankBarWidget)(object)GlobalMembers.gApp.GetDialog(34);
-				if (mDoRankUp && GlobalMembers.gApp.GetDialog(23) == null)
-				{
-					RankUpDialog theDialog = new RankUpDialog(this);
-					GlobalMembers.gApp.AddDialog(theDialog);
-					mGameStats[1] = 0;
-					GlobalMembers.gApp.mMenus[7].Transition_SlideOut();
-					mDoRankUp = false;
-				}
-				else if (GlobalMembers.gApp.mProfile.mDeferredBadgeVector.Count > 0 && (mGameFinished || (GlobalMembers.gApp.mCurrentGameMode == GameMode.MODE_ZEN && mZenDoBadgeAward)) && rankBarWidget == null && mHyperspace == null)
-				{
-					if (GlobalMembers.gApp.mMenus[8].GetState() == Bej3WidgetState.STATE_OUT)
-					{
-						GlobalMembers.gApp.DoBadgeMenu(1, GlobalMembers.gApp.mProfile.mDeferredBadgeVector);
-						GlobalMembers.gApp.mMenus[7].Transition_SlideOut();
-						GlobalMembers.gApp.mProfile.mDeferredBadgeVector.Clear();
-						mZenDoBadgeAward = false;
-					}
-					return;
-				}
-				if (GlobalMembers.gApp.GetDialog(23) != null)
-				{
-					mSlideUIPct.IncInVal();
-					return;
-				}
 			}
 			bool mHadReplayError2 = mHadReplayError;
 			if (mInUReplay)
@@ -10516,7 +10449,6 @@ namespace BejeweledLivePlus
 				mDeferredTutorialVector.RemoveAt(0);
 				mTutorialPieceIrisPct.SetConstant(0.0);
 			}
-			mBadgeManager.Update();
 		}
 
 		public override void Update()
@@ -10524,17 +10456,6 @@ namespace BejeweledLivePlus
 			if (!mContentLoaded || mSuspendingGame)
 			{
 				return;
-			}
-			if (mCurrentHint == null)
-			{
-				if (mAchievementHints.Count > 0)
-				{
-					mCurrentHint = mAchievementHints[0];
-				}
-			}
-			else if (!mInReplay)
-			{
-				mCurrentHint.Update();
 			}
 			if (!AllowUI())
 			{
@@ -12195,10 +12116,6 @@ namespace BejeweledLivePlus
 				{
 					DrawUI(g);
 				}
-				if (mCurrentHint != null && !mInReplay)
-				{
-					mCurrentHint.Draw(g);
-				}
 				g.SetColor(Color.White);
 			}
 		}
@@ -12997,30 +12914,6 @@ namespace BejeweledLivePlus
 			}
 		}
 
-		public void SyncUnAwardedBadges(List<int> deferredBadgeVector)
-		{
-			bool flag = mGameOverCount == 0;
-			for (int i = 0; i < 20; i++)
-			{
-				Badge badgeByIndex = mBadgeManager.GetBadgeByIndex(i);
-				if (badgeByIndex == null || (flag && !badgeByIndex.WantsMidGameCalc()) || !badgeByIndex.CanUnlock())
-				{
-					continue;
-				}
-				for (int j = 0; j < deferredBadgeVector.Count; j++)
-				{
-					if (deferredBadgeVector[j] == badgeByIndex.mIdx)
-					{
-						deferredBadgeVector.RemoveAt(j);
-					}
-				}
-				deferredBadgeVector.Add(badgeByIndex.mIdx);
-				GlobalMembers.gApp.mProfile.mBadgeStatus[badgeByIndex.mIdx] = true;
-				badgeByIndex.mUnlocked = true;
-				GlobalMembers.gApp.mProfile.AddRecentBadge(badgeByIndex.mIdx);
-			}
-		}
-
 		public virtual void SubmitHighscore()
 		{
 		}
@@ -13429,17 +13322,6 @@ namespace BejeweledLivePlus
 			{
 				mMessager.AddMessage(theMsg);
 			}
-		}
-
-		public void ShowAchievementHint(string achName)
-		{
-			mAchievementHints.Add(new AchievementHint(achName, OnAchievementHintFinished));
-		}
-
-		public void OnAchievementHintFinished(AchievementHint sender)
-		{
-			mAchievementHints.Remove(sender);
-			mCurrentHint = null;
 		}
 	}
 }

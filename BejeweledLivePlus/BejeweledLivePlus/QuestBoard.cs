@@ -1422,7 +1422,6 @@ namespace BejeweledLivePlus
 					{
 						bool flag = GlobalMembers.gApp.mProfile.mQuestsCompleted[GlobalMembers.gApp.mQuestMenu.mQuestSetNum, GlobalMembers.gApp.mQuestMenu.mGemOver];
 						GlobalMembers.gApp.mProfile.mQuestsCompleted[GlobalMembers.gApp.mQuestMenu.mQuestSetNum, GlobalMembers.gApp.mQuestMenu.mGemOver] = true;
-						CalcBadges();
 						GlobalMembers.gApp.mProfile.mQuestsCompleted[GlobalMembers.gApp.mQuestMenu.mQuestSetNum, GlobalMembers.gApp.mQuestMenu.mGemOver] = flag;
 					}
 					if (mLevelCompleteCount == 0)

@@ -26,8 +26,6 @@ namespace BejeweledLivePlus.UI
 
 		public CurvedVal mCountupPct = new CurvedVal();
 
-		public RankBarWidget mRankBar;
-
 		public int mPoints;
 
 		public int[] mGameStats = new int[40];
@@ -55,9 +53,6 @@ namespace BejeweledLivePlus.UI
 			mContentInsets.mBottom = GlobalMembers.MS(60);
 			mFlushPriority = 100;
 			mAllowDrag = false;
-			mRankBar = new RankBarWidget(1195, mBoard);
-			mRankBar.Move(GlobalMembers.MS(200), GlobalMembers.MS(240));
-			AddWidget(mRankBar);
 		}
 
 		public override void Dispose()

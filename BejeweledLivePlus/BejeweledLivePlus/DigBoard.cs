@@ -506,10 +506,6 @@ namespace BejeweledLivePlus
 		public override void Draw(Graphics g)
 		{
 			base.Draw(g);
-			if (mCurrentHint != null)
-			{
-				mCurrentHint.Draw(g);
-			}
 		}
 
 		public void DrawDepthMeter(Graphics g)

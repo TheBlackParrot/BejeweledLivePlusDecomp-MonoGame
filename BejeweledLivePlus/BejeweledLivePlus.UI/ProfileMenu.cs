@@ -17,8 +17,6 @@ namespace BejeweledLivePlus.UI
 
 		private Label mPlayerNameLabel;
 
-		private RankBarWidget mRankBarWidget;
-
 		private Label mPlayerRankLabel;
 
 		public ProfileMenu()
@@ -50,11 +48,6 @@ namespace BejeweledLivePlus.UI
 			mBackButton.Resize(0, 0, ConstantsWP.PROFILEMENU_BUTTON_WIDTH, 0);
 			Bej3Widget.CenterWidgetAt(ConstantsWP.PROFILEMENU_BACK_X, ConstantsWP.PROFILEMENU_BOTTOM_BUTTON_Y, mBackButton, true, false);
 			AddWidget(mBackButton);
-			mRankBarWidget = new RankBarWidget(ConstantsWP.PROFILEMENU_RANKBAR_WIDTH);
-			mRankBarWidget.mDrawRankName = true;
-			mRankBarWidget.mDrawCrown = false;
-			mRankBarWidget.Resize(ConstantsWP.PROFILEMENU_RANKBAR_X, ConstantsWP.PROFILEMENU_RANKBAR_Y, ConstantsWP.PROFILEMENU_RANKBAR_WIDTH, 0);
-			AddWidget(mRankBarWidget);
 			base.SystemButtonPressed += OnSystemButtonPressed;
 		}
 
@@ -117,18 +110,6 @@ namespace BejeweledLivePlus.UI
 				GlobalMembers.gApp.DoHighScoresMenu();
 				Transition_SlideOut();
 				break;
-			case 4:
-				if (GlobalMembers.gApp.mProfile.mDeferredBadgeVector.Count > 0)
-				{
-					GlobalMembers.gApp.DoBadgeMenu(2, GlobalMembers.gApp.mProfile.mDeferredBadgeVector);
-					Transition_SlideOut();
-				}
-				else
-				{
-					GlobalMembers.gApp.DoBadgeMenu(0, null);
-					Transition_SlideOut();
-				}
-				break;
 			}
 		}
 
@@ -143,7 +124,6 @@ namespace BejeweledLivePlus.UI
 			Bej3WidgetState mState2 = mState;
 			mContainer.Show();
 			base.Show();
-			mPlayerRankLabel.SetText(mRankBarWidget.GetRankName(GlobalMembers.gApp.mProfile.mOfflineRank, false));
 			SetVisible(false);
 		}
 
