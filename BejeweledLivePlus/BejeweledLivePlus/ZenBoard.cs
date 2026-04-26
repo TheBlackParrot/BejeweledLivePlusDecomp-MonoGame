@@ -86,10 +86,6 @@ namespace BejeweledLivePlus
 			}
 			mAffirmationPct = 0f;
 			mUsingAmbientMusicVolume = false;
-			if (GlobalMembers.gApp.mProfile.mBeatOn)
-			{
-				StartupSBA();
-			}
 			mNoiseSoundInstance = null;
 			mNoiseSoundId = -1;
 			mBreathSoundInstance = null;
@@ -100,7 +96,6 @@ namespace BejeweledLivePlus
 
 		public override void Dispose()
 		{
-			GlobalMembers.gApp.mBinauralManager.Load("");
 			StopZenNoise();
 			if (GlobalMembers.gApp.mProfile.mNoiseOn)
 			{
@@ -160,18 +155,6 @@ namespace BejeweledLivePlus
 		public override int GetLevelPoints()
 		{
 			return GlobalMembers.M(2500) + Math.Min(mLevel, GlobalMembers.M(30)) * GlobalMembers.M(750);
-		}
-
-		public void StartupSBA()
-		{
-			if (GlobalMembers.gApp.mProfile.mBeatOn)
-			{
-				GlobalMembers.gApp.mBinauralManager.Load("binaural\\" + GlobalMembers.gApp.mProfile.mSBAFileName);
-			}
-			else
-			{
-				GlobalMembers.gApp.mBinauralManager.Load("");
-			}
 		}
 
 		public void LoadAffirmations()
@@ -703,12 +686,7 @@ namespace BejeweledLivePlus
 			if (mGameOverCount <= GlobalMembers.M(200))
 			{
 				SetTutorialCleared(11);
-				if (theId == 5)
-				{
-					((ZenOptionsMenu)GlobalMembers.gApp.mMenus[19]).Expand();
-					((ZenOptionsMenu)GlobalMembers.gApp.mMenus[19]).Transition_SlideThenFadeIn();
-				}
-				else
+				if (theId != 5)
 				{
 					base.ButtonDepress(theId);
 				}

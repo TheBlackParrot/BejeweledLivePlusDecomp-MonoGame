@@ -166,8 +166,6 @@ namespace BejeweledLivePlus
 
 		public string mClientId = string.Empty;
 
-		public BinauralManager mBinauralManager;
-
 		public Dictionary<int, PIEffect>[] mQuestObjPIEffects = new Dictionary<int, PIEffect>[BejeweledLivePlusAppConstants.NUM_QUEST_SETS];
 
 		public Image[,] mShrunkenGems = new Image[7, 15];
@@ -723,28 +721,6 @@ namespace BejeweledLivePlus
 					mBoard.SaveGame();
 				}
 			}
-			else
-			{
-				if (GlobalMembers.gApp.mDialogMap.Count != 0)
-				{
-					return;
-				}
-				if (mBoard.mInReplay)
-				{
-					//mBoard.BackToGame();
-					//mMenus[7].ButtonDepress(10001);
-				}
-				else if (GlobalMembers.gApp.mCurrentGameMode != GameMode.MODE_ZEN || GlobalMembers.gApp.mMenus[19].mY == ConstantsWP.MENU_Y_POS_HIDDEN || GlobalMembers.gApp.mMenus[19].mY == 0)
-				{
-					Bej3Widget bej3Widget = GlobalMembers.gApp.mMenus[7];
-					mLosfocus = true;
-					Bej3Widget bej3Widget2 = mMenus[8];
-					if (mInterfaceState == InterfaceState.INTERFACE_STATE_INGAME && mInterfaceState != InterfaceState.INTERFACE_STATE_PAUSEMENU && mDialogMap.Count == 0 && (!mMenus[8].mVisible || !mBoard.mWantLevelup))
-					{
-						//mMenus[7].ButtonDepress(10001);
-					}
-				}
-			}
 		}
 
 		public void OnServiceActivated()
@@ -1008,10 +984,6 @@ namespace BejeweledLivePlus
 			mLastDataParserId = -1;
 			mLastDataParser = null;
 			GlobalMembers.KILL_WIDGET_NOW(mBoard);
-			if (mBinauralManager == null)
-			{
-				mBinauralManager = new BinauralManager();
-			}
 			mBoard = new ZenBoard();
 			mBoard.Resize(0, 0, mWidth, mHeight);
 			mBoard.Init();
@@ -1110,24 +1082,6 @@ namespace BejeweledLivePlus
 				}
 				Bej3Widget.mCurrentSlidingMenu = mBoard;
 				mGameInProgress = true;
-			}
-			if (mCurrentGameMode == GameMode.MODE_ZEN && !mProfile.HasClearedTutorial(23))
-			{
-				if (mInterfaceState == InterfaceState.INTERFACE_STATE_HELPMENU)
-				{
-					Bej3Widget.mCurrentSlidingMenu = mMenus[8];
-				}
-				else
-				{
-					Bej3Widget.mCurrentSlidingMenu = mMenus[7];
-				}
-				ZenInfoDialog theDialog = new ZenInfoDialog();
-				AddDialog(44, theDialog);
-				GlobalMembers.gApp.mProfile.mTutorialFlags ^= 8388608uL;
-				if (Bej3Widget.mCurrentSlidingMenu != null)
-				{
-					Bej3Widget.mCurrentSlidingMenu.Transition_SlideOut();
-				}
 			}
 			ClearUpdateBacklog(false);
 		}
@@ -1969,7 +1923,7 @@ namespace BejeweledLivePlus
 			mMenus[6] = new GameDetailMenu();
 			mMenus[16] = new CreditsMenu();
 			mMenus[15] = new EditProfileDialog();
-			mMenus[19] = new ZenOptionsMenu();
+			mMenus[19] = null;
 			mMenus[10] = new HelpAndOptionsMenu();
 			for (int i = 0; i < 20; i++)
 			{
