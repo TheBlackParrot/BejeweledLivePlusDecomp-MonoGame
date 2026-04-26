@@ -156,10 +156,6 @@ namespace BejeweledLivePlus.UI
 			return base.GetShowCurve();
 		}
 
-		public override void PlayMenuMusic()
-		{
-		}
-
 		public void SetupForWelcome()
 		{
 			mAlphaCurve.SetConstant(1.0);

@@ -302,10 +302,6 @@ namespace BejeweledLivePlus.UI
 		{
 		}
 
-		public override void PlayMenuMusic()
-		{
-		}
-
 		public override void ButtonDepress(int theId)
 		{
 		}

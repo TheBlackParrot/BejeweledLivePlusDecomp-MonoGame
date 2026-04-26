@@ -62,7 +62,6 @@ namespace BejeweledLivePlus
 		{
 			new Announcement(this, GlobalMembers._ID("NO MORE\nMOVES", 164));
 			GlobalMembers.gApp.PlayVoice(GlobalMembersResourcesWP.SOUND_VOICE_NOMOREMOVES);
-			GlobalMembers.gApp.mMusic.PlaySongNoDelay(3, false);
 		}
 
 		public override void HyperspaceEvent(HYPERSPACEEVENT inEvent)
@@ -114,11 +113,6 @@ namespace BejeweledLivePlus
 		{
 			base.Draw(g);
 			base.DrawGameElements(g);
-		}
-
-		public override void PlayMenuMusic()
-		{
-			GlobalMembers.gApp.mMusic.PlaySongNoDelay(2, true);
 		}
 
 		public override void SubmitHighscore()

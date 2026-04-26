@@ -720,11 +720,6 @@ namespace BejeweledLivePlus
 			base.KeyChar(theChar);
 		}
 
-		public override void PlayMenuMusic()
-		{
-			GlobalMembers.gApp.mMusic.PlaySongNoDelay(4, true);
-		}
-
 		public override void InitUI()
 		{
 			base.InitUI();

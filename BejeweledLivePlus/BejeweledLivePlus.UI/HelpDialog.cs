@@ -506,10 +506,6 @@ namespace BejeweledLivePlus.UI
 			mContainer.mWindowCount = 0;
 		}
 
-		public override void PlayMenuMusic()
-		{
-		}
-
 		public override void SetVisible(bool isVisible)
 		{
 			base.SetVisible(isVisible);

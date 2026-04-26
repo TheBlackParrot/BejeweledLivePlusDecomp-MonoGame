@@ -30,8 +30,6 @@ namespace BejeweledLivePlus.UI
 
 		private Bej3Checkbox mAutoHintCheckbox;
 
-		private Bej3Slider mMusicSlider;
-
 		private Bej3Slider mFXSlider;
 
 		private Bej3Slider mVoiceSlider;
@@ -39,8 +37,6 @@ namespace BejeweledLivePlus.UI
 		private ImageWidget mVoiceImage;
 
 		private ImageWidget mFXImage;
-
-		private ImageWidget mMusicImage;
 
 		public OptionsContainer()
 			: base(Menu_Type.MENU_OPTIONSMENU, false, Bej3ButtonType.TOP_BUTTON_TYPE_NONE)
@@ -63,9 +59,6 @@ namespace BejeweledLivePlus.UI
 			mFXImage = new ImageWidget(1363);
 			mFXImage.Resize((int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_DIALOG_SFX_ICONS_SOUND_ID)) + ConstantsWP.OPTIONSMENU_FX_LABEL_X, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_DIALOG_SFX_ICONS_SOUND_ID)) + ConstantsWP.OPTIONSMENU_FX_LABEL_Y, 0, 0);
 			AddWidget(mFXImage);
-			mMusicImage = new ImageWidget(1361);
-			mMusicImage.Resize((int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_DIALOG_SFX_ICONS_MUSIC_ID)) + ConstantsWP.OPTIONSMENU_MUSIC_LABEL_X, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_DIALOG_SFX_ICONS_MUSIC_ID)) + ConstantsWP.OPTIONSMENU_MUSIC_LABEL_Y, 0, 0);
-			AddWidget(mMusicImage);
 			mAutoHintCheckbox = new Bej3Checkbox(0, this);
 			mAutoHintCheckbox.Resize(ConstantsWP.OPTIONSMENU_AUTOHINT_CHECKBOX_X, ConstantsWP.OPTIONSMENU_AUTOHINT_CHECKBOX_Y, 0, 0);
 			mAutoHintCheckbox.mGrayOutWhenDisabled = false;
@@ -78,9 +71,6 @@ namespace BejeweledLivePlus.UI
 			mTutorialCheckbox.Resize(ConstantsWP.OPTIONSMENU_TUTORIAL_CHECKBOX_X, ConstantsWP.OPTIONSMENU_TUTORIAL_CHECKBOX_Y, 0, 0);
 			mTutorialCheckbox.mGrayOutWhenDisabled = false;
 			AddWidget(mTutorialCheckbox);
-			mMusicSlider = new Bej3Slider(3, this);
-			mMusicSlider.Resize(ConstantsWP.OPTIONSMENU_MUSIC_SLIDER_X, ConstantsWP.OPTIONSMENU_MUSIC_SLIDER_Y, ConstantsWP.OPTIONSMENU_SLIDER_WIDTH, 0);
-			AddWidget(mMusicSlider);
 			mFXSlider = new Bej3Slider(4, this);
 			mFXSlider.Resize(ConstantsWP.OPTIONSMENU_MUSIC_SLIDER_X, ConstantsWP.OPTIONSMENU_FX_SLIDER_Y, ConstantsWP.OPTIONSMENU_SLIDER_WIDTH, 0);
 			AddWidget(mFXSlider);
@@ -101,10 +91,6 @@ namespace BejeweledLivePlus.UI
 			int num = mY;
 			base.Show();
 			mY = num;
-		}
-
-		public override void PlayMenuMusic()
-		{
 		}
 
 		public override void DrawAll(ModalFlags theFlags, Graphics g)
@@ -153,11 +139,6 @@ namespace BejeweledLivePlus.UI
 			switch (theId)
 			{
 			case 3:
-				GlobalMembers.gApp.SetMusicVolume(theVal);
-				if (GlobalMembers.gApp.mGameInProgress && GlobalMembers.gApp.mCurrentGameMode == GameMode.MODE_ZEN && GlobalMembers.gApp.mBoard != null)
-				{
-					(GlobalMembers.gApp.mBoard as ZenBoard)?.MusicVolumeChanged();
-				}
 				UpdateControls();
 				break;
 			case 4:
@@ -197,7 +178,6 @@ namespace BejeweledLivePlus.UI
 		{
 			mAutoHintCheckbox.LinkUpAssets();
 			mMuteCheckbox.LinkUpAssets();
-			mMusicSlider.LinkUpAssets();
 			mFXSlider.LinkUpAssets();
 			mVoiceSlider.LinkUpAssets();
 			mMuteCheckbox.SetChecked(GlobalMembers.gApp.IsMuted(), false);
@@ -209,7 +189,6 @@ namespace BejeweledLivePlus.UI
 
 		public void UpdateValues()
 		{
-			mMusicSlider.SetValue(GlobalMembers.gApp.mMusicVolume);
 			mFXSlider.SetValue(GlobalMembers.gApp.mSfxVolume);
 			mVoiceSlider.SetValue(GlobalMembers.gApp.mVoiceVolume);
 			mAutoHintCheckbox.SetChecked(GlobalMembers.gApp.mProfile.mAutoHint, false);
@@ -218,22 +197,8 @@ namespace BejeweledLivePlus.UI
 		public void UpdateControls()
 		{
 			bool flag = GlobalMembers.gApp.mMuteCount > 0;
-			GlobalMembers.gApp.IsMusicEnabled();
-			mMusicSlider.SetDisabled(flag);
 			mVoiceSlider.SetDisabled(flag);
 			mFXSlider.SetDisabled(flag);
-			if (flag || GlobalMembers.gApp.GetMusicVolume() == 0.0)
-			{
-				mMusicImage.SetImage(1362);
-				mMusicImage.mGrayedOut = true;
-				mMusicSlider.mGrayedOut = true;
-			}
-			else
-			{
-				mMusicImage.SetImage(1361);
-				mMusicImage.mGrayedOut = false;
-				mMusicSlider.mGrayedOut = false;
-			}
 			if (flag || GlobalMembers.gApp.mVoiceVolume == 0.0)
 			{
 				mVoiceImage.SetImage(1366);
@@ -258,7 +223,6 @@ namespace BejeweledLivePlus.UI
 				mFXImage.mGrayedOut = false;
 				mFXSlider.mGrayedOut = false;
 			}
-			mMusicSlider.LinkUpAssets();
 			mVoiceSlider.LinkUpAssets();
 			mFXSlider.LinkUpAssets();
 		}

@@ -352,10 +352,6 @@ namespace BejeweledLivePlus.UI
 			mOptionsContainer.LinkUpAssets();
 		}
 
-		public override void PlayMenuMusic()
-		{
-		}
-
 		public void Collapse(bool fadeInstantly)
 		{
 			Collapse(fadeInstantly, false);

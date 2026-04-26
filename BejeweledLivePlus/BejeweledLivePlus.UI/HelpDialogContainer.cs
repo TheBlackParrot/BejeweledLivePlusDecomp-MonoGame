@@ -49,9 +49,5 @@ namespace BejeweledLivePlus.UI
 		{
 			base.Hide();
 		}
-
-		public override void PlayMenuMusic()
-		{
-		}
 	}
 }

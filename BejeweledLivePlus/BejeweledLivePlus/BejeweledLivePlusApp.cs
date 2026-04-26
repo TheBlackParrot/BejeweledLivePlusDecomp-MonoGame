@@ -146,8 +146,6 @@ namespace BejeweledLivePlus
 
 		public string mForceBkg = "";
 
-		public Music mMusic;
-
 		public SoundEffects mSoundPlayer;
 
 		public SexyFramework.Misc.Buffer mStatsDumpBuffer = new SexyFramework.Misc.Buffer();
@@ -379,11 +377,7 @@ namespace BejeweledLivePlus
 			{
 				ShowResourceError(true);
 			}
-			mMusic = new Music(mMusicInterface);
-			mMusic.RegisterCallBack();
 			mSoundPlayer = new SoundEffects(mSoundManager);
-			mMusic.LoadMusic(0, "music\\LoadingScreen");
-			mMusic.LoadMusic(1, "music\\MainMenu");
 			mUnderDialogWidget = new UnderDialogWidget();
 			mUnderDialogWidget.Resize(0, 0, mWidth, mHeight);
 			mWidgetManager.AddWidget(mUnderDialogWidget);
@@ -522,15 +516,6 @@ namespace BejeweledLivePlus
 			mAmbientFiles.Add("Ocean Surf");
 			mAmbientFiles.Add("Rain Leaves");
 			mAmbientFiles.Add("Waterfall");
-			mMusic.LoadMusic(2, "music\\Classic");
-			mMusic.LoadMusic(3, "music\\Classic_lose");
-			mMusic.LoadMusic(4, "music\\Zen");
-			mMusic.LoadMusic(13, "music\\Diamond_mine");
-			mMusic.LoadMusic(14, "music\\Diamond_mine_lose");
-			mMusic.LoadMusic(5, "music\\Butterfly");
-			mMusic.LoadMusic(6, "music\\Butterfly_lose");
-			mMusic.LoadMusic(11, "music\\Lightning");
-			mMusic.LoadMusic(12, "music\\Lightning_end");
 		}
 
 		private void InitStepSetupToolTipMgr()
@@ -1263,8 +1248,6 @@ namespace BejeweledLivePlus
 			}
 			try
 			{
-				mMusic.Dispose();
-				mMusic = null;
 				mSoundPlayer.Dispose();
 				mSoundPlayer = null;
 				mProfile.Dispose();
@@ -2212,7 +2195,6 @@ namespace BejeweledLivePlus
 
 		public override void UpdateFrames()
 		{
-			mMusic.Update();
 			mSoundPlayer.Update();
 			UpdateVoices();
 			base.UpdateFrames();
@@ -2333,13 +2315,6 @@ namespace BejeweledLivePlus
 					// val.Show();
 				}
 				break;
-			case 52:
-				if (theButtonId == 1000)
-				{
-					mMusicInterface.stopUserMusic();
-				}
-				GlobalMembers.gApp.mMusic.PlaySongNoDelay(1, true);
-				break;
 			}
 			bej3Dialog.Kill();
 		}
@@ -2388,16 +2363,6 @@ namespace BejeweledLivePlus
 
 		public void EnableMusic(bool enable)
 		{
-		}
-
-		public bool IsMusicEnabled()
-		{
-			return mMuteCount > 0;
-		}
-
-		public override void SetMusicVolume(double theVolume)
-		{
-			base.SetMusicVolume(theVolume);
 		}
 
 		public int GetSysFps()

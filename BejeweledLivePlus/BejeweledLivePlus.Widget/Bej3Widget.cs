@@ -675,7 +675,6 @@ namespace BejeweledLivePlus.Widget
 			GlobalMembers.gApp.mCurveValCache.GetCurvedVal((PreCalculatedCurvedValManager.CURVED_VAL_ID)GetShowCurve(), mAlphaCurve);
 			mState = Bej3WidgetState.STATE_FADING_IN;
 			mY = ConstantsWP.MENU_Y_POS_HIDDEN;
-			PlayMenuMusic();
 			if (GlobalMembers.gApp.mTooltipManager != null)
 			{
 				GlobalMembers.gApp.mTooltipManager.ClearTooltipsWithAnimation();
@@ -728,11 +727,6 @@ namespace BejeweledLivePlus.Widget
 
 		public override void LinkUpAssets()
 		{
-		}
-
-		public virtual void PlayMenuMusic()
-		{
-			GlobalMembers.gApp.mMusic.PlaySongNoDelay(1, true);
 		}
 
 		public virtual int GetShowCurve()

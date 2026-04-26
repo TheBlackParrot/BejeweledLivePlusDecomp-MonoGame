@@ -982,7 +982,6 @@ namespace BejeweledLivePlus
 		public virtual void Unpause()
 		{
 			mUserPaused = false;
-			PlayMenuMusic();
 			mSuspendingGame = false;
 		}
 

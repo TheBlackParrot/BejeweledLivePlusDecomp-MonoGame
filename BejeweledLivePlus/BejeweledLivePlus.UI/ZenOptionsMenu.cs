@@ -311,9 +311,5 @@ namespace BejeweledLivePlus.UI
 				break;
 			}
 		}
-
-		public override void PlayMenuMusic()
-		{
-		}
 	}
 }

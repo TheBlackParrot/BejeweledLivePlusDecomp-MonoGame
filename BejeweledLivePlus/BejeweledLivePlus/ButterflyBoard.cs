@@ -289,11 +289,6 @@ namespace BejeweledLivePlus
 		{
 		}
 
-		public override void PlayMenuMusic()
-		{
-			GlobalMembers.gApp.mMusic.PlaySongNoDelay(5, true);
-		}
-
 		public override void SetupBackground(int theDeltaIdx)
 		{
 			string empty = string.Empty;
@@ -416,7 +411,6 @@ namespace BejeweledLivePlus
 		{
 			if (!mCountingForGameOver)
 			{
-				GlobalMembers.gApp.mMusic.PlaySongNoDelay(6, false);
 				mSpotOnSpider = true;
 				mCountingForGameOver = true;
 				mGameOverCountdown = 200;

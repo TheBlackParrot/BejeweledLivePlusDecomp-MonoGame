@@ -590,21 +590,6 @@ namespace BejeweledLivePlus.UI
 			}
 		}
 
-		public override void PlayMenuMusic()
-		{
-			if (!GlobalMembers.gApp.mMusicInterface.isPlayingUserMusic())
-			{
-				if (mInterfaceState == InterfaceState.INTERFACE_STATE_LOADING)
-				{
-					GlobalMembers.gApp.mMusic.PlaySongNoDelay(0, true);
-				}
-				else
-				{
-					GlobalMembers.gApp.mMusic.PlaySongNoDelay(1, true);
-				}
-			}
-		}
-
 		public void WantBuyGame()
 		{
 			mContainer.ButtonDepress(9);
