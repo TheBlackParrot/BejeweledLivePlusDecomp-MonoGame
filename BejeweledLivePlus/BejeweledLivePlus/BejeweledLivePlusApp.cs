@@ -1070,9 +1070,6 @@ namespace BejeweledLivePlus
 				if (mCurrentGameMode == GameMode.MODE_ZEN)
 				{
 					ZenBoard zenBoard = (ZenBoard)mBoard;
-					zenBoard.LoadAffirmations();
-					zenBoard.LoadAmbientSound();
-					zenBoard.PlayZenNoise();
 				}
 				if (Bej3Widget.mCurrentSlidingMenu != null)
 				{
@@ -1219,11 +1216,6 @@ namespace BejeweledLivePlus
 		public void DisableOptionsButtons(bool disable)
 		{
 			mMenus[7].SetDisabledTopButton(disable);
-			if (mCurrentGameMode == GameMode.MODE_ZEN && mBoard != null)
-			{
-				((ZenBoard)mBoard).mZenOptionsButton.mMouseVisible = !disable;
-				((ZenBoard)mBoard).mZenOptionsButton.SetDisabled(disable);
-			}
 		}
 
 		public Dialog DoXBLErrorDialog()
@@ -1550,14 +1542,14 @@ namespace BejeweledLivePlus
 			SexyFramework.Misc.Buffer buffer = new SexyFramework.Misc.Buffer();
 			if (GlobalMembers.gApp.mProfile != null)
 			{
-				ulong num = ((GlobalMembers.gApp.mProfile.mLastFacebookId.Length > 0) ? ulong.Parse(GlobalMembers.gApp.mProfile.mLastFacebookId) : 0);
+				ulong num = 0;
 				buffer.WriteLong((long)num);
 				buffer.WriteLong((long)num >> 32);
 				buffer.WriteByte((byte)GlobalMembers.gApp.mProfile.mProfileList.Count);
 				buffer.WriteShort((short)Math.Min(65535, mProfile.mStats[0] / 60));
-				buffer.WriteShort((short)Math.Min(65535, GlobalMembers.gApp.mProfile.mOnlineGames));
-				buffer.WriteShort((short)Math.Min(65535, GlobalMembers.gApp.mProfile.mOfflineGames));
-				buffer.WriteLong(GlobalMembers.gApp.mProfile.mOfflineRankPoints / 1000);
+				buffer.WriteShort((short)Math.Min(65535, 0));
+				buffer.WriteShort((short)Math.Min(65535, 0));
+				buffer.WriteLong(0 / 1000);
 				RegistryWriteData("GameData", buffer.GetDataPtr(), (ulong)buffer.GetDataLen());
 			}
 			if (mProfile != null)
@@ -2335,15 +2327,6 @@ namespace BejeweledLivePlus
 		public override void Mute(bool autoMute)
 		{
 			base.Mute(autoMute);
-			if (mBoard != null)
-			{
-				ZenBoard zenBoard = null;
-				if (mBoard is ZenBoard)
-				{
-					zenBoard = mBoard as ZenBoard;
-				}
-				zenBoard?.MuteZenSounds();
-			}
 		}
 
 		public void Mute()
@@ -2354,15 +2337,6 @@ namespace BejeweledLivePlus
 		public override void Unmute(bool autoMute)
 		{
 			base.Unmute(autoMute);
-			if (mBoard != null)
-			{
-				ZenBoard zenBoard = null;
-				if (mBoard is ZenBoard)
-				{
-					zenBoard = mBoard as ZenBoard;
-				}
-				zenBoard?.UnmuteZenSounds();
-			}
 		}
 
 		public void Unmute()

@@ -9277,7 +9277,7 @@ namespace BejeweledLivePlus
 			if (GlobalMembers.gApp.mMenus[8].GetState() == Bej3WidgetState.STATE_OUT && mGameOverCount > 0)
 			{
 				mDeferredTutorialVector.Clear();
-				if (++mGameOverCount >= GetGameOverCountTreshold() && GlobalMembers.gApp.mInterfaceState != InterfaceState.INTERFACE_STATE_GAMEDETAILMENU && GlobalMembers.gApp.mDialogList.Count == 0 && !mQuestPortalPct.IsDoingCurve() && GlobalMembers.gApp.mProfile.mDeferredBadgeVector.Count == 0)
+				if (++mGameOverCount >= GetGameOverCountTreshold() && GlobalMembers.gApp.mInterfaceState != InterfaceState.INTERFACE_STATE_GAMEDETAILMENU && GlobalMembers.gApp.mDialogList.Count == 0 && !mQuestPortalPct.IsDoingCurve())
 				{
 					GameOverExit();
 				}
@@ -12974,7 +12974,6 @@ namespace BejeweledLivePlus
 				if (zenBoard != null)
 				{
 					mTransOptionsBtnOffsetX = (int)((double)(ConstantsWP.ZENBOARD_UI_ZEN_BTN_X + ConstantsWP.ZENBOARD_UI_ZEN_BTN_WIDTH) * (double)mSlidingHUDCurve);
-					zenBoard.mZenOptionsButton.mX = ConstantsWP.ZENBOARD_UI_ZEN_BTN_X - mTransOptionsBtnOffsetX;
 				}
 			}
 		}

@@ -104,16 +104,6 @@ namespace BejeweledLivePlus.UI
 		public override void LinkUpAssets()
 		{
 			base.LinkUpAssets();
-			mAnalyticsCheckbox.SetChecked(GlobalMembers.gApp.mProfile.mAllowAnalytics, false);
-			mAnalyticsLabelHeading.SetText(GlobalMembers._ID("USER SHARING", 3360));
-			if (GlobalMembers.gApp.mProfile.mAllowAnalytics)
-			{
-				mAnalyticsLabel.SetText(GlobalMembers._ID("If you no longer wish to send anonymous game play information to PopCap, uncheck the box and we will disable the transmission of such information.", 3361));
-			}
-			else
-			{
-				mAnalyticsLabel.SetText(GlobalMembers._ID("If you wish to send anonymous game play information to PopCap, check the box and we will enable the transmission of such information.", 3362));
-			}
 		}
 
 		public override void Show()
@@ -149,9 +139,8 @@ namespace BejeweledLivePlus.UI
 
 		public virtual void CheckboxChecked(int theId, bool isChecked)
 		{
-			if (theId == 4 && isChecked != GlobalMembers.gApp.mProfile.mAllowAnalytics)
+			if (theId == 4)
 			{
-				GlobalMembers.gApp.mProfile.mAllowAnalytics = isChecked;
 				GlobalMembers.gApp.mProfile.WriteProfile();
 				LinkUpAssets();
 			}

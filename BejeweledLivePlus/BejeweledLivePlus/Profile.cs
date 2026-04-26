@@ -41,21 +41,11 @@ namespace BejeweledLivePlus
 
 		public ulong mGamesPlayedToday;
 
-		public string mLastFacebookId = string.Empty;
-
 		public string mProfileName = string.Empty;
 
 		public int mFlags;
 
 		public bool mNeedMoveProfileFiles;
-
-		public string mFacebookName = string.Empty;
-
-		public string mFacebookPassword = string.Empty;
-
-		public bool mFacebookAutoLogin;
-
-		public bool mIsNew;
 
 		public StatsDoubleBuffer mStats = new StatsDoubleBuffer();
 
@@ -75,26 +65,6 @@ namespace BejeweledLivePlus
 
 		public int[] mGameStats = new int[5];
 
-		public bool[] mBadgeStatus = new bool[20];
-
-		public int[] mHighScores = new int[7];
-
-		public int[] mHighScoresToday = new int[7];
-
-		public int[] mRecentBadges = new int[3];
-
-		public int mOfflineRank;
-
-		public long mOfflineRankPoints;
-
-		public int mOnlineRank;
-
-		public long mOnlineRankPoints;
-
-		public int mOfflineGames;
-
-		public int mOnlineGames;
-
 		public bool mCustomCursors;
 
 		public ulong mTutorialFlags;
@@ -103,59 +73,15 @@ namespace BejeweledLivePlus
 
 		public int[] mOfflineBoostCounts = new int[5];
 
-		public bool mBreathOn;
-
-		public bool mBreathVisual;
-
-		public float mBreathSpeed;
-
-		public bool mNoiseOn;
-
-		public string mNoiseFileName;
-
-		public bool mBeatOn;
-
-		public string mSBAFileName;
-
-		public bool mAffirmationOn;
-
-		public string mAffirmationFileName;
-
-		public bool mAffirmationSubliminal;
-
-		public float mAffirmationSpeed;
-
-		public float mAffirmationSubliminality;
-
-		public int mAmbientSelection;
-
-		public int mMantraSelection;
-
 		public bool[] mQuestHelpShown = new bool[BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET];
 
 		public Dictionary<string, string> mLocalDataMap = new Dictionary<string, string>();
 
-		public bool mAllowAnalytics;
-
 		public bool mAutoHint;
-
-		public RATE_GAME_CHOICE mRateGameChoice;
-
-		public int mRateGameSeenAt;
 
 		public ulong mTotalGamesPlayed;
 
-		public List<int> mDeferredBadgeVector = new List<int>();
-
-		public int[] mPreAwardedBadgeLevels = new int[20];
-
 		public bool mHasSeenIntro;
-
-		public bool mHasSeenGetBlitzDialog;
-
-		public bool mHasSeenOpenBlitzDialog;
-
-		public bool mMetricsPostAllAwardedBadges;
 
 		public Last3MatchScoreManager mLast3MatchScoreManager = new Last3MatchScoreManager();
 
@@ -170,16 +96,6 @@ namespace BejeweledLivePlus
 		{
 			mProfileId = GetNewProfileId();
 			mProfileName = "";
-			mFacebookName = "";
-			mFacebookPassword = "";
-			mFacebookAutoLogin = false;
-			mIsNew = true;
-			mOfflineRank = 0;
-			mOfflineRankPoints = 0L;
-			mOnlineRank = 0;
-			mOnlineRankPoints = 0L;
-			mOfflineGames = 0;
-			mOnlineGames = 0;
 			mFlags = 0;
 			mLastQuestPage = 0;
 			mLastQuestBlink = false;
@@ -193,10 +109,6 @@ namespace BejeweledLivePlus
 			for (int j = 0; j < 5; j++)
 			{
 				mGameStats[j] = 0;
-			}
-			for (int k = 0; k < 20; k++)
-			{
-				mBadgeStatus[k] = false;
 			}
 			for (int l = 0; l < 4; l++)
 			{
@@ -218,44 +130,11 @@ namespace BejeweledLivePlus
 				}
 			}
 			mLocalDataMap.Clear();
-			mBreathOn = false;
-			mBreathVisual = true;
-			mBreathSpeed = 0.42f;
-			mNoiseOn = false;
-			mNoiseFileName = string.Empty;
-			mBeatOn = false;
-			mSBAFileName = string.Empty;
-			mAffirmationOn = false;
-			mAffirmationFileName = string.Empty;
-			mAffirmationSubliminal = false;
-			mAffirmationSpeed = 0.5f;
-			mAffirmationSubliminality = 0.5f;
-			for (int num2 = 0; num2 < 7; num2++)
-			{
-				mHighScores[num2] = 0;
-				mHighScoresToday[num2] = 0;
-			}
-			for (int num3 = 0; num3 < 3; num3++)
-			{
-				mRecentBadges[num3] = -1;
-			}
 			mImageNumber = 0;
 			mProfilePicture = null;
 			mAutoHint = true;
-			mAmbientSelection = (mMantraSelection = 0);
-			mAllowAnalytics = true;
-			mRateGameChoice = RATE_GAME_CHOICE.RATE_GAME_CHOICE_NOT_SEEN;
-			mRateGameSeenAt = 0;
 			mHasSeenIntro = false;
 			mTotalGamesPlayed = 0uL;
-			mDeferredBadgeVector.Clear();
-			for (int num4 = 0; num4 < 20; num4++)
-			{
-				mPreAwardedBadgeLevels[num4] = 0;
-			}
-			mHasSeenGetBlitzDialog = false;
-			mHasSeenOpenBlitzDialog = false;
-			mMetricsPostAllAwardedBadges = true;
 			mLast3MatchScoreManager.Clear();
 		}
 
@@ -277,8 +156,7 @@ namespace BejeweledLivePlus
 				return false;
 			}
 			mProfileName = theProfileName;
-			mIsNew = false;
-			mOfflineRank = buffer.ReadInt32();
+			buffer.ReadInt32();
 			mStatsTodayDay = buffer.ReadInt32();
 			mStatsTodayYear = buffer.ReadInt32();
 			if (num > 71)
@@ -301,7 +179,7 @@ namespace BejeweledLivePlus
 				int num5 = buffer.ReadInt32();
 				for (int l = 0; l < num5; l++)
 				{
-					mBadgeStatus[l] = buffer.ReadBoolean();
+					buffer.ReadBoolean();
 				}
 				int num6 = buffer.ReadInt32();
 				for (int m = 0; m < num6; m++)
@@ -337,7 +215,7 @@ namespace BejeweledLivePlus
 				}
 				for (int num12 = 0; num12 < 20; num12++)
 				{
-					mBadgeStatus[num12] = buffer.ReadBoolean();
+					buffer.ReadBoolean();
 				}
 				for (int num13 = 0; num13 < 4; num13++)
 				{
@@ -363,9 +241,9 @@ namespace BejeweledLivePlus
 					mQuestsCompleted[num15, num16] = buffer.ReadBoolean();
 				}
 			}
-			mFacebookName = buffer.ReadString();
-			mFacebookPassword = buffer.ReadString();
-			mFacebookAutoLogin = buffer.ReadBoolean();
+			buffer.ReadString();
+			buffer.ReadString();
+			buffer.ReadBoolean();
 			mLocalDataMap.Clear();
 			int num17 = buffer.ReadInt32();
 			for (int num18 = 0; num18 < num17; num18++)
@@ -378,38 +256,32 @@ namespace BejeweledLivePlus
 			{
 				mOfflineBoostCounts[num19] = buffer.ReadInt32();
 			}
-			mOnlineRank = buffer.ReadInt32();
-			mOnlineRankPoints = buffer.ReadInt32();
+			buffer.ReadInt32();
+			buffer.ReadInt32();
 			if (num <= 60)
 			{
-				mOnlineRankPoints = mStats[1];
+				buffer.ReadInt32();
 			}
-			else
-			{
-				mOfflineRankPoints = buffer.ReadInt32();
-			}
-			mOfflineGames = buffer.ReadInt32();
-			mOnlineGames = buffer.ReadInt32();
+			buffer.ReadInt32();
+			buffer.ReadInt32();
 			mFlags = buffer.ReadInt32();
 			if (num >= 61)
 			{
-				mOfflineRankPoints |= buffer.ReadInt32();
-				mOnlineRankPoints |= buffer.ReadInt32();
+				buffer.ReadInt32();
+				buffer.ReadInt32();
 			}
-			mOnlineRank = (int)GetRankAtPoints(mOnlineRankPoints);
-			mOfflineRank = (int)GetRankAtPoints(mOfflineRankPoints);
-			mBreathOn = buffer.ReadBoolean();
-			mBreathVisual = buffer.ReadBoolean();
-			mBreathSpeed = buffer.ReadFloat();
-			mNoiseOn = buffer.ReadBoolean();
-			mNoiseFileName = buffer.ReadString();
-			mBeatOn = buffer.ReadBoolean();
-			mSBAFileName = buffer.ReadString();
-			mAffirmationOn = buffer.ReadBoolean();
-			mAffirmationFileName = buffer.ReadString();
-			mAffirmationSubliminal = buffer.ReadBoolean();
-			mAffirmationSpeed = buffer.ReadFloat();
-			mAffirmationSubliminality = buffer.ReadFloat();
+			buffer.ReadBoolean();
+			buffer.ReadBoolean();
+			buffer.ReadFloat();
+			buffer.ReadBoolean();
+			buffer.ReadString();
+			buffer.ReadBoolean();
+			buffer.ReadString();
+			buffer.ReadBoolean();
+			buffer.ReadString();
+			buffer.ReadBoolean();
+			buffer.ReadFloat();
+			buffer.ReadFloat();
 			if (num >= 69)
 			{
 				int num20 = buffer.ReadInt32();
@@ -426,7 +298,7 @@ namespace BejeweledLivePlus
 					}
 				}
 			}
-			mAllowAnalytics = buffer.ReadBoolean();
+			buffer.ReadBoolean();
 			mAutoHint = buffer.ReadBoolean();
 			mImageNumber = buffer.ReadInt32();
 			if (num > 71)
@@ -434,54 +306,41 @@ namespace BejeweledLivePlus
 				int num22 = buffer.ReadInt32();
 				for (int num23 = 0; num23 < num22; num23++)
 				{
-					mRecentBadges[num23] = buffer.ReadInt32();
+					buffer.ReadInt32();
 				}
 			}
 			else
 			{
 				for (int num24 = 0; num24 < 3; num24++)
 				{
-					mRecentBadges[num24] = buffer.ReadInt32();
-				}
-				for (int num25 = 3; num25 < 3; num25++)
-				{
-					mRecentBadges[num25] = 0;
+					buffer.ReadInt32();
 				}
 			}
-			mAmbientSelection = buffer.ReadInt32();
-			mMantraSelection = buffer.ReadInt32();
-			mRateGameChoice = (RATE_GAME_CHOICE)buffer.ReadInt32();
-			mRateGameSeenAt = buffer.ReadInt32();
-			if (num != 73)
-			{
-				mRateGameChoice = RATE_GAME_CHOICE.RATE_GAME_CHOICE_NOT_SEEN;
-				mRateGameSeenAt = mStats[0];
-			}
+			buffer.ReadInt32();
+			buffer.ReadInt32();
+			buffer.ReadInt32();
+			buffer.ReadInt32();
 			mHasSeenIntro = buffer.ReadBoolean();
 			mTotalGamesPlayed = (ulong)buffer.ReadInt64();
 			mProfileId = 1u;
 			if (num > 71)
 			{
-				mDeferredBadgeVector.Clear();
 				int num26 = buffer.ReadInt32();
 				for (int num27 = 0; num27 < num26; num27++)
 				{
-					mDeferredBadgeVector.Add(buffer.ReadInt32());
+					buffer.ReadInt32();
 				}
 				mProfileId = (uint)buffer.ReadInt32();
 			}
 			if (num > 72)
 			{
-				mHasSeenGetBlitzDialog = buffer.ReadBoolean();
-				mHasSeenOpenBlitzDialog = buffer.ReadBoolean();
-				mMetricsPostAllAwardedBadges = buffer.ReadBoolean();
+				buffer.ReadBoolean();
+				buffer.ReadBoolean();
+				buffer.ReadBoolean();
 				mLast3MatchScoreManager.Load(buffer);
 			}
 			else
 			{
-				mHasSeenGetBlitzDialog = false;
-				mHasSeenOpenBlitzDialog = false;
-				mMetricsPostAllAwardedBadges = true;
 				mLast3MatchScoreManager.Clear();
 			}
 			ListAddName(theProfileName);
@@ -616,7 +475,7 @@ namespace BejeweledLivePlus
 				mLastProfileId = Math.Max(mLastProfileId, (uint)val);
 				if (num2 >= 6)
 				{
-					mLastFacebookId = buffer.ReadString();
+					buffer.ReadString();
 					mLastServerGMTTime = DateTime.FromFileTime(buffer.ReadInt64());
 					mLastServerTimeDelta = DateTime.FromFileTime(buffer.ReadInt64());
 					mGamesPlayedToday = (ulong)buffer.ReadInt64();
@@ -658,7 +517,7 @@ namespace BejeweledLivePlus
 			buffer.WriteString(mProfileName);
 			GlobalMembers.gApp.RegistryWriteString("LastUser", mProfileName);
 			buffer.WriteInt32((int)mLastProfileId);
-			buffer.WriteString(mLastFacebookId);
+			buffer.WriteString("");
 			buffer.WriteInt64(mLastServerGMTTime.ToFileTime());
 			buffer.WriteInt64(mLastServerTimeDelta.ToFileTime());
 			buffer.WriteInt64((long)mGamesPlayedToday);
@@ -788,7 +647,7 @@ namespace BejeweledLivePlus
 			SexyFramework.Misc.Buffer buffer = new SexyFramework.Misc.Buffer();
 			buffer.WriteInt32(958131957);
 			buffer.WriteInt32(73);
-			buffer.WriteInt32(mOfflineRank);
+			buffer.WriteInt32(0);
 			buffer.WriteInt32(mStatsTodayDay);
 			buffer.WriteInt32(mStatsTodayYear);
 			buffer.WriteInt32(40);
@@ -809,7 +668,7 @@ namespace BejeweledLivePlus
 			buffer.WriteInt32(20);
 			for (int l = 0; l < 20; l++)
 			{
-				buffer.WriteBoolean(mBadgeStatus[l]);
+				buffer.WriteBoolean(false);
 			}
 			buffer.WriteInt32(4);
 			for (int m = 0; m < 4; m++)
@@ -828,9 +687,9 @@ namespace BejeweledLivePlus
 					buffer.WriteBoolean(mQuestsCompleted[n, num]);
 				}
 			}
-			buffer.WriteString(mFacebookName);
-			buffer.WriteString(mFacebookPassword);
-			buffer.WriteBoolean(mFacebookAutoLogin);
+			buffer.WriteString("");
+			buffer.WriteString("");
+			buffer.WriteBoolean(false);
 			buffer.WriteInt32(mLocalDataMap.Count);
 			Dictionary<string, string>.Enumerator enumerator = mLocalDataMap.GetEnumerator();
 			while (enumerator.MoveNext())
@@ -842,55 +701,50 @@ namespace BejeweledLivePlus
 			{
 				buffer.WriteInt32(mOfflineBoostCounts[num2]);
 			}
-			buffer.WriteInt32(mOnlineRank);
-			buffer.WriteInt32((int)(mOnlineRankPoints & 0xFFFFFFFFu));
-			buffer.WriteInt32((int)(mOfflineRankPoints & 0xFFFFFFFFu));
-			buffer.WriteInt32(mOfflineGames);
-			buffer.WriteInt32(mOnlineGames);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
 			buffer.WriteInt32(mFlags);
-			buffer.WriteInt32((int)(mOfflineRankPoints >> 32));
-			buffer.WriteInt32((int)(mOnlineRankPoints >> 32));
-			buffer.WriteBoolean(mBreathOn);
-			buffer.WriteBoolean(mBreathVisual);
-			buffer.WriteFloat(mBreathSpeed);
-			buffer.WriteBoolean(mNoiseOn);
-			buffer.WriteString(mNoiseFileName);
-			buffer.WriteBoolean(mBeatOn);
-			buffer.WriteString(mSBAFileName);
-			buffer.WriteBoolean(mAffirmationOn);
-			buffer.WriteString(mAffirmationFileName);
-			buffer.WriteBoolean(mAffirmationSubliminal);
-			buffer.WriteFloat(mAffirmationSpeed);
-			buffer.WriteFloat(mAffirmationSubliminality);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
+			buffer.WriteBoolean(false);
+			buffer.WriteBoolean(false);
+			buffer.WriteFloat(0);
+			buffer.WriteBoolean(false);
+			buffer.WriteString("");
+			buffer.WriteBoolean(false);
+			buffer.WriteString("");
+			buffer.WriteBoolean(false);
+			buffer.WriteString("");
+			buffer.WriteBoolean(false);
+			buffer.WriteFloat(0);
+			buffer.WriteFloat(0);
 			buffer.WriteInt32(BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET);
 			for (int num3 = 0; num3 < BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET; num3++)
 			{
 				buffer.WriteBoolean(mQuestHelpShown[num3]);
 			}
-			buffer.WriteBoolean(mAllowAnalytics);
+			buffer.WriteBoolean(false);
 			buffer.WriteBoolean(mAutoHint);
 			buffer.WriteInt32(mImageNumber);
 			buffer.WriteInt32(3);
 			for (int num4 = 0; num4 < 3; num4++)
 			{
-				buffer.WriteInt32(mRecentBadges[num4]);
+				buffer.WriteInt32(0);
 			}
-			buffer.WriteInt32(mAmbientSelection);
-			buffer.WriteInt32(mMantraSelection);
-			buffer.WriteInt32((int)mRateGameChoice);
-			buffer.WriteInt32(mRateGameSeenAt);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
+			buffer.WriteInt32(0);
 			buffer.WriteBoolean(mHasSeenIntro);
 			buffer.WriteInt64((long)mTotalGamesPlayed);
-			int count = mDeferredBadgeVector.Count;
-			buffer.WriteInt32(count);
-			for (int num5 = 0; num5 < count; num5++)
-			{
-				buffer.WriteInt32(mDeferredBadgeVector[num5]);
-			}
+			buffer.WriteInt32(0);
 			buffer.WriteInt32((int)mProfileId);
-			buffer.WriteBoolean(mHasSeenGetBlitzDialog);
-			buffer.WriteBoolean(mHasSeenOpenBlitzDialog);
-			buffer.WriteBoolean(mMetricsPostAllAwardedBadges);
+			buffer.WriteBoolean(false);
+			buffer.WriteBoolean(false);
+			buffer.WriteBoolean(false);
 			mLast3MatchScoreManager.Save(buffer);
 			SexyFramework.GlobalMembers.gSexyApp.WriteBufferToFile(text, buffer);
 			return true;
@@ -961,60 +815,6 @@ namespace BejeweledLivePlus
 			}
 		}
 
-		public long GetRankPoints(uint theRank)
-		{
-			if (theRank == 0)
-			{
-				return 0L;
-			}
-			if (theRank >= pointRanges.Count)
-			{
-				return pointRanges[pointRanges.Count - 1];
-			}
-			return pointRanges[(int)theRank];
-		}
-
-		public float GetRankAtPoints(long thePoints)
-		{
-			for (int i = 0; i < pointRanges.Count - 1; i++)
-			{
-				if (thePoints < pointRanges[i])
-				{
-					return Math.Max(0, i - 1);
-				}
-			}
-			if (thePoints >= pointRanges[pointRanges.Count - 2])
-			{
-				return pointRanges.Count - 2;
-			}
-			return 0f;
-		}
-
-		public List<int> GetPointRanges()
-		{
-			return pointRanges;
-		}
-
-		public string GetRankName()
-		{
-			return GlobalMembers.gApp.mRankNames[Math.Min(mOfflineRank, Common.size(GlobalMembers.gApp.mRankNames) - 1)];
-		}
-
-		public string GetRankName(GameMode mode)
-		{
-			return "Jeweler";
-		}
-
-		public int GetModeHighScore(GameMode mode)
-		{
-			return mHighScores[(int)mode];
-		}
-
-		public int GetModeHighScoreToday(GameMode mode)
-		{
-			return mHighScoresToday[(int)mode];
-		}
-
 		public bool UsesPresetProfilePicture()
 		{
 			return true;
@@ -1028,37 +828,6 @@ namespace BejeweledLivePlus
 		public void SetProfilePictureId(int id)
 		{
 			mImageNumber = id;
-		}
-
-		public void AddRecentBadge(int badgeId)
-		{
-			for (int i = 0; i < 3; i++)
-			{
-				if (mRecentBadges[i] == badgeId)
-				{
-					return;
-				}
-			}
-			for (int num = 1; num >= 0; num--)
-			{
-				mRecentBadges[num + 1] = mRecentBadges[num];
-			}
-			mRecentBadges[0] = badgeId;
-		}
-
-		public void UpdateRank(Board theBoard)
-		{
-			if (theBoard != null)
-			{
-				GlobalMembers.gApp.mProfile.mOfflineRankPoints += GetRankPointsBracket((int)((float)theBoard.mGameStats[1] / theBoard.GetRankPointMultiplier()));
-				int num = GlobalMembers.gApp.mProfile.mOfflineRank;
-				GlobalMembers.gApp.mProfile.mOfflineRank = (int)GlobalMembers.gApp.mProfile.GetRankAtPoints(GlobalMembers.gApp.mProfile.mOfflineRankPoints);
-				if (GlobalMembers.gApp.mProfile.mOfflineRank > num)
-				{
-					string theEventString = $"RankUp Rank={GlobalMembers.gApp.mProfile.mOfflineRank} RankPoints={GlobalMembers.gApp.mProfile.mOfflineRankPoints} Seconds={GlobalMembers.gApp.mProfile.mStats[0]}";
-					GlobalMembers.gApp.LogStatString(theEventString);
-				}
-			}
 		}
 
 		public int GetRankPointsBracket(int score)

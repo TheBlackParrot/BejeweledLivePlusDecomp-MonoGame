@@ -139,9 +139,8 @@ namespace BejeweledLivePlus.UI
 
 		public virtual void CheckboxChecked(int theId, bool check)
 		{
-			if (theId == 2 && check != GlobalMembers.gApp.mProfile.mAllowAnalytics)
+			if (theId == 2)
 			{
-				GlobalMembers.gApp.mProfile.mAllowAnalytics = check;
 				GlobalMembers.gApp.mProfile.WriteProfile();
 				LinkUpAssets();
 			}

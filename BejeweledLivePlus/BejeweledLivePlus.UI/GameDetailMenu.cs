@@ -481,7 +481,6 @@ namespace BejeweledLivePlus.UI
 				break;
 			}
 			}
-			GlobalMembers.gApp.mProfile.UpdateRank(theBoard);
 		}
 
 		public GAMEDETAILMENU_STATE GetGameMenuState()
