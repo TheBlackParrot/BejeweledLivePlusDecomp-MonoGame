@@ -247,7 +247,6 @@ namespace BejeweledLivePlus
 
 		public override void GameOverExit()
 		{
-			SubmitHighscore();
 			GlobalMembers.gApp.DoGameDetailMenu(GameMode.MODE_LIGHTNING, GameDetailMenu.GAMEDETAILMENU_STATE.STATE_POST_GAME);
 		}
 
@@ -1068,15 +1067,6 @@ namespace BejeweledLivePlus
 			base.LoadContent(threaded);
 			BejeweledLivePlusApp.LoadContent("GamePlayQuest_Lightning");
 			ConfigureBarEmitters();
-		}
-
-		public override void SubmitHighscore()
-		{
-			HighScoreTable orCreateTable = GlobalMembers.gApp.mHighScoreMgr.GetOrCreateTable(GlobalMembers.gApp.GetModeHeading(GameMode.MODE_LIGHTNING));
-			if (orCreateTable.Submit(GlobalMembers.gApp.mProfile.mProfileName, mPoints, GlobalMembers.gApp.mProfile.GetProfilePictureId()))
-			{
-				GlobalMembers.gApp.SaveHighscores();
-			}
 		}
 
 		public override void DrawCountdownBar(Graphics g)

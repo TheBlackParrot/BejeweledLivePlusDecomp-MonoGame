@@ -22,8 +22,6 @@ namespace BejeweledLivePlus.UI
 
 		public Dictionary<int, DialogButton> mBtns = new Dictionary<int, DialogButton>();
 
-		public List<HighScoreEntryLive> mHighScores = new List<HighScoreEntryLive>();
-
 		public CurvedVal mCountupPct = new CurvedVal();
 
 		public int mPoints;

@@ -178,8 +178,6 @@ namespace BejeweledLivePlus
 
 		public int mQuitCountdown;
 
-		public HighScoreMgr mHighScoreMgr = new HighScoreMgr();
-
 		public int mMaxGamesPerDay;
 
 		public QuestDataParser mLastDataParser;
@@ -1914,7 +1912,7 @@ namespace BejeweledLivePlus
 			mMenus[11] = null;
 			mMenus[5] = new MainMenuOptions();
 			mMenus[7] = new PauseMenu();
-			mMenus[14] = new HighScoresMenu();
+			mMenus[14] = null;
 			mMenus[12] = new ProfileMenu();
 			mMenus[9] = new OptionsMenu();
 			mMenus[18] = new LegalMenu();

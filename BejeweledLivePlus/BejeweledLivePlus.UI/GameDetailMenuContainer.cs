@@ -24,8 +24,6 @@ namespace BejeweledLivePlus.UI
 
 		private Label mSpecialGemsHeadingLabel;
 
-		public HighScoresWidget mHighScoresWidgetPostGame;
-
 		private string[] mSpecialStatsStrings = new string[3];
 
 		private Label mStatsHeaderLabel;
@@ -41,8 +39,6 @@ namespace BejeweledLivePlus.UI
 			mDoesSlideInFromBottom = false;
 			int gAMEDETAILMENU_POST_GAME_TAB_WIDTH = ConstantsWP.GAMEDETAILMENU_POST_GAME_TAB_WIDTH;
 			Resize(ConstantsWP.GAMEDETAILMENU_POST_GAME_CONTAINER_X, ConstantsWP.GAMEDETAILMENU_POST_GAME_CONTAINER_Y, (ConstantsWP.GAMEDETAILMENU_POST_GAME_TAB_WIDTH + ConstantsWP.GAMEDETAILMENU_POST_GAME_TAB_PADDING) * 2, ConstantsWP.GAMEDETAILMENU_POST_GAME_CONTAINER_HEIGHT);
-			mHighScoresWidgetPostGame = new HighScoresWidget(new Rect(ConstantsWP.GAMEDETAILMENU_HIGHSCORES_POST_GAME_X, ConstantsWP.GAMEDETAILMENU_HIGHSCORES_POST_GAME_Y, ConstantsWP.GAMEDETAILMENU_HIGHSCORES_POST_GAME_WIDTH, ConstantsWP.GAMEDETAILMENU_HIGHSCORES_POST_GAME_HEIGHT), false, ConstantsWP.GAMEDETAILMENU_POST_GAME_SCROLLWIDGET_CORRECTION);
-			AddWidget(mHighScoresWidgetPostGame);
 			int theWidth;
 			int theX;
 			if (GlobalMembers.gApp.mGameCenterIsAvailable)
@@ -134,8 +130,6 @@ namespace BejeweledLivePlus.UI
 		public void SetMode(GameMode mode, GameDetailMenu.GAMEDETAILMENU_STATE state)
 		{
 			mMode = mode;
-			mHighScoresWidgetPostGame.SetMode(mode);
-			mHighScoresWidgetPostGame.SetHeading(GlobalMembers.gApp.GetModeHeading(mode));
 			switch (mode)
 			{
 			case GameMode.MODE_CLASSIC:
@@ -182,7 +176,6 @@ namespace BejeweledLivePlus.UI
 		public override void Update()
 		{
 			base.Update();
-			mScrollLocked = mHighScoresWidgetPostGame.mScrollLocked;
 		}
 
 		public override void Draw(Graphics g)
@@ -256,7 +249,6 @@ namespace BejeweledLivePlus.UI
 		public override void HideCompleted()
 		{
 			base.HideCompleted();
-			mHighScoresWidgetPostGame.UnNewScore();
 		}
 
 		public override void LinkUpAssets()

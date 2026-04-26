@@ -12913,10 +12913,6 @@ namespace BejeweledLivePlus
 			}
 		}
 
-		public virtual void SubmitHighscore()
-		{
-		}
-
 		public virtual int GetTimerYOffset()
 		{
 			return 0;

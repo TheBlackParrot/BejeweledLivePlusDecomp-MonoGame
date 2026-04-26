@@ -54,7 +54,6 @@ namespace BejeweledLivePlus
 
 		public override void GameOverExit()
 		{
-			SubmitHighscore();
 			GlobalMembers.gApp.DoGameDetailMenu(GameMode.MODE_CLASSIC, GameDetailMenu.GAMEDETAILMENU_STATE.STATE_POST_GAME);
 		}
 
@@ -113,15 +112,6 @@ namespace BejeweledLivePlus
 		{
 			base.Draw(g);
 			base.DrawGameElements(g);
-		}
-
-		public override void SubmitHighscore()
-		{
-			HighScoreTable orCreateTable = GlobalMembers.gApp.mHighScoreMgr.GetOrCreateTable(GlobalMembers.gApp.GetModeHeading(GameMode.MODE_CLASSIC));
-			if (orCreateTable.Submit(GlobalMembers.gApp.mProfile.mProfileName, mPoints, GlobalMembers.gApp.mProfile.GetProfilePictureId()))
-			{
-				GlobalMembers.gApp.SaveHighscores();
-			}
 		}
 	}
 }

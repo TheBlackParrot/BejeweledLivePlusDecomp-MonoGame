@@ -35,8 +35,6 @@ namespace BejeweledLivePlus.UI
 
 		protected Label mHeadingLabel;
 
-		protected HighScoresWidget mHighScoresWidgetPreGame;
-
 		protected List<SexyFramework.Widget.Widget> mDefaultWidgetsPreGame = new List<SexyFramework.Widget.Widget>();
 
 		protected List<SexyFramework.Widget.Widget> mDefaultWidgetsPostGame = new List<SexyFramework.Widget.Widget>();
@@ -99,9 +97,6 @@ namespace BejeweledLivePlus.UI
 			mSlideRightButton.Resize(0, 0, 0, 0);
 			AddWidget(mSlideRightButton);
 			mDefaultWidgetsPostGame.Add(mSlideRightButton);
-			mHighScoresWidgetPreGame = new HighScoresWidget(new Rect(ConstantsWP.GAMEDETAILMENU_HIGHSCORES_X, ConstantsWP.GAMEDETAILMENU_HIGHSCORES_Y, ConstantsWP.GAMEDETAILMENU_HIGHSCORES_WIDTH, ConstantsWP.GAMEDETAILMENU_HIGHSCORES_HEIGHT), false);
-			mDefaultWidgetsPreGame.Add(mHighScoresWidgetPreGame);
-			AddWidget(mHighScoresWidgetPreGame);
 			mSwipeMsgLabel = new Label(GlobalMembersResources.FONT_SUBHEADER, string.Empty);
 			mSwipeMsgLabel.SetTextBlock(new Rect(ConstantsWP.GAMEDETAILMENU_POST_GAME_SWIPE_MSG_X, ConstantsWP.GAMEDETAILMENU_POST_GAME_SWIPE_MSG_Y_1 - 50, ConstantsWP.SLIDE_BUTTON_MESSAGE_WIDTH, 100), true);
 			mSwipeMsgLabel.SetTextBlockEnabled(true);
@@ -292,7 +287,6 @@ namespace BejeweledLivePlus.UI
 				break;
 			case 3:
 				mScrollWidget.SetPageHorizontal(mScrollWidget.GetPageHorizontal() - 1, true);
-				mEndGameContainer.mHighScoresWidgetPostGame.ReadLeaderBoard(HighScoreTable.HighScoreTableTime.TIME_RECENT);
 				break;
 			}
 		}
@@ -334,7 +328,6 @@ namespace BejeweledLivePlus.UI
 					{
 						Bej3Widget.DisableWidget(mDefaultWidgetsPreGame[l], false);
 					}
-					mHighScoresWidgetPreGame.SetMode(mode);
 					mHeadingLabel.SetText(GlobalMembers.gApp.GetModeHeading(mMode));
 					mPlayButton.SetLabel(GlobalMembers._ID("PLAY", 3290));
 					mBackButton.SetLabel(GlobalMembers._ID("BACK", 3291));
@@ -375,11 +368,10 @@ namespace BejeweledLivePlus.UI
 
 		public override void LinkUpAssets()
 		{
-			if (mPlayButton != null && mBackButton != null && mHighScoresWidgetPreGame != null)
+			if (mPlayButton != null && mBackButton != null)
 			{
 				mPlayButton.LinkUpAssets();
 				mBackButton.LinkUpAssets();
-				mHighScoresWidgetPreGame.LinkUpAssets();
 				SetUpSlideButtons();
 				base.LinkUpAssets();
 			}
@@ -401,10 +393,6 @@ namespace BejeweledLivePlus.UI
 
 		public virtual void PageChanged(Bej3ScrollWidget scrollWidget, int pageH, int pageV)
 		{
-			if (pageH == 0)
-			{
-				mEndGameContainer.mHighScoresWidgetPostGame.ReadLeaderBoard(HighScoreTable.HighScoreTableTime.TIME_RECENT);
-			}
 			SetUpSlideButtons();
 		}
 
@@ -432,12 +420,10 @@ namespace BejeweledLivePlus.UI
 				Transition_SlideThenFadeIn();
 				GlobalMembers.gApp.mMenus[7].SetVisible(false);
 				GlobalMembers.gApp.mMenus[7].Hide();
-				mEndGameContainer.mHighScoresWidgetPostGame.CenterOnUser();
 			}
 			else
 			{
 				SetVisible(false);
-				mHighScoresWidgetPreGame.CenterOnUser();
 			}
 			ResetFadedBack(true);
 		}

@@ -44,12 +44,6 @@ namespace BejeweledLivePlus.UI
 
 		public CrystalBall mClassicButton;
 
-		private CrystalBall mLeaderBoardButton;
-
-		private CrystalBall mAchievementButton;
-
-		private CrystalBall mBuyFullGameButton;
-
 		public bool mIsFullGame = true; // !Guide.IsTrialMode;
 
 		private CrystalBall mButterflyButton;
@@ -59,8 +53,6 @@ namespace BejeweledLivePlus.UI
 		private CrystalBall mDiamondMineButton;
 
 		private CrystalBall mLightningButton;
-
-		private CrystalBall mComingSoonButton;
 
 		private ArrowButton Tst1Button;
 
@@ -101,16 +93,6 @@ namespace BejeweledLivePlus.UI
 			mButterflyButton = new CrystalBall(GlobalMembers._ID("BUTTERFLIES", 3378), GlobalMembers._ID("", 3379), GlobalMembers._ID("", 3380), 5, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE + 0.1f);
 			mButtons.Add(mButterflyButton);
 			AddWidget(mButterflyButton);
-			mLeaderBoardButton = new CrystalBall(GlobalMembers._ID("LeaderBoards", 3381), GlobalMembers._ID("", 3382), GlobalMembers._ID("", 3383), 7, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE - 0.3f);
-			mButtons.Add(mLeaderBoardButton);
-			AddWidget(mLeaderBoardButton);
-			mAchievementButton = new CrystalBall(GlobalMembers._ID("Achievements", 3384), GlobalMembers._ID("", 3385), GlobalMembers._ID("", 3386), 8, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE - 0.3f);
-			mButtons.Add(mAchievementButton);
-			AddWidget(mAchievementButton);
-			mBuyFullGameButton = new CrystalBall(GlobalMembers._ID("Buy", 3387), GlobalMembers._ID("FullGame", 3388), GlobalMembers._ID("", 3389), 9, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE);
-			mBuyFullGameButton.mFontScale = 0.9f;
-			mButtons.Add(mBuyFullGameButton);
-			AddWidget(mBuyFullGameButton);
 			Tst1Button = new ArrowButton(GlobalMembers._ID("Bonus", 3393), GlobalMembers._ID("Games", 3394), GlobalMembers._ID("", 3392), 10, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE - 0.3f);
 			Tst1Button.Resize(0, 0, 180, 180);
 			AddWidget(Tst1Button);
@@ -144,9 +126,6 @@ namespace BejeweledLivePlus.UI
 			int num2 = 40;
 			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_BLITZ_X - 75, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 470 + num, Tst2Button);
 			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_DIAMONDMINE_X + 75, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 470 + num, Tst1Button);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 410 + num, mBuyFullGameButton);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 250 + num, mAchievementButton);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 120 + num, mLeaderBoardButton);
 			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_X + 2 * ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_Y + num - num2, mButterflyButton);
 			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_BLITZ_X, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + num, mLightningButton);
 			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_Y + num, mClassicButton);
@@ -213,11 +192,6 @@ namespace BejeweledLivePlus.UI
 				GlobalMembers.gApp.ClearUpdateBacklog(false);
 				mFlag = false;
 			}
-			mBuyFullGameButton.SetVisible(!mIsFullGame);
-			mLeaderBoardButton.SetDisabled(!mIsFullGame);
-			mLeaderBoardButton.mFontColor.SetColor(mIsFullGame ? Bej3Widget.COLOR_CRYSTALBALL_FONT.mRed : 127, mIsFullGame ? Bej3Widget.COLOR_CRYSTALBALL_FONT.mGreen : 127, mIsFullGame ? Bej3Widget.COLOR_CRYSTALBALL_FONT.mBlue : 127, 255);
-			mAchievementButton.SetDisabled(!mIsFullGame);
-			mAchievementButton.mFontColor.SetColor(mIsFullGame ? Bej3Widget.COLOR_CRYSTALBALL_FONT.mRed : 127, mIsFullGame ? Bej3Widget.COLOR_CRYSTALBALL_FONT.mGreen : 127, mIsFullGame ? Bej3Widget.COLOR_CRYSTALBALL_FONT.mBlue : 127, 255);
 		}
 
 		public override void Draw(Graphics g)

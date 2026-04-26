@@ -771,10 +771,6 @@ namespace BejeweledLivePlus
 			LogGameOver("QuestCompleted " + GetExtraGameOverLogParams());
 			mGameFinished = true;
 			mLevelCompleteCount = mLevelCompleteTicksStart;
-			if (mRecordHighScores)
-			{
-				GlobalMembers.gApp.mHighScoreMgr.Submit(GetQuestName(), GlobalMembers.gApp.mProfile.mProfileName, mLevelPointsTotal, GlobalMembers.gApp.mProfile.GetProfilePictureId());
-			}
 		}
 
 		public virtual void DoLevelUp()
@@ -786,7 +782,6 @@ namespace BejeweledLivePlus
 		{
 			if ((mQuestGoal == null || mQuestGoal.AllowGameOver()) && !CheckWin())
 			{
-				SubmitHighscore();
 				bool flag = mGameOverCount > 0;
 				base.GameOver(true);
 				if (mIsPerpetual)
@@ -1600,20 +1595,6 @@ namespace BejeweledLivePlus
 				return true;
 			}
 			return base.GetTooltipText(thePiece, ref theHeader, ref theBody);
-		}
-
-		public override void SubmitHighscore()
-		{
-			if ((mQuestGoal == null || mQuestGoal.AllowGameOver()) && !CheckWin() && mRecordHighScores && mGameOverCount == 0)
-			{
-				TryGenerateDefaultScores();
-				string questName = GetQuestName();
-				HighScoreTable orCreateTable = GlobalMembers.gApp.mHighScoreMgr.GetOrCreateTable(questName);
-				if (orCreateTable.Submit(GlobalMembers.gApp.mProfile.mProfileName, mHighScoreIsLevelPoints ? mLevelPointsTotal : mPoints, GlobalMembers.gApp.mProfile.GetProfilePictureId()))
-				{
-					GlobalMembers.gApp.SaveHighscores();
-				}
-			}
 		}
 	}
 }
