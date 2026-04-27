@@ -519,7 +519,7 @@ namespace BejeweledLivePlus.UI
 					num2 = 1f / (float)(NUM_LOADERBAR_POINTS - 1);
 				}
 				num2 *= (1.022f);
-				float num3 = (0f - GlobalMembers.M_PI) / 2f + num * GlobalMembers.M_PI * 2f;
+				float num3 = (0f - MathF.PI) / 2f + num * MathF.PI * 2f;
 				num += num2;
 				float theU = ((i == 0) ? 0f : ((i != NUM_LOADERBAR_POINTS - 1) ? 0.5f : 1f));
 				for (int j = 0; j < 2; j++)

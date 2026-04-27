@@ -75,7 +75,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 		{
 			Graphics3D graphics3D = g.Get3D();
 			g.PushState();
-			float num = GlobalMembers.MIN((1f - mPercentDone) * 8f, 1f) * mFXManager.mBoard.GetAlpha();
+			float num = MathF.Min((1f - mPercentDone) * 8f, 1f) * mFXManager.mBoard.GetAlpha();
 			int num2 = (int)((double)num * 255.0);
 			if (graphics3D != null)
 			{

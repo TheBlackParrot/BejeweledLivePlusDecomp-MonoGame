@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using SexyFramework;
 
@@ -93,7 +94,7 @@ namespace BejeweledLivePlus.Widget
 
 		public float GetOutVal(float theVal)
 		{
-			int index = GlobalMembers.MAX(0, (int)GlobalMembers.MIN(mSize - 1, theVal * (float)(mSize - 1)));
+			int index = Math.Max(0, (int)Math.Min(mSize - 1, theVal * (float)(mSize - 1)));
 			return mVals[index];
 		}
 	}

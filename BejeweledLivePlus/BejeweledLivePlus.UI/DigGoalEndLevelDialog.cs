@@ -86,7 +86,7 @@ namespace BejeweledLivePlus.UI
 						break;
 					}
 				}
-				for (int k = 0; k < GlobalMembers.MIN(Common.size(mTreasureRectVector), Common.size(digGoal.mCollectedArtifacts)); k++)
+				for (int k = 0; k < Math.Min(Common.size(mTreasureRectVector), Common.size(digGoal.mCollectedArtifacts)); k++)
 				{
 					if (mTreasureRectVector[k].Contains(mWidgetManager.mLastMouseX, mWidgetManager.mLastMouseY))
 					{
@@ -222,7 +222,7 @@ namespace BejeweledLivePlus.UI
 			DigGoal digGoal = (DigGoal)((QuestBoard)mBoard).mQuestGoal;
 			for (int i = 0; i < 3; i++)
 			{
-				num = GlobalMembers.MAX(digGoal.mTreasureEarnings[i], num);
+				num = Math.Max(digGoal.mTreasureEarnings[i], num);
 				num2 += digGoal.mTreasureEarnings[i];
 			}
 			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color((4210688)));
@@ -256,7 +256,7 @@ namespace BejeweledLivePlus.UI
 					g.SetColor(array[j]);
 					g.WriteString(string.Format(GlobalMembers._ID("${0}", 223), SexyFramework.Common.CommaSeperate(digGoal.mTreasureEarnings[j])), (1380), (840) + j * (92), -1, 1);
 					Color color = array[j];
-					color.mAlpha = (int)((double)color.mAlpha * GlobalMembers.MAX(0.0, GlobalMembers.MIN(1.0, (double)mCountupPct * (2.0) - (0.9))));
+					color.mAlpha = (int)((double)color.mAlpha * Math.Max(0.0, Math.Min(1.0, (double)mCountupPct * (2.0) - (0.9))));
 					g.SetColor(color);
 					g.WriteString(string.Format(GlobalMembers._ID("{0}%", 222), (int)((double)digGoal.mTreasureEarnings[j] * 100.0 / (double)num2 + 0.5)), (125) + num4, (840) + j * (92), -1, 0);
 					if (j == 2 && Common.size(digGoal.mCollectedArtifacts) != 0)
@@ -265,7 +265,7 @@ namespace BejeweledLivePlus.UI
 						for (int k = 0; k < num5; k++)
 						{
 							DigGoal.ArtifactData artifactData = digGoal.mArtifacts[digGoal.mCollectedArtifacts[k]];
-							float num6 = GlobalMembers.MIN((0.5f), GlobalMembers.MAX((0.25f), (0.75f) - (float)num5 / (float)(num3 - (135)) * (22f)));
+							float num6 = MathF.Min((0.5f), MathF.Max((0.25f), (0.75f) - (float)num5 / (float)(num3 - (135)) * (22f)));
 							int num7 = (210) + (int)((double)(num4 - (135)) * ((double)k + 0.5) / (double)num5);
 							int num8 = (1010);
 							if ((double)num6 < (0.26))
@@ -307,7 +307,7 @@ namespace BejeweledLivePlus.UI
 				return;
 			}
 			double num2 = (0.1);
-			double num3 = GlobalMembers.MIN(1.0, (0.6) + (0.4) * num / (double)(1000000));
+			double num3 = Math.Min(1.0, (0.6) + (0.4) * num / (double)(1000000));
 			num3 *= (1.2);
 			for (int j = 0; j < 3; j++)
 			{

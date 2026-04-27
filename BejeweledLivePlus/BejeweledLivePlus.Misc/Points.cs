@@ -212,10 +212,10 @@ namespace BejeweledLivePlus.Misc
 				mDelay--;
 				return;
 			}
-			mWobbleSin += ModVal.M(0.03f) * GlobalMembers.M_PI * 2f;
-			if (mWobbleSin > GlobalMembers.M_PI * 2f)
+			mWobbleSin += ModVal.M(0.03f) * MathF.PI * 2f;
+			if (mWobbleSin > MathF.PI * 2f)
 			{
-				mWobbleSin -= GlobalMembers.M_PI * 2f;
+				mWobbleSin -= MathF.PI * 2f;
 			}
 			mWobbleScale -= ModVal.M(0.005f);
 			if (mWobbleScale < 0f)

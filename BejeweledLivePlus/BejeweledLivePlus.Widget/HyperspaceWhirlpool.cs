@@ -195,7 +195,7 @@ namespace BejeweledLivePlus.Widget
 					int b = GlobalMembers.NUM_WARP_COLS - 1 - j;
 					int a2 = i;
 					int b2 = GlobalMembers.NUM_WARP_ROWS - 1 - i;
-					int num3 = GlobalMembers.MIN(GlobalMembers.MIN(a, b), GlobalMembers.MIN(a2, b2));
+					int num3 = Math.Min(Math.Min(a, b), Math.Min(a2, b2));
 					if (mWarpDelay == 0)
 					{
 						warpPoint.mDist -= (float)(0.35 * (double)num3 * (double)mWarpSpeed);
@@ -556,7 +556,7 @@ namespace BejeweledLivePlus.Widget
 				int num4 = 0;
 				for (int num5 = GlobalMembers.NUM_HYPER_RINGS - 2; num5 >= 0; num5--)
 				{
-					int num6 = GlobalMembers.MIN(255, 384 - num5 * 360 / GlobalMembers.NUM_HYPER_RINGS);
+					int num6 = Math.Min(255, 384 - num5 * 360 / GlobalMembers.NUM_HYPER_RINGS);
 					Color color = new Color(num6, num6, num6, 255);
 					for (int i = 0; i < GlobalMembers.NUM_RING_POINTS; i++)
 					{
@@ -621,7 +621,7 @@ namespace BejeweledLivePlus.Widget
 			}
 			if (mFlashPercent > 0f)
 			{
-				int theAlpha = GlobalMembers.MIN((int)(255.0 * (double)mFlashPercent), 255);
+				int theAlpha = Math.Min((int)(255.0 * (double)mFlashPercent), 255);
 				g.SetColor(new Color(255, 255, 255, theAlpha));
 				g.FillRect(0, 0, mWidth, mHeight);
 			}

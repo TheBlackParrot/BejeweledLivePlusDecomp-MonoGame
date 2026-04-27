@@ -4235,10 +4235,6 @@ namespace BejeweledLivePlus
 
 		public static readonly int Max_LAYERS = 5;
 
-		public static readonly float M_PI = (float)Math.PI;
-
-		public static readonly float M_2PI = M_PI * 2f;
-
 		public static bool gInAssert = false;
 
 		public static string Version => "0.0.0.19";
@@ -4345,68 +4341,9 @@ namespace BejeweledLivePlus
 			return gApp.mPopLoc.GetString(id, str);
 		}
 
-		public static int MIN(int a, int b)
-		{
-			if (a <= b)
-			{
-				return a;
-			}
-			return b;
-		}
-
-		public static float MIN(float a, float b)
-		{
-			if (!(a > b))
-			{
-				return a;
-			}
-			return b;
-		}
-
-		public static double MIN(double a, double b)
-		{
-			if (!(a > b))
-			{
-				return a;
-			}
-			return b;
-		}
-
-		public static int MAX(int a, int b)
-		{
-			if (a <= b)
-			{
-				return b;
-			}
-			return a;
-		}
-
-		public static float MAX(float a, float b)
-		{
-			if (!(a > b))
-			{
-				return b;
-			}
-			return a;
-		}
-
-		public static double MAX(double a, double b)
-		{
-			if (!(a > b))
-			{
-				return b;
-			}
-			return a;
-		}
-
-		public static float fmod(float x, float y)
-		{
-			return x % y;
-		}
-
 		public static float EulerInterpolate(float from, float to, float u)
 		{
-			float num = fmod(to - from, SexyFramework.GlobalMembers.SEXYMATH_2PI);
+			float num = (to - from) % SexyFramework.GlobalMembers.SEXYMATH_2PI;
 			if (num < 0f)
 			{
 				num = SexyFramework.GlobalMembers.SEXYMATH_2PI + num;
@@ -4415,7 +4352,7 @@ namespace BejeweledLivePlus
 			{
 				num = -1f * (SexyFramework.GlobalMembers.SEXYMATH_2PI - num);
 			}
-			float num2 = fmod(from + num * u, SexyFramework.GlobalMembers.SEXYMATH_2PI);
+			float num2 = (from + num * u) % SexyFramework.GlobalMembers.SEXYMATH_2PI;
 			if (num2 < 0f)
 			{
 				num2 = SexyFramework.GlobalMembers.SEXYMATH_2PI + num2;

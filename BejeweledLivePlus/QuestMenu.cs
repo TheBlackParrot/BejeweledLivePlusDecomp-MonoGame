@@ -156,7 +156,7 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 		sexyCoords.Translate(0f, (-0.75f), 0f);
 		mCamera.SetCoords(mCamera.GetCoords().Leave(sexyCoords));
 		SexyCoords3 sexyCoords2 = new SexyCoords3();
-		sexyCoords2.RotateRadZ((0f - (float)mQuestSetNumDisp) * (BejeweledLivePlus.GlobalMembers.M_PI / 4f));
+		sexyCoords2.RotateRadZ((0f - (float)mQuestSetNumDisp) * (MathF.PI / 4f));
 		mCamera.SetCoords(mCamera.GetCoords().Leave(sexyCoords2));
 	}
 

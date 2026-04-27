@@ -295,7 +295,7 @@ namespace BejeweledLivePlus.UI
 				int num3 = 0;
 				for (int j = 0; j < 3; j++)
 				{
-					num2 = GlobalMembers.MAX(digGoal.mTreasureEarnings[j], num2);
+					num2 = Math.Max(digGoal.mTreasureEarnings[j], num2);
 					num3 += digGoal.mTreasureEarnings[j];
 				}
 				if (num2 > 0)

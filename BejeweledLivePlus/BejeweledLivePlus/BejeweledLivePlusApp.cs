@@ -1121,7 +1121,7 @@ namespace BejeweledLivePlus
 				double num = mCurVoice.GetVolume();
 				if (mNextVoice != null && mInterruptCurVoice)
 				{
-					num = GlobalMembers.MAX(0.0, num - (double)0.05f);
+					num = Math.Max(0.0, num - (double)0.05f);
 					mCurVoice.SetVolume(num);
 				}
 				if (!mCurVoice.IsPlaying() || num == 0.0)

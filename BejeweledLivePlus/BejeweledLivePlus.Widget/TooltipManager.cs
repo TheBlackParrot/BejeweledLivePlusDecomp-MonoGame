@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BejeweledLivePlus.Misc;
 using SexyFramework;
@@ -142,7 +143,7 @@ namespace BejeweledLivePlus.Widget
 				tooltip.mTimer--;
 				if (tooltip.mAppearing)
 				{
-					tooltip.mAlphaPct = GlobalMembers.MAX(1f, tooltip.mAlphaPct + 0.1f);
+					tooltip.mAlphaPct = MathF.Max(1f, tooltip.mAlphaPct + 0.1f);
 				}
 				else
 				{
@@ -150,7 +151,7 @@ namespace BejeweledLivePlus.Widget
 					if (tooltip.mAlphaPct <= 0f)
 					{
 						mTooltips.RemoveAt(i);
-						i = GlobalMembers.MAX(0, i - 1);
+						i = Math.Max(0, i - 1);
 					}
 				}
 				tooltip.mAppearing = tooltip.mTimer > 0;

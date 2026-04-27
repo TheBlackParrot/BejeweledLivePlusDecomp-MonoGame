@@ -1,3 +1,4 @@
+using System;
 using BejeweledLivePlus.Misc;
 using SexyFramework;
 using SexyFramework.Graphics;
@@ -97,7 +98,7 @@ namespace BejeweledLivePlus.UI
 				{
 					num5 += mPointsBreakdown[i][array[j]];
 				}
-				num2 = GlobalMembers.MAX(num2, num5);
+				num2 = Math.Max(num2, num5);
 				num4 += num5;
 			}
 			int num6 = ((num2 <= 5000) ? 1000 : ((num2 > 10000) ? ((num2 + 24999) / 25000 * 5000) : 2000));
@@ -128,7 +129,7 @@ namespace BejeweledLivePlus.UI
 					int num11 = (int)((double)((225) * num10 / (num6 * 5)) * (double)mCountupPct);
 					if (num11 > 0)
 					{
-						num11 = GlobalMembers.MAX(num11, (10));
+						num11 = Math.Max(num11, (10));
 						g.DrawImageBox(new Rect(GlobalMembers.S(num7 + (10)), (1005) - GlobalMembers.S(num11), GlobalMembers.S(num8 - (20)), GlobalMembers.S(num11)), array2[num9]);
 					}
 					g.WriteString((l == mPointsBreakdown.Count - 1) ? GlobalMembers._ID("Last", 497) : string.Format(GlobalMembers._ID("x{0}", 498), l + 1), GlobalMembers.S(num7 + num8 / 2), (1043));
