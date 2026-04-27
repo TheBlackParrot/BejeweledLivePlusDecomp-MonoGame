@@ -16,7 +16,7 @@ namespace BejeweledLivePlus.Widget
 			SetColor(2, Color.White);
 			SetColor(3, Color.White);
 			SetColor(4, new Color(100, 100, 100));
-			mCursorOffset = (int)ModVal.M(-5f);
+			mCursorOffset = (int)(-5f);
 			SetText("");
 			mTextInset = ConstantsWP.EDITWIDGET_BOX_PADDING_X;
 			mClipInset = ConstantsWP.EDITWIDGET_CURSOR_OFFSET;

@@ -84,7 +84,7 @@ namespace SexyFramework.PIL
 			{
 				int num = emitter.NumParticles();
 				float num2 = (float)num / (float)totalParticles;
-				int num3 = (int)((float)(s.mHighWatermark - last_fps) * ModVal.M(2f) * num2);
+				int num3 = (int)((float)(s.mHighWatermark - last_fps) * (2f) * num2);
 				if (last_fps < s.mLowWatermark)
 				{
 					num3 += (int)((float)num3 * (float)(s.mLowWatermark - last_fps) / (float)s.mLowWatermark);
@@ -126,8 +126,8 @@ namespace SexyFramework.PIL
 			{
 				int num = emitter.NumParticles();
 				float num2 = (float)num / (float)totalParticles;
-				float num3 = ModVal.M(10f);
-				int num4 = (int)((float)(s.mHighWatermark - last_fps) * ModVal.M(2f) * num2);
+				float num3 = (10f);
+				int num4 = (int)((float)(s.mHighWatermark - last_fps) * (2f) * num2);
 				if (last_fps < s.mLowWatermark)
 				{
 					float num5 = (float)(s.mLowWatermark - last_fps) / (float)s.mLowWatermark;

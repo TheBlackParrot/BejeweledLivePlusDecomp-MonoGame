@@ -102,7 +102,7 @@ namespace SexyFramework.Misc
 				return false;
 			}
 			sexyVector = sexyVector.Normalize();
-			if (SexyMath.Fabs(inUpVector.Dot(sexyVector)) > 1f - GlobalMembers.SEXYMATH_EPSILON)
+			if (MathF.Abs(inUpVector.Dot(sexyVector)) > 1f - GlobalMembers.SEXYMATH_EPSILON)
 			{
 				return false;
 			}

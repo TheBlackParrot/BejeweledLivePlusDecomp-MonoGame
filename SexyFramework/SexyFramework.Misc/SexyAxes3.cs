@@ -136,7 +136,7 @@ namespace SexyFramework.Misc
 		public void LookAt(SexyVector3 inTargetDir, SexyVector3 inUpVector)
 		{
 			SexyVector3 v = inTargetDir.Normalize();
-			if (!(SexyMath.Fabs(inUpVector.Dot(v)) > 1f - GlobalMembers.SEXYMATH_EPSILON))
+			if (!(MathF.Abs(inUpVector.Dot(v)) > 1f - GlobalMembers.SEXYMATH_EPSILON))
 			{
 				SexyAxes3 sexyAxes = new SexyAxes3();
 				sexyAxes.vZ = v;

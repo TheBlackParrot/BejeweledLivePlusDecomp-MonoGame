@@ -1,19 +1,7 @@
-using System;
-
 namespace SexyFramework.Misc
 {
 	public class SexyMath
 	{
-		public static float Fabs(float inX)
-		{
-			return Math.Abs(inX);
-		}
-
-		public static double Fabs(double inX)
-		{
-			return Math.Abs(inX);
-		}
-
 		public static float DegToRad(float inX)
 		{
 			return inX * (float)Math.PI / 180f;
@@ -26,12 +14,12 @@ namespace SexyFramework.Misc
 
 		public static bool ApproxEquals(float inL, float inR, float inTol)
 		{
-			return Fabs(inL - inR) <= inTol;
+			return MathF.Abs(inL - inR) <= inTol;
 		}
 
 		public static bool ApproxEquals(double inL, double inR, double inTol)
 		{
-			return Fabs(inL - inR) <= inTol;
+			return Math.Abs(inL - inR) <= inTol;
 		}
 
 		public static float Lerp(float inA, float inB, float inAlpha)
@@ -51,16 +39,6 @@ namespace SexyFramework.Misc
 				return (inX & (inX - 1)) == 0;
 			}
 			return false;
-		}
-
-		public static float SinF(float value)
-		{
-			return (float)Math.Sin(value);
-		}
-
-		public static float CosF(float value)
-		{
-			return (float)Math.Cos(value);
 		}
 	}
 }

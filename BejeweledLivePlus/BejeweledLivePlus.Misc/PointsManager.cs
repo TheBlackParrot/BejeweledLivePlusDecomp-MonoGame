@@ -94,11 +94,11 @@ namespace BejeweledLivePlus.Misc
 			thePoints *= (int)num;
 			if (theX >= 0 && theY >= 0)
 			{
-				float num3 = ModVal.M(50f);
-				float num4 = ModVal.M(1000f);
-				float num5 = ModVal.M(0.6f);
-				float num6 = ModVal.M(1f);
-				float num7 = ModVal.M(1f);
+				float num3 = (50f);
+				float num4 = (1000f);
+				float num5 = (0.6f);
+				float num6 = (1f);
+				float num7 = (1f);
 				int num8 = thePoints;
 				int num9 = num2;
 				int num10 = (int)((double)num9 * Math.Pow(GlobalMembers.gApp.mBoard.mPointMultiplier, 0.44999998807907104));
@@ -135,11 +135,11 @@ namespace BejeweledLivePlus.Misc
 					points.mMoveCreditId = theMoveCreditId;
 					points.mId = theId;
 					points.mDestScale = mDestScale;
-					points.mScaleDifMult = ModVal.M(0.15f);
-					points.mScaleDampening = ModVal.M(0.46f) + (float)num9 * ModVal.M(0.0015f);
-					if (points.mScaleDampening > ModVal.M(0.962f))
+					points.mScaleDifMult = (0.15f);
+					points.mScaleDampening = (0.46f) + (float)num9 * (0.0015f);
+					if (points.mScaleDampening > (0.962f))
 					{
-						points.mScaleDampening = ModVal.M(0.962f);
+						points.mScaleDampening = (0.962f);
 					}
 					points.mValue = (uint)thePoints;
 					mPointsList.Add(points);
@@ -170,7 +170,7 @@ namespace BejeweledLivePlus.Misc
 						{
 							num16 = Math.Min(1f, Math.Max(0f, (num13 - 0.3f) * 2f));
 							float num18 = Math.Max(0f, num13 - 0.5f);
-							num14 = ((j % 2 == 0) ? 0.5f : (0.5f + num18 * ModVal.M(1f)));
+							num14 = ((j % 2 == 0) ? 0.5f : (0.5f + num18 * (1f)));
 							num15 = 1f;
 							break;
 						}
@@ -178,7 +178,7 @@ namespace BejeweledLivePlus.Misc
 						{
 							num16 = Math.Min(1f, Math.Max(0f, (num13 - 0.3f) * 2f));
 							float num17 = Math.Max(0f, num13 - 0.1f);
-							num14 = ((j % 2 == 0) ? 0.5f : (0.5f + num17 * ModVal.M(1f)));
+							num14 = ((j % 2 == 0) ? 0.5f : (0.5f + num17 * (1f)));
 							num15 = Math.Max(0f, (num13 - 0.5f) * 3f);
 							break;
 						}
@@ -201,12 +201,12 @@ namespace BejeweledLivePlus.Misc
 				points.mColorCycling = true;
 				points.mCorrectedPoints = num10;
 				points.mScalePoints = num9;
-				points.mWobbleScale = num12 * ModVal.M(0.7f);
-				points.mColor.mAlpha = (int)(255f * Math.Min(1f, ModVal.M(0.75f) + num13 * ModVal.M(0f)));
+				points.mWobbleScale = num12 * (0.7f);
+				points.mColor.mAlpha = (int)(255f * Math.Min(1f, (0.75f) + num13 * (0f)));
 				points.mTimer = 0.6f + num12 * 1.6f;
 				if (points != null)
 				{
-					points.mScale = points.mDestScale * ModVal.M(0.1f);
+					points.mScale = points.mDestScale * (0.1f);
 				}
 			}
 			return points;

@@ -132,7 +132,7 @@ namespace BejeweledLivePlus.Misc
 			}
 			for (int l = 0; l < GlobalMembers.Max_LAYERS; l++)
 			{
-				mColorCycle[l].SetSpeed(ModVal.M(1.8f));
+				mColorCycle[l].SetSpeed((1.8f));
 			}
 			Color item = mColor;
 			item.mRed = (int)Math.Min(255f, (float)item.mRed * 1.5f);
@@ -203,21 +203,21 @@ namespace BejeweledLivePlus.Misc
 		{
 			mUpdateCnt++;
 			int num = mFont.StringWidth(mString);
-			if (mX + (float)(num / 2) * ModVal.M(1.5f) > 1920f)
+			if (mX + (float)(num / 2) * (1.5f) > 1920f)
 			{
-				mX = 1920f - (float)(num / 2) * ModVal.M(1.5f);
+				mX = 1920f - (float)(num / 2) * (1.5f);
 			}
 			if (mDelay > 0)
 			{
 				mDelay--;
 				return;
 			}
-			mWobbleSin += ModVal.M(0.03f) * MathF.PI * 2f;
+			mWobbleSin += (0.03f) * MathF.PI * 2f;
 			if (mWobbleSin > MathF.PI * 2f)
 			{
 				mWobbleSin -= MathF.PI * 2f;
 			}
-			mWobbleScale -= ModVal.M(0.005f);
+			mWobbleScale -= (0.005f);
 			if (mWobbleScale < 0f)
 			{
 				mWobbleScale = 0f;
@@ -239,19 +239,19 @@ namespace BejeweledLivePlus.Misc
 			}
 			else if (mState != 2)
 			{
-				mAlpha -= ModVal.M(0.05f);
-				mScale -= ModVal.M(0.03f);
+				mAlpha -= (0.05f);
+				mScale -= (0.03f);
 				if (mScale <= 0f || mAlpha <= 0f)
 				{
 					mDeleteMe = true;
 				}
 			}
-			float num3 = (float)Math.Pow(Math.Min(mY / ModVal.M(50f), 1f), ModVal.M(0.015f));
+			float num3 = (float)Math.Pow(Math.Min(mY / (50f), 1f), (0.015f));
 			mDY *= num3;
 			mY -= mDY;
 			if (mLimitY)
 			{
-				mY = Math.Max(ModVal.M(75f), mY);
+				mY = Math.Max((75f), mY);
 			}
 			mTimer -= 0.01f;
 			if (mTimer <= 0f && mState == 0)
@@ -304,7 +304,7 @@ namespace BejeweledLivePlus.Misc
 				float num3 = num;
 				Utils.PushScale(g, num3, num3, GlobalMembers.S(mX), GlobalMembers.S(mY));
 				int num4 = 0;
-				int num5 = (int)(GlobalMembers.S(mY) + (float)ascent * ModVal.M(0.2f));
+				int num5 = (int)(GlobalMembers.S(mY) + (float)ascent * (0.2f));
 				if (mX != 0f)
 				{
 					num4 = (int)(GlobalMembers.S(mX) - (float)(num2 / 2));
@@ -321,7 +321,7 @@ namespace BejeweledLivePlus.Misc
 				}
 				if ((float)num5 < ConstantsWP.POINTS_LIMIT_TOP)
 				{
-					mY = ConstantsWP.POINTS_LIMIT_TOP - (float)ascent * ModVal.M(0.2f);
+					mY = ConstantsWP.POINTS_LIMIT_TOP - (float)ascent * (0.2f);
 					num5 = (int)ConstantsWP.POINTS_LIMIT_TOP;
 				}
 				g.DrawString(mString, num4, num5);
@@ -341,19 +341,19 @@ namespace BejeweledLivePlus.Misc
 				int num6 = mSubFont.StringWidth(mSubString);
 				int ascent2 = mSubFont.GetAscent();
 				g.SetFont(mSubFont);
-				int theNum = (int)(mY + ModVal.M(-80f));
-				double num7 = (float)(mUpdateCnt - mSubStringShowTick) / ModVal.M(20f);
+				int theNum = (int)(mY + (-80f));
+				double num7 = (float)(mUpdateCnt - mSubStringShowTick) / (20f);
 				if (num7 < 1.0)
 				{
-					num = (float)((double)ModVal.M(1f) + (double)ModVal.M(0.5f) * (1.0 - num7));
+					num = (float)((double)(1f) + (double)(0.5f) * (1.0 - num7));
 				}
 				g.SetScale(num, num, GlobalMembers.S(mX), GlobalMembers.S(theNum));
 				double num8 = Math.Min(mAlpha, num7);
-				int theLayer = ((!(ModVal.M(1f) >= 0f) || !(ModVal.M(1f) <= -0f)) ? (Utils.GetFontLayerCount(mSubFont) - 1) : 0);
+				int theLayer = ((!((1f) >= 0f) || !((1f) <= -0f)) ? (Utils.GetFontLayerCount(mSubFont) - 1) : 0);
 				g.mColor.mAlpha = (int)(255.0 * num8);
 				g.SetColorizeImages(num8 < 1.0);
 				mSubFont.PushLayerColor(theLayer, mSubColor);
-				g.DrawString(mSubString, (int)(GlobalMembers.S(mX) - (float)(num6 / 2)), (int)((float)GlobalMembers.S(theNum) + (float)ascent2 * ModVal.M(0.2f)));
+				g.DrawString(mSubString, (int)(GlobalMembers.S(mX) - (float)(num6 / 2)), (int)((float)GlobalMembers.S(theNum) + (float)ascent2 * (0.2f)));
 				mSubFont.PopLayerColor(theLayer);
 			}
 			if (!flag)
@@ -366,7 +366,7 @@ namespace BejeweledLivePlus.Misc
 
 		public void RestartWobble()
 		{
-			mWobbleScale = ModVal.M(0.3f);
+			mWobbleScale = (0.3f);
 		}
 
 		public void StartFading()
@@ -420,7 +420,7 @@ namespace BejeweledLivePlus.Misc
 			if (mCachedImage == null)
 			{
 				mCachedImage = new MemoryImage();
-				mCachedImage.Create((int)((float)num * ModVal.M(1.1f)), (int)((float)ascent * ModVal.M(1.1f)));
+				mCachedImage.Create((int)((float)num * (1.1f)), (int)((float)ascent * (1.1f)));
 				mCachedImage.mIsVolatile = true;
 				mCachedImage.SetImageMode(true, true);
 			}

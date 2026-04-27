@@ -21,7 +21,7 @@ namespace BejeweledLivePlus.Misc
 			public int TextColor;
 		}
 
-		private double Draw_fadeAt = ModVal.M(0.5f);
+		private double Draw_fadeAt = (0.5f);
 
 		public Font mFont;
 

@@ -75,10 +75,10 @@ namespace BejeweledLivePlus.Misc
 			num4 += mMouseOverPct * ConstantsWP.CRYSTALBALL_HIGHLIGHT_SCALE_1;
 			if (mZ > 0f)
 			{
-				num4 *= ModVal.M(0.00255f) / mZ;
+				num4 *= (0.00255f) / mZ;
 			}
-			float theNum = num4 * GlobalMembers.MAGIC_SCALE * (1f + (float)(double)mFullPct * ModVal.M(0.5f));
-			float theNum2 = num4 * GlobalMembers.MAGIC_SCALE * (1f + (float)(double)mFullPct * ModVal.M(0.2f));
+			float theNum = num4 * GlobalMembers.MAGIC_SCALE * (1f + (float)(double)mFullPct * (0.5f));
+			float theNum2 = num4 * GlobalMembers.MAGIC_SCALE * (1f + (float)(double)mFullPct * (0.2f));
 			float num5 = 1f - (float)(double)mFullPct;
 			int num6 = (int)Math.Max(0f, num5 * 255f);
 			num6 = (int)((float)num6 * num);
@@ -93,7 +93,7 @@ namespace BejeweledLivePlus.Misc
 			}
 			if (mLocked)
 			{
-				g.SetColor(new Color(mColor.mRed, mColor.mGreen, mColor.mBlue, (int)((float)mColor.mAlpha * ModVal.M(0.5f))));
+				g.SetColor(new Color(mColor.mRed, mColor.mGreen, mColor.mBlue, (int)((float)mColor.mAlpha * (0.5f))));
 			}
 			else
 			{
@@ -101,7 +101,7 @@ namespace BejeweledLivePlus.Misc
 			}
 			g.SetColorizeImages(true);
 			g.SetDrawMode(0);
-			int num7 = (int)(mLocked ? ModVal.M(0f) : ((float)((mUpdateCnt + mAnimationFrameOffset) / 10 % 25)));
+			int num7 = (int)(mLocked ? (0f) : ((float)((mUpdateCnt + mAnimationFrameOffset) / 10 % 25)));
 			num3 /= ConstantsWP.CRYSTALBALL_BASE_SCALE;
 			num3 += mMouseOverPct * ConstantsWP.CRYSTALBALL_HIGHLIGHT_SCALE_2;
 			g.SetDrawMode(0);

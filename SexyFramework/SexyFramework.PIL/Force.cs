@@ -48,7 +48,7 @@ namespace SexyFramework.PIL
 		public void Update(int frame)
 		{
 			mTimeLine.Update(frame);
-			float num = ModVal.M(2000f);
+			float num = (2000f);
 			mLastAX = mLastSettings.mStrength / num * (float)Math.Cos(mLastSettings.mAngle + mLastSettings.mDirection);
 			mLastAY = (0f - mLastSettings.mStrength / num) * (float)Math.Sin(mLastSettings.mAngle + mLastSettings.mDirection);
 			if (mWaypointManager.GetNumPoints() > 0)

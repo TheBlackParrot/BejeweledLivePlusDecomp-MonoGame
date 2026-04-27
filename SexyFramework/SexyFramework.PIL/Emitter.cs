@@ -635,7 +635,7 @@ namespace SexyFramework.PIL
 					particle.mMotionRand = (first.mSingle ? 0f : (mLastScale.mMotionRandScale * (kfdata.mMotionRand + Common.FloatRange(0f, vardata.mMotionRandVar)) / 100f));
 					particle.SetXY(x, y);
 					particle.mParentName = first.mName;
-					particle.mWeight = (first.mSingle ? 0f : (mLastScale.mWeightScale * (kfdata.mWeight - Common.SAFE_RAND(vardata.mWeightVar / 2) + Common.SAFE_RAND(vardata.mWeightVar / 2)) / ModVal.M(2000f)));
+					particle.mWeight = (first.mSingle ? 0f : (mLastScale.mWeightScale * (kfdata.mWeight - Common.SAFE_RAND(vardata.mWeightVar / 2) + Common.SAFE_RAND(vardata.mWeightVar / 2)) / (2000f)));
 					particle.mSpin = mLastScale.mSpinScale * (kfdata.mSpin - Common.FloatRange(0f, vardata.mSpinVar / 2f) + Common.FloatRange(0f, vardata.mSpinVar / 2f)) / 10f;
 					particle.mBounce = mLastScale.mBounceScale * ((float)kfdata.mBounce - Common.SAFE_RAND(vardata.mBounceVar / 2) + Common.SAFE_RAND(vardata.mBounceVar / 2));
 					if (particle.mBounce < 0f)
@@ -707,7 +707,7 @@ namespace SexyFramework.PIL
 					emitter.mX = x;
 					emitter.mY = y;
 					emitter.mMotionRand = mLastScale.mMotionRandScale * (float)(settings.mMotionRand + Common.IntRange(0, variance.mMotionRandVar)) / 100f;
-					emitter.mWeight = mLastScale.mWeightScale * ((float)settings.mWeight - Common.SAFE_RAND(variance.mWeightVar / 2) + Common.SAFE_RAND(variance.mWeightVar / 2)) / ModVal.M(2000f);
+					emitter.mWeight = mLastScale.mWeightScale * ((float)settings.mWeight - Common.SAFE_RAND(variance.mWeightVar / 2) + Common.SAFE_RAND(variance.mWeightVar / 2)) / (2000f);
 					emitter.mSpin = mLastScale.mSpinScale * (settings.mSpin - Common.FloatRange(0f, variance.mSpinVar / 2f) + Common.FloatRange(0f, variance.mSpinVar / 2f)) / 10f;
 					emitter.mBounce = mLastScale.mBounceScale * ((float)settings.mBounce - Common.SAFE_RAND(variance.mBounceVar / 2) + Common.SAFE_RAND(variance.mBounceVar));
 					if (emitter.mBounce < 0f)
