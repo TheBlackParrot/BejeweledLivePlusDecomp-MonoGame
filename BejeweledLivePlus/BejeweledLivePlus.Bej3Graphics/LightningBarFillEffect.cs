@@ -36,14 +36,14 @@ namespace BejeweledLivePlus.Bej3Graphics
 		public override void Update()
 		{
 			bool flag = mPercentDone == 0f;
-			mPercentDone += GlobalMembers.M(0.012f);
+			mPercentDone += (0.012f);
 			if (mPercentDone > 1f)
 			{
 				mDeleteMe = true;
 			}
 			else
 			{
-				if (mFXManager.mBoard.mUpdateCnt % GlobalMembers.M(3) != 0 && !flag)
+				if (mFXManager.mBoard.mUpdateCnt % (3) != 0 && !flag)
 				{
 					return;
 				}
@@ -141,13 +141,13 @@ namespace BejeweledLivePlus.Bej3Graphics
 					}
 					}
 				}
-				g.DrawTrianglesTex(theColor: new Color(GlobalMembers.M(255), GlobalMembers.M(200), GlobalMembers.M(100)), theTexture: GlobalMembersResourcesWP.IMAGE_LIGHTNING_TEX, theVertices: array, theNumTriangles: num3, theDrawMode: 1, tx: g.mTransX, ty: g.mTransY, blend: true, theClipRect: default(Rect));
+				g.DrawTrianglesTex(theColor: new Color((255), (200), (100)), theTexture: GlobalMembersResourcesWP.IMAGE_LIGHTNING_TEX, theVertices: array, theNumTriangles: num3, theDrawMode: 1, tx: g.mTransX, ty: g.mTransY, blend: true, theClipRect: default(Rect));
 				g.DrawTrianglesTex(GlobalMembersResourcesWP.IMAGE_LIGHTNING_CENTER, array, num3, new Color(num2, num2, num2), 1, g.mTransX, g.mTransY, true, default(Rect));
 			}
 			else
 			{
 				g.SetDrawMode(Graphics.DrawMode.Additive);
-				Color color = new Color(GlobalMembers.M(255), GlobalMembers.M(200), GlobalMembers.M(100));
+				Color color = new Color((255), (200), (100));
 				for (int j = 0; j < 7; j++)
 				{
 					FPoint fPoint5 = mPoints[j, 0];

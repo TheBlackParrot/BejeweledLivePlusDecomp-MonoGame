@@ -90,11 +90,11 @@ namespace BejeweledLivePlus.Widget
 			mScaleCenterY = 0;
 			SetColor(0, new Color(255, 255, 255));
 			SetColor(1, new Color(0, 0, 0));
-			mSpaceAfterHeader = GlobalMembers.MS(45);
-			mContentInsets = new Insets(GlobalMembers.MS(90), GlobalMembers.MS(22), GlobalMembers.MS(90), GlobalMembers.MS(45));
-			mButtonHorzSpacing = GlobalMembers.MS(10);
-			mButtonSidePadding = GlobalMembers.MS(25);
-			mLineSpacingOffset = GlobalMembers.MS(-6);
+			mSpaceAfterHeader = (45);
+			mContentInsets = new Insets((90), (22), (90), (45));
+			mButtonHorzSpacing = (10);
+			mButtonSidePadding = (25);
+			mLineSpacingOffset = (-6);
 			mHeadingLabel = new Label(GlobalMembersResources.FONT_HUGE);
 			mHeadingLabel.SetText(theDialogHeader);
 			AddWidget(mHeadingLabel);

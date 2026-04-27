@@ -150,10 +150,10 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 		{
 			num = (float)g.mDestImage.mWidth / (float)g.mDestImage.mHeight;
 		}
-		float inFovDegrees = BejeweledLivePlus.GlobalMembers.M(38.5f) * num;
+		float inFovDegrees = (38.5f) * num;
 		mCamera.Init(inFovDegrees, num, 0.1f, 1000f);
 		SexyCoords3 sexyCoords = new SexyCoords3();
-		sexyCoords.Translate(0f, BejeweledLivePlus.GlobalMembers.M(-0.75f), 0f);
+		sexyCoords.Translate(0f, (-0.75f), 0f);
 		mCamera.SetCoords(mCamera.GetCoords().Leave(sexyCoords));
 		SexyCoords3 sexyCoords2 = new SexyCoords3();
 		sexyCoords2.RotateRadZ((0f - (float)mQuestSetNumDisp) * (BejeweledLivePlus.GlobalMembers.M_PI / 4f));
@@ -215,8 +215,8 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 			mBackground = new Background("images\\NonResize\\2donly\\questmenu\\background");
 			mBackground.mClip = false;
 			mBackground.mAllowRealign = false;
-			mBackground.Resize(BejeweledLivePlus.GlobalMembers.S(-160), BejeweledLivePlus.GlobalMembers.MS(0), BejeweledLivePlus.GlobalMembers.S(1920), BejeweledLivePlus.GlobalMembers.S(1200));
-			mBackground.mImageOverlayAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0.01,1,0.02,1,####         ~~###"));
+			mBackground.Resize(BejeweledLivePlus.GlobalMembers.S(-160), (0), BejeweledLivePlus.GlobalMembers.S(1920), BejeweledLivePlus.GlobalMembers.S(1200));
+			mBackground.mImageOverlayAlpha.SetCurve(("b;0.01,1,0.02,1,####         ~~###"));
 		}
 		PopAnim popAnim = mBackground.GetPopAnim();
 		if (popAnim != null)
@@ -260,13 +260,13 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 	public void DrawObject(Graphics g, int theNum, int theX, int theY, bool theIsOverlay)
 	{
 		float num = (float)((double)theNum - mQuestSetNumDisp);
-		if (!(Math.Abs(num) > BejeweledLivePlus.GlobalMembers.M(2f)))
+		if (!(Math.Abs(num) > (2f)))
 		{
 			Graphics3D graphics3D = g.Get3D();
-			float num2 = Math.Max(0f, 1f - Math.Abs(num) * BejeweledLivePlus.GlobalMembers.M(0.6f));
+			float num2 = Math.Max(0f, 1f - Math.Abs(num) * (0.6f));
 			g.SetColor(new Color(255 * (int)num2, 255 * (int)num2, 255 * (int)num2));
 			SexyTransform2D theTransform = new SexyTransform2D(true);
-			theTransform.Translate(num * (float)BejeweledLivePlus.GlobalMembers.MS(1300), (float)Math.Pow(Math.Abs(num), (double)BejeweledLivePlus.GlobalMembers.M(1.3f) * (double)BejeweledLivePlus.GlobalMembers.MS(100) + (double)mCameraHeight * (double)BejeweledLivePlus.GlobalMembers.MS(1400)));
+			theTransform.Translate(num * (float)(1300), (float)Math.Pow(Math.Abs(num), (double)(1.3f) * (double)(100) + (double)mCameraHeight * (double)(1400)));
 			g.PushState();
 			if (graphics3D != null)
 			{
@@ -318,7 +318,7 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 
 	public bool WantNextBtnBlink()
 	{
-		if (mWantBlink && !IsBusy() && (double)mButtonsSlidePct < BejeweledLivePlus.GlobalMembers.M(0.5) && BejeweledLivePlus.GlobalMembers.gApp.GetDialog(39) == null && BejeweledLivePlus.GlobalMembers.gApp.mBoard == null && GetCompleteCount() != BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET)
+		if (mWantBlink && !IsBusy() && (double)mButtonsSlidePct < (0.5) && BejeweledLivePlus.GlobalMembers.gApp.GetDialog(39) == null && BejeweledLivePlus.GlobalMembers.gApp.mBoard == null && GetCompleteCount() != BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET)
 		{
 			return !mRightButton.mDisabled;
 		}
@@ -361,10 +361,10 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 			BejeweledLivePlus.GlobalMembers.gApp.mProfile.WriteProfile();
 			FloatyOrb floatyOrb = new FloatyOrb();
 			floatyOrb.mIdx = mQuestObjs[mQuestSetNum].mQuestsCompleted;
-			floatyOrb.mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,1.5,#### T~###      P~### z####"));
-			floatyOrb.mNormalOffset.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;-250,250,0.01,1,Pmri 59o)w  ]####   G51se ^V### .P###"));
-			floatyOrb.mLerp.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,1,#### X####        H~####~###"));
-			floatyOrb.mScale.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;2,5,0.01,1,^###     P3n[*  Bd-_]  1#<$G"));
+			floatyOrb.mAlpha.SetCurve(("b;0,1,0.01,1.5,#### T~###      P~### z####"));
+			floatyOrb.mNormalOffset.SetCurve(("b;-250,250,0.01,1,Pmri 59o)w  ]####   G51se ^V### .P###"));
+			floatyOrb.mLerp.SetCurve(("b+0,1,0.01,1,#### X####        H~####~###"));
+			floatyOrb.mScale.SetCurve(("b;2,5,0.01,1,^###     P3n[*  Bd-_]  1#<$G"));
 			if (mAnnouncement != null)
 			{
 				floatyOrb.mPosFrom.mX = mAnnouncement.mPos.mX;
@@ -390,11 +390,11 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 	{
 		if (theId >= 1000)
 		{
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_QUEST_MENU_BUTTON1, 0, BejeweledLivePlus.GlobalMembers.M(0.7));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_QUEST_MENU_BUTTON1, 0, (0.7));
 		}
 		else if (theId == 0 || theId == 1)
 		{
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_PRESS, 0, BejeweledLivePlus.GlobalMembers.M(1.0));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_PRESS, 0, (1.0));
 		}
 	}
 
@@ -417,7 +417,7 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 				mDQuestSetNumDisp = mQuestSetNum;
 				BejeweledLivePlus.GlobalMembers.gApp.mProfile.mLastQuestPage = mQuestSetNum;
 			}
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_RELEASE, 0, BejeweledLivePlus.GlobalMembers.M(1.0));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_RELEASE, 0, (1.0));
 			break;
 		}
 		case 1:
@@ -435,7 +435,7 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 				mDQuestSetNumDisp = mQuestSetNum;
 				BejeweledLivePlus.GlobalMembers.gApp.mProfile.mLastQuestPage = mQuestSetNum;
 			}
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_RELEASE, 0, BejeweledLivePlus.GlobalMembers.M(1.0));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_RELEASE, 0, (1.0));
 			break;
 		}
 		case 2:
@@ -461,9 +461,9 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 			BejeweledLivePlus.GlobalMembers.gApp.ClearUpdateBacklog(false);
 			if (mFanfareTicks == 0)
 			{
-				BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_PRESS, 0, BejeweledLivePlus.GlobalMembers.M(1.0));
+				BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_PRESS, 0, (1.0));
 			}
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BACKTOMAIN, 0, BejeweledLivePlus.GlobalMembers.M(1.0));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BACKTOMAIN, 0, (1.0));
 			break;
 		}
 		case 3:
@@ -499,11 +499,11 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 			mBackground.SetVisible(false);
 			SetVisible(false);
 		}
-		BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalPct.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0.1,6,0.0125,1,#)EK         ~~aWC"));
-		BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalCenterPct.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0,1,#### V*0wJ     W~###  q~###"), BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalPct);
+		BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalPct.SetCurve(("b+0.1,6,0.0125,1,#)EK         ~~aWC"));
+		BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalCenterPct.SetCurve(("b+0,1,0,1,#### V*0wJ     W~###  q~###"), BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalPct);
 		float num4 = 1f / BejeweledLivePlus.GlobalMembers.S(1f);
 		mQuestPortalOrigin = (BejeweledLivePlus.GlobalMembers.gApp.mBoard.mQuestPortalOrigin = new Point(mQuestButtons[num3].mX + mQuestButtons[num3].mWidth / 2 - BejeweledLivePlus.GlobalMembers.S(160), mQuestButtons[num3].mY + mQuestButtons[num3].mHeight / 2) * num4);
-		BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_CLICKFLYIN, 0, BejeweledLivePlus.GlobalMembers.M(1.0), BejeweledLivePlus.GlobalMembers.M(8.0));
+		BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_CLICKFLYIN, 0, (1.0), (8.0));
 	}
 
 	public override void KeyChar(char theChar)
@@ -544,11 +544,11 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 	{
 		if (theId >= 1000)
 		{
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_QUEST_MENU_BUTTON_MOUSEOVER1, 0, BejeweledLivePlus.GlobalMembers.M(0.5));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_QUEST_MENU_BUTTON_MOUSEOVER1, 0, (0.5));
 		}
 		else
 		{
-			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_MOUSEOVER, 0, BejeweledLivePlus.GlobalMembers.M(1.0));
+			BejeweledLivePlus.GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTON_MOUSEOVER, 0, (1.0));
 		}
 	}
 
@@ -557,9 +557,9 @@ public class QuestMenu : Widget, Bej3ButtonListener, ButtonListener
 		mAnnouncement = theAnnouncement;
 		if (!IsLastQuestCompleted() && theWon)
 		{
-			mBreakCountdown = BejeweledLivePlus.GlobalMembers.M(280);
+			mBreakCountdown = (280);
 		}
-		mAnnouncementCenterPct.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.003571,1,~###    $~###    eWs)y ;#=]M"));
+		mAnnouncementCenterPct.SetCurve(("b+0,1,0.003571,1,~###    $~###    eWs)y ;#=]M"));
 	}
 
 	public override void SetVisible(bool isVisible)

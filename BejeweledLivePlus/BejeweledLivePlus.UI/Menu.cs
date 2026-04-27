@@ -88,7 +88,7 @@ namespace BejeweledLivePlus.UI
 			for (int i = 0; i < mQuestButton.Count; i++)
 			{
 				int theX = theRect.mWidth / 2 - GlobalMembers.S(620) + i % 3 * GlobalMembers.S(420);
-				int theY = GlobalMembers.MS(190) + i / 3 * GlobalMembers.S(55);
+				int theY = (190) + i / 3 * GlobalMembers.S(55);
 				mQuestButton[i].Resize(theX, theY, GlobalMembers.S(400), GlobalMembers.S(45));
 			}
 		}
@@ -98,7 +98,7 @@ namespace BejeweledLivePlus.UI
 			g.SetColor(new Color(64, 64, 64));
 			g.FillRect(0, 0, mWidth, mHeight);
 			g.SetColor(new Color(32, 32, 32));
-			g.FillRect(mWidth / 2 - GlobalMembers.MS(660), GlobalMembers.MS(160), GlobalMembers.MS(1320), GlobalMembers.MS(930));
+			g.FillRect(mWidth / 2 - (660), (160), (1320), (930));
 		}
 
 		public override void KeyChar(char theChar)

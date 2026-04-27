@@ -65,12 +65,12 @@ namespace BejeweledLivePlus.Bej3Graphics
 			base.Update();
 			mX += (float)(((double)mTargetX - (double)mX) * (double)mAccel);
 			mY += (float)(((double)mTargetY - (double)mY) * (double)mAccel);
-			mFlap += (((int)mX == (int)(double)mTargetX && (int)mY == (int)(double)mTargetY) ? GlobalMembers.M(0.05f) : GlobalMembers.M(0.4f));
+			mFlap += (((int)mX == (int)(double)mTargetX && (int)mY == (int)(double)mTargetY) ? (0.05f) : (0.4f));
 			if ((double)mFlap >= Math.PI * 2.0)
 			{
 				mFlap -= (float)Math.PI * 2f;
 			}
-			mAccel = Math.Min(mAccel + GlobalMembers.M(0.0002f), 1f);
+			mAccel = Math.Min(mAccel + (0.0002f), 1f);
 			mSparkles.mX = mX + 50f;
 			mSparkles.mY = mY + 50f;
 			if ((mX > 1900f || mCurvedAlpha.HasBeenTriggered()) && !mDeleteMe)

@@ -55,11 +55,11 @@ namespace BejeweledLivePlus.Widget
 			case 0:
 			{
 				int num2 = GlobalMembers.gApp.mWidth / 2 - mImage.mWidth / 2;
-				mTextX -= GlobalMembers.M(30);
+				mTextX -= (30);
 				if (mTextX < num2)
 				{
 					mTextX = num2;
-					mTimer = GlobalMembers.M(1.5f);
+					mTimer = (1.5f);
 					mState++;
 				}
 				break;
@@ -109,11 +109,11 @@ namespace BejeweledLivePlus.Widget
 				g.SetDrawMode(Graphics.DrawMode.Normal);
 				g.DrawImage(mOutlineImage, mTextX, array[i]);
 			}
-			int num = GlobalMembers.M(200);
+			int num = (200);
 			for (int j = 0; j < mOldX.Count; j++)
 			{
 				g.SetColor(new Color(0, 255, 255, num));
-				num -= GlobalMembers.M(9);
+				num -= (9);
 				if (num <= 0)
 				{
 					break;

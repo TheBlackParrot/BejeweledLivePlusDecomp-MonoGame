@@ -144,7 +144,7 @@ namespace BejeweledLivePlus
 			mTimer = 0f;
 			mDist = 0;
 			mHoldDelay = 1f;
-			mStormLength = ((mStormType == 3) ? GlobalMembers.M(3) : GlobalMembers.M(7));
+			mStormLength = ((mStormType == 3) ? (3) : (7));
 			if (mStormType != 7)
 			{
 				for (int i = ((mStormType == 6) ? (-1) : 0); i <= ((mStormType == 6) ? 1 : 0); i++)
@@ -156,13 +156,13 @@ namespace BejeweledLivePlus
 						{
 							mMatchType = SexyFramework.Common.Rand(Bej3Com.gElectColors.Length);
 						}
-						LightningZap item = new LightningZap(mBoard, Math.Max(0, mCX - mStormLength * 100 - 50), (int)thePiece.mY + 50 + i * 100, Math.Min(mBoard.GetColX(8), mCX + mStormLength * 100 + 50), (int)thePiece.mY + 50 + i * 100, Bej3Com.gElectColors[mMatchType], GlobalMembers.M(10f), mStormType == 6);
+						LightningZap item = new LightningZap(mBoard, Math.Max(0, mCX - mStormLength * 100 - 50), (int)thePiece.mY + 50 + i * 100, Math.Min(mBoard.GetColX(8), mCX + mStormLength * 100 + 50), (int)thePiece.mY + 50 + i * 100, Bej3Com.gElectColors[mMatchType], (10f), mStormType == 6);
 						mZaps.Add(item);
 					}
 					int colAt = mBoard.GetColAt((int)thePiece.mX + 50 + i * 100);
 					if (colAt >= 0 && colAt < 8 && mStormType != 0)
 					{
-						LightningZap item2 = new LightningZap(mBoard, (int)thePiece.mX + 50 + i * 100, Math.Max(0, mCY - mStormLength * 100 - 50), (int)thePiece.mX + 50 + i * 100, Math.Min(mBoard.GetRowY(8), mCY + mStormLength * 100 + 50), Bej3Com.gElectColors[mMatchType], GlobalMembers.M(10f), mStormType == 6);
+						LightningZap item2 = new LightningZap(mBoard, (int)thePiece.mX + 50 + i * 100, Math.Max(0, mCY - mStormLength * 100 - 50), (int)thePiece.mX + 50 + i * 100, Math.Min(mBoard.GetRowY(8), mCY + mStormLength * 100 + 50), Bej3Com.gElectColors[mMatchType], (10f), mStormType == 6);
 						mZaps.Add(item2);
 					}
 				}
@@ -248,16 +248,16 @@ namespace BejeweledLivePlus
 					{
 						if (piece.IsFlagSet(2u))
 						{
-							piece.mElectrocutePercent += GlobalMembers.M(0.0075f);
+							piece.mElectrocutePercent += (0.0075f);
 						}
 						else
 						{
-							piece.mElectrocutePercent += GlobalMembers.M(0.01f);
+							piece.mElectrocutePercent += (0.01f);
 						}
 					}
 					else if (piece.IsFlagSet(2u))
 					{
-						piece.mElectrocutePercent += GlobalMembers.M(0.01f);
+						piece.mElectrocutePercent += (0.01f);
 					}
 					else
 					{
@@ -291,11 +291,11 @@ namespace BejeweledLivePlus
 			int num4 = 20 / (num + 1) + 5;
 			if (flag)
 			{
-				num4 = (int)((float)num4 * GlobalMembers.M(1.4f));
+				num4 = (int)((float)num4 * (1.4f));
 			}
 			if (mColor == -1)
 			{
-				num4 /= GlobalMembers.M(2);
+				num4 /= (2);
 			}
 			if (num3 > 0 && (Common.size(mLightningVector) == 0 || mBoard.mRand.Next() % num4 == 0))
 			{
@@ -326,18 +326,18 @@ namespace BejeweledLivePlus
 					effect.mFlags = 2;
 					effect.mX = piece2.CX();
 					effect.mY = piece2.CY();
-					effect.mZ = GlobalMembers.M(0.08f);
-					effect.mValue[0] = GlobalMembers.M(16.1f);
-					effect.mValue[1] = GlobalMembers.M(-0.8f);
-					effect.mAlpha = GlobalMembers.M(0f);
-					effect.mDAlpha = GlobalMembers.M(0.1f);
-					effect.mScale = GlobalMembers.M(140f);
+					effect.mZ = (0.08f);
+					effect.mValue[0] = (16.1f);
+					effect.mValue[1] = (-0.8f);
+					effect.mAlpha = (0f);
+					effect.mDAlpha = (0.1f);
+					effect.mScale = (140f);
 					mBoard.mPostFXManager.AddEffect(effect);
-					if (mUpdateCnt - mLastElectroSound >= GlobalMembers.M(20) || mLastElectroSound == 0)
+					if (mUpdateCnt - mLastElectroSound >= (20) || mLastElectroSound == 0)
 					{
 						if (flag)
 						{
-							GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_ELECTRO_PATH2, GlobalMembers.M(0), GlobalMembers.MS(0.67), GlobalMembers.MS(-1.0));
+							GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_ELECTRO_PATH2, (0), (0.67), (-1.0));
 						}
 						else
 						{
@@ -352,7 +352,7 @@ namespace BejeweledLivePlus
 				}
 				piece2.mIsElectrocuting = true;
 			}
-			float num7 = (SexyFramework.GlobalMembers.gIs3D ? GlobalMembers.M(32f) : GlobalMembers.M(24f));
+			float num7 = (SexyFramework.GlobalMembers.gIs3D ? (32f) : (24f));
 			for (int l = 0; l < Common.size(mLightningVector); l++)
 			{
 				Lightning lightning = mLightningVector[l];
@@ -365,7 +365,7 @@ namespace BejeweledLivePlus
 					continue;
 				}
 				float num8 = Math.Max(0f, 1f - (1f - lightning.mPercentDone) * 3f);
-				if ((!flag || mUpdateCnt % GlobalMembers.M(8) != 0) && (flag || mUpdateCnt % 4 != 0))
+				if ((!flag || mUpdateCnt % (8) != 0) && (flag || mUpdateCnt % 4 != 0))
 				{
 					continue;
 				}
@@ -608,7 +608,7 @@ namespace BejeweledLivePlus
 			mUpdateCnt++;
 			mNovaScale.IncInVal();
 			mNukeScale.IncInVal();
-			if (mStormType == 6 && mNukeScale.CheckInThreshold(GlobalMembers.M(1.6f)))
+			if (mStormType == 6 && mNukeScale.CheckInThreshold((1.6f)))
 			{
 				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BOMB_EXPLODE, 0);
 			}
@@ -617,7 +617,7 @@ namespace BejeweledLivePlus
 				LightningZap lightningZap = mZaps[i];
 				lightningZap.Update();
 			}
-			mGemAlpha = Math.Max(0f, mGemAlpha - GlobalMembers.M(0.01f));
+			mGemAlpha = Math.Max(0f, mGemAlpha - (0.01f));
 			if (mStormType == 7)
 			{
 				UpdateLightning();

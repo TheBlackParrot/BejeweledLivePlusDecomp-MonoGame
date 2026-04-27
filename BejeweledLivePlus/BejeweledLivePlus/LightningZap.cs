@@ -79,24 +79,24 @@ namespace BejeweledLivePlus
 			mUpdates++;
 			if (flag)
 			{
-				mTimer += GlobalMembers.M(0.05f);
+				mTimer += (0.05f);
 			}
 			else
 			{
-				mTimer += GlobalMembers.M(0.1f);
+				mTimer += (0.1f);
 			}
 			float num = mEndPoint.mX - mStartPoint.mX;
 			float num2 = mEndPoint.mY - mStartPoint.mY;
-			float num3 = Math.Max(GlobalMembers.M(1f), (float)Math.Sqrt(num * num + num2 * num2));
+			float num3 = Math.Max((1f), (float)Math.Sqrt(num * num + num2 * num2));
 			float num4 = ConstantsWP.LIGHTNING_THICKNESS;
 			float num5 = num4 * num2 / num3;
 			float num6 = num4 * num / num3;
-			if ((flag && mUpdates % GlobalMembers.M(10) != 0) || (!flag && mUpdates % GlobalMembers.M(5) != 0))
+			if ((flag && mUpdates % (10) != 0) || (!flag && mUpdates % (5) != 0))
 			{
 				mPoints[0].Clear();
 				mPoints[1].Clear();
 				mFrame = BejeweledLivePlus.Misc.Common.Rand() % 5;
-				int num7 = (int)Math.Max(1f, GlobalMembers.M(0.5f) * GlobalMembers.S(mLength) / (float)iMAGE_LIGHTNING.GetCelHeight()) + 1;
+				int num7 = (int)Math.Max(1f, (0.5f) * GlobalMembers.S(mLength) / (float)iMAGE_LIGHTNING.GetCelHeight()) + 1;
 				for (int i = 0; i < num7; i++)
 				{
 					FPoint[] array = new FPoint[2]
@@ -108,11 +108,11 @@ namespace BejeweledLivePlus
 					int num9 = 1;
 					if (i != 0 && i < num7 - 1)
 					{
-						num9 = Math.Max(GlobalMembers.M(80), (int)(GlobalMembers.M(160f) * mTimer / mDoneTime));
+						num9 = Math.Max((80), (int)((160f) * mTimer / mDoneTime));
 					}
 					if (flag)
 					{
-						num9 = Math.Max(1, (int)((float)num9 * GlobalMembers.M(0.5f)));
+						num9 = Math.Max(1, (int)((float)num9 * (0.5f)));
 					}
 					array[0].mX = (array[1].mX = mStartPoint.mX + num8 * num + (float)(num9 / 2) - (float)(BejeweledLivePlus.Misc.Common.Rand() % num9));
 					array[0].mY = (array[1].mY = mStartPoint.mY + num8 * num2 + (float)(num9 / 2) - (float)(BejeweledLivePlus.Misc.Common.Rand() % num9));
@@ -139,8 +139,8 @@ namespace BejeweledLivePlus
 			float num2 = (num = 5f / 32f);
 			num2 *= (float)mFrame;
 			num += num2;
-			num2 += GlobalMembers.M(0.02f);
-			num += GlobalMembers.M(-0.02f);
+			num2 += (0.02f);
+			num += (-0.02f);
 			float num3 = Math.Max(0f, Math.Min((1f - mPercentDone) * 8f, 1f)) * mBoard.GetPieceAlpha();
 			bool flag = GlobalMembers.gApp.Is3DAccelerated();
 			int num4 = Common.size(mPoints[0]);
@@ -149,13 +149,13 @@ namespace BejeweledLivePlus
 			g.SetColorizeImages(true);
 			graphics3D?.SetTextureWrap(0, true);
 			int num5 = 0;
-			int mAlpha = Math.Min(255, (int)(GlobalMembers.M(800f) * num3));
+			int mAlpha = Math.Min(255, (int)((800f) * num3));
 			Color color = mColor;
 			color.mAlpha = mAlpha;
 			Color theColor = default(Color);
-			theColor.mRed = (GlobalMembers.M(255) + mColor.mRed) / 2;
-			theColor.mGreen = (GlobalMembers.M(255) + mColor.mGreen) / 2;
-			theColor.mBlue = (GlobalMembers.M(255) + mColor.mBlue) / 2;
+			theColor.mRed = ((255) + mColor.mRed) / 2;
+			theColor.mGreen = ((255) + mColor.mGreen) / 2;
+			theColor.mBlue = ((255) + mColor.mBlue) / 2;
 			theColor.mAlpha = mAlpha;
 			float num6 = 0f;
 			float num7 = 0f;
@@ -168,11 +168,11 @@ namespace BejeweledLivePlus
 			{
 				float v = 0f;
 				float v2 = 1f;
-				float num8 = GlobalMembers.M(0f);
+				float num8 = (0f);
 				SexyVertex2D[] lZ_Draw_aTriVertices = LZ_Draw_aTriVertices;
 				float num9 = mPoints[0][i].mX - mPoints[0][i + 1].mX + mPoints[1][i].mX - mPoints[1][i + 1].mX;
 				float num10 = mPoints[0][i].mY - mPoints[0][i + 1].mY + mPoints[1][i].mY - mPoints[1][i + 1].mY;
-				float num11 = 1f / Math.Max(GlobalMembers.M(1f), (float)Math.Sqrt(num9 * num9 + num10 * num10));
+				float num11 = 1f / Math.Max((1f), (float)Math.Sqrt(num9 * num9 + num10 * num10));
 				float num12 = num9;
 				num9 = num8 * (num10 * num11);
 				num10 = num8 * (num12 * num11);

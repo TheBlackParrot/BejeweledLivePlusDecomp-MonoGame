@@ -46,9 +46,9 @@ namespace BejeweledLivePlus.UI
 			mPoints = mBoard.mPoints;
 			mLevel = mBoard.mLevel;
 			mPointMultiplier = mBoard.mPointMultiplier;
-			mCountupPct.SetCurve(GlobalMembers.MP("b+0,1,0.016667,1,####  M#1^;       S~TEC"));
-			Resize(GlobalMembers.MS(0), GlobalMembers.MS(0), GlobalMembers.MS(1600), GlobalMembers.MS(1200));
-			mContentInsets.mBottom = GlobalMembers.MS(60);
+			mCountupPct.SetCurve(("b+0,1,0.016667,1,####  M#1^;       S~TEC"));
+			Resize((0), (0), (1600), (1200));
+			mContentInsets.mBottom = (60);
 			mFlushPriority = 100;
 			mAllowDrag = false;
 		}
@@ -113,20 +113,20 @@ namespace BejeweledLivePlus.UI
 			Utils.SetFontLayerColor((ImageFont)g.GetFont(), "Main", new Color(255, 255, 255, 255));
 			Utils.SetFontLayerColor((ImageFont)g.GetFont(), "OUTLINE", new Color(255, 255, 255, 255));
 			Utils.SetFontLayerColor((ImageFont)g.GetFont(), "GLOW", new Color(255, 255, 255, 255));
-			g.DrawImageBox(new Rect(GlobalMembers.MS(110), GlobalMembers.MS(0), GlobalMembers.MS(1380), GlobalMembers.MS(1200)), GlobalMembersResourcesWP.IMAGE_GAMEOVER_DIALOG);
+			g.DrawImageBox(new Rect((110), (0), (1380), (1200)), GlobalMembersResourcesWP.IMAGE_GAMEOVER_DIALOG);
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_HEADER);
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(8931352)));
-			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color(GlobalMembers.M(15253648)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((8931352)));
+			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color((15253648)));
 			((ImageFont)g.GetFont()).PushLayerColor("LAYER_3", new Color(0, 0, 0, 0));
-			g.WriteString(GlobalMembers._ID("Final Score:", 236), GlobalMembers.MS(800), GlobalMembers.MS(140));
+			g.WriteString(GlobalMembers._ID("Final Score:", 236), (800), (140));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_2");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_3");
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(16777215)));
-			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color(GlobalMembers.M(11558960)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((16777215)));
+			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color((11558960)));
 			((ImageFont)g.GetFont()).PushLayerColor("LAYER_3", new Color(0, 0, 0, 0));
-			g.WriteString(SexyFramework.Common.CommaSeperate((int)((double)mPoints * (double)mCountupPct)), GlobalMembers.MS(800), GlobalMembers.MS(220));
+			g.WriteString(SexyFramework.Common.CommaSeperate((int)((double)mPoints * (double)mCountupPct)), (800), (220));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_2");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_3");
@@ -165,10 +165,10 @@ namespace BejeweledLivePlus.UI
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
 			((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("GLOW", new Color(0, 0, 0, 0));
 			((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("OUTLINE", new Color(0, 0, 0, 0));
-			g.SetColor(new Color(GlobalMembers.M(16777215)));
-			g.WriteString(string.Format(GlobalMembers._ID("x {0}", 230), mGameStats[17]), GlobalMembers.MS(400), GlobalMembers.MS(900), -1, -1);
-			g.WriteString(string.Format(GlobalMembers._ID("x {0}", 231), mGameStats[18]), GlobalMembers.MS(780), GlobalMembers.MS(900), -1, -1);
-			g.WriteString(string.Format(GlobalMembers._ID("x {0}", 232), mGameStats[19]), GlobalMembers.MS(1150), GlobalMembers.MS(900), -1, -1);
+			g.SetColor(new Color((16777215)));
+			g.WriteString(string.Format(GlobalMembers._ID("x {0}", 230), mGameStats[17]), (400), (900), -1, -1);
+			g.WriteString(string.Format(GlobalMembers._ID("x {0}", 231), mGameStats[18]), (780), (900), -1, -1);
+			g.WriteString(string.Format(GlobalMembers._ID("x {0}", 232), mGameStats[19]), (1150), (900), -1, -1);
 			((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("OUTLINE");
 			((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("GLOW");
 		}
@@ -198,32 +198,32 @@ namespace BejeweledLivePlus.UI
 
 		public virtual void DrawLabeledHighScores(Graphics g)
 		{
-			g.DrawImageBox(new Rect(GlobalMembers.MS(800), GlobalMembers.MS(385) - GlobalMembers.MS(0), GlobalMembers.MS(480), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL.GetHeight()), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL);
+			g.DrawImageBox(new Rect((800), (385) - (0), (480), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL.GetHeight()), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL);
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(8931352)));
-			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color(GlobalMembers.M(16777215)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((8931352)));
+			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color((16777215)));
 			((ImageFont)g.GetFont()).PushLayerColor("Glow", new Color(0, 0, 0, 0));
-			g.WriteString(GlobalMembers._ID("Top Scores:", 234), GlobalMembers.MS(1085), GlobalMembers.MS(435));
+			g.WriteString(GlobalMembers._ID("Top Scores:", 234), (1085), (435));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("Outline");
 			((ImageFont)g.GetFont()).PopLayerColor("Glow");
 			g.PushState();
-			g.Translate(GlobalMembers.MS(0), GlobalMembers.MS(60));
+			g.Translate((0), (60));
 			DrawHighScores(g);
 			g.PopState();
 		}
 
 		public virtual void DrawStatsFrame(Graphics g)
 		{
-			g.DrawImageBox(new Rect(GlobalMembers.MS(195), GlobalMembers.MS(385), GlobalMembers.MS(602), GlobalMembers.MS(282)), GlobalMembersResourcesWP.IMAGE_GAMEOVER_LIGHT_BOX);
+			g.DrawImageBox(new Rect((195), (385), (602), (282)), GlobalMembersResourcesWP.IMAGE_GAMEOVER_LIGHT_BOX);
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
 			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(255, 255, 255, 255));
-			((ImageFont)g.GetFont()).PushLayerColor("OUTLINE", new Color(GlobalMembers.M(4210688)));
+			((ImageFont)g.GetFont()).PushLayerColor("OUTLINE", new Color((4210688)));
 			((ImageFont)g.GetFont()).PushLayerColor("GLOW", new Color(0, 0, 0, 0));
-			g.SetColor(new Color(GlobalMembers.M(16053456)));
+			g.SetColor(new Color((16053456)));
 			DrawStatsLabels(g);
-			g.SetColor(new Color(GlobalMembers.M(16777056)));
+			g.SetColor(new Color((16777056)));
 			DrawStatsText(g);
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("OUTLINE");
@@ -232,18 +232,18 @@ namespace BejeweledLivePlus.UI
 
 		public virtual void DrawLabeledStatsFrame(Graphics g)
 		{
-			g.DrawImageBox(new Rect(GlobalMembers.MS(195), GlobalMembers.MS(385) - GlobalMembers.MS(0), GlobalMembers.MS(600), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL.GetHeight()), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL);
+			g.DrawImageBox(new Rect((195), (385) - (0), (600), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL.GetHeight()), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL);
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(8931352)));
-			((ImageFont)g.GetFont()).PushLayerColor("OUTLINE", new Color(GlobalMembers.M(16777215)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((8931352)));
+			((ImageFont)g.GetFont()).PushLayerColor("OUTLINE", new Color((16777215)));
 			((ImageFont)g.GetFont()).PushLayerColor("GLOW", new Color(0, 0, 0, 0));
-			g.WriteString(GlobalMembers._ID("Statistics", 235), GlobalMembers.MS(485), GlobalMembers.MS(435));
+			g.WriteString(GlobalMembers._ID("Statistics", 235), (485), (435));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("OUTLINE");
 			((ImageFont)g.GetFont()).PopLayerColor("GLOW");
 			g.PushState();
-			g.Translate(GlobalMembers.MS(0), GlobalMembers.MS(60));
+			g.Translate((0), (60));
 			DrawStatsFrame(g);
 			g.PopState();
 		}

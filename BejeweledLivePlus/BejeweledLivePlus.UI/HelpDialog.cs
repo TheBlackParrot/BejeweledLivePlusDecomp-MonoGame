@@ -259,15 +259,15 @@ namespace BejeweledLivePlus.UI
 				}
 				mHelpWindow[0].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_SWAP3);
 				mHelpWindow[0].mXOfs.Add(ConstantsWP.HELPDIALOG_OFFSET_BASICS_1);
-				mHelpWindow[0].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[0].mTextWidthScale.Add((1f));
 				mHelpWindow[0].mCaptions.Add(GlobalMembers._ID("Swap adjacent gems to make rows of three.", 244));
 				mHelpWindow[1].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_MATCH4);
 				mHelpWindow[1].mXOfs.Add(ConstantsWP.HELPDIALOG_OFFSET_BASICS_2);
-				mHelpWindow[1].mTextWidthScale.Add(GlobalMembers.M(0f));
+				mHelpWindow[1].mTextWidthScale.Add((0f));
 				mHelpWindow[1].mCaptions.Add(GlobalMembers._ID("Match 4 or more gems to create Special Gems.", 245));
 				mHelpWindow[2].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_STARGEM);
 				mHelpWindow[2].mXOfs.Add(ConstantsWP.HELPDIALOG_OFFSET_BASICS_3);
-				mHelpWindow[2].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[2].mTextWidthScale.Add((1f));
 				mHelpWindow[2].mCaptions.Add(GlobalMembers._ID("Make an L or T match to create a Star Gem!", 246));
 			}
 			else if (mTutorialFlag == 10)
@@ -275,22 +275,22 @@ namespace BejeweledLivePlus.UI
 				mHelpWindow[0].SetVisible(true);
 				mHelpWindow[0].mHeaderText = "";
 				mHelpWindow[0].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_LIGHTNING_MATCH);
-				mHelpWindow[0].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[0].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[0].mXOfs.Add((0));
+				mHelpWindow[0].mTextWidthScale.Add((1f));
 				mHelpWindow[0].mCaptions.Add(GlobalMembers._ID("Match Time Gems to earn extra time.", 247));
 				FrameAnimation frameAnimation = new FrameAnimation(GlobalMembersResourcesWP.ATLASIMAGE_EX_HELP_LIGHTNING_01, "atlases\\help_lightning_01.plist");
 				mHelpWindow[0].AddWidget(frameAnimation);
 				frameAnimation.Resize(94, 30, 190, 248);
 				mHelpWindow[1].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_LIGHTNING_TIME);
-				mHelpWindow[1].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[1].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[1].mXOfs.Add((0));
+				mHelpWindow[1].mTextWidthScale.Add((1f));
 				mHelpWindow[1].mCaptions.Add(GlobalMembers._ID("Extra time is added to your next round, where point values increase!", 248));
 				FrameAnimation frameAnimation2 = new FrameAnimation(GlobalMembersResourcesWP.ATLASIMAGE_EX_HELP_LIGHTNING_02, "atlases\\help_lightning_02.plist");
 				mHelpWindow[1].AddWidget(frameAnimation2);
 				frameAnimation2.Resize(77, 30, 256, 248);
 				mHelpWindow[2].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_LIGHTNING_SPEED);
-				mHelpWindow[2].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[2].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[2].mXOfs.Add((0));
+				mHelpWindow[2].mTextWidthScale.Add((1f));
 				mHelpWindow[2].mCaptions.Add(GlobalMembers._ID("Make matches quickly for a Speed Bonus. Max it out for Blazing Speed!", 249));
 				FrameAnimation frameAnimation3 = new FrameAnimation(GlobalMembersResourcesWP.ATLASIMAGE_EX_HELP_LIGHTNING_03, "atlases\\help_lightning_03.plist");
 				mHelpWindow[2].AddWidget(frameAnimation3);
@@ -301,12 +301,12 @@ namespace BejeweledLivePlus.UI
 				mHelpWindow[0].SetVisible(true);
 				mHelpWindow[0].mHeaderText = "";
 				mHelpWindow[0].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_BFLY_MATCH);
-				mHelpWindow[0].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[0].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[0].mXOfs.Add((0));
+				mHelpWindow[0].mTextWidthScale.Add((1f));
 				mHelpWindow[0].mCaptions.Add(GlobalMembers._ID("Match butterfly gems with like colored gems to release them.", 250));
 				mHelpWindow[1].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_BFLY_SPIDER);
-				mHelpWindow[1].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[1].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[1].mXOfs.Add((0));
+				mHelpWindow[1].mTextWidthScale.Add((1f));
 				mHelpWindow[1].mCaptions.Add(GlobalMembers._ID("Don't let any of the butterflies reach the spider!", 251));
 			}
 			else if (mTutorialFlag == 18)
@@ -314,16 +314,16 @@ namespace BejeweledLivePlus.UI
 				mHelpWindow[0].SetVisible(true);
 				mHelpWindow[0].mHeaderText = "";
 				mHelpWindow[0].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_POKER_MATCH);
-				mHelpWindow[0].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[0].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[0].mXOfs.Add((0));
+				mHelpWindow[0].mTextWidthScale.Add((1f));
 				mHelpWindow[0].mCaptions.Add(GlobalMembers._ID("Make poker hands with gem matches.", 252));
 				mHelpWindow[1].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_POKER_SKULLHAND);
-				mHelpWindow[1].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[1].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[1].mXOfs.Add((0));
+				mHelpWindow[1].mTextWidthScale.Add((1f));
 				mHelpWindow[1].mCaptions.Add(GlobalMembers._ID("When Skulls appear, try to avoid the hands that they occupy.", 253));
 				mHelpWindow[2].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_POKER_SKULL_CLEAR);
-				mHelpWindow[2].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[2].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[2].mXOfs.Add((0));
+				mHelpWindow[2].mTextWidthScale.Add((1f));
 				mHelpWindow[2].mCaptions.Add(GlobalMembers._ID("Remove Skulls by filling the Eliminator bar.  Better hands fill it faster.", 254));
 			}
 			else if (mTutorialFlag == 20)
@@ -331,16 +331,16 @@ namespace BejeweledLivePlus.UI
 				mHelpWindow[0].SetVisible(true);
 				mHelpWindow[0].mHeaderText = GlobalMembers._ID("Score as many points as you can before the ice reaches the top!", 255);
 				mHelpWindow[0].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_ICESTORM_HORIZ);
-				mHelpWindow[0].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[0].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[0].mXOfs.Add((0));
+				mHelpWindow[0].mTextWidthScale.Add((1f));
 				mHelpWindow[0].mCaptions.Add(GlobalMembers._ID("Make matches to push down the rising ice columns.", 256));
 				mHelpWindow[1].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_ICESTORM_VERT);
-				mHelpWindow[1].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[1].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[1].mXOfs.Add((0));
+				mHelpWindow[1].mTextWidthScale.Add((1f));
 				mHelpWindow[1].mCaptions.Add(GlobalMembers._ID("Make vertical matches to smash ice columns and earn mega bonus points.", 257));
 				mHelpWindow[2].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_ICESTORM_METER);
-				mHelpWindow[2].mXOfs.Add(GlobalMembers.M(0));
-				mHelpWindow[2].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[2].mXOfs.Add((0));
+				mHelpWindow[2].mTextWidthScale.Add((1f));
 				mHelpWindow[2].mCaptions.Add(GlobalMembers._ID("Clearing ice fills the blue meter and increases your score multiplier.", 258));
 			}
 			else if (mTutorialFlag == 22)
@@ -348,15 +348,15 @@ namespace BejeweledLivePlus.UI
 				mHelpWindow[0].mHeaderText = "";
 				mHelpWindow[0].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_DIAMOND_MATCH);
 				mHelpWindow[0].mXOfs.Add(ConstantsWP.HELPDIALOG_OFFSET_DIAMOND_1);
-				mHelpWindow[0].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[0].mTextWidthScale.Add((1f));
 				mHelpWindow[0].mCaptions.Add(GlobalMembers._ID("Make matches directly next to ground to dig down.", 259));
 				mHelpWindow[1].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_DIAMOND_ADVANCE);
 				mHelpWindow[1].mXOfs.Add(ConstantsWP.HELPDIALOG_OFFSET_DIAMOND_2);
-				mHelpWindow[1].mTextWidthScale.Add(GlobalMembers.M(0f));
+				mHelpWindow[1].mTextWidthScale.Add((0f));
 				mHelpWindow[1].mCaptions.Add(GlobalMembers._ID("Clear all ground tiles down to the white line to advance.", 260));
 				mHelpWindow[2].mPopAnims.Add(GlobalMembersResourcesWP.POPANIM_HELP_DIAMOND_GOLD);
 				mHelpWindow[2].mXOfs.Add(ConstantsWP.HELPDIALOG_OFFSET_DIAMOND_3);
-				mHelpWindow[2].mTextWidthScale.Add(GlobalMembers.M(1f));
+				mHelpWindow[2].mTextWidthScale.Add((1f));
 				mHelpWindow[2].mCaptions.Add(GlobalMembers._ID("Make matches next to gold, gems and artifacts to earn points.", 261));
 			}
 			for (int j = 0; j < mNumWindows; j++)

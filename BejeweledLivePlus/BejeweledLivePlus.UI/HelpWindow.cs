@@ -53,7 +53,7 @@ namespace BejeweledLivePlus.UI
 
 		public override void Draw(Graphics g)
 		{
-			int num = (int)((float)mWidth / ((float)Common.size(mPopAnims) + GlobalMembers.M(0.1f)));
+			int num = (int)((float)mWidth / ((float)Common.size(mPopAnims) + (0.1f)));
 			int val = 0;
 			for (int i = 0; i < Common.size(mPopAnims); i++)
 			{
@@ -72,10 +72,10 @@ namespace BejeweledLivePlus.UI
 				Rect rect2 = rect;
 				rect2.Inflate(ConstantsWP.HELPDIALOG_WINDOW_BACKGROUND_EXTRA_SIZE, ConstantsWP.HELPDIALOG_WINDOW_BACKGROUND_EXTRA_SIZE);
 				transform.Scale((float)rect2.mWidth / ConstantsWP.HELPDIALOG_WINDOW_BACKGROUND_SCALE, (float)rect2.mHeight / ConstantsWP.HELPDIALOG_WINDOW_BACKGROUND_SCALE);
-				g.DrawImageTransformF(GlobalMembersResourcesWP.IMAGE_DIALOG_HELP_GLOW, transform, (float)num * ((float)j + GlobalMembers.M(0.56f)) + (float)mXOfs[j] + (float)ConstantsWP.HELPDIALOG_WINDOW_BACKGROUND_OFFSET, mHeight / 2 + hELPDIALOG_WINDOW_ANIMATION_Y_OFFSET);
+				g.DrawImageTransformF(GlobalMembersResourcesWP.IMAGE_DIALOG_HELP_GLOW, transform, (float)num * ((float)j + (0.56f)) + (float)mXOfs[j] + (float)ConstantsWP.HELPDIALOG_WINDOW_BACKGROUND_OFFSET, mHeight / 2 + hELPDIALOG_WINDOW_ANIMATION_Y_OFFSET);
 				g.PushState();
 				PopAnim popAnim = mPopAnims[j];
-				g.Translate((int)((float)num * ((float)j + GlobalMembers.M(0.56f)) - (float)GlobalMembers.S(rect.mWidth / 2 + mXOfs[j])), mHeight / 2 - GlobalMembers.S(rect.mHeight / 2) + hELPDIALOG_WINDOW_ANIMATION_Y_OFFSET);
+				g.Translate((int)((float)num * ((float)j + (0.56f)) - (float)GlobalMembers.S(rect.mWidth / 2 + mXOfs[j])), mHeight / 2 - GlobalMembers.S(rect.mHeight / 2) + hELPDIALOG_WINDOW_ANIMATION_Y_OFFSET);
 				Rect theRect = GlobalMembers.S(mPopAnims[j].mAnimRect);
 				theRect.mX = (int)((float)theRect.mX * ConstantsWP.HELPDIALOG_POPANIM_CLIP_SCALE);
 				theRect.mY = (int)((float)theRect.mY * ConstantsWP.HELPDIALOG_POPANIM_CLIP_SCALE);

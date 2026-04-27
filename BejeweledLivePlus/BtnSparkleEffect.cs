@@ -17,9 +17,9 @@ public class BtnSparkleEffect : Effect
 	{
 		mAnchorBtn = null;
 		mDAlpha = 0f;
-		mCurvedRotate.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.8,0.01,2,####     CS,E#    ^~SYE"));
-		mCurvedScale.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.5,0.01,2,#6JCjB6)8    )~###    X><uQV'<.a"));
-		mCurvedAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.75,0.01,2,####    5~### t~###   v'###"));
+		mCurvedRotate.SetCurve(("b;0,0.8,0.01,2,####     CS,E#    ^~SYE"));
+		mCurvedScale.SetCurve(("b;0,0.5,0.01,2,#6JCjB6)8    )~###    X><uQV'<.a"));
+		mCurvedAlpha.SetCurve(("b;0,0.75,0.01,2,####    5~### t~###   v'###"));
 	}
 
 	public override void Draw(Graphics g)

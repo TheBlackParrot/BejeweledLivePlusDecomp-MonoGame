@@ -177,7 +177,7 @@ namespace BejeweledLivePlus
 
 		public override int GetSidebarTextY()
 		{
-			return GlobalMembers.M(80);
+			return (80);
 		}
 	}
 }

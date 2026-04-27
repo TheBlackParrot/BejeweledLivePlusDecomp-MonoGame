@@ -148,12 +148,12 @@ namespace BejeweledLivePlus.Widget
 		{
 			if (mWhirlpoolFade > 0.0)
 			{
-				mWhirlpoolFrame -= GlobalMembers.M(0.1f);
+				mWhirlpoolFrame -= (0.1f);
 				if (mWhirlpoolFrame < 0f)
 				{
 					mWhirlpoolFrame += 5f;
 				}
-				mWhirlpoolRotAcc += GlobalMembers.M(0.0005f);
+				mWhirlpoolRotAcc += (0.0005f);
 				mWhirlpoolRot -= mWhirlpoolRotAcc;
 				MarkDirty();
 			}

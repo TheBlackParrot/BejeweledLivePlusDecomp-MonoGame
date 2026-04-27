@@ -23,9 +23,9 @@ namespace BejeweledLivePlus.Bej3Graphics
 
 		public virtual void DrawBack(Graphics g)
 		{
-			double num = GlobalMembers.M(0.0);
-			g.SetColor(Utils.ColorLerp(new Color(GlobalMembers.M(190), GlobalMembers.M(150), GlobalMembers.M(95)), new Color(GlobalMembers.M(174), GlobalMembers.M(0), GlobalMembers.M(0)), (int)(float)num));
-			g.FillRect(GlobalMembers.MS(620), GlobalMembers.MS(0), GlobalMembers.MS(1200), GlobalMembers.MS(1200));
+			double num = (0.0);
+			g.SetColor(Utils.ColorLerp(new Color((190), (150), (95)), new Color((174), (0), (0)), (int)(float)num));
+			g.FillRect((620), (0), (1200), (1200));
 			g.SetColor(new Color(-1));
 		}
 
@@ -48,7 +48,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 		{
 			mImage.mUnsharedImage = mSharedRenderTarget.Lock(GlobalMembers.gApp.mScreenBounds.mWidth, GlobalMembers.gApp.mScreenBounds.mHeight);
 			Graphics graphics = new Graphics(mImage.GetImage());
-			graphics.Translate(GlobalMembers.MS(-160) - GlobalMembers.gApp.mScreenBounds.mX, GlobalMembers.gApp.mScreenBounds.mY);
+			graphics.Translate((-160) - GlobalMembers.gApp.mScreenBounds.mX, GlobalMembers.gApp.mScreenBounds.mY);
 			DrawFull(graphics);
 			mSharedRenderTarget.Unlock();
 			return mImage;

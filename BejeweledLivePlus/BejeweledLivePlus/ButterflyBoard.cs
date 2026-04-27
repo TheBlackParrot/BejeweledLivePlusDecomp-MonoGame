@@ -112,7 +112,7 @@ namespace BejeweledLivePlus
 				mLastButterflyEffect = ButterflyEffect.alloc(mForcedReleasedBflyPiece, this);
 				if (!mIsPerpetual)
 				{
-					mLastButterflyEffect.mTargetY.mOutMin = GlobalMembers.M(590);
+					mLastButterflyEffect.mTargetY.mOutMin = (590);
 				}
 				mPostFXManager.AddEffect(mLastButterflyEffect);
 				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTERFLYESCAPE);
@@ -125,7 +125,7 @@ namespace BejeweledLivePlus
 			int moveStat = GetMoveStat(thePiece.mMoveCreditId, 28);
 			MaxStat(29, moveStat, thePiece.mMoveCreditId);
 			mAllowNewComboFloaters = true;
-			AddPoints((int)thePiece.CX(), (int)thePiece.CY(), GlobalMembers.M(150) + GlobalMembers.M(5) * mGameStats[28] + (moveStat - 1) * GlobalMembers.M(100), Color.White, (uint)thePiece.mMatchId, true, true, thePiece.mMoveCreditId, false);
+			AddPoints((int)thePiece.CX(), (int)thePiece.CY(), (150) + (5) * mGameStats[28] + (moveStat - 1) * (100), Color.White, (uint)thePiece.mMatchId, true, true, thePiece.mMoveCreditId, false);
 			mAllowNewComboFloaters = false;
 			ReleaseButterfly(thePiece);
 			if (GetLevelPointsTotal() < GetLevelPoints() || mIsPerpetual)
@@ -185,7 +185,7 @@ namespace BejeweledLivePlus
 
 		public override int GetGameOverCountTreshold()
 		{
-			return GlobalMembers.M(250);
+			return (250);
 		}
 
 		public override void GameOverAnnounce()
@@ -473,7 +473,7 @@ namespace BejeweledLivePlus
 		public override void UpdateGame()
 		{
 			base.UpdateGame();
-			bool flag = mGameTicks <= GlobalMembers.M(150);
+			bool flag = mGameTicks <= (150);
 			Piece[,] array = mBoard;
 			foreach (Piece piece in array)
 			{
@@ -482,7 +482,7 @@ namespace BejeweledLivePlus
 					piece.mFallVelocity = 0.01f;
 				}
 			}
-			if (mGrabbedAt >= 0 && mGameTicks == mGrabbedAt + GlobalMembers.M(30))
+			if (mGrabbedAt >= 0 && mGameTicks == mGrabbedAt + (30))
 			{
 				int mLevelCompleteCount2 = mLevelCompleteCount;
 			}
@@ -509,7 +509,7 @@ namespace BejeweledLivePlus
 			else
 			{
 				Piece piece2 = null;
-				for (int k = -1; k < (flag ? GlobalMembers.M(8) : GlobalMembers.M(5)); k++)
+				for (int k = -1; k < (flag ? (8) : (5)); k++)
 				{
 					for (int l = 0; l < 8; l++)
 					{
@@ -528,7 +528,7 @@ namespace BejeweledLivePlus
 				{
 					if (mSpiderCol == (float)piece2.mCol)
 					{
-						if (piece2.mDestRow >= 0 && SexyFramework.Common.Rand() % GlobalMembers.M(500) == 0)
+						if (piece2.mDestRow >= 0 && SexyFramework.Common.Rand() % (500) == 0)
 						{
 							int num = SexyFramework.Common.Rand(4);
 							if (piece2.mRow == 0 && num > 0)
@@ -548,7 +548,7 @@ namespace BejeweledLivePlus
 						}
 						if (piece2.mDestRow == -1)
 						{
-							if (mLevelCompleteCount == 0 && mGrabbedAt == -1 && (double)piece2.mDestPct >= GlobalMembers.M(0.3))
+							if (mLevelCompleteCount == 0 && mGrabbedAt == -1 && (double)piece2.mDestPct >= (0.3))
 							{
 								mSpider.Play("GRAB");
 								mGrabbedAt = mGameTicks;
@@ -599,7 +599,7 @@ namespace BejeweledLivePlus
 								}
 							}
 						}
-						else if (SexyFramework.Common.Rand() % GlobalMembers.M(1500) == 0)
+						else if (SexyFramework.Common.Rand() % (1500) == 0)
 						{
 							mSpider.Play("IDLE");
 						}
@@ -614,12 +614,12 @@ namespace BejeweledLivePlus
 						mSpiderWalkColFrom = mSpiderCol;
 						mSpiderWalkColTo = piece2.mCol;
 						GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eBUTTERFLY_SPIDER_WALK_PCT, mSpiderWalkPct);
-						mSpiderWalkPct.mIncRate *= GlobalMembers.M(1.8) + (double)Math.Abs((float)piece2.mCol - mSpiderCol) * GlobalMembers.M(-0.1) + (double)piece2.mRow * GlobalMembers.M(-0.1);
+						mSpiderWalkPct.mIncRate *= (1.8) + (double)Math.Abs((float)piece2.mCol - mSpiderCol) * (-0.1) + (double)piece2.mRow * (-0.1);
 					}
 				}
 			}
-			mSpider.Resize(GlobalMembers.S(GetBoardX() + (int)(mSpiderCol * 100f) + ConstantsWP.BUTTERFLY_SPIDER_X_OFFSET), (int)(GlobalMembers.MS(-450f + mSpiderYOffset) + (float)ConstantsWP.BUTTERFLY_SPIDER_Y_OFFSET), GlobalMembers.S(mSpider.mAnimRect.mWidth), GlobalMembers.S(mSpider.mAnimRect.mHeight));
-			if (mGameTicks >= GlobalMembers.M(150))
+			mSpider.Resize(GlobalMembers.S(GetBoardX() + (int)(mSpiderCol * 100f) + ConstantsWP.BUTTERFLY_SPIDER_X_OFFSET), (int)((-450f + mSpiderYOffset) + (float)ConstantsWP.BUTTERFLY_SPIDER_Y_OFFSET), GlobalMembers.S(mSpider.mAnimRect.mWidth), GlobalMembers.S(mSpider.mAnimRect.mHeight));
+			if (mGameTicks >= (150))
 			{
 				mSpider.Update();
 			}
@@ -646,7 +646,7 @@ namespace BejeweledLivePlus
 				piece6.mShakeScale = Math.Max(0f, 2f - (float)piece6.mRow) / 2f;
 				if (piece6.mDestRow == -1)
 				{
-					piece6.mShakeScale *= (float)(1.0 - (double)piece6.mDestPct * (double)GlobalMembers.M(1f));
+					piece6.mShakeScale *= (float)(1.0 - (double)piece6.mDestPct * (double)(1f));
 				}
 				if (piece6.mCounter > 0 || Common.size(mDeferredTutorialVector) != 0 || Common.size(mLightningStorms) != 0)
 				{
@@ -744,9 +744,6 @@ namespace BejeweledLivePlus
 
 		public override void DrawOverlay(Graphics g, int thePriority)
 		{
-			GlobalMembers.M(380);
-			GlobalMembers.M(150);
-			GlobalMembers.M(30);
 			if (g.mPushedColorVector.Count > 0)
 			{
 				g.PopColorMult();
@@ -787,7 +784,7 @@ namespace BejeweledLivePlus
 			mLastButterflyEffect = ButterflyEffect.alloc(thePiece, this);
 			if (!mIsPerpetual)
 			{
-				mLastButterflyEffect.mTargetY.mOutMin = GlobalMembers.M(590);
+				mLastButterflyEffect.mTargetY.mOutMin = (590);
 			}
 			mPostFXManager.AddEffect(mLastButterflyEffect);
 			GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_BUTTERFLYESCAPE);
@@ -850,7 +847,7 @@ namespace BejeweledLivePlus
 					{
 						Points points2 = AddPoints(theX, theY, 0, Color.White, (uint)(-2 - theMoveCreditId), true, true, theMoveCreditId, true);
 						points2.mX = points.mX;
-						points2.mY = points.mY + points.mScale * (float)GlobalMembers.M(1000);
+						points2.mY = points.mY + points.mScale * (float)(1000);
 						points2.mTimer = points.mTimer;
 						for (int i = 0; i < GlobalMembers.Max_LAYERS; i++)
 						{
@@ -908,7 +905,7 @@ namespace BejeweledLivePlus
 			}
 			int num = ((GetTimeLimit() > 60) ? 1500 : 1000);
 			float num2 = (float)(num - ticksLeft) / (float)num;
-			int num3 = (int)((Math.Sin((float)mUpdateCnt * GlobalMembers.M(0.15f)) * 127.0 + 127.0) * (double)num2 * (double)GetPieceAlpha());
+			int num3 = (int)((Math.Sin((float)mUpdateCnt * (0.15f)) * 127.0 + 127.0) * (double)num2 * (double)GetPieceAlpha());
 			return new Color(255, 0, 0, num3 / 2);
 		}
 	}

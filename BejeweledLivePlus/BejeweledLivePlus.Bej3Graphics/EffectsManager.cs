@@ -380,18 +380,18 @@ namespace BejeweledLivePlus.Bej3Graphics
 					{
 						current.mAngle += current.mDAngle;
 						Effect effect2 = AllocEffect(Effect.Type.TYPE_SMOKE_PUFF);
-						effect2.mScale *= current.mScale * (GlobalMembers.M(0f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(0.45f));
-						effect2.mAlpha *= GlobalMembers.M(0.3f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(0.05f);
+						effect2.mScale *= current.mScale * ((0f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (0.45f));
+						effect2.mAlpha *= (0.3f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (0.05f);
 						effect2.mAlpha *= current.mAlpha;
 						effect2.mAngle = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
-						effect2.mDAngle = GlobalMembersUtils.GetRandFloat() * (float)Math.PI * GlobalMembers.M(0.1f);
-						effect2.mIsAdditive = GlobalMembers.M(0) > 0;
+						effect2.mDAngle = GlobalMembersUtils.GetRandFloat() * (float)Math.PI * (0.1f);
+						effect2.mIsAdditive = (0) > 0;
 						effect2.mGravity = 0f;
-						effect2.mDY = GlobalMembers.MS(-1f);
+						effect2.mDY = (-1f);
 						effect2.mX = current.mX;
 						effect2.mY = current.mY;
 						AddEffect(effect2);
-						if (current.mScale < GlobalMembers.M(0.02f))
+						if (current.mScale < (0.02f))
 						{
 							current.mDeleteMe = true;
 						}
@@ -401,15 +401,15 @@ namespace BejeweledLivePlus.Bej3Graphics
 						current.mDX *= 0.95f;
 						break;
 					case Effect.Type.TYPE_STEAM_COMET:
-						if (current.mScale < GlobalMembers.M(0.1f))
+						if (current.mScale < (0.1f))
 						{
 							current.mAlpha = 0f;
 							break;
 						}
-						if (mUpdateCnt % GlobalMembers.M(10) == GlobalMembers.M(9))
+						if (mUpdateCnt % (10) == (9))
 						{
-							current.mDX += GlobalMembers.M(1.3f) * GlobalMembersUtils.GetRandFloat();
-							current.mDY += GlobalMembers.M(1.3f) * GlobalMembersUtils.GetRandFloat();
+							current.mDX += (1.3f) * GlobalMembersUtils.GetRandFloat();
+							current.mDY += (1.3f) * GlobalMembersUtils.GetRandFloat();
 						}
 						if (mUpdateCnt % 2 != 0)
 						{
@@ -420,7 +420,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 							effect.mY = current.mY;
 							effect.mIsAdditive = false;
 							effect.mScale = current.mScale;
-							effect.mDScale = GlobalMembers.M(0f);
+							effect.mDScale = (0f);
 							AddEffect(effect);
 						}
 						break;
@@ -429,7 +429,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						{
 							current.mAlpha = 0f;
 						}
-						current.mAngle = GlobalMembers.M(0f) + (float)Math.Atan2(current.mDX, current.mDY);
+						current.mAngle = (0f) + (float)Math.Atan2(current.mDX, current.mDY);
 						break;
 					case Effect.Type.TYPE_BLAST_RING:
 						current.mScale += 0.8f;
@@ -452,7 +452,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						break;
 					}
 					case Effect.Type.TYPE_GLITTER_SPARK:
-						current.mAlpha = ((BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(5) == 0) ? 1f : GlobalMembers.M(0.25f));
+						current.mAlpha = ((BejeweledLivePlus.Misc.Common.Rand() % (5) == 0) ? 1f : (0.25f));
 						break;
 					case Effect.Type.TYPE_FRUIT_SPARK:
 						current.mDY += current.mGravity;
@@ -472,7 +472,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						current.mDY *= current.mDecel;
 						current.mAngle += current.mDAngle;
 						current.mValue[0] += current.mValue[2];
-						current.mValue[1] += GlobalMembers.M(1f) * current.mValue[3];
+						current.mValue[1] += (1f) * current.mValue[3];
 						break;
 					case Effect.Type.TYPE_NONE:
 						if (current.mUpdateDiv == 0 || mUpdateCnt % current.mUpdateDiv == 0)
@@ -657,7 +657,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						{
 							num9 = (float)Math.Sqrt(num9);
 						}
-						mColor8.mAlpha = (int)(num9 * GlobalMembers.M(64f));
+						mColor8.mAlpha = (int)(num9 * (64f));
 						float num10 = 0.2f;
 						float num11 = 0.3f;
 						float num16 = num10 % num11;
@@ -666,7 +666,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						float mScale3 = current.mScale;
 						DD_aTrans.Reset();
 						DD_aTrans.RotateRad(current.mAngle);
-						float num12 = GlobalMembers.M(0.25f);
+						float num12 = (0.25f);
 						float num13 = (float)Math.Sin(current.mValue[0]);
 						if (num13 > 0f && num13 < num12)
 						{
@@ -685,11 +685,11 @@ namespace BejeweledLivePlus.Bej3Graphics
 						{
 							num14 = 0f - num12;
 						}
-						DD_aTrans.Scale(GlobalMembers.M(1.4f) * num13 * mScale3, GlobalMembers.M(1.4f) * num14 * mScale3);
+						DD_aTrans.Scale((1.4f) * num13 * mScale3, (1.4f) * num14 * mScale3);
 						g.SetColorizeImages(true);
 						g.SetDrawMode(0);
-						DD_aTrans.Scale(GlobalMembers.M(1.15f) * current.mScale, GlobalMembers.M(1.15f) * current.mScale);
-						mColor8.mAlpha = (int)(num9 * GlobalMembers.M(255f));
+						DD_aTrans.Scale((1.15f) * current.mScale, (1.15f) * current.mScale);
+						mColor8.mAlpha = (int)(num9 * (255f));
 						g.SetColor(mColor8);
 						int num15 = current.GetHashCode() * mUpdateCnt % 8;
 						GlobalMembers.gGR.DrawImageTransform(g, GlobalMembersResourcesWP.IMAGE_SM_SHARDS, DD_aTrans, new Rect(GlobalMembersResourcesWP.IMAGE_SM_SHARDS.GetCelWidth() * num15, 0, GlobalMembersResourcesWP.IMAGE_SM_SHARDS.GetCelWidth(), GlobalMembersResourcesWP.IMAGE_SM_SHARDS.GetCelHeight()), (int)GlobalMembers.S(current.mX), (int)GlobalMembers.S(current.mY));
@@ -751,7 +751,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 					{
 						g.SetColorizeImages(true);
 						Color mColor5 = current.mColor;
-						int num5 = ((GlobalMembers.M(1) != 0) ? GlobalMembers.M(1) : (mColor5.mRed + mColor5.mGreen + mColor5.mBlue));
+						int num5 = (((1) != 0) ? (1) : (mColor5.mRed + mColor5.mGreen + mColor5.mBlue));
 						if (current.mType == Effect.Type.TYPE_EMBER_BOTTOM || current.mType == Effect.Type.TYPE_EMBER_FADEINOUT_BOTTOM)
 						{
 							num5 = 0;
@@ -858,7 +858,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						transform.Reset();
 						int num2 = (int)((double)current.mCurvedAlpha * (double)mAlpha);
 						g.SetColor(new Color(num2, num2, num2));
-						float num3 = (float)Math.Pow(current.mCurvedScale, GlobalMembers.M(2.5));
+						float num3 = (float)Math.Pow(current.mCurvedScale, (2.5));
 						transform.Scale((float)((double)current.mCurvedAlpha / 160.0), (float)((double)current.mCurvedAlpha / 320.0));
 						transform.RotateDeg(current.mAngle * 0.1f * num3 + 15f);
 						GlobalMembers.gGR.DrawImageTransform(g, GlobalMembersResourcesWP.IMAGE_HYPERFLARELINE, transform, GlobalMembers.S(current.mX), GlobalMembers.S(current.mY));
@@ -871,7 +871,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						transform.RotateDeg(current.mAngle * 0.05f * num3 + 60f);
 						GlobalMembers.gGR.DrawImageTransform(g, GlobalMembersResourcesWP.IMAGE_HYPERFLARELINE, transform, GlobalMembers.S(current.mX), GlobalMembers.S(current.mY));
 						transform.Reset();
-						transform.Scale((float)((double)current.mCurvedScale * (double)GlobalMembers.M(0.6f)), (float)((double)current.mCurvedScale * (double)GlobalMembers.M(0.6f)));
+						transform.Scale((float)((double)current.mCurvedScale * (double)(0.6f)), (float)((double)current.mCurvedScale * (double)(0.6f)));
 						GlobalMembers.gGR.DrawImageTransform(g, GlobalMembersResourcesWP.IMAGE_HYPERFLARERING, transform, GlobalMembers.S(current.mX), GlobalMembers.S(current.mY));
 						break;
 					}
@@ -972,53 +972,53 @@ namespace BejeweledLivePlus.Bej3Graphics
 
 		public void AddSteamExplosion(float theX, float theY, Color theColor)
 		{
-			for (int i = 0; i < GlobalMembers.M(12); i++)
+			for (int i = 0; i < (12); i++)
 			{
 				Effect effect = AllocEffect(Effect.Type.TYPE_STEAM);
 				float num = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
-				float num2 = GlobalMembers.MS(0f) + GlobalMembers.MS(4f) * Math.Abs(GlobalMembersUtils.GetRandFloat());
+				float num2 = (0f) + (4f) * Math.Abs(GlobalMembersUtils.GetRandFloat());
 				effect.mDX = num2 * (float)Math.Cos(num);
 				effect.mDY = num2 * (float)Math.Sin(num);
-				effect.mX = theX + (float)Math.Cos(num) * GlobalMembers.M(25f);
-				effect.mY = theY + (float)Math.Sin(num) * GlobalMembers.M(25f);
+				effect.mX = theX + (float)Math.Cos(num) * (25f);
+				effect.mY = theY + (float)Math.Sin(num) * (25f);
 				effect.mIsAdditive = false;
-				effect.mScale = GlobalMembers.M(0.1f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(1f);
-				effect.mDScale = GlobalMembers.M(0.02f);
+				effect.mScale = (0.1f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (1f);
+				effect.mDScale = (0.02f);
 				AddEffect(effect);
 			}
-			for (int j = 0; j < GlobalMembers.M(12); j++)
+			for (int j = 0; j < (12); j++)
 			{
 				Effect effect2 = AllocEffect(Effect.Type.TYPE_DROPLET);
 				float num3 = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
-				float num4 = GlobalMembers.MS(1f) + GlobalMembers.MS(5f) * Math.Abs(GlobalMembersUtils.GetRandFloat());
+				float num4 = (1f) + (5f) * Math.Abs(GlobalMembersUtils.GetRandFloat());
 				effect2.mDX = num4 * (float)Math.Cos(num3);
-				effect2.mDY = num4 * (float)Math.Sin(num3) + GlobalMembers.M(-1.5f);
-				effect2.mX = theX + (float)Math.Cos(num3) * GlobalMembers.M(25f);
-				effect2.mY = theY + (float)Math.Sin(num3) * GlobalMembers.M(25f);
+				effect2.mDY = num4 * (float)Math.Sin(num3) + (-1.5f);
+				effect2.mX = theX + (float)Math.Cos(num3) * (25f);
+				effect2.mY = theY + (float)Math.Sin(num3) * (25f);
 				effect2.mIsAdditive = false;
-				effect2.mScale = GlobalMembers.M(0.6f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(0.2f);
-				effect2.mDScale = GlobalMembers.M(-0.01f);
-				effect2.mAlpha = GlobalMembers.M(0.6f);
+				effect2.mScale = (0.6f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (0.2f);
+				effect2.mDScale = (-0.01f);
+				effect2.mAlpha = (0.6f);
 				effect2.mColor = new Color(11184844);
 				AddEffect(effect2);
 			}
-			for (int k = 0; k < GlobalMembers.M(3); k++)
+			for (int k = 0; k < (3); k++)
 			{
 				Effect effect3 = AllocEffect(Effect.Type.TYPE_STEAM_COMET);
-				float num5 = (float)k * (float)Math.PI / 3f + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.2f);
-				float num6 = GlobalMembers.MS(6f) + GlobalMembers.MS(2f) * Math.Abs(GlobalMembersUtils.GetRandFloat());
+				float num5 = (float)k * (float)Math.PI / 3f + GlobalMembersUtils.GetRandFloat() * (0.2f);
+				float num6 = (6f) + (2f) * Math.Abs(GlobalMembersUtils.GetRandFloat());
 				effect3.mValue[0] = theX;
 				effect3.mValue[1] = theY;
 				effect3.mDX = num6 * (float)Math.Cos(num5);
 				effect3.mDY = num6 * (float)Math.Sin(num5);
-				effect3.mX = theX + (float)Math.Cos(num5) * GlobalMembers.M(25f);
-				effect3.mY = theY + (float)Math.Sin(num5) * GlobalMembers.M(25f);
+				effect3.mX = theX + (float)Math.Cos(num5) * (25f);
+				effect3.mY = theY + (float)Math.Sin(num5) * (25f);
 				effect3.mIsAdditive = false;
-				effect3.mScale = GlobalMembers.M(2.5f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(0.1f);
-				effect3.mDScale = GlobalMembers.M(-0.08f);
+				effect3.mScale = (2.5f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (0.1f);
+				effect3.mDScale = (-0.08f);
 				AddEffect(effect3);
 			}
-			for (int l = 0; l < GlobalMembers.M(12); l++)
+			for (int l = 0; l < (12); l++)
 			{
 				Effect effect4 = AllocEffect(Effect.Type.TYPE_GEM_SHARD);
 				effect4.mColor = theColor;
@@ -1026,22 +1026,22 @@ namespace BejeweledLivePlus.Bej3Graphics
 				double num8 = 0.0;
 				float num9 = 0f;
 				num8 = GlobalMembersUtils.GetRandFloat() * 3.14159f;
-				num7 = (int)(GlobalMembersUtils.GetRandFloat() * (float)GlobalMembers.S(GlobalMembers.M(48)));
-				effect4.mX = theX + (float)(int)(GlobalMembers.M(1f) * (float)num7 * (float)Math.Cos(num8));
-				effect4.mY = theY + (float)(int)(GlobalMembers.M(1f) * (float)num7 * (float)Math.Sin(num8));
-				num8 = (float)Math.Atan2(effect4.mY - theY, effect4.mX - theX) + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.3f);
-				num9 = GlobalMembers.MS(4.5f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.MS(1.5f);
+				num7 = (int)(GlobalMembersUtils.GetRandFloat() * (float)GlobalMembers.S((48)));
+				effect4.mX = theX + (float)(int)((1f) * (float)num7 * (float)Math.Cos(num8));
+				effect4.mY = theY + (float)(int)((1f) * (float)num7 * (float)Math.Sin(num8));
+				num8 = (float)Math.Atan2(effect4.mY - theY, effect4.mX - theX) + GlobalMembersUtils.GetRandFloat() * (0.3f);
+				num9 = (4.5f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (1.5f);
 				effect4.mDX = (float)Math.Cos(num8) * num9;
-				effect4.mDY = (float)Math.Sin(num8) * num9 + GlobalMembers.MS(-2f);
-				effect4.mDecel = GlobalMembers.M(0.99f) + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.005f);
+				effect4.mDY = (float)Math.Sin(num8) * num9 + (-2f);
+				effect4.mDecel = (0.99f) + GlobalMembersUtils.GetRandFloat() * (0.005f);
 				effect4.mAngle = (float)num8;
-				effect4.mDAngle = GlobalMembers.M(0.05f) * GlobalMembersUtils.GetRandFloat();
-				effect4.mGravity = GlobalMembers.M(0.06f);
+				effect4.mDAngle = (0.05f) * GlobalMembersUtils.GetRandFloat();
+				effect4.mGravity = (0.06f);
 				effect4.mValue[0] = GlobalMembersUtils.GetRandFloat() * (float)Math.PI * 2f;
 				effect4.mValue[1] = GlobalMembersUtils.GetRandFloat() * (float)Math.PI * 2f;
-				effect4.mValue[2] = GlobalMembers.M(0.045f) * (GlobalMembers.M(3f) * Math.Abs(GlobalMembersUtils.GetRandFloat()) + GlobalMembers.M(1f));
-				effect4.mValue[3] = GlobalMembers.M(0.045f) * (GlobalMembers.M(3f) * Math.Abs(GlobalMembersUtils.GetRandFloat()) + GlobalMembers.M(1f));
-				effect4.mDAlpha = GlobalMembers.M(-0.0025f) * (GlobalMembers.M(2f) * Math.Abs(GlobalMembersUtils.GetRandFloat()) + GlobalMembers.M(4f));
+				effect4.mValue[2] = (0.045f) * ((3f) * Math.Abs(GlobalMembersUtils.GetRandFloat()) + (1f));
+				effect4.mValue[3] = (0.045f) * ((3f) * Math.Abs(GlobalMembersUtils.GetRandFloat()) + (1f));
+				effect4.mDAlpha = (-0.0025f) * ((2f) * Math.Abs(GlobalMembersUtils.GetRandFloat()) + (4f));
 				AddEffect(effect4);
 			}
 		}
@@ -1169,7 +1169,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 							Math.Max(1f - Math.Abs(num2 - 1f) * 3f, 0f) * num
 						};
 						float num3 = (float)(double)current.mRadius;
-						new Rect((int)(GlobalMembers.S((double)current.mCenter.mX + (double)current.mMoveDelta.mX * (double)current.mMovePct - (double)num3) / (double)GlobalMembers.M(4f)), (int)(GlobalMembers.S((double)current.mCenter.mY + (double)current.mMoveDelta.mY * (double)current.mMovePct - (double)num3) / (double)GlobalMembers.M(4f)), (int)(GlobalMembers.S(num3) / 2f), (int)(GlobalMembers.S(num3) / 2f));
+						new Rect((int)(GlobalMembers.S((double)current.mCenter.mX + (double)current.mMoveDelta.mX * (double)current.mMovePct - (double)num3) / (double)(4f)), (int)(GlobalMembers.S((double)current.mCenter.mY + (double)current.mMoveDelta.mY * (double)current.mMovePct - (double)num3) / (double)(4f)), (int)(GlobalMembers.S(num3) / 2f), (int)(GlobalMembers.S(num3) / 2f));
 						Color color = new Color((int)(array[0] * 255f), (int)(array[1] * 255f), (int)(array[2] * 255f), (int)(array[3] * 255f));
 						graphics.SetColor(color);
 					}
@@ -1177,7 +1177,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				}
 			}
 			graphics.PopState();
-			if (mDistortEffectList.Count > 0 || GlobalMembers.M(0) != 0)
+			if (mDistortEffectList.Count > 0 || (0) != 0)
 			{
 				SharedRenderTarget sharedRenderTarget = new SharedRenderTarget();
 				Image image = sharedRenderTarget.LockScreenImage("DistortFull");
@@ -1192,7 +1192,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				graphics3D.SetTextureLinearFilter(1, true);
 				effect = graphics3D.GetEffect(GlobalMembersResourcesWP.EFFECT_SCREEN_DISTORT);
 				float[] array2 = new float[4];
-				array2[0] = (array2[1] = GlobalMembers.M(0.02f));
+				array2[0] = (array2[1] = (0.02f));
 				effect.SetVector4("Params", array2);
 				Rect rect = new Rect(0, 0, image.mWidth, image.mHeight);
 				using (RenderEffectAutoState renderEffectAutoState2 = new RenderEffectAutoState(g, effect))
@@ -1223,7 +1223,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 			graphics3D.SetTextureLinearFilter(1, true);
 			effect = graphics3D.GetEffect(GlobalMembersResourcesWP.EFFECT_SCREEN_DISTORT);
 			float[] array3 = new float[4];
-			array3[0] = (array3[1] = GlobalMembers.M(0.02f));
+			array3[0] = (array3[1] = (0.02f));
 			effect.SetVector4("Params", array3);
 			graphics3D.SetTexture(1, heightImage);
 			int num5 = ((mBoard != null) ? mBoard.mDistortionQuads.Count : 0);

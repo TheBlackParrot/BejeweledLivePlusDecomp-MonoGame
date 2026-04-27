@@ -93,7 +93,7 @@ namespace BejeweledLivePlus
 			GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eSPEED_BOARD_ALPHA_OUT, mAlphaOut);
 			mSplineInterp.SetInRange(0.0, mSplineInterp.mInMax * (double)mTimeMod);
 			mAlphaOut.mIncRate = mSplineInterp.mIncRate;
-			mAlphaOut.mInMax = mSplineInterp.mInMax + (double)GlobalMembers.M(0f);
+			mAlphaOut.mInMax = mSplineInterp.mInMax + (double)(0f);
 			mScaleCv.SetConstant(1.0);
 			mSpline = new BSpline();
 			mSpline.AddPoint(mX, mY);
@@ -111,10 +111,10 @@ namespace BejeweledLivePlus
 				if (item.mType == Type.TYPE_TIME_BONUS && item.mPieceRel == thePiece)
 				{
 					mTimeBonusEffect = (TimeBonusEffect)item;
-					mTimeBonusEffect.mLightIntensity = GlobalMembers.M(6f);
-					mTimeBonusEffect.mLightSize = GlobalMembers.M(300f);
-					mTimeBonusEffect.mValue[0] = GlobalMembers.M(50f);
-					mTimeBonusEffect.mValue[1] = GlobalMembers.M(-0.0005f);
+					mTimeBonusEffect.mLightIntensity = (6f);
+					mTimeBonusEffect.mLightSize = (300f);
+					mTimeBonusEffect.mValue[0] = (50f);
+					mTimeBonusEffect.mValue[1] = (-0.0005f);
 					mTimeBonusEffect.mRefCount++;
 					mTimeBonusEffect.mPieceRel = null;
 					mTimeBonusEffect.mOverlay = true;
@@ -135,7 +135,7 @@ namespace BejeweledLivePlus
 			{
 				double num = Math.Atan2((float)mLastPoint.mY - mY, mX - (float)mLastPoint.mX);
 				double num2 = num - mLastRotation;
-				num2 = ((num2 < 0.0) ? (-1.0) : 1.0) * Math.Min(GlobalMembers.M(0.03), Math.Abs(num2));
+				num2 = ((num2 < 0.0) ? (-1.0) : 1.0) * Math.Min((0.03), Math.Abs(num2));
 				mLastRotation += num2;
 				mLastPoint.mX = (int)mX;
 				mLastPoint.mY = (int)mY;
@@ -158,10 +158,10 @@ namespace BejeweledLivePlus
 					mSplineInterp.SetInRange(0.0, mSplineInterp.mInMax * (double)mTimeMod);
 					mCentering = false;
 					mSpline.AddPoint(mX, mY);
-					mSpline.AddPoint(GlobalMembers.M(800f), GlobalMembers.M(150f));
-					mSpline.AddPoint(GlobalMembers.M(600f), GlobalMembers.M(175f));
-					mSpline.AddPoint(GlobalMembers.M(400f), GlobalMembers.M(150f));
-					mSpline.AddPoint(GlobalMembers.M(200f), GlobalMembers.M(300f));
+					mSpline.AddPoint((800f), (150f));
+					mSpline.AddPoint((600f), (175f));
+					mSpline.AddPoint((400f), (150f));
+					mSpline.AddPoint((200f), (300f));
 					mSpline.AddPoint(mTargetPoint.mX, mTargetPoint.mY);
 					mSpline.CalculateSpline();
 					GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eSPEED_BOARD_SCALE_CV, mScaleCv);
@@ -175,8 +175,8 @@ namespace BejeweledLivePlus
 			}
 			if (mSparkles != null)
 			{
-				mSparkles.mX = mX + GlobalMembers.M(-30f);
-				mSparkles.mY = mY + GlobalMembers.M(-20f);
+				mSparkles.mX = mX + (-30f);
+				mSparkles.mY = mY + (-20f);
 			}
 			if (mTimeBonusEffect != null)
 			{
@@ -191,7 +191,7 @@ namespace BejeweledLivePlus
 			mSplineInterp.IncInVal();
 			if (mAlphaOut.IsDoingCurve())
 			{
-				if (mAlphaOut.CheckUpdatesFromEndThreshold(GlobalMembers.M(10)))
+				if (mAlphaOut.CheckUpdatesFromEndThreshold((10)))
 				{
 					mBoard.TimeCollected(mTimeCollected);
 				}

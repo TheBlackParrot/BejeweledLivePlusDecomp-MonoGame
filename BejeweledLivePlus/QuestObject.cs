@@ -181,32 +181,32 @@ public class QuestObject
 		case EAnimState.eAnim_Unrevealed:
 		{
 			BorderEffect borderEffect4 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
-			borderEffect4.mPhase.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b30,1,0.005,1,#         ~~"));
+			borderEffect4.mPhase.SetCurve(("b30,1,0.005,1,#         ~~"));
 			borderEffect4.mPhase.SetMode(1);
-			borderEffect4.mAlpha.SetConstant(BejeweledLivePlus.GlobalMembers.M(1f));
-			borderEffect4.mMultMagnitudeOuter.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.7f));
-			borderEffect4.mMultMagnitudeInner.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.8f));
+			borderEffect4.mAlpha.SetConstant((1f));
+			borderEffect4.mMultMagnitudeOuter.SetConstant((0.7f));
+			borderEffect4.mMultMagnitudeInner.SetConstant((0.8f));
 			borderEffect4.mId = 0;
 			mBorderFx.Add(borderEffect4);
 			mTransitionStreamerMag.SetConstant(1.0);
 			mGlintAlpha.SetConstant(0.0);
-			mMaskAlpha.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.3));
-			if (BejeweledLivePlus.GlobalMembers.M(1) != 0)
+			mMaskAlpha.SetConstant((0.3));
+			if ((1) != 0)
 			{
 				borderEffect4 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
 				borderEffect4.mPhase.SetConstant(1.0);
-				borderEffect4.mFxOffsetX = BejeweledLivePlus.GlobalMembers.M(0);
-				borderEffect4.mFxOffsetY = BejeweledLivePlus.GlobalMembers.M(0);
-				borderEffect4.mAlpha.SetConstant(BejeweledLivePlus.GlobalMembers.M(1.0));
-				borderEffect4.mMultMagnitudeOuter.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.7));
-				borderEffect4.mMultMagnitudeInner.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.8));
+				borderEffect4.mFxOffsetX = (0);
+				borderEffect4.mFxOffsetY = (0);
+				borderEffect4.mAlpha.SetConstant((1.0));
+				borderEffect4.mMultMagnitudeOuter.SetConstant((0.7));
+				borderEffect4.mMultMagnitudeInner.SetConstant((0.8));
 				borderEffect4.mId = 1;
 				mBorderFx.Add(borderEffect4);
 			}
 			mGrayscaleAlphaMult = 0.0;
 			mBaseObjAlpha.SetConstant(0.0);
 			mBaseObjAddAlpha.SetConstant(0.0);
-			mStreamerTgt = BejeweledLivePlus.GlobalMembers.M(150);
+			mStreamerTgt = (150);
 			mGlintColor = new Color(0, 0);
 			mClearStreamersAt = 0;
 			mClearTransStreamersAt = 0;
@@ -216,58 +216,58 @@ public class QuestObject
 		{
 			mQuestMenu.mQuestButtonSoundCount = 0;
 			ClearFx(true, false, true, true);
-			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICREVEALED_RUMBLE, BejeweledLivePlus.GlobalMembers.M(15), BejeweledLivePlus.GlobalMembers.M(1.0));
-			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICREVEALED_OBJECT, BejeweledLivePlus.GlobalMembers.M(70), BejeweledLivePlus.GlobalMembers.M(1.0));
+			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICREVEALED_RUMBLE, (15), (1.0));
+			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICREVEALED_OBJECT, (70), (1.0));
 			for (uint num2 = 0u; num2 < Common.size(mBorderFx); num2++)
 			{
-				mBorderFx.ToArray()[num2].mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,2.5,~###     )~###   Z#### @#M%M"));
+				mBorderFx.ToArray()[num2].mAlpha.SetCurve(("b;0,1,0.01,2.5,~###     )~###   Z#### @#M%M"));
 			}
-			mGlintAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.5,0.01,2,####         ~~###"));
-			mTransitionRumble.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,14,0.01,1.5,####o####s~###    >~###  r#### .#KZ[#####"));
-			mGrayscaleAlpha.SetConstant(BejeweledLivePlus.GlobalMembers.M(1.0));
-			mGrayscaleAlphaExtra.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,4,~###       C~###  ^####"));
+			mGlintAlpha.SetCurve(("b;0,0.5,0.01,2,####         ~~###"));
+			mTransitionRumble.SetCurve(("b;0,14,0.01,1.5,####o####s~###    >~###  r#### .#KZ[#####"));
+			mGrayscaleAlpha.SetConstant((1.0));
+			mGrayscaleAlphaExtra.SetCurve(("b;0,1,0.01,4,~###       C~###  ^####"));
 			mBaseObjAlpha.SetConstant(0.0);
 			mBaseObjAddAlpha.SetConstant(0.0);
-			mTransitionStreamerCount.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,40,0.01,2,#&KR ,+0l:    N~Sz(    I~###"));
-			mTransitionStreamerMag.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,5,0.01,2.5,6###    3~####~### v####  X#### @####"));
-			mBackgroundDarken.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.5,0.01,2.5,####    T#### v~### z~### X####"));
-			mTransitionStreamerColorShift.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,2,####        O#### B~###2~###"));
-			mStreamerColorShift.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,2.5,####         ~~###"));
-			mMaskAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,0.3,0.01,2,~###       0~### )#### k####"));
+			mTransitionStreamerCount.SetCurve(("b+0,40,0.01,2,#&KR ,+0l:    N~Sz(    I~###"));
+			mTransitionStreamerMag.SetCurve(("b;0,5,0.01,2.5,6###    3~####~### v####  X#### @####"));
+			mBackgroundDarken.SetCurve(("b;0,0.5,0.01,2.5,####    T#### v~### z~### X####"));
+			mTransitionStreamerColorShift.SetCurve(("b;0,1,0.01,2,####        O#### B~###2~###"));
+			mStreamerColorShift.SetCurve(("b+0,1,0.01,2.5,####         ~~###"));
+			mMaskAlpha.SetCurve(("b+0,0.3,0.01,2,~###       0~### )#### k####"));
 			mGrayscaleAlphaMult = 0.0;
-			mStreamerMag.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,5,0.01,2,6###   T~###  $~### ?#### G####u6###o6###"));
-			mGlintColor = new Color(BejeweledLivePlus.GlobalMembers.M(16711935), BejeweledLivePlus.GlobalMembers.M(0));
+			mStreamerMag.SetCurve(("b;0,5,0.01,2,6###   T~###  $~### ?#### G####u6###o6###"));
+			mGlintColor = new Color((16711935), (0));
 			for (uint num3 = 0u; num3 < Common.size(mStreamers); num3++)
 			{
-				mStreamers.ToArray()[num3].mColor2 = BejeweledLivePlus.GlobalMembers.M(10505777);
-				mStreamers.ToArray()[num3].mRotExtra.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.5,0.01,2.5,#########         ~~###"));
+				mStreamers.ToArray()[num3].mColor2 = (10505777);
+				mStreamers.ToArray()[num3].mRotExtra.SetCurve(("b;0,0.5,0.01,2.5,#########         ~~###"));
 			}
-			for (int i = 0; i <= BejeweledLivePlus.GlobalMembers.M(2); i++)
+			for (int i = 0; i <= (2); i++)
 			{
 				BorderEffect borderEffect3 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
 				borderEffect3.mId = i;
 				borderEffect3.mPhase.SetConstant(0.0);
-				borderEffect3.mDelayCnt = BejeweledLivePlus.GlobalMembers.M(80) + BejeweledLivePlus.GlobalMembers.M(15) * i;
+				borderEffect3.mDelayCnt = (80) + (15) * i;
 				if (i == 2)
 				{
-					borderEffect3.mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,1.5,#,=^   M~SAr     -~P## I#Pij"));
-					borderEffect3.mMultMagnitudeOuter.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0.75,10,0.01,0.5,~n5y         ~####"));
-					borderEffect3.mMultMagnitudeInner.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+1.0,12.0,0.01,0.5,~kNn         ~####"));
+					borderEffect3.mAlpha.SetCurve(("b+0,1,0.01,1.5,#,=^   M~SAr     -~P## I#Pij"));
+					borderEffect3.mMultMagnitudeOuter.SetCurve(("b+0.75,10,0.01,0.5,~n5y         ~####"));
+					borderEffect3.mMultMagnitudeInner.SetCurve(("b+1.0,12.0,0.01,0.5,~kNn         ~####"));
 				}
 				else
 				{
-					borderEffect3.mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,1.5,#,=^   M~SAr     -~P## I#Pij"));
-					borderEffect3.mMultMagnitudeOuter.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0.75,10,0.01,0.5,~n5y         ~####"));
-					borderEffect3.mMultMagnitudeInner.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+1.0,12.0,0.01,0.5,~kNn         ~####"));
+					borderEffect3.mAlpha.SetCurve(("b+0,1,0.01,1.5,#,=^   M~SAr     -~P## I#Pij"));
+					borderEffect3.mMultMagnitudeOuter.SetCurve(("b+0.75,10,0.01,0.5,~n5y         ~####"));
+					borderEffect3.mMultMagnitudeInner.SetCurve(("b+1.0,12.0,0.01,0.5,~kNn         ~####"));
 				}
 				borderEffect3.mBorderGlow = true;
 				mTransitionBorderFx.Add(borderEffect3);
 			}
-			mTransitionTicks = BejeweledLivePlus.GlobalMembers.M(230);
-			mNewStreamerDelay = BejeweledLivePlus.GlobalMembers.M(300);
-			mStreamerTgt = BejeweledLivePlus.GlobalMembers.M(150);
-			mClearStreamersAt = BejeweledLivePlus.GlobalMembers.M(150);
-			mClearTransStreamersAt = BejeweledLivePlus.GlobalMembers.M(150);
+			mTransitionTicks = (230);
+			mNewStreamerDelay = (300);
+			mStreamerTgt = (150);
+			mClearStreamersAt = (150);
+			mClearTransStreamersAt = (150);
 			break;
 		}
 		case EAnimState.eAnim_Revealed:
@@ -279,9 +279,9 @@ public class QuestObject
 			mBaseObjAlpha.SetConstant(0.0);
 			mBaseObjAddAlpha.SetConstant(0.0);
 			mMaskAlpha.SetConstant(0.0);
-			mGlintAlpha.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.5));
-			mStreamerTgt = BejeweledLivePlus.GlobalMembers.M(150);
-			mGlintColor = new Color(BejeweledLivePlus.GlobalMembers.M(16711935), BejeweledLivePlus.GlobalMembers.M(0));
+			mGlintAlpha.SetConstant((0.5));
+			mStreamerTgt = (150);
+			mGlintColor = new Color((16711935), (0));
 			mClearStreamersAt = 0;
 			mClearTransStreamersAt = 0;
 			break;
@@ -289,68 +289,68 @@ public class QuestObject
 		{
 			mQuestMenu.mQuestButtonSoundCount = 0;
 			ClearFx(true, false, true, true);
-			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICCOMPLETE_RUMBLE, BejeweledLivePlus.GlobalMembers.M(15), BejeweledLivePlus.GlobalMembers.M(1.0));
-			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICCOMPLETE_OBJECT, BejeweledLivePlus.GlobalMembers.M(280), BejeweledLivePlus.GlobalMembers.M(1.0));
+			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICCOMPLETE_RUMBLE, (15), (1.0));
+			mQuestMenu.AddDeferredSound(GlobalMembersResourcesWP.SOUND_QUESTMENU_RELICCOMPLETE_OBJECT, (280), (1.0));
 			BorderEffect borderEffect2 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
-			borderEffect2.mX = BejeweledLivePlus.GlobalMembers.M(0);
-			borderEffect2.mY = BejeweledLivePlus.GlobalMembers.M(0);
+			borderEffect2.mX = (0);
+			borderEffect2.mY = (0);
 			borderEffect2.mId = 0;
-			borderEffect2.mDelayCnt = BejeweledLivePlus.GlobalMembers.M(300);
+			borderEffect2.mDelayCnt = (300);
 			mTransitionBorderFx.Add(borderEffect2);
 			for (uint num = 0u; num < Common.size(mStreamers); num++)
 			{
-				mStreamers.ToArray()[num].mColor2 = BejeweledLivePlus.GlobalMembers.M(6644752);
+				mStreamers.ToArray()[num].mColor2 = (6644752);
 			}
-			mNewStreamerDelay = BejeweledLivePlus.GlobalMembers.M(300);
+			mNewStreamerDelay = (300);
 			borderEffect2 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
-			borderEffect2.mPhase.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.25));
-			borderEffect2.mSortOrder = BejeweledLivePlus.GlobalMembers.M(1);
-			borderEffect2.mMultMagnitudeOuter.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,2,0.01,4,#### B#### .F###     UF###h#### 7#O:N"));
-			borderEffect2.mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,4,####u#### b~###     8~###z#### 7#O:N"));
+			borderEffect2.mPhase.SetConstant((0.25));
+			borderEffect2.mSortOrder = (1);
+			borderEffect2.mMultMagnitudeOuter.SetCurve(("b+0,2,0.01,4,#### B#### .F###     UF###h#### 7#O:N"));
+			borderEffect2.mAlpha.SetCurve(("b+0,1,0.01,4,####u#### b~###     8~###z#### 7#O:N"));
 			mTransitionBorderFx.Add(borderEffect2);
 			borderEffect2 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
-			borderEffect2.mPhase.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.25));
-			borderEffect2.mSortOrder = BejeweledLivePlus.GlobalMembers.M(2);
-			borderEffect2.mMultMagnitudeOuter.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1.25,0.01,4,####    k####7q###   Kq### T#O:N"));
-			borderEffect2.mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,4,####    :#### #~###   1~### X#O:N"));
+			borderEffect2.mPhase.SetConstant((0.25));
+			borderEffect2.mSortOrder = (2);
+			borderEffect2.mMultMagnitudeOuter.SetCurve(("b+0,1.25,0.01,4,####    k####7q###   Kq### T#O:N"));
+			borderEffect2.mAlpha.SetCurve(("b+0,1,0.01,4,####    :#### #~###   1~### X#O:N"));
 			mTransitionBorderFx.Add(borderEffect2);
 			borderEffect2 = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
-			borderEffect2.mPhase.SetConstant(BejeweledLivePlus.GlobalMembers.M(0.25));
-			borderEffect2.mSortOrder = BejeweledLivePlus.GlobalMembers.M(3);
-			borderEffect2.mMultMagnitudeOuter.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1.25,0.01,4,####    *####   Y####X}###ll###xlO:N"));
-			borderEffect2.mAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,1,0.01,4,####    *####   Y####X}###ll###xlO:N"));
+			borderEffect2.mPhase.SetConstant((0.25));
+			borderEffect2.mSortOrder = (3);
+			borderEffect2.mMultMagnitudeOuter.SetCurve(("b+0,1.25,0.01,4,####    *####   Y####X}###ll###xlO:N"));
+			borderEffect2.mAlpha.SetCurve(("b+0,1,0.01,4,####    *####   Y####X}###ll###xlO:N"));
 			mBorderFx.Add(borderEffect2);
-			mTransitionRumble.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,10,0.01,4,#### q####    l~###_~tu: D#### @######P#######"));
-			mStreamerMag.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,4,~### (####      6#### q~###s~###"));
-			mStreamerColorShift.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,2,####        O#### B~###2~###"));
-			mBackgroundDarken.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.5,0.01,4,#########   E~###     &~### X####"));
+			mTransitionRumble.SetCurve(("b;0,10,0.01,4,#### q####    l~###_~tu: D#### @######P#######"));
+			mStreamerMag.SetCurve(("b;0,1,0.01,4,~### (####      6#### q~###s~###"));
+			mStreamerColorShift.SetCurve(("b;0,1,0.01,2,####        O#### B~###2~###"));
+			mBackgroundDarken.SetCurve(("b;0,0.5,0.01,4,#########   E~###     &~### X####"));
 			mMaskAlpha.SetConstant(0.0);
-			mGlintColor = new Color(BejeweledLivePlus.GlobalMembers.M(16777215), BejeweledLivePlus.GlobalMembers.M(0));
-			mBaseObjAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,3,####   I####    k~### k~####~###"));
-			mBaseObjAddAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,0.5,0.01,5,####   &####   [~###j~###  V####"));
-			mGrayscaleAlpha.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,3,~###       =~###  d####"));
+			mGlintColor = new Color((16777215), (0));
+			mBaseObjAlpha.SetCurve(("b;0,1,0.01,3,####   I####    k~### k~####~###"));
+			mBaseObjAddAlpha.SetCurve(("b;0,0.5,0.01,5,####   &####   [~###j~###  V####"));
+			mGrayscaleAlpha.SetCurve(("b;0,1,0.01,3,~###       =~###  d####"));
 			mGrayscaleAlphaExtra.SetConstant(0.0);
 			mGrayscaleAlphaMult = 1.0;
-			mTransitionStreamerCount.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b+0,120,0.01,4,#&KQ  (52W)     I~####~Sz(  R~###"));
-			mTransitionStreamerMag.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,5,0.01,3.5,6###  v~###   ,~###  <~### d####"));
-			mTransitionStreamerColorShift.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,2.5,#########      r####  {~###2~###"));
-			mTransitionTicks = BejeweledLivePlus.GlobalMembers.M(430);
-			mNewStreamerDelay = BejeweledLivePlus.GlobalMembers.M(300);
-			mStreamerTgt = BejeweledLivePlus.GlobalMembers.M(150);
-			mClearStreamersAt = BejeweledLivePlus.GlobalMembers.M(0);
-			mClearTransStreamersAt = BejeweledLivePlus.GlobalMembers.M(300);
+			mTransitionStreamerCount.SetCurve(("b+0,120,0.01,4,#&KQ  (52W)     I~####~Sz(  R~###"));
+			mTransitionStreamerMag.SetCurve(("b;0,5,0.01,3.5,6###  v~###   ,~###  <~### d####"));
+			mTransitionStreamerColorShift.SetCurve(("b;0,1,0.01,2.5,#########      r####  {~###2~###"));
+			mTransitionTicks = (430);
+			mNewStreamerDelay = (300);
+			mStreamerTgt = (150);
+			mClearStreamersAt = (0);
+			mClearTransStreamersAt = (300);
 			break;
 		}
 		case EAnimState.eAnim_Complete:
 		{
 			ClearFx(false, true, false, true);
 			BorderEffect borderEffect = new BorderEffect(ref mData.mMarkerInner, ref mData.mMarkerOuter, mData.mMarkerLength);
-			borderEffect.mPhase.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b30,1,0.01,1,#         ~~"));
+			borderEffect.mPhase.SetCurve(("b30,1,0.01,1,#         ~~"));
 			borderEffect.mId = 0;
 			mBorderFx.Add(borderEffect);
 			mNewStreamerDelay = 0;
-			mStreamerTgt = BejeweledLivePlus.GlobalMembers.M(70);
-			mGlintColor = new Color(BejeweledLivePlus.GlobalMembers.M(16777215), BejeweledLivePlus.GlobalMembers.M(0));
+			mStreamerTgt = (70);
+			mGlintColor = new Color((16777215), (0));
 			mMaskAlpha.SetConstant(0.0);
 			mBaseObjAlpha.SetConstant(1.0);
 			mGrayscaleAlphaMult = 0.0;
@@ -361,17 +361,17 @@ public class QuestObject
 		}
 		if (mAnimState == EAnimState.eAnim_Revealing)
 		{
-			mQuestMenu.mQuestObjTransitionBtnHidePct.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.009375,3,#8E- q~###      2~hcW |#ArI"));
+			mQuestMenu.mQuestObjTransitionBtnHidePct.SetCurve(("b;0,1,0.009375,3,#8E- q~###      2~hcW |#ArI"));
 		}
 		else if (mAnimState == EAnimState.eAnim_Completing)
 		{
 			if (mQuestMenu.GetCompleteCount() == BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET)
 			{
-				mQuestMenu.mQuestObjTransitionBtnHidePct.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.009375,3,#8E- q~###        0~ArI"));
+				mQuestMenu.mQuestObjTransitionBtnHidePct.SetCurve(("b;0,1,0.009375,3,#8E- q~###        0~ArI"));
 			}
 			else
 			{
-				mQuestMenu.mQuestObjTransitionBtnHidePct.SetCurve(BejeweledLivePlus.GlobalMembers.MP("b;0,1,0.01,5,#8E- 0~###      s~hcW |#ArI"));
+				mQuestMenu.mQuestObjTransitionBtnHidePct.SetCurve(("b;0,1,0.01,5,#8E- 0~###      s~hcW |#ArI"));
 			}
 		}
 	}
@@ -532,8 +532,8 @@ public class QuestObject
 	{
 		ImageConfig[] array = new ImageConfig[2]
 		{
-			new ImageConfig(mGrayscaleBase, mGrayscaleBaseComplete, BejeweledLivePlus.GlobalMembers.M(2f), BejeweledLivePlus.GlobalMembers.M(0.5f)),
-			new ImageConfig(mGrayscaleAdd, mGrayscaleAddComplete, BejeweledLivePlus.GlobalMembers.M(1.1f), BejeweledLivePlus.GlobalMembers.M(4f))
+			new ImageConfig(mGrayscaleBase, mGrayscaleBaseComplete, (2f), (0.5f)),
+			new ImageConfig(mGrayscaleAdd, mGrayscaleAddComplete, (1.1f), (4f))
 		};
 		for (int i = 0; i < 2; i++)
 		{
@@ -617,13 +617,13 @@ public class QuestObject
 		g.SetColorizeImages(true);
 		if (theBaseAlpha > 0.0)
 		{
-			g.SetColor(new Color(BejeweledLivePlus.GlobalMembers.M(11167487), (int)(theBaseAlpha * 255.0)));
+			g.SetColor(new Color((11167487), (int)(theBaseAlpha * 255.0)));
 			Utils.DrawImageCentered(g, mGrayscaleBase, BejeweledLivePlus.GlobalMembers.S(mData.mArtOffsetX), BejeweledLivePlus.GlobalMembers.S(mData.mArtOffsetY));
 		}
 		if (theAddAlpha > 0.0)
 		{
 			g.SetDrawMode(Graphics.DrawMode.Additive);
-			g.SetColor(new Color(BejeweledLivePlus.GlobalMembers.M(14527231), (int)(theAddAlpha * 255.0)));
+			g.SetColor(new Color((14527231), (int)(theAddAlpha * 255.0)));
 			Utils.DrawImageCentered(g, mGrayscaleAdd, BejeweledLivePlus.GlobalMembers.S(mData.mArtOffsetX), BejeweledLivePlus.GlobalMembers.S(mData.mArtOffsetY));
 			g.SetDrawMode(Graphics.DrawMode.Normal);
 		}
@@ -634,7 +634,7 @@ public class QuestObject
 			return;
 		}
 		TranslateToPsd(g);
-		g.SetColor(new Color(BejeweledLivePlus.GlobalMembers.M(16777215), (int)(theGemAlpha * 255.0)));
+		g.SetColor(new Color((16777215), (int)(theGemAlpha * 255.0)));
 		for (int i = 0; i < BejeweledLivePlusAppConstants.QUESTS_REQUIRED_PER_SET; i++)
 		{
 			string theImgName = $"IMAGE_QUESTOBJECT_{BejeweledLivePlus.GlobalMembers.gObjectImgs[mQuestObjIdx]}_GREEN_GLASS_{i + 1}";

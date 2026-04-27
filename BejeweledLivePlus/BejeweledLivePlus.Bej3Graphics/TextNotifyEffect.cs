@@ -21,9 +21,9 @@ namespace BejeweledLivePlus.Bej3Graphics
 
 		public bool mIgnoreTexture;
 
-		private CurvedVal Draw_cvScaleIn = new CurvedVal(GlobalMembers.MP("b+0,1.3,0,0.2,#6g<     8~###    ii###"));
+		private CurvedVal Draw_cvScaleIn = new CurvedVal(("b+0,1.3,0,0.2,#6g<     8~###    ii###"));
 
-		private CurvedVal Draw_cvScaleOut = new CurvedVal(GlobalMembers.MP("b+0,1,0,0.2,~###         ~#>Hu"));
+		private CurvedVal Draw_cvScaleOut = new CurvedVal(("b+0,1,0,0.2,~###         ~#>Hu"));
 
 		public new static void initPool()
 		{
@@ -52,7 +52,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 		{
 			init(Type.TYPE_CUSTOMCLASS);
 			mUpdateCnt = 0;
-			mDuration = GlobalMembers.M(200);
+			mDuration = (200);
 			mFont = GlobalMembersResources.FONT_HUGE;
 			mTexture = null;
 			mDAlpha = 0f;

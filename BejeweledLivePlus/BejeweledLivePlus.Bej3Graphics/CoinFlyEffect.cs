@@ -103,7 +103,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 			base.Update();
 			mX = mOrigX - (float)(double)mTransPct * (mOrigX - (float)mToX);
 			mY = mOrigY - (float)(double)mTransPct * (mOrigY - (float)mToY);
-			mRotPct += GlobalMembers.M(0.04f);
+			mRotPct += (0.04f);
 			if (mRotPct >= 1f)
 			{
 				mRotPct -= 1f;
@@ -135,7 +135,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				g.mColor.mAlpha = (int)GlobalMembers.gApp.mBoard.GetAlpha();
 			}
 			g.SetDrawMode(Graphics.DrawMode.Normal);
-			g.DrawImageTransform(mImage, transform, GlobalMembers.IMGSRCRECT(mImage, frame), GlobalMembers.S(mX), GlobalMembers.S(mY) + (float)((double)GlobalMembers.MS(150) * (double)mSinkPct));
+			g.DrawImageTransform(mImage, transform, GlobalMembers.IMGSRCRECT(mImage, frame), GlobalMembers.S(mX), GlobalMembers.S(mY) + (float)((double)(150) * (double)mSinkPct));
 			g.PopState();
 		}
 	}

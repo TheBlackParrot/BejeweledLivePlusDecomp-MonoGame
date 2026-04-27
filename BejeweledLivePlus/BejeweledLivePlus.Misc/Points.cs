@@ -171,7 +171,7 @@ namespace BejeweledLivePlus.Misc
 			mY = theY;
 			mScale = 0f;
 			mScaleAdd = 0f;
-			mDY = GlobalMembers.MS(1.2f);
+			mDY = (1.2f);
 			mUpdateCnt = 0;
 			mSubStringShowTick = -1;
 			mSubFont = null;
@@ -426,7 +426,7 @@ namespace BejeweledLivePlus.Misc
 			}
 			Graphics graphics = new Graphics(mCachedImage);
 			SetupForDraw(graphics);
-			graphics.WriteString(mString, mCachedImage.mWidth / 2, mCachedImage.mHeight / 2 + GlobalMembers.MS(24));
+			graphics.WriteString(mString, mCachedImage.mWidth / 2, mCachedImage.mHeight / 2 + (24));
 		}
 	}
 }

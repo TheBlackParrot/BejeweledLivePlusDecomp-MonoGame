@@ -1121,7 +1121,7 @@ namespace BejeweledLivePlus
 				double num = mCurVoice.GetVolume();
 				if (mNextVoice != null && mInterruptCurVoice)
 				{
-					num = GlobalMembers.MAX(0.0, num - (double)GlobalMembers.M(0.05f));
+					num = GlobalMembers.MAX(0.0, num - (double)0.05f);
 					mCurVoice.SetVolume(num);
 				}
 				if (!mCurVoice.IsPlaying() || num == 0.0)
@@ -2141,11 +2141,11 @@ namespace BejeweledLivePlus
 			{
 				if (mDialogObscurePct < 1f && mDoFadeBackForDialogs)
 				{
-					mDialogObscurePct = Math.Min(1f, mDialogObscurePct + GlobalMembers.M(0.05f));
+					mDialogObscurePct = Math.Min(1f, mDialogObscurePct + (0.05f));
 					if (!mUnderDialogWidget.mVisible)
 					{
 						mUnderDialogWidget.SetVisible(true);
-						mUnderDialogWidget.mUpdateCnt = GlobalMembers.M(100);
+						mUnderDialogWidget.mUpdateCnt = (100);
 					}
 					else
 					{
@@ -2154,12 +2154,12 @@ namespace BejeweledLivePlus
 				}
 				else if (!mDoFadeBackForDialogs)
 				{
-					mDialogObscurePct = Math.Max(0f, mDialogObscurePct - GlobalMembers.M(0.04f));
+					mDialogObscurePct = Math.Max(0f, mDialogObscurePct - (0.04f));
 				}
 			}
 			else
 			{
-				mDialogObscurePct = Math.Max(0f, mDialogObscurePct - GlobalMembers.M(0.04f));
+				mDialogObscurePct = Math.Max(0f, mDialogObscurePct - (0.04f));
 				if (mDialogObscurePct == 0f && mUnderDialogWidget.mVisible)
 				{
 					mUnderDialogWidget.SetVisible(false);

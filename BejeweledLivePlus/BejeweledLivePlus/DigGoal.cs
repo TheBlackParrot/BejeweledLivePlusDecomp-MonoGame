@@ -449,7 +449,7 @@ namespace BejeweledLivePlus
 			{ 0, -1 }
 		};
 
-		private static Rect TriggerDigPiece_goldCollectRect = new Rect(GlobalMembers.M(10), GlobalMembers.M(10), 100 - GlobalMembers.M(20), 100 - GlobalMembers.M(20));
+		private static Rect TriggerDigPiece_goldCollectRect = new Rect((10), (10), 100 - (20), 100 - (20));
 
 		public static void CalcRotatedBounds(int theW, int theH, double theRot, ref int theNewW, ref int theNewH)
 		{
@@ -522,7 +522,7 @@ namespace BejeweledLivePlus
 			}
 			mDigBarFlash.SetConstant(0.0);
 			mDigBarFlash.SetMode(0);
-			mQuestBoard.mHypermixerCheckRow = GlobalMembers.M(3);
+			mQuestBoard.mHypermixerCheckRow = (3);
 			mInitPushAnimPixels = 0;
 			mUsingRandomizers = false;
 			mGoldPointsFXManager = new EffectsManager(mQuestBoard);
@@ -789,19 +789,19 @@ namespace BejeweledLivePlus
 					mRandRowIdx++;
 				}
 			}
-			mInitPushAnimPixels = (8 - num + 1) * 100 + GlobalMembers.M(500);
+			mInitPushAnimPixels = (8 - num + 1) * 100 + (500);
 			ResyncInitPushAnim();
 		}
 
 		public int GetDarkenedRGBForRow(int theRow, bool theIsShadow)
 		{
 			float num = (float)GetExtraLuminosity(GetGridDepth() + theRow);
-			int num2 = GlobalMembers.M(255) - (int)((double)num * GlobalMembers.M(200.0));
-			int num3 = GlobalMembers.M(255) - (int)((double)num * GlobalMembers.M(170.0));
+			int num2 = (255) - (int)((double)num * (200.0));
+			int num3 = (255) - (int)((double)num * (170.0));
 			int num4 = (num3 << 16) | (num2 << 8) | num2;
 			if (theIsShadow)
 			{
-				return Utils.ColorLerp(new Color(num4), new Color(GlobalMembers.M(4210752)), 0.5f).ToInt();
+				return Utils.ColorLerp(new Color(num4), new Color((4210752)), 0.5f).ToInt();
 			}
 			return num4;
 		}
@@ -921,7 +921,7 @@ namespace BejeweledLivePlus
 
 		public override int GetSidebarTextY()
 		{
-			return GlobalMembers.MS(265);
+			return (265);
 		}
 
 		public override void GameOverExit()
@@ -955,12 +955,12 @@ namespace BejeweledLivePlus
 
 		public virtual void SetShadowClipRect(Graphics g, int theXOff, int theYOff)
 		{
-			g.SetClipRect(new Rect(theXOff, GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + mBoardOffsetYExtra + 600 + GlobalMembers.M(6)) + theYOff, GlobalMembers.gApp.mWidth * 2, GlobalMembers.S(200 + GlobalMembers.M(10))));
+			g.SetClipRect(new Rect(theXOff, GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + mBoardOffsetYExtra + 600 + (6)) + theYOff, GlobalMembers.gApp.mWidth * 2, GlobalMembers.S(200 + (10))));
 		}
 
 		public void SetAdditiveClipRect(Graphics g, int theXOff, int theYOff)
 		{
-			g.SetClipRect(new Rect(theXOff, GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + mBoardOffsetYExtra + GlobalMembers.M(6)) + theYOff, GlobalMembers.gApp.mWidth * 2, GlobalMembers.S(600 + GlobalMembers.M(10))));
+			g.SetClipRect(new Rect(theXOff, GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + mBoardOffsetYExtra + (6)) + theYOff, GlobalMembers.gApp.mWidth * 2, GlobalMembers.S(600 + (10))));
 		}
 
 		public bool CheckNeedScroll(bool theMegaDig)
@@ -1002,7 +1002,7 @@ namespace BejeweledLivePlus
 
 		public double GetExtraLuminosity(int theDepth)
 		{
-			return Math.Max(0.0, Math.Min(1.0, (double)(theDepth - GlobalMembers.M(4)) / GlobalMembers.M(40.0)));
+			return Math.Max(0.0, Math.Min(1.0, (double)(theDepth - (4)) / (40.0)));
 		}
 
 		public void ResyncInitPushAnim()
@@ -1086,42 +1086,42 @@ namespace BejeweledLivePlus
 				int theShadowCount2 = theShadowCount - 1;
 				if (theTicksElapsed >= 0)
 				{
-					DrawScrollingDigLineText(g, theFont, theY, theStr, theTicksElapsed - GlobalMembers.M(4), theAnimX, theAnimScale, theAnimAlpha, theColorCycle, theUseHueColorCycle, theShadowCount2, theShadowTotal2, (int)num3, (int)num4);
+					DrawScrollingDigLineText(g, theFont, theY, theStr, theTicksElapsed - (4), theAnimX, theAnimScale, theAnimAlpha, theColorCycle, theUseHueColorCycle, theShadowCount2, theShadowTotal2, (int)num3, (int)num4);
 				}
 			}
 			g.PushState();
-			g.SetClipRect(GlobalMembers.S(GetBoardX() + GlobalMembers.M(0)), GlobalMembers.S(GetBoardY()), GlobalMembers.S(800 + GlobalMembers.M(0)), GlobalMembers.S(800));
+			g.SetClipRect(GlobalMembers.S(GetBoardX() + (0)), GlobalMembers.S(GetBoardY()), GlobalMembers.S(800 + (0)), GlobalMembers.S(800));
 			g.SetFont(theFont);
 			Utils.SetFontLayerColor((ImageFont)theFont, 0, Bej3Widget.COLOR_INGAME_ANNOUNCEMENT);
 			Utils.SetFontLayerColor((ImageFont)theFont, 1, Color.White);
 			g.Translate(0, GlobalMembers.S(theY));
 			Color color = default(Color);
-			color = new Color((int)GlobalMembers.gApp.HSLToRGB(GlobalMembers.M(0) + (int)theColorCycle.GetOutVal((double)num % theColorCycle.mInMax), GlobalMembers.M(250), GlobalMembers.M(110)), GlobalMembers.M(200));
+			color = new Color((int)GlobalMembers.gApp.HSLToRGB((0) + (int)theColorCycle.GetOutVal((double)num % theColorCycle.mInMax), (250), (110)), (200));
 			bool flag = false;
 			if (theShadowTotal > 0)
 			{
 				double num5 = (double)theShadowCount / (double)theShadowTotal;
-				if (GlobalMembers.M(1) != 0)
+				if ((1) != 0)
 				{
-					num2 *= Math.Pow(num5 * GlobalMembers.M(0.75), GlobalMembers.M(1.0));
+					num2 *= Math.Pow(num5 * (0.75), (1.0));
 				}
-				if (GlobalMembers.M(0) != 0)
+				if ((0) != 0)
 				{
 					g.SetDrawMode(Graphics.DrawMode.Additive);
 				}
-				if (GlobalMembers.M(1) != 0)
+				if ((1) != 0)
 				{
-					color = Utils.ColorLerp(new Color(GlobalMembers.M(0)), new Color(color.ToInt()), (float)(num5 * GlobalMembers.M(0.75)));
+					color = Utils.ColorLerp(new Color((0)), new Color(color.ToInt()), (float)(num5 * (0.75)));
 				}
 				double num6 = (double)theLastX - num3;
 				double num7 = (double)theLastY - num4;
-				if (GlobalMembers.M(1) != 0 && num6 == 0.0 && num7 == 0.0)
+				if ((1) != 0 && num6 == 0.0 && num7 == 0.0)
 				{
 					flag = true;
 				}
 			}
 			num4 -= GlobalMembers.RS((double)g.mFont.GetAscent() / 2.0);
-			if (!flag && num2 > (double)GlobalMembers.M(0.01f))
+			if (!flag && num2 > (double)(0.01f))
 			{
 				g.SetColor(Color.FAlpha((float)num2));
 				g.SetColorizeImages(num2 < 1.0);
@@ -1330,7 +1330,7 @@ namespace BejeweledLivePlus
 		{
 			if (mQuestBoard.mIsPerpetual)
 			{
-				return mQuestBoard.CallBoardGetUICenterX() + GlobalMembers.M(-75);
+				return mQuestBoard.CallBoardGetUICenterX() + (-75);
 			}
 			return mQuestBoard.CallBoardGetUICenterX();
 		}
@@ -1398,9 +1398,9 @@ namespace BejeweledLivePlus
 			{
 				if (!mQuestBoard.mIsPerpetual)
 				{
-					return (uint)GlobalMembers.M(40000000);
+					return (uint)(40000000);
 				}
-				return (uint)GlobalMembers.M(40000000);
+				return (uint)(40000000);
 			}
 			return mQuestBoard.CallBoardGetRandSeedOverride();
 		}
@@ -1417,7 +1417,7 @@ namespace BejeweledLivePlus
 				g.PopColorMult();
 			}
 			Color mColor = g.mColor;
-			if (GlobalMembers.M(0) != 0)
+			if ((0) != 0)
 			{
 				for (int i = 0; i < mMovingPieces.Count; i++)
 				{
@@ -1439,9 +1439,9 @@ namespace BejeweledLivePlus
 			}
 			if (mQuestBoard.mIsPerpetual)
 			{
-				if (GlobalMembers.M(0) != 0)
+				if ((0) != 0)
 				{
-					g.SetColor(new Color(0, (int)((float)GlobalMembers.M(80) * mQuestBoard.GetBoardAlpha())));
+					g.SetColor(new Color(0, (int)((float)(80) * mQuestBoard.GetBoardAlpha())));
 					g.FillRect(GlobalMembers.S(mQuestBoard.GetBoardX()), GlobalMembers.S(mQuestBoard.GetBoardY() + 600 - GetBoardScrollOffsetY()), GlobalMembers.S(800), GlobalMembers.S(200));
 				}
 				g.PushState();
@@ -1610,13 +1610,13 @@ namespace BejeweledLivePlus
 					TileData tile = DP_pArtifacts[j].tile;
 					if (k == 1)
 					{
-						float num8 = (float)(GetExtraLuminosity(GetGridDepth() + piece.mRow) * GlobalMembers.M(0.3));
-						if ((double)num8 <= GlobalMembers.M(0.1))
+						float num8 = (float)(GetExtraLuminosity(GetGridDepth() + piece.mRow) * (0.3));
+						if ((double)num8 <= (0.1))
 						{
 							continue;
 						}
 						g.SetColor(Color.FAlpha(num8));
-						SetAdditiveClipRect(g, (int)(0f - g.mTransX + (float)GlobalMembers.MS(0)), (int)(0f - g.mTransY));
+						SetAdditiveClipRect(g, (int)(0f - g.mTransX + (float)(0)), (int)(0f - g.mTransY));
 					}
 					ArtifactData artifactData = mArtifacts[tile.mArtifactId];
 					g.DrawImage(GlobalMembersResourcesWP.GetImageById(artifactData.mUnderlayImgId), (int)GlobalMembers.S(piece.GetScreenX() + (float)num6), (int)GlobalMembers.S(piece.GetScreenY() + (float)num7));
@@ -1635,13 +1635,13 @@ namespace BejeweledLivePlus
 						g.Translate((int)GlobalMembers.S(piece.GetScreenX()), (int)GlobalMembers.S(piece.GetScreenY()));
 						if (k == 1)
 						{
-							float num10 = (float)(GetExtraLuminosity(GetGridDepth() + piece.mRow) * ((tile.mDiamondFx != null) ? GlobalMembers.M(0.6) : GlobalMembers.M(0.3)));
-							if ((double)num10 <= GlobalMembers.M(0.1))
+							float num10 = (float)(GetExtraLuminosity(GetGridDepth() + piece.mRow) * ((tile.mDiamondFx != null) ? (0.6) : (0.3)));
+							if ((double)num10 <= (0.1))
 							{
 								continue;
 							}
 							g.SetColor(Color.FAlpha(num10));
-							SetAdditiveClipRect(g, (int)(0f - g.mTransX + (float)GlobalMembers.MS(0)), (int)(0f - g.mTransY));
+							SetAdditiveClipRect(g, (int)(0f - g.mTransX + (float)(0)), (int)(0f - g.mTransY));
 						}
 						if (tile.mDiamondFx != null)
 						{
@@ -1750,7 +1750,7 @@ namespace BejeweledLivePlus
 				{
 					if (i > 0)
 					{
-						if (!mQuestBoard.mIsPerpetual || GlobalMembers.M(0) != 0)
+						if (!mQuestBoard.mIsPerpetual || (0) != 0)
 						{
 							continue;
 						}
@@ -1762,34 +1762,34 @@ namespace BejeweledLivePlus
 							{
 								continue;
 							}
-							float num4 = (float)(GetExtraLuminosity(GetGridDepth() + thePiece.mRow) * GlobalMembers.M(0.3));
+							float num4 = (float)(GetExtraLuminosity(GetGridDepth() + thePiece.mRow) * (0.3));
 							if (tileData.mDiamondFx != null)
 							{
-								num4 *= GlobalMembers.M(0.2f);
+								num4 *= (0.2f);
 							}
-							if ((double)num4 <= GlobalMembers.M(0.1))
+							if ((double)num4 <= (0.1))
 							{
 								continue;
 							}
 							g.SetDrawMode(Graphics.DrawMode.Additive);
 							g.SetColorizeImages(true);
 							g.SetColor(Color.FAlpha(num4));
-							SetAdditiveClipRect(g, (int)(0f - g.mTransX + (float)GlobalMembers.MS(0)), (int)(0f - g.mTransY));
+							SetAdditiveClipRect(g, (int)(0f - g.mTransX + (float)(0)), (int)(0f - g.mTransY));
 							break;
 						}
 						case 2:
 							g.SetDrawMode(Graphics.DrawMode.Normal);
 							g.SetColorizeImages(true);
-							SetShadowClipRect(g, (int)(0f - g.mTransX + (float)GlobalMembers.MS(0)), (int)(0f - g.mTransY));
+							SetShadowClipRect(g, (int)(0f - g.mTransX + (float)(0)), (int)(0f - g.mTransY));
 							g.SetDrawMode(Graphics.DrawMode.Normal);
 							g.SetColorizeImages(true);
 							if (tileData.mPieceType == EDigPieceType.eDigPiece_Goal || tileData.mPieceType == EDigPieceType.eDigPiece_Artifact)
 							{
-								g.SetColor(new Color(GlobalMembers.M(0), (tileData.mDiamondFx != null) ? GlobalMembers.M(120) : GlobalMembers.M(70)));
+								g.SetColor(new Color((0), (tileData.mDiamondFx != null) ? (120) : (70)));
 							}
 							else
 							{
-								g.SetColor(new Color(GlobalMembers.M(0), GlobalMembers.M(120)));
+								g.SetColor(new Color((0), (120)));
 							}
 							break;
 						}
@@ -1800,7 +1800,7 @@ namespace BejeweledLivePlus
 					}
 					if (mHypercubes.Contains(thePiece.mId))
 					{
-						g.DrawImage(GlobalMembersResourcesWP.IMAGE_QUEST_DIG_BOARD_HYPERCUBE, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(1230) + (thePiece.GetScreenX() + (float)GlobalMembers.M(0))), (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(1230) + (thePiece.GetScreenY() + (float)GlobalMembers.M(0))));
+						g.DrawImage(GlobalMembersResourcesWP.IMAGE_QUEST_DIG_BOARD_HYPERCUBE, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(1230) + (thePiece.GetScreenX() + (float)(0))), (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(1230) + (thePiece.GetScreenY() + (float)(0))));
 					}
 					else
 					{
@@ -1974,7 +1974,6 @@ namespace BejeweledLivePlus
 					g.SetColorizeImages(true);
 					g.PushColorMult();
 				}
-				GlobalMembers.M(1);
 				g.SetColor(new Color(-1));
 				if (flag)
 				{
@@ -2005,8 +2004,8 @@ namespace BejeweledLivePlus
 				g.PushColorMult();
 			}
 			List<Piece> list = new List<Piece>();
-			new Color(GlobalMembers.M(4210752), GlobalMembers.M(255));
-			new Color(GlobalMembers.M(10526880), GlobalMembers.M(255));
+			new Color((4210752), (255));
+			new Color((10526880), (255));
 			Color color = default(Color);
 			int num = (int)GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_QUEST_DIG_BOARD_CENTER_FULL_ID);
 			int num2 = (int)GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_QUEST_DIG_BOARD_CENTER_FULL_ID);
@@ -2066,10 +2065,9 @@ namespace BejeweledLivePlus
 						{
 							continue;
 						}
-						if (GlobalMembers.M(0) != 0 && piece3.mCol == GlobalMembers.M(6))
+						if ((0) != 0 && piece3.mCol == (6))
 						{
 							int mRow = piece3.mRow;
-							GlobalMembers.M(6);
 						}
 						if (!piece3.IsFlagSet(65536u))
 						{
@@ -2119,7 +2117,7 @@ namespace BejeweledLivePlus
 									}
 									else
 									{
-										g.SetColor(new Color(GlobalMembers.M(16777215)));
+										g.SetColor(new Color((16777215)));
 									}
 									int num9 = -1;
 									num9 = ((i != 2) ? DrawGameElements_imagesHighlights[num6] : DrawGameElements_imagesHighlightShadows[num6]);
@@ -2180,15 +2178,15 @@ namespace BejeweledLivePlus
 				if (GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT.IsActive())
 				{
 					g.PushState();
-					g.Translate(GlobalMembers.S(GetBoardX() + 400 + GlobalMembers.M(0)), GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + 600 + GlobalMembers.M(0)));
+					g.Translate(GlobalMembers.S(GetBoardX() + 400 + (0)), GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + 600 + (0)));
 					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT.mDrawTransform.LoadIdentity();
-					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT.mDrawTransform.Scale(GlobalMembers.MS(0.9f), GlobalMembers.S(1f));
+					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT.mDrawTransform.Scale((0.9f), GlobalMembers.S(1f));
 					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT.Draw(g);
 					g.PopState();
 				}
 				if (mClearedAnimAtTick > 0 && (double)((int)mUpdateCnt - mClearedAnimAtTick) < DrawDigBarAnim_cvClearAnimAlpha.mInMax * 100.0)
 				{
-					DrawScrollingDigLineText(g, GlobalMembersResources.FONT_HUGE, ConstantsWP.DIG_BOARD_CLEARED_TEXT_EXTRA_Y, GlobalMembers._ID("CLEARED!", 542), (int)mUpdateCnt - mClearedAnimAtTick, DrawDigBarAnim_cvClearAnimX, DrawDigBarAnim_cvClearAnimScale, DrawDigBarAnim_cvClearAnimAlpha, DrawDigBarAnim_cvClearAnimColorCycle, false, GlobalMembers.M(0));
+					DrawScrollingDigLineText(g, GlobalMembersResources.FONT_HUGE, ConstantsWP.DIG_BOARD_CLEARED_TEXT_EXTRA_Y, GlobalMembers._ID("CLEARED!", 542), (int)mUpdateCnt - mClearedAnimAtTick, DrawDigBarAnim_cvClearAnimX, DrawDigBarAnim_cvClearAnimScale, DrawDigBarAnim_cvClearAnimAlpha, DrawDigBarAnim_cvClearAnimColorCycle, false, (0));
 				}
 			}
 			else
@@ -2196,15 +2194,15 @@ namespace BejeweledLivePlus
 				if (GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT_MEGA.IsActive())
 				{
 					g.PushState();
-					g.Translate(GlobalMembers.S(GetBoardX() + 400 + GlobalMembers.M(0)), GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + 800 + GlobalMembers.M(0)));
+					g.Translate(GlobalMembers.S(GetBoardX() + 400 + (0)), GlobalMembers.S(mQuestBoard.CallBoardGetBoardY() + 800 + (0)));
 					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT_MEGA.mDrawTransform.LoadIdentity();
-					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT_MEGA.mDrawTransform.Scale(GlobalMembers.MS(1f), GlobalMembers.S(1f));
+					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT_MEGA.mDrawTransform.Scale((1f), GlobalMembers.S(1f));
 					GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT_MEGA.Draw(g);
 					g.PopState();
 				}
 				if (mAllClearedAnimAtTick > 0 && (double)((int)mUpdateCnt - mAllClearedAnimAtTick) < DrawDigBarAnim_cvAllClearAnimAlpha.mInMax * 100.0)
 				{
-					DrawScrollingDigLineText(g, GlobalMembersResources.FONT_HUGE, ConstantsWP.DIG_BOARD_ALL_CLEAR_TEXT_EXTRA_Y, GlobalMembers._ID("ALL CLEAR", 544), (int)mUpdateCnt - mAllClearedAnimAtTick, DrawDigBarAnim_cvAllClearAnimX, DrawDigBarAnim_cvAllClearAnimScale, DrawDigBarAnim_cvAllClearAnimAlpha, DrawDigBarAnim_cvAllClearAnimColorCycle, true, g.Is3D() ? GlobalMembers.M(0) : GlobalMembers.M(0));
+					DrawScrollingDigLineText(g, GlobalMembersResources.FONT_HUGE, ConstantsWP.DIG_BOARD_ALL_CLEAR_TEXT_EXTRA_Y, GlobalMembers._ID("ALL CLEAR", 544), (int)mUpdateCnt - mAllClearedAnimAtTick, DrawDigBarAnim_cvAllClearAnimX, DrawDigBarAnim_cvAllClearAnimScale, DrawDigBarAnim_cvAllClearAnimAlpha, DrawDigBarAnim_cvAllClearAnimColorCycle, true, g.Is3D() ? (0) : (0));
 				}
 			}
 		}
@@ -2214,7 +2212,7 @@ namespace BejeweledLivePlus
 			if (mQuestBoard.mIsPerpetual)
 			{
 				mQuestBoard.mLevelPointsTotal += theVal;
-				mTextFlashTicks = GlobalMembers.M(120);
+				mTextFlashTicks = (120);
 				mTreasureEarnings[(int)theType] += theVal;
 			}
 			else
@@ -2356,7 +2354,7 @@ namespace BejeweledLivePlus
 			TileData theData = mIdToTileData[thePiece.mId];
 			if (mIdToTileData.ContainsKey(thePiece.mId))
 			{
-				int num = 1147 + BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(9);
+				int num = 1147 + BejeweledLivePlus.Misc.Common.Rand() % (9);
 				GoldCollectEffect goldCollectEffect = new GoldCollectEffect(this, theData);
 				goldCollectEffect.mTreasureType = ETreasureType.eTreasure_Gold;
 				goldCollectEffect.mVal = 1;
@@ -2364,11 +2362,11 @@ namespace BejeweledLivePlus
 				goldCollectEffect.mSrcImageId = num;
 				goldCollectEffect.mStartPoint = new Point((int)thePiece.CX(), (int)thePiece.CY());
 				goldCollectEffect.mTargetPoint = new Point(ConstantsWP.DIG_BOARD_SCORE_CENTER_X, ConstantsWP.DIG_BOARD_SCORE_BTM_Y);
-				goldCollectEffect.mTimeMod = GlobalMembersUtils.GetRandFloatU() * GlobalMembers.M(0.5f);
+				goldCollectEffect.mTimeMod = GlobalMembersUtils.GetRandFloatU() * (0.5f);
 				goldCollectEffect.mIsNugget = true;
-				goldCollectEffect.mStopGlowAtPct = GlobalMembers.M(0.9);
+				goldCollectEffect.mStopGlowAtPct = (0.9);
 				goldCollectEffect.mLayerOnTop = true;
-				goldCollectEffect.mGlowRGB = GlobalMembers.M(16118660);
+				goldCollectEffect.mGlowRGB = (16118660);
 				goldCollectEffect.Init();
 				GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eDIG_GOAL_SCALE_CV_DIG_COIN, goldCollectEffect.mScaleCv);
 				GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eDIG_GOAL_SPLINE_INTERP_DIG_COIN, goldCollectEffect.mSplineInterp);
@@ -2500,10 +2498,10 @@ namespace BejeweledLivePlus
 					}
 				}
 			}
-			if (mQuestBoard.GetTimeLimit() - mQuestBoard.GetTicksLeft() / 100 >= GlobalMembers.M(1) && mGoldRushTipPieceId != -1)
+			if (mQuestBoard.GetTimeLimit() - mQuestBoard.GetTicksLeft() / 100 >= (1) && mGoldRushTipPieceId != -1)
 			{
-				int num2 = (mQuestBoard.mIsPerpetual ? GlobalMembers.M(3) : GlobalMembers.M(5));
-				int num3 = (mQuestBoard.mIsPerpetual ? GlobalMembers.M(2) : GlobalMembers.M(4));
+				int num2 = (mQuestBoard.mIsPerpetual ? (3) : (5));
+				int num3 = (mQuestBoard.mIsPerpetual ? (2) : (4));
 				Piece piece = mQuestBoard.mBoard[num3, num2];
 				if (piece != null && piece.mId == mGoldRushTipPieceId)
 				{
@@ -2514,7 +2512,7 @@ namespace BejeweledLivePlus
 					}
 					if ((double)mQuestBoard.mVisPausePct == 0.0 && mQuestBoard.AllowTooltips())
 					{
-						GlobalMembers.gApp.mTooltipManager.RequestTooltip(mQuestBoard, mTutorialHeader, mTutorialText, new Point((int)GlobalMembers.S(piece.CX()), (int)GlobalMembers.S(piece.CY())), GlobalMembers.MS(320), 1, 0, null, null, 0, -1);
+						GlobalMembers.gApp.mTooltipManager.RequestTooltip(mQuestBoard, mTutorialHeader, mTutorialText, new Point((int)GlobalMembers.S(piece.CX()), (int)GlobalMembers.S(piece.CY())), (320), 1, 0, null, null, 0, -1);
 					}
 				}
 			}
@@ -2593,7 +2591,7 @@ namespace BejeweledLivePlus
 				else
 				{
 					mQuestBoard.mNeverAllowCascades = true;
-					if (mAllClearedAnimAtTick > 0 && (int)mUpdateCnt - mAllClearedAnimAtTick >= GlobalMembers.M(100))
+					if (mAllClearedAnimAtTick > 0 && (int)mUpdateCnt - mAllClearedAnimAtTick >= (100))
 					{
 						mAllClearedAnimAtTick++;
 					}
@@ -2608,7 +2606,7 @@ namespace BejeweledLivePlus
 							mAllClearedAnimAtTick = mUpdateCnt;
 							mAllClearAnimPlayed = true;
 							GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT_MEGA.ResetAnim();
-							GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DIG_LINE_HIT_MEGA, 0, GlobalMembers.M(1.0));
+							GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DIG_LINE_HIT_MEGA, 0, (1.0));
 						}
 					}
 					else if (mAllClearedAnimAtTick <= 0 && mClearedAnimAtTick <= 0)
@@ -2617,26 +2615,26 @@ namespace BejeweledLivePlus
 						mClearedAnimAtTick = mUpdateCnt;
 						mClearedAnimPlayed = true;
 						GlobalMembersResourcesWP.PIEFFECT_QUEST_DIG_DIG_LINE_HIT.ResetAnim();
-						GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DIG_LINE_HIT, 0, GlobalMembers.M(1.0));
+						GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DIG_LINE_HIT, 0, (1.0));
 					}
 				}
 			}
 			else
 			{
 				mQuestBoard.mNeverAllowCascades = mDefaultNeverAllowCascades;
-				if (GlobalMembers.M(1) != 0 && mDigBarFlash.IsDoingCurve())
+				if ((1) != 0 && mDigBarFlash.IsDoingCurve())
 				{
 					mDigBarFlash.SetMode(0);
 					GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eDIG_GOAL_DIG_BAR_FLASH_OFF, mDigBarFlash);
 					mDigBarFlash.Intercept(string.Empty);
 				}
 				mDigBarFlashCount = 0;
-				if (mClearedAnimAtTick > 0 && (int)mUpdateCnt - mClearedAnimAtTick > GlobalMembers.M(300))
+				if (mClearedAnimAtTick > 0 && (int)mUpdateCnt - mClearedAnimAtTick > (300))
 				{
 					mClearedAnimAtTick = -1;
 					mClearedAnimPlayed = false;
 				}
-				if (mAllClearedAnimAtTick > 0 && (int)mUpdateCnt - mAllClearedAnimAtTick > GlobalMembers.M(600))
+				if (mAllClearedAnimAtTick > 0 && (int)mUpdateCnt - mAllClearedAnimAtTick > (600))
 				{
 					mAllClearedAnimAtTick = -1;
 					mAllClearAnimPlayed = false;
@@ -2644,12 +2642,12 @@ namespace BejeweledLivePlus
 			}
 			double num4 = mDigBarFlash;
 			mDigBarFlash.IncInVal();
-			if (num4 < (double)mDigBarFlash && num4 < GlobalMembers.M(0.1) && (double)mDigBarFlash >= GlobalMembers.M(0.1))
+			if (num4 < (double)mDigBarFlash && num4 < (0.1) && (double)mDigBarFlash >= (0.1))
 			{
 				mDigBarFlashCount++;
-				if (mDigBarFlashCount != GlobalMembers.M(1) && mDigBarFlashCount >= GlobalMembers.M(3))
+				if (mDigBarFlashCount != (1) && mDigBarFlashCount >= (3))
 				{
-					GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DIG_NOTIFY, 0, GlobalMembers.M(1.0));
+					GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DIG_NOTIFY, 0, (1.0));
 				}
 			}
 			((DigBoard)mQuestBoard).UpdateCogsAnim();
@@ -2759,7 +2757,7 @@ namespace BejeweledLivePlus
 							mCollectedArtifacts.Add(tileData.mArtifactId);
 							Point point = new Point(ConstantsWP.DIG_BOARD_SCORE_CENTER_X, ConstantsWP.DIG_BOARD_SCORE_BTM_Y);
 							int num2 = 0;
-							int num3 = GlobalMembers.M(200);
+							int num3 = (200);
 							for (int i = 0; i < mGoldFx.Count; i++)
 							{
 								GoldCollectEffect goldCollectEffect = mGoldFx[i];
@@ -2775,14 +2773,14 @@ namespace BejeweledLivePlus
 							goldCollectEffect2.mImageId = artifactData.mImageId;
 							goldCollectEffect2.mSrcImageId = artifactData.mImageId;
 							goldCollectEffect2.mGlowImageId = 1290;
-							goldCollectEffect2.mExtraScaling = GlobalMembers.M(0.75);
+							goldCollectEffect2.mExtraScaling = (0.75);
 							goldCollectEffect2.mStartPoint = new Point((int)thePiece.CX(), (int)thePiece.CY());
 							goldCollectEffect2.mTargetPoint = new Point(point.mX, point.mY);
 							goldCollectEffect2.mCentering = true;
 							goldCollectEffect2.mDisplayVal = artifactData.mValue * mArtifactBaseValue;
 							goldCollectEffect2.mDisplayName = artifactData.mName;
 							GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eDIG_GOAL_PARTICLE_EMIT_OVER_TIME_ARTIFACT, goldCollectEffect2.mParticleEmitOverTime);
-							goldCollectEffect2.mGlowRGB = GlobalMembers.M(10047098);
+							goldCollectEffect2.mGlowRGB = (10047098);
 							goldCollectEffect2.mLayerOnTop = true;
 							goldCollectEffect2.Init();
 							mGoldFx.Insert(0, goldCollectEffect2);
@@ -2848,9 +2846,9 @@ namespace BejeweledLivePlus
 							foreach (Effect item2 in mGoldPointsFXManager.mEffectList[1])
 							{
 								PointsEffect pointsEffect2 = (PointsEffect)item2;
-								if (pointsEffect2 != pointsEffect && Math.Abs(pointsEffect.mX - pointsEffect2.mX) <= (float)GlobalMembers.M(200) && Math.Abs(pointsEffect.mY - pointsEffect2.mY) <= (float)GlobalMembers.M(40))
+								if (pointsEffect2 != pointsEffect && Math.Abs(pointsEffect.mX - pointsEffect2.mX) <= (float)(200) && Math.Abs(pointsEffect.mY - pointsEffect2.mY) <= (float)(40))
 								{
-									pointsEffect.mY += GlobalMembers.M(50);
+									pointsEffect.mY += (50);
 									break;
 								}
 							}
@@ -2866,28 +2864,28 @@ namespace BejeweledLivePlus
 										switch (num4)
 										{
 										case 4:
-											goldCollectEffect2.mGlowRGB = GlobalMembers.M(4052442);
-											goldCollectEffect2.mGlowRGB2 = GlobalMembers.M(4717055);
+											goldCollectEffect2.mGlowRGB = (4052442);
+											goldCollectEffect2.mGlowRGB2 = (4717055);
 											break;
 										case 5:
-											goldCollectEffect2.mGlowRGB = GlobalMembers.M(6580987);
-											goldCollectEffect2.mGlowRGB2 = GlobalMembers.M(3386875);
+											goldCollectEffect2.mGlowRGB = (6580987);
+											goldCollectEffect2.mGlowRGB2 = (3386875);
 											break;
 										case 6:
-											goldCollectEffect2.mGlowRGB = GlobalMembers.M(16347389);
-											goldCollectEffect2.mGlowRGB2 = GlobalMembers.M(16467965);
+											goldCollectEffect2.mGlowRGB = (16347389);
+											goldCollectEffect2.mGlowRGB2 = (16467965);
 											break;
 										case 7:
-											goldCollectEffect2.mGlowRGB = GlobalMembers.M(16428975);
-											goldCollectEffect2.mGlowRGB2 = GlobalMembers.M(16416091);
+											goldCollectEffect2.mGlowRGB = (16428975);
+											goldCollectEffect2.mGlowRGB2 = (16416091);
 											break;
 										}
 										goldCollectEffect2.mUseBaseSparkles = false;
 									}
 									else
 									{
-										num8 = 1147 + BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(9);
-										goldCollectEffect2.mGlowRGB = GlobalMembers.M(16118660);
+										num8 = 1147 + BejeweledLivePlus.Misc.Common.Rand() % (9);
+										goldCollectEffect2.mGlowRGB = (16118660);
 									}
 									Point point2 = new Point(GlobalMembers.S(ConstantsWP.DIG_BOARD_SCORE_CENTER_X), GlobalMembers.S(ConstantsWP.DIG_BOARD_SCORE_BTM_Y) - GlobalMembersResourcesWP.IMAGE_INGAMEUI_DIAMOND_MINE_SCORE_BAR_BACK.mHeight / 2);
 									goldCollectEffect2.mTreasureType = eTreasureType;
@@ -2897,7 +2895,7 @@ namespace BejeweledLivePlus
 									goldCollectEffect2.mSrcImageId = num8;
 									goldCollectEffect2.mStartPoint = new Point((int)((float)mQuestBoard.GetBoardX() + thePiece.mX + (float)TriggerDigPiece_goldCollectRect.mX + (float)(BejeweledLivePlus.Misc.Common.Rand() % TriggerDigPiece_goldCollectRect.mWidth)), (int)((float)mQuestBoard.GetBoardY() + thePiece.mY + (float)TriggerDigPiece_goldCollectRect.mY + (float)(BejeweledLivePlus.Misc.Common.Rand() % TriggerDigPiece_goldCollectRect.mHeight)));
 									goldCollectEffect2.mTargetPoint = new Point(point2.mX, point2.mY);
-									goldCollectEffect2.mTimeMod = GlobalMembersUtils.GetRandFloatU() * GlobalMembers.M(0.5f);
+									goldCollectEffect2.mTimeMod = GlobalMembersUtils.GetRandFloatU() * (0.5f);
 									goldCollectEffect2.mLayerOnTop = false;
 									goldCollectEffect2.Init();
 									mGoldFx.Add(goldCollectEffect2);
@@ -2970,26 +2968,26 @@ namespace BejeweledLivePlus
 		public void CreateRockFragments(Piece i_piece, bool i_isDirt)
 		{
 			AddDustEffect(new FPoint(i_piece.CX(), i_piece.CY()));
-			int num = (int)GlobalMembers.S(100.0 * GlobalMembers.M(0.75));
+			int num = (int)GlobalMembers.S(100.0 * (0.75));
 			if (i_isDirt)
 			{
 				int num2 = ConstantsWP.DIG_BOARD_BROWN_ROCK_BASE_COUNT + BejeweledLivePlus.Misc.Common.Rand(ConstantsWP.DIG_BOARD_BROWN_ROCK_RAND_COUNT);
 				for (int i = 0; i < num2; i++)
 				{
-					CreateRockFragment((int)(i_piece.CX() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), (int)(i_piece.CY() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), GlobalMembersResourcesWP.IMAGE_WALLROCKS_SMALL_BROWN, GlobalMembers.MS(10));
+					CreateRockFragment((int)(i_piece.CX() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), (int)(i_piece.CY() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), GlobalMembersResourcesWP.IMAGE_WALLROCKS_SMALL_BROWN, (10));
 				}
 				return;
 			}
-			CreateRockFragment((int)i_piece.CX(), (int)i_piece.CY(), GlobalMembersResourcesWP.IMAGE_WALLROCKS_LARGE, GlobalMembers.MS(2));
+			CreateRockFragment((int)i_piece.CX(), (int)i_piece.CY(), GlobalMembersResourcesWP.IMAGE_WALLROCKS_LARGE, (2));
 			int num3 = ConstantsWP.DIG_BOARD_MEDIUM_ROCK_BASE_COUNT + BejeweledLivePlus.Misc.Common.Rand(ConstantsWP.DIG_BOARD_MEDIUM_ROCK_RAND_COUNT);
 			for (int j = 0; j < num3; j++)
 			{
-				CreateRockFragment((int)(i_piece.CX() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), (int)(i_piece.CY() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), GlobalMembersResourcesWP.IMAGE_WALLROCKS_MEDIUM, GlobalMembers.MS(6));
+				CreateRockFragment((int)(i_piece.CX() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), (int)(i_piece.CY() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), GlobalMembersResourcesWP.IMAGE_WALLROCKS_MEDIUM, (6));
 			}
 			num3 = ConstantsWP.DIG_BOARD_SMALL_ROCK_BASE_COUNT + BejeweledLivePlus.Misc.Common.Rand(ConstantsWP.DIG_BOARD_SMALL_ROCK_RAND_COUNT);
 			for (int k = 0; k < num3; k++)
 			{
-				CreateRockFragment((int)(i_piece.CX() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), (int)(i_piece.CY() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), GlobalMembersResourcesWP.IMAGE_WALLROCKS_SMALL, GlobalMembers.MS(8));
+				CreateRockFragment((int)(i_piece.CX() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), (int)(i_piece.CY() - (float)(num / 2) + (float)BejeweledLivePlus.Misc.Common.Rand(num)), GlobalMembersResourcesWP.IMAGE_WALLROCKS_SMALL, (8));
 			}
 		}
 
@@ -2999,10 +2997,10 @@ namespace BejeweledLivePlus
 			float num = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
 			effect.mDX = theSpeed * (float)Math.Cos(num);
 			effect.mDY = theSpeed * (float)Math.Sin(num);
-			effect.mDecel = GlobalMembers.M(0.95f);
+			effect.mDecel = (0.95f);
 			effect.mX = theX;
 			effect.mY = theY;
-			effect.mGravity = GlobalMembers.M(0.33f);
+			effect.mGravity = (0.33f);
 			effect.mImage = theImage;
 			effect.mFrame = BejeweledLivePlus.Misc.Common.Rand(4);
 			effect.mDAlpha = 0f;
@@ -3232,8 +3230,8 @@ namespace BejeweledLivePlus
 			mQuestBoard.mWantShowPoints = false;
 			if (GlobalMembers.gApp.mDiamondMineFirstLaunch)
 			{
-				int num = (mQuestBoard.mIsPerpetual ? GlobalMembers.M(3) : GlobalMembers.M(5));
-				int num2 = (mQuestBoard.mIsPerpetual ? GlobalMembers.M(2) : GlobalMembers.M(4));
+				int num = (mQuestBoard.mIsPerpetual ? (3) : (5));
+				int num2 = (mQuestBoard.mIsPerpetual ? (2) : (4));
 				Piece piece2 = mQuestBoard.mBoard[num2, num];
 				if (piece2 != null)
 				{

@@ -89,7 +89,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				int num = 0;
 				while (num < mSubImgs[i].mSparkles.Count)
 				{
-					if (mSubImgs[i].mSparkles[num].mUpdateCnt >= GlobalMembers.M(100))
+					if (mSubImgs[i].mSparkles[num].mUpdateCnt >= (100))
 					{
 						mSubImgs[i].mSparkles[num] = mSubImgs[i].mSparkles[mSubImgs[i].mSparkles.Count - 1];
 						mSubImgs[i].mSparkles.RemoveAt(mSubImgs[i].mSparkles.Count - 1);
@@ -100,7 +100,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 						num++;
 					}
 				}
-				if (Common.Rand() % GlobalMembers.M(15) == 0)
+				if (Common.Rand() % (15) == 0)
 				{
 					Sparkle item = new Sparkle(Common.Rand(1f), Common.Rand(1f), 0);
 					mSubImgs[i].mSparkles.Add(item);

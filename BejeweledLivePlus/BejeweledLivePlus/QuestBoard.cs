@@ -248,8 +248,8 @@ namespace BejeweledLivePlus
 			mShowLevelPoints = true;
 			mTicksInPlay = 0;
 			mAllowLevelUp = true;
-			mDefaultBaseScore = GlobalMembers.M(10);
-			mDefaultBaseScoreIncr = GlobalMembers.M(15);
+			mDefaultBaseScore = (10);
+			mDefaultBaseScoreIncr = (15);
 			mBoardType = EBoardType.eBoardType_Quest;
 			mEndLevelDialog = null;
 			mRecordHighScores = mIsPerpetual;
@@ -321,7 +321,7 @@ namespace BejeweledLivePlus
 		{
 			if (mHelpButton != null)
 			{
-				mHelpButton.Resize(GlobalMembers.S(GetUICenterX() - 125), GlobalMembers.MS(755), GlobalMembers.MS(250), GlobalMembers.S(GlobalMembers.M(120) + GetBottomWidgetOffset()));
+				mHelpButton.Resize(GlobalMembers.S(GetUICenterX() - 125), (755), (250), GlobalMembers.S((120) + GetBottomWidgetOffset()));
 				mHelpButton.mBtnNoDraw = true;
 				mHelpButton.mDoFinger = true;
 				mHelpButton.mHasAlpha = true;
@@ -362,9 +362,9 @@ namespace BejeweledLivePlus
 
 		public override bool AllowUI()
 		{
-			if (mLevelCompleteCount <= GlobalMembers.M(0))
+			if (mLevelCompleteCount <= (0))
 			{
-				return mGameOverCount <= GlobalMembers.M(0);
+				return mGameOverCount <= (0);
 			}
 			return false;
 		}
@@ -517,7 +517,7 @@ namespace BejeweledLivePlus
 
 		public virtual int GetTitleY()
 		{
-			return GlobalMembers.M(90);
+			return (90);
 		}
 
 		public override bool CheckWin()
@@ -919,7 +919,6 @@ namespace BejeweledLivePlus
 				return;
 			}
 			mColorCount = theColorCount;
-			GlobalMembers.M(1);
 			mNewGemColors.Clear();
 			for (int i = 0; i < theColorCount; i++)
 			{
@@ -1187,10 +1186,10 @@ namespace BejeweledLivePlus
 		public virtual TextNotifyEffect ShowQuestText(string i_text)
 		{
 			TextNotifyEffect textNotifyEffect = TextNotifyEffect.alloc();
-			textNotifyEffect.mDuration = GlobalMembers.M(200);
+			textNotifyEffect.mDuration = (200);
 			textNotifyEffect.mText = i_text;
-			textNotifyEffect.mX = GlobalMembers.M(1000);
-			textNotifyEffect.mY = GlobalMembers.M(620);
+			textNotifyEffect.mX = (1000);
+			textNotifyEffect.mY = (620);
 			mPostFXManager.AddEffect(textNotifyEffect);
 			return textNotifyEffect;
 		}
@@ -1370,10 +1369,10 @@ namespace BejeweledLivePlus
 			{
 				return;
 			}
-			if (!mIsPerpetual && mGameOverCount == GlobalMembers.M(300))
+			if (!mIsPerpetual && mGameOverCount == (300))
 			{
 				DoQuestPortal(null, false);
-				mQuestPortalPct.SetInVal(GlobalMembers.M(0.5));
+				mQuestPortalPct.SetInVal((0.5));
 			}
 			mTicksInPlay++;
 			if (mLevelCompleteCount > 0)
@@ -1413,7 +1412,7 @@ namespace BejeweledLivePlus
 					{
 						mLevelCompleteCount--;
 					}
-					if (mLevelCompleteCount == GlobalMembers.M(100))
+					if (mLevelCompleteCount == (100))
 					{
 						bool flag = GlobalMembers.gApp.mProfile.mQuestsCompleted[GlobalMembers.gApp.mQuestMenu.mQuestSetNum, GlobalMembers.gApp.mQuestMenu.mGemOver];
 						GlobalMembers.gApp.mProfile.mQuestsCompleted[GlobalMembers.gApp.mQuestMenu.mQuestSetNum, GlobalMembers.gApp.mQuestMenu.mGemOver] = true;

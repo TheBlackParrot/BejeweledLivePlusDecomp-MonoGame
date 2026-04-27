@@ -91,7 +91,7 @@ namespace BejeweledLivePlus.Widget
 			if (tooltip.mHeaderText != "")
 			{
 				text += tooltip.mHeaderText;
-				num += GetWordWrappedHeight(graphics, tooltip.mWidth - GlobalMembers.MS(80), tooltip.mHeaderText, tooltip.mFontTitle.GetLineSpacing());
+				num += GetWordWrappedHeight(graphics, tooltip.mWidth - (80), tooltip.mHeaderText, tooltip.mFontTitle.GetLineSpacing());
 				if (tooltip.mBodyText != "")
 				{
 					text += "\n";
@@ -104,16 +104,16 @@ namespace BejeweledLivePlus.Widget
 				{
 					text += tooltip.mBodyText;
 				}
-				num += GetWordWrappedHeight(graphics, tooltip.mWidth - GlobalMembers.MS(80), tooltip.mBodyText, tooltip.mFont.GetLineSpacing());
+				num += GetWordWrappedHeight(graphics, tooltip.mWidth - (80), tooltip.mBodyText, tooltip.mFont.GetLineSpacing());
 			}
-			if (tooltip.mHeight < num + GlobalMembers.MS(75))
+			if (tooltip.mHeight < num + (75))
 			{
-				tooltip.mHeight = num + GlobalMembers.MS(75);
+				tooltip.mHeight = num + (75);
 			}
 			tooltip.mHeight += theHeightAdj;
 			tooltip.mOffsetPos = new Point(tooltip.mRequestedPos);
-			int num2 = GlobalMembers.MS(20);
-			int num3 = GlobalMembers.MS(5);
+			int num2 = (20);
+			int num3 = (5);
 			switch (tooltip.mArrowDir)
 			{
 			case 0:
@@ -204,7 +204,7 @@ namespace BejeweledLivePlus.Widget
 				{
 					g.DrawImage(theImage, point.mX, point.mY);
 				}
-				Rect theRect = new Rect(tooltip.mOffsetPos.mX + GlobalMembers.MS(40), tooltip.mOffsetPos.mY + GlobalMembers.MS(30), tooltip.mWidth - GlobalMembers.MS(80), tooltip.mHeight - GlobalMembers.MS(50));
+				Rect theRect = new Rect(tooltip.mOffsetPos.mX + (40), tooltip.mOffsetPos.mY + (30), tooltip.mWidth - (80), tooltip.mHeight - (50));
 				g.SetFont(tooltip.mFontTitle);
 				Utils.SetFontLayerColor((ImageFont)tooltip.mFontTitle, 0, Color.White);
 				Utils.SetFontLayerColor((ImageFont)tooltip.mFontTitle, 1, Bej3Widget.COLOR_TOOLTIP_FILL);

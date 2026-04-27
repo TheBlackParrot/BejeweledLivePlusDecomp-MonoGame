@@ -34,9 +34,9 @@ namespace BejeweledLivePlus
 			effect.mMinScale = 1f;
 			effect.mMaxScale = 10f;
 			effect.mScale = 5f;
-			effect.mValue[0] = GlobalMembers.M(0.3f);
-			effect.mValue[1] = GlobalMembers.M(-0.008f);
-			effect.mValue[2] = GlobalMembers.M(0.95f);
+			effect.mValue[0] = (0.3f);
+			effect.mValue[1] = (-0.008f);
+			effect.mValue[2] = (0.95f);
 			mPostFXManager.AddEffect(effect);
 			int i = GetBoardX();
 			int num2 = 40;
@@ -48,17 +48,17 @@ namespace BejeweledLivePlus
 				effect.mMinScale = 1f;
 				effect.mMaxScale = 10f;
 				effect.mScale = 2f;
-				effect.mValue[0] = GlobalMembers.M(0.3f);
-				effect.mValue[1] = GlobalMembers.M(-0.005f);
-				effect.mValue[2] = GlobalMembers.M(0.95f);
+				effect.mValue[0] = (0.3f);
+				effect.mValue[1] = (-0.005f);
+				effect.mValue[2] = (0.95f);
 				mPostFXManager.AddEffect(effect);
 			}
 			effect = Effect.alloc(Effect.Type.TYPE_STEAM);
 			effect.mX = GetBoardX() + 800 + GlobalMembers.S(75);
 			effect.mY = num - GlobalMembers.S(50);
-			effect.mValue[0] = GlobalMembers.M(0.3f);
-			effect.mValue[1] = GlobalMembers.M(-0.008f);
-			effect.mValue[2] = GlobalMembers.M(0.95f);
+			effect.mValue[0] = (0.3f);
+			effect.mValue[1] = (-0.008f);
+			effect.mValue[2] = (0.95f);
 			effect.mMinScale = 1f;
 			effect.mMaxScale = 10f;
 			effect.mScale = 5f;
@@ -74,9 +74,9 @@ namespace BejeweledLivePlus
 			effect.mMinScale = 1f;
 			effect.mMaxScale = 10f;
 			effect.mScale = 5f;
-			effect.mValue[0] = GlobalMembers.M(0.3f);
-			effect.mValue[1] = GlobalMembers.M(-0.002f);
-			effect.mValue[2] = GlobalMembers.M(0.95f);
+			effect.mValue[0] = (0.3f);
+			effect.mValue[1] = (-0.002f);
+			effect.mValue[2] = (0.95f);
 			mPostFXManager.AddEffect(effect);
 			effect = Effect.alloc(Effect.Type.TYPE_STEAM);
 			effect.mX = GetBoardX() - GlobalMembers.S(60);
@@ -84,16 +84,16 @@ namespace BejeweledLivePlus
 			effect.mMinScale = 1f;
 			effect.mMaxScale = 10f;
 			effect.mScale = 3f;
-			effect.mValue[0] = GlobalMembers.M(0.7f);
-			effect.mValue[1] = GlobalMembers.M(-0.002f);
-			effect.mValue[2] = GlobalMembers.M(0.95f);
+			effect.mValue[0] = (0.7f);
+			effect.mValue[1] = (-0.002f);
+			effect.mValue[2] = (0.95f);
 			mPostFXManager.AddEffect(effect);
 			effect = Effect.alloc(Effect.Type.TYPE_STEAM);
 			effect.mX = GetBoardX() + 800 + GlobalMembers.S(75);
 			effect.mY = num + GlobalMembers.S(175);
-			effect.mValue[0] = GlobalMembers.M(0.3f);
-			effect.mValue[1] = GlobalMembers.M(-0.002f);
-			effect.mValue[2] = GlobalMembers.M(0.95f);
+			effect.mValue[0] = (0.3f);
+			effect.mValue[1] = (-0.002f);
+			effect.mValue[2] = (0.95f);
 			effect.mMinScale = 1f;
 			effect.mMaxScale = 10f;
 			effect.mScale = 5f;
@@ -104,9 +104,9 @@ namespace BejeweledLivePlus
 			effect.mMinScale = 1f;
 			effect.mMaxScale = 10f;
 			effect.mScale = 3f;
-			effect.mValue[0] = GlobalMembers.M(0.7f);
-			effect.mValue[1] = GlobalMembers.M(-0.002f);
-			effect.mValue[2] = GlobalMembers.M(0.95f);
+			effect.mValue[0] = (0.7f);
+			effect.mValue[1] = (-0.002f);
+			effect.mValue[2] = (0.95f);
 			mPostFXManager.AddEffect(effect);
 		}
 
@@ -194,7 +194,7 @@ namespace BejeweledLivePlus
 			base.GameOver(visible);
 			if (mIsPerpetual && !flag && mGameOverCount > 0)
 			{
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DEATH, 0, GlobalMembers.M(1.0));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_DEATH, 0, (1.0));
 			}
 		}
 
@@ -208,9 +208,9 @@ namespace BejeweledLivePlus
 			{
 				g.SetColorizeImages(true);
 				float num = (float)Math.Pow(GetBoardAlpha(), 4.0);
-				g.SetColor(new Color(255, 255, 255, (int)(GetBoardAlpha() * (float)GlobalMembers.M(255))));
+				g.SetColor(new Color(255, 255, 255, (int)(GetBoardAlpha() * (float)(255))));
 				g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_DIAMOND_MINE_PROGRESS_BAR_BACK, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_INGAMEUI_DIAMOND_MINE_PROGRESS_BAR_BACK_ID)), (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_INGAMEUI_DIAMOND_MINE_PROGRESS_BAR_BACK_ID)));
-				g.SetColor(new Color(GlobalMembers.M(64), GlobalMembers.M(32), GlobalMembers.M(8), (int)(num * (float)GlobalMembers.M(255))));
+				g.SetColor(new Color((64), (32), (8), (int)(num * (float)(255))));
 				if (WantWarningGlow())
 				{
 					Color warningGlowColor = GetWarningGlowColor();
@@ -232,7 +232,7 @@ namespace BejeweledLivePlus
 					Rect countdownBarRect2 = GetCountdownBarRect();
 					countdownBarRect2.mX -= GlobalMembersResourcesWP.IMAGE_INGAMEUI_DIAMOND_MINE_TIMER.mWidth / 2;
 					countdownBarRect2.mWidth = (int)((float)countdownBarRect2.mWidth * GetLevelPct());
-					g.SetColor(new Color(GlobalMembers.M(240), GlobalMembers.M(255), 200, (int)((double)mLevelBarBonusAlpha * (double)GlobalMembers.M(255))));
+					g.SetColor(new Color((240), (255), 200, (int)((double)mLevelBarBonusAlpha * (double)(255))));
 					g.FillRect(countdownBarRect2);
 				}
 				Graphics3D graphics3D = g.Get3D();
@@ -245,13 +245,13 @@ namespace BejeweledLivePlus
 					mCountdownBarPIEffect.mDrawTransform.Scale((float)(double)mScale, (float)(double)mScale);
 					mCountdownBarPIEffect.mDrawTransform.Translate(GlobalMembers.S(ConstantsWP.DEVICE_HEIGHT_F), GlobalMembers.S(ConstantsWP.DEVICE_WIDTH_F));
 				}
-				int num2 = (int)((double)GetAlpha() * (double)mAlphaCurve * (double)GlobalMembers.M(255));
+				int num2 = (int)((double)GetAlpha() * (double)mAlphaCurve * (double)(255));
 				if (num2 == 255)
 				{
 					g.SetClipRect(countdownBarRect);
-					g.SetColor(new Color(255, 255, 255, (int)((double)GetAlpha() * (double)mAlphaCurve * (double)GlobalMembers.M(255))));
+					g.SetColor(new Color(255, 255, 255, (int)((double)GetAlpha() * (double)mAlphaCurve * (double)(255))));
 					g.PushColorMult();
-					mCountdownBarPIEffect.mColor = new Color(255, 255, 255, (int)((double)GetAlpha() * (double)mAlphaCurve * (double)GlobalMembers.M(255)));
+					mCountdownBarPIEffect.mColor = new Color(255, 255, 255, (int)((double)GetAlpha() * (double)mAlphaCurve * (double)(255)));
 					mCountdownBarPIEffect.Draw(g);
 					mCountdownBarPIEffect.mDrawTransform = mDrawTransform;
 					g.PopColorMult();
@@ -383,11 +383,11 @@ namespace BejeweledLivePlus
 			{
 				DigGoal digGoal = (DigGoal)mQuestGoal;
 				g.SetFont(GlobalMembersResources.FONT_SCORE);
-				g.SetColor(new Color(GlobalMembers.M(16776960)));
+				g.SetColor(new Color((16776960)));
 				g.WriteString($"{SexyFramework.Common.CommaSeperate(mLevelPointsTotal)}", ConstantsWP.DIG_BOARD_SCORE_CENTER_X, ConstantsWP.DIG_BOARD_SCORE_BTM_Y);
-				if (digGoal.mTextFlashTicks > 0 && digGoal.mTextFlashTicks / GlobalMembers.M(20) % GlobalMembers.M(2) == 1)
+				if (digGoal.mTextFlashTicks > 0 && digGoal.mTextFlashTicks / (20) % (2) == 1)
 				{
-					g.SetColor(new Color(GlobalMembers.M(16755200)));
+					g.SetColor(new Color((16755200)));
 					g.WriteString($"{SexyFramework.Common.CommaSeperate(mLevelPointsTotal)}", ConstantsWP.DIG_BOARD_SCORE_CENTER_X, ConstantsWP.DIG_BOARD_SCORE_BTM_Y);
 				}
 			}
@@ -552,7 +552,7 @@ namespace BejeweledLivePlus
 		{
 			DigGoal digGoal = (DigGoal)mQuestGoal;
 			TextNotifyEffect textNotifyEffect = TextNotifyEffect.alloc();
-			textNotifyEffect.mDuration = GlobalMembers.M(200);
+			textNotifyEffect.mDuration = (200);
 			int num;
 			if (theIsMega)
 			{
@@ -580,7 +580,7 @@ namespace BejeweledLivePlus
 			{
 				mMaxTicksLeft = ticksLeft;
 				mTimeLimit = 90;
-				mGameTicks = 9000 - ticksLeft + GlobalMembers.M(250);
+				mGameTicks = 9000 - ticksLeft + (250);
 			}
 			else
 			{
@@ -692,7 +692,7 @@ namespace BejeweledLivePlus
 		public override void HypermixerDropped()
 		{
 			DigGoal digGoal = (DigGoal)mQuestGoal;
-			digGoal.mNextBottomHypermixerWait = GlobalMembers.M(10);
+			digGoal.mNextBottomHypermixerWait = (10);
 		}
 
 		public override void KeyChar(char theChar)
@@ -740,7 +740,7 @@ namespace BejeweledLivePlus
 			if (mIsPerpetual)
 			{
 				mUiConfig = EUIConfig.eUIConfig_StandardNoReplay;
-				mLevelBarSizeBias = GlobalMembers.MS(24);
+				mLevelBarSizeBias = (24);
 			}
 			base.Init();
 			if (mIsPerpetual)
@@ -767,7 +767,7 @@ namespace BejeweledLivePlus
 
 		public override float GetGravityFactor()
 		{
-			return GlobalMembers.M(1.1f);
+			return (1.1f);
 		}
 
 		public override bool IsGameIdle()

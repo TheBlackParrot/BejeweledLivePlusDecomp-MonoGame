@@ -30,13 +30,13 @@ namespace BejeweledLivePlus.Widget
 			mFromBall.mHeight = 0;
 			mToBall.mWidth = 0;
 			mToBall.mHeight = 0;
-			mDelay = GlobalMembers.M(0);
+			mDelay = (0);
 			GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eHYPERSPACE_FROM_CENTER_PCT, mFromCenterPct);
 			GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eHYPERSPACE_TO_CENTER_PCT, mToCenterPct, mFromCenterPct);
-			mFromBall.mFullPct.SetCurve(GlobalMembers.MP("b+0,1,0.003333,1,~###x~###   ]####     J####"), mFromCenterPct);
-			mFromBall.mScale.SetCurve(GlobalMembers.MP("b+0,1,0,1,~###|~###  @/k=] 3####     R####"), mFromCenterPct);
-			mToBall.mFullPct.SetCurve(GlobalMembers.MP("b+0,1,0.003333,1,####    i####     8~###"), mFromCenterPct);
-			mToBall.mScale.SetCurve(GlobalMembers.MP("b+0,1,0.003333,1,####   d####      =~###"), mFromCenterPct);
+			mFromBall.mFullPct.SetCurve(("b+0,1,0.003333,1,~###x~###   ]####     J####"), mFromCenterPct);
+			mFromBall.mScale.SetCurve(("b+0,1,0,1,~###|~###  @/k=] 3####     R####"), mFromCenterPct);
+			mToBall.mFullPct.SetCurve(("b+0,1,0.003333,1,####    i####     8~###"), mFromCenterPct);
+			mToBall.mScale.SetCurve(("b+0,1,0.003333,1,####   d####      =~###"), mFromCenterPct);
 		}
 
 		public override void Dispose()
@@ -64,12 +64,12 @@ namespace BejeweledLivePlus.Widget
 			{
 				mBoard.HyperspaceEvent(HYPERSPACEEVENT.HYPERSPACEEVENT_Finish);
 			}
-			if (mUpdateCnt == GlobalMembers.M(200))
+			if (mUpdateCnt == (200))
 			{
 				mBoard.HyperspaceEvent(HYPERSPACEEVENT.HYPERSPACEEVENT_OldLevelClear);
 				mToBall.mImage = mBoard.mBackground.GetBackgroundImage();
 			}
-			if (mUpdateCnt == GlobalMembers.M(250))
+			if (mUpdateCnt == (250))
 			{
 				mBoard.RandomizeBoard();
 			}
@@ -95,7 +95,7 @@ namespace BejeweledLivePlus.Widget
 				(float)(double)mFromCenterPct,
 				(float)(double)mToCenterPct
 			};
-			for (int i = GlobalMembers.M(1); i < 2; i++)
+			for (int i = (1); i < 2; i++)
 			{
 				g.PushState();
 				FPoint fPoint = new FPoint(mWidth / 2, mHeight / 2) * array3[i] + array[i] * (1f - array3[i]);

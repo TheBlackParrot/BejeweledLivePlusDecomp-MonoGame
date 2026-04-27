@@ -38,7 +38,7 @@ namespace BejeweledLivePlus
 			}
 			else
 			{
-				mLastRoll = (float)((double)mChance * (double)Math.Min(GlobalMembers.M(2.5f), Math.Max(GlobalMembers.M(0.2f), (float)Math.Pow((double)(GlobalMembers.M(1.5f) * mSteps) * (double)mChance, GlobalMembers.M(1.2)))));
+				mLastRoll = (float)((double)mChance * (double)Math.Min((2.5f), Math.Max((0.2f), (float)Math.Pow((double)((1.5f) * mSteps) * (double)mChance, (1.2)))));
 			}
 		}
 

@@ -26,9 +26,9 @@ namespace BejeweledLivePlus.UI
 			AddWidget(buttonWidget);
 			for (int i = 0; i < GlobalMembers.gApp.mSecretModeDataParser.mQuestDataVector.Count; i++)
 			{
-				int num = GlobalMembers.MS(400);
-				int theX = GlobalMembers.gApp.mScreenBounds.mWidth / 2 - GlobalMembers.MS(200) + (i % 3 - 1) * num;
-				int theY = GlobalMembers.S(400) + i / 3 * GlobalMembers.MS(105);
+				int num = (400);
+				int theX = GlobalMembers.gApp.mScreenBounds.mWidth / 2 - (200) + (i % 3 - 1) * num;
+				int theY = GlobalMembers.S(400) + i / 3 * (105);
 				buttonWidget = new ButtonWidget(i, this);
 				buttonWidget.SetFont(GlobalMembersResources.FONT_DIALOG);
 				buttonWidget.mLabel = GlobalMembers.gApp.mSecretModeDataParser.mQuestDataVector[i].mQuestName;
@@ -42,7 +42,7 @@ namespace BejeweledLivePlus.UI
 			g.SetColor(new Color(64, 64, 64));
 			g.FillRect(0, 0, mWidth, mHeight);
 			g.SetColor(new Color(32, 32, 32));
-			g.FillRect(mWidth / 2 - GlobalMembers.MS(660), GlobalMembers.MS(250), GlobalMembers.MS(1320), GlobalMembers.MS(780));
+			g.FillRect(mWidth / 2 - (660), (250), (1320), (780));
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
 			g.SetColor(Color.White);
 			g.WriteString(GlobalMembers._ID("SECRET GAMES", 477), mWidth / 2, GlobalMembers.S(350));

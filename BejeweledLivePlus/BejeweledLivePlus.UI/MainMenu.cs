@@ -73,7 +73,7 @@ namespace BejeweledLivePlus.UI
 
 		private static bool preFlight = false;
 
-		private static CurvedVal txtAlpha = new CurvedVal(GlobalMembers.MP("b;0,1,0.01,5,####  ,####K~###      ^~###m####"));
+		private static CurvedVal txtAlpha = new CurvedVal(("b;0,1,0.01,5,####  ,####K~###      ^~###m####"));
 
 		private static readonly int NUM_LOADERBAR_POINTS = 40;
 
@@ -230,7 +230,7 @@ namespace BejeweledLivePlus.UI
 				PartnerLogo partnerLogo = mPartnerLogos[0];
 				if (partnerLogo.mAlpha < 255 && partnerLogo.mTime == partnerLogo.mOrgTime)
 				{
-					partnerLogo.mAlpha += GlobalMembers.M(5);
+					partnerLogo.mAlpha += (5);
 					if (partnerLogo.mAlpha >= 255)
 					{
 						partnerLogo.mAlpha = 255;
@@ -238,7 +238,7 @@ namespace BejeweledLivePlus.UI
 				}
 				else if (--partnerLogo.mTime <= 0)
 				{
-					partnerLogo.mAlpha -= GlobalMembers.M(5);
+					partnerLogo.mAlpha -= (5);
 					if (partnerLogo.mAlpha <= 0)
 					{
 						partnerLogo.mImage.Dispose();
@@ -248,7 +248,7 @@ namespace BejeweledLivePlus.UI
 				MarkDirty();
 				return;
 			}
-			mPartnerBlackAlpha = Math.Max(0f, mPartnerBlackAlpha - GlobalMembers.M(0.05f));
+			mPartnerBlackAlpha = Math.Max(0f, mPartnerBlackAlpha - (0.05f));
 			if (mLoaded && (double)mRotation == 0.0 && !mFinishedLoadSequence)
 			{
 				mFinishedLoadSequence = true;
@@ -309,25 +309,25 @@ namespace BejeweledLivePlus.UI
 			}
 			bool mLoaded2 = mLoaded;
 			float num2 = (float)SexyFramework.GlobalMembers.gSexyApp.mScreenBounds.mWidth / (float)SexyFramework.GlobalMembers.gSexyApp.mScreenBounds.mHeight;
-			float inFovDegrees = GlobalMembers.M(38.5f) * num2;
+			float inFovDegrees = (38.5f) * num2;
 			mCamera.Init(inFovDegrees, num2, 0.1f, 1000f);
 			mButtonCamera.Init(inFovDegrees, num2, 0.1f, 1000f);
 			SexyCoords3 sexyCoords = new SexyCoords3();
-			sexyCoords.Translate(0f, GlobalMembers.M(-0.4f), 0f);
+			sexyCoords.Translate(0f, (-0.4f), 0f);
 			mCamera.SetCoords(mCamera.GetCoords().Leave(sexyCoords));
 			mButtonCamera.SetCoords(mButtonCamera.GetCoords().Leave(sexyCoords));
 			SexyCoords3 sexyCoords2 = new SexyCoords3();
-			sexyCoords2.RotateRadZ((float)((double)mRotation * (double)GlobalMembers.M(-0.78f)));
+			sexyCoords2.RotateRadZ((float)((double)mRotation * (double)(-0.78f)));
 			mCamera.SetCoords(mCamera.GetCoords().Leave(sexyCoords2));
 			sexyCoords2.RotateRadZ((float)(double)mButtonRotationAdd);
 			mButtonCamera.SetCoords(mButtonCamera.GetCoords().Leave(sexyCoords2));
 			SexyVector3 sexyVector = default(SexyVector3);
-			new FPoint((float)(GlobalMembers.gApp.mScreenBounds.mX + GlobalMembers.MS(160)) + sexyVector.x * (float)GlobalMembers.gApp.mScreenBounds.mWidth, sexyVector.y * (float)GlobalMembers.gApp.mScreenBounds.mHeight);
+			new FPoint((float)(GlobalMembers.gApp.mScreenBounds.mX + (160)) + sexyVector.x * (float)GlobalMembers.gApp.mScreenBounds.mWidth, sexyVector.y * (float)GlobalMembers.gApp.mScreenBounds.mHeight);
 			new FPoint(mWidth / 2, mHeight / 2);
-			SexyVector3 inEyePos = new SexyVector3(GlobalMembers.M(-0.802f), GlobalMembers.M(1.93f), GlobalMembers.M(0.64f));
+			SexyVector3 inEyePos = new SexyVector3((-0.802f), (1.93f), (0.64f));
 			mButtonCamera.EyeToScreen(inEyePos);
-			new FPoint((float)(GlobalMembers.gApp.mScreenBounds.mX + GlobalMembers.MS(160)) + sexyVector.x * (float)GlobalMembers.gApp.mScreenBounds.mWidth, sexyVector.y * (float)GlobalMembers.gApp.mScreenBounds.mHeight);
-			new FPoint((float)(GlobalMembers.gApp.mScreenBounds.mX + GlobalMembers.MS(160)) + sexyVector.x * (float)GlobalMembers.gApp.mScreenBounds.mWidth, sexyVector.y * (float)GlobalMembers.gApp.mScreenBounds.mHeight);
+			new FPoint((float)(GlobalMembers.gApp.mScreenBounds.mX + (160)) + sexyVector.x * (float)GlobalMembers.gApp.mScreenBounds.mWidth, sexyVector.y * (float)GlobalMembers.gApp.mScreenBounds.mHeight);
+			new FPoint((float)(GlobalMembers.gApp.mScreenBounds.mX + (160)) + sexyVector.x * (float)GlobalMembers.gApp.mScreenBounds.mWidth, sexyVector.y * (float)GlobalMembers.gApp.mScreenBounds.mHeight);
 			if (mScrollWidget != null)
 			{
 				int num3 = ConstantsWP.MAIN_MENU_TAB_WIDTH * mScrollwidgetPage;
@@ -353,10 +353,10 @@ namespace BejeweledLivePlus.UI
 				g.DrawImage(GlobalMembersResourcesWP.IMAGE_MAIN_MENU_BACKGROUND, GlobalMembers.gApp.mWidth - 1, GlobalMembers.gApp.mHeight - 1);
 				preFlight = true;
 			}
-			float num = (float)Math.Min(1.0, (double)GlobalMembers.M(2.3f) - (double)mDispLoadPct * (double)mBkgBlackAlpha * (double)GlobalMembers.M(2f));
-			float num2 = (float)Math.Max(0.0, Math.Min(1.0, (double)mDispLoadPct * (double)mBkgBlackAlpha * (double)GlobalMembers.M(3f)));
-			num -= num2 * GlobalMembers.M(0.4f);
-			Math.Min(1.0, GlobalMembers.M(1.9) - (double)(mDispLoadPct * GlobalMembers.M(2.1f)));
+			float num = (float)Math.Min(1.0, (double)(2.3f) - (double)mDispLoadPct * (double)mBkgBlackAlpha * (double)(2f));
+			float num2 = (float)Math.Max(0.0, Math.Min(1.0, (double)mDispLoadPct * (double)mBkgBlackAlpha * (double)(3f)));
+			num -= num2 * (0.4f);
+			Math.Min(1.0, (1.9) - (double)(mDispLoadPct * (2.1f)));
 			if (mLoaded)
 			{
 				DeferOverlay(1);
@@ -386,11 +386,11 @@ namespace BejeweledLivePlus.UI
 			{
 				g.mTransX = 0f;
 				g.mTransY = 0f;
-				g.SetColor(new Color(255, 255, 255, (int)(255.0 * (double)mTipTextAlpha * Math.Max(0.0, Math.Min(1.0, (double)mDispLoadPct * GlobalMembers.M(2.0) - GlobalMembers.M(0.15))))));
+				g.SetColor(new Color(255, 255, 255, (int)(255.0 * (double)mTipTextAlpha * Math.Max(0.0, Math.Min(1.0, (double)mDispLoadPct * (2.0) - (0.15))))));
 				g.SetFont(GlobalMembersResources.FONT_DIALOG);
 				((ImageFont)g.mFont).PushLayerColor("GLOW", new Color(64, 0, 32, 128));
 				((ImageFont)g.mFont).PushLayerColor("OUTLINE", new Color(0, 0, 0, 0));
-				g.WriteString(GlobalMembers.gApp.mTips[(GlobalMembers.gApp.mTipIdx - 1) % Common.size(GlobalMembers.gApp.mTips)], mWidth / 2, GlobalMembers.MS(1165));
+				g.WriteString(GlobalMembers.gApp.mTips[(GlobalMembers.gApp.mTipIdx - 1) % Common.size(GlobalMembers.gApp.mTips)], mWidth / 2, (1165));
 				((ImageFont)g.mFont).PopLayerColor("OUTLINE");
 				((ImageFont)g.mFont).PopLayerColor("GLOW");
 			}
@@ -518,18 +518,18 @@ namespace BejeweledLivePlus.UI
 				{
 					num2 = 1f / (float)(NUM_LOADERBAR_POINTS - 1);
 				}
-				num2 *= GlobalMembers.M(1.022f);
+				num2 *= (1.022f);
 				float num3 = (0f - GlobalMembers.M_PI) / 2f + num * GlobalMembers.M_PI * 2f;
 				num += num2;
 				float theU = ((i == 0) ? 0f : ((i != NUM_LOADERBAR_POINTS - 1) ? 0.5f : 1f));
 				for (int j = 0; j < 2; j++)
 				{
-					float num4 = GlobalMembers.MS(180) + j * GlobalMembers.MS(60);
+					float num4 = (180) + j * (60);
 					array[i * 2 + j] = new SexyVertex2D(g.mTransX + (float)(mWidth / 2) + (float)Math.Cos(num3) * num4, (float)(mHeight / 2) + (float)Math.Sin(num3) * num4, theU, j);
 				}
 			}
 			graphics3D.SetTexture(0, GlobalMembersResourcesWP.IMAGE_LOADER_WHITEDOT);
-			float num5 = (float)((0.5 * Math.Sin((float)mUpdateCnt * GlobalMembers.M(0.03f)) * 0.5 * (double)GlobalMembers.M(0.5f) + (double)GlobalMembers.M(0.75f)) * (double)mLoaderAlpha);
+			float num5 = (float)((0.5 * Math.Sin((float)mUpdateCnt * (0.03f)) * 0.5 * (double)(0.5f) + (double)(0.75f)) * (double)mLoaderAlpha);
 			graphics3D.DrawPrimitive(708u, Graphics3D.EPrimitiveType.PT_TriangleStrip, array, NUM_LOADERBAR_POINTS * 2 - 2, new Color(70, 136, 247, (int)(255f * num5)), 1, 0f, 0f, true, 0u);
 		}
 

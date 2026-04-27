@@ -44,7 +44,7 @@ namespace BejeweledLivePlus.UI
 				mPos = new Point(mBoard.GetBoardCenterX(), mBoard.GetBoardCenterY());
 				if (!mBoard.mShowBoard)
 				{
-					mPos.mX = GlobalMembers.S(GlobalMembers.M(800));
+					mPos.mX = GlobalMembers.S((800));
 				}
 			}
 			mText = theText;
@@ -141,12 +141,12 @@ namespace BejeweledLivePlus.UI
 			{
 				if (mText[j] == '\n')
 				{
-					g.WriteString(mText.Substring(num6, j - num6), num, num2 - (num4 - num5) * GlobalMembers.MS(140) + GlobalMembers.MS(175));
+					g.WriteString(mText.Substring(num6, j - num6), num, num2 - (num4 - num5) * (140) + (175));
 					num6 = j + 1;
 					num5++;
 				}
 			}
-			g.WriteString(mText.Substring(num6), num, num2 - (num4 - num5) * GlobalMembers.MS(140) + GlobalMembers.MS(175));
+			g.WriteString(mText.Substring(num6), num, num2 - (num4 - num5) * (140) + (175));
 			Utils.PopScale(g);
 			g.PopState();
 		}

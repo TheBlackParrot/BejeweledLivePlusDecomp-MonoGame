@@ -252,7 +252,7 @@ public class BorderEffect
 	public void DrawDebug(Graphics g)
 	{
 		int num = mMarkerLen;
-		for (int i = 0; i < num && i != BejeweledLivePlus.GlobalMembers.M(-1); i++)
+		for (int i = 0; i < num && i != (-1); i++)
 		{
 			double theNum = GetMarkerX(i);
 			double theNum2 = GetMarkerX((i + 1) % num);
@@ -262,12 +262,12 @@ public class BorderEffect
 			double theNum6 = GetMarkerOuterX((i + 1) % num);
 			double theNum7 = GetMarkerOuterY(i);
 			double theNum8 = GetMarkerOuterY((i + 1) % num);
-			g.SetColor(new Color(BejeweledLivePlus.GlobalMembers.M(16777215), BejeweledLivePlus.GlobalMembers.M(100)));
+			g.SetColor(new Color((16777215), (100)));
 			g.DrawLine((int)BejeweledLivePlus.GlobalMembers.S(theNum), (int)BejeweledLivePlus.GlobalMembers.S(theNum3), (int)BejeweledLivePlus.GlobalMembers.S(theNum2), (int)BejeweledLivePlus.GlobalMembers.S(theNum4));
 			g.DrawLine((int)BejeweledLivePlus.GlobalMembers.S(theNum5), (int)BejeweledLivePlus.GlobalMembers.S(theNum7), (int)BejeweledLivePlus.GlobalMembers.S(theNum6), (int)BejeweledLivePlus.GlobalMembers.S(theNum8));
 			g.DrawLine((int)BejeweledLivePlus.GlobalMembers.S(theNum2), (int)BejeweledLivePlus.GlobalMembers.S(theNum4), (int)BejeweledLivePlus.GlobalMembers.S(theNum5), (int)BejeweledLivePlus.GlobalMembers.S(theNum7));
 			g.DrawLine((int)BejeweledLivePlus.GlobalMembers.S(theNum5), (int)BejeweledLivePlus.GlobalMembers.S(theNum7), (int)BejeweledLivePlus.GlobalMembers.S(theNum), (int)BejeweledLivePlus.GlobalMembers.S(theNum3));
-			g.SetColor(new Color(BejeweledLivePlus.GlobalMembers.M(65280), BejeweledLivePlus.GlobalMembers.M(100)));
+			g.SetColor(new Color((65280), (100)));
 			g.FillRect((int)BejeweledLivePlus.GlobalMembers.S(theNum) - 1, (int)BejeweledLivePlus.GlobalMembers.S(theNum3) - 1, 2, 2);
 			g.FillRect((int)BejeweledLivePlus.GlobalMembers.S(theNum2) - 1, (int)BejeweledLivePlus.GlobalMembers.S(theNum4) - 1, 2, 2);
 			g.FillRect((int)BejeweledLivePlus.GlobalMembers.S(theNum5) - 1, (int)BejeweledLivePlus.GlobalMembers.S(theNum7) - 1, 2, 2);

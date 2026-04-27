@@ -54,7 +54,7 @@ namespace BejeweledLivePlus.UI
 			mNameWidget.SetColor(3, Color.White);
 			mNameWidget.SetColor(4, Color.Black);
 			mNameWidget.mMaxChars = 16;
-			mNameWidget.mCursorOffset = GlobalMembers.M(-5);
+			mNameWidget.mCursorOffset = (-5);
 			mNameWidget.SetText("");
 			AddWidget(mNameWidget);
 			mHasForcedUppercase = false;
@@ -92,7 +92,7 @@ namespace BejeweledLivePlus.UI
 			mNameWidget.SetColor(3, Color.White);
 			mNameWidget.SetColor(4, Color.Black);
 			mNameWidget.mMaxChars = 16;
-			mNameWidget.mCursorOffset = GlobalMembers.M(-5);
+			mNameWidget.mCursorOffset = (-5);
 			mNameWidget.SetText("");
 			AddWidget(mNameWidget);
 			mHasForcedUppercase = false;

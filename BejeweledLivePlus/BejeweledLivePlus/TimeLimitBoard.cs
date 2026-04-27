@@ -77,7 +77,7 @@ namespace BejeweledLivePlus
 			mTimeLimit += num;
 			TextNotifyEffect textNotifyEffect = ShowQuestText(string.Format(GlobalMembers._ID("+{0} SECOND BONUS", 499), num));
 			textNotifyEffect.mFont = GlobalMembersResources.FONT_HEADER;
-			textNotifyEffect.mY = GlobalMembers.M(1050);
+			textNotifyEffect.mY = (1050);
 		}
 
 		public override void DoQuestPenalty()

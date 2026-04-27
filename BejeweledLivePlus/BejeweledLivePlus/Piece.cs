@@ -602,7 +602,7 @@ namespace BejeweledLivePlus
 			{
 				bool flag = mBoard.WantsCalmEffects();
 				int num = 1;
-				num = ((((int)GlobalMembers.gApp.mUpdateCount + mId) % GlobalMembers.M(3) == 0) ? 1 : 0);
+				num = ((((int)GlobalMembers.gApp.mUpdateCount + mId) % (3) == 0) ? 1 : 0);
 				for (int i = 0; i < num; i++)
 				{
 					bool flag2 = BejeweledLivePlus.Misc.Common.Rand() % 2 == 0;
@@ -610,26 +610,26 @@ namespace BejeweledLivePlus
 					Effect effect;
 					if (flag2)
 					{
-						effectsManager = ((BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(32) == 0) ? mBoard.mPostFXManager : mBoard.mPreFXManager);
+						effectsManager = ((BejeweledLivePlus.Misc.Common.Rand() % (32) == 0) ? mBoard.mPostFXManager : mBoard.mPreFXManager);
 						effect = effectsManager.AllocEffect(Effect.Type.TYPE_EMBER_FADEINOUT);
 						effect.mAngle = 0f;
 						effect.mDAngle = 0f;
 						effect.mAlpha = 0f;
-						effect.mDAlpha = GlobalMembers.M(0.0075f) + GlobalMembers.M(0.0015f) * GlobalMembersUtils.GetRandFloat();
+						effect.mDAlpha = (0.0075f) + (0.0015f) * GlobalMembersUtils.GetRandFloat();
 						if (SexyFramework.GlobalMembers.gIs3D)
 						{
-							effect.mScale = GlobalMembers.M(0.12f) + GlobalMembers.M(0.035f) * GlobalMembersUtils.GetRandFloat();
-							effect.mDScale = GlobalMembers.M(0.01f) + GlobalMembers.M(0.005f) * GlobalMembersUtils.GetRandFloat();
+							effect.mScale = (0.12f) + (0.035f) * GlobalMembersUtils.GetRandFloat();
+							effect.mDScale = (0.01f) + (0.005f) * GlobalMembersUtils.GetRandFloat();
 						}
-						effect.mDY = GlobalMembers.M(-0.12f) + GlobalMembers.M(-0.05f) * GlobalMembersUtils.GetRandFloat();
+						effect.mDY = (-0.12f) + (-0.05f) * GlobalMembersUtils.GetRandFloat();
 						if (flag)
 						{
-							effect.mDScale *= GlobalMembers.M(0.67f);
+							effect.mDScale *= (0.67f);
 						}
-						bool flag3 = mBoard.mWantsReddishFlamegems && BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(4) <= GlobalMembers.M(0) && effectsManager == mBoard.mPreFXManager;
+						bool flag3 = mBoard.mWantsReddishFlamegems && BejeweledLivePlus.Misc.Common.Rand() % (4) <= (0) && effectsManager == mBoard.mPreFXManager;
 						if (mColor == 3 || flag3)
 						{
-							effect.mColor = new Color(GlobalMembers.M(255), GlobalMembers.M(128), GlobalMembers.M(128));
+							effect.mColor = new Color((255), (128), (128));
 							if (flag3)
 							{
 								effect.mType = Effect.Type.TYPE_EMBER_FADEINOUT_BOTTOM;
@@ -637,19 +637,19 @@ namespace BejeweledLivePlus
 						}
 						else
 						{
-							effect.mColor = new Color(GlobalMembers.M(255), GlobalMembers.M(255), GlobalMembers.M(255));
+							effect.mColor = new Color((255), (255), (255));
 						}
 					}
 					else
 					{
-						effectsManager = ((BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(2) == 0) ? mBoard.mPostFXManager : mBoard.mPreFXManager);
+						effectsManager = ((BejeweledLivePlus.Misc.Common.Rand() % (2) == 0) ? mBoard.mPostFXManager : mBoard.mPreFXManager);
 						effect = effectsManager.AllocEffect(Effect.Type.TYPE_EMBER);
 						effect.mAlpha = 1f;
 						if (SexyFramework.GlobalMembers.gIs3D)
 						{
-							effect.mScale = GlobalMembers.M(2f);
+							effect.mScale = (2f);
 						}
-						effect.mDScale = GlobalMembers.M(-0.01f);
+						effect.mDScale = (-0.01f);
 						effect.mFrame = 0;
 						if (SexyFramework.GlobalMembers.gIs3D)
 						{
@@ -659,12 +659,12 @@ namespace BejeweledLivePlus
 						{
 							effect.mImage = GlobalMembersResourcesWP.IMAGE_SPARKLET_FAT;
 						}
-						effect.mDY = GlobalMembers.M(-0.4f) + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.15f);
-						effect.mColor = new Color(GlobalMembers.M(128), BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(32) + GlobalMembers.M(48), BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(24) + GlobalMembers.M(24));
-						bool flag4 = mBoard.mWantsReddishFlamegems && BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(3) <= GlobalMembers.M(0) && effectsManager == mBoard.mPreFXManager;
+						effect.mDY = (-0.4f) + GlobalMembersUtils.GetRandFloat() * (0.15f);
+						effect.mColor = new Color((128), BejeweledLivePlus.Misc.Common.Rand() % (32) + (48), BejeweledLivePlus.Misc.Common.Rand() % (24) + (24));
+						bool flag4 = mBoard.mWantsReddishFlamegems && BejeweledLivePlus.Misc.Common.Rand() % (3) <= (0) && effectsManager == mBoard.mPreFXManager;
 						if (mColor == 3 || flag4)
 						{
-							effect.mColor = new Color(GlobalMembers.M(255), GlobalMembers.M(0), GlobalMembers.M(0));
+							effect.mColor = new Color((255), (0), (0));
 							if (flag4)
 							{
 								effect.mType = Effect.Type.TYPE_EMBER_BOTTOM;
@@ -672,13 +672,13 @@ namespace BejeweledLivePlus
 						}
 						else if (mColor == 0)
 						{
-							effect.mColor = new Color(GlobalMembers.M(240), GlobalMembers.M(128), GlobalMembers.M(64));
+							effect.mColor = new Color((240), (128), (64));
 						}
 					}
 					if (flag)
 					{
-						effect.mDY *= GlobalMembers.M(0.67f);
-						effect.mDAlpha *= GlobalMembers.M(0.67f);
+						effect.mDY *= (0.67f);
+						effect.mDAlpha *= (0.67f);
 					}
 					float num2 = (float)Math.PI + Math.Abs(GlobalMembersUtils.GetRandFloat() * (float)Math.PI * 2f);
 					float angleRadius = GetAngleRadius(num2);
@@ -688,11 +688,11 @@ namespace BejeweledLivePlus
 						if (num3 > 0f)
 						{
 							float num4 = (float)Math.Cos(num2);
-							float num5 = ((!(num4 < 0f)) ? GlobalMembers.M(-0.001f) : GlobalMembers.M(0.001f));
+							float num5 = ((!(num4 < 0f)) ? (-0.001f) : (0.001f));
 							float num6 = ((float)Math.Cos(num2 + num5) + (float)Math.Cos(num2 + num5 * 2f)) / 2f;
 							float num7 = ((float)Math.Sin(num2 + num5) + (float)Math.Sin(num2 + num5 * 2f)) / 2f;
 							float num8 = (float)Math.Atan2(num7 - num3, num6 - num4);
-							float num9 = GlobalMembers.M(0.12f) + GlobalMembers.M(0.05f) * GlobalMembersUtils.GetRandFloat();
+							float num9 = (0.12f) + (0.05f) * GlobalMembersUtils.GetRandFloat();
 							float num10 = (float)Math.Cos(num8) * num9;
 							float num11 = (float)Math.Sin(num8) * num9;
 							effect.mDX = (effect.mDX + num10) / 2f;
@@ -705,8 +705,8 @@ namespace BejeweledLivePlus
 						num12 += (float)(double)mBoard.mSideXOff;
 					}
 					effect.mX = num12 + 50f + (float)Math.Cos(num2) * angleRadius;
-					effect.mY = GetScreenY() + 50f + (float)Math.Sin(num2) * angleRadius + GlobalMembers.M(2f);
-					if (BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(6) != 0 || mBoard.mHyperspace != null)
+					effect.mY = GetScreenY() + 50f + (float)Math.Sin(num2) * angleRadius + (2f);
+					if (BejeweledLivePlus.Misc.Common.Rand() % (6) != 0 || mBoard.mHyperspace != null)
 					{
 						effect.mX -= num12;
 						effect.mY -= GetScreenY();
@@ -714,40 +714,40 @@ namespace BejeweledLivePlus
 					}
 					effectsManager.AddEffect(effect);
 				}
-				if (((int)GlobalMembers.gApp.mUpdateCount + mId) % GlobalMembers.M(val) == 0 || BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(40) == 0)
+				if (((int)GlobalMembers.gApp.mUpdateCount + mId) % (val) == 0 || BejeweledLivePlus.Misc.Common.Rand() % (40) == 0)
 				{
 					Effect effect2 = mBoard.mPostFXManager.AllocEffect(Effect.Type.TYPE_LIGHT);
 					effect2.mFlags = 2;
-					effect2.mX = CX() + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(20f);
-					effect2.mY = CY() + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(20f) + GlobalMembers.M(-5f);
-					effect2.mZ = GlobalMembers.M(0.08f);
-					effect2.mValue[0] = GlobalMembers.M(30f);
-					effect2.mValue[1] = GlobalMembers.M(-0.1f);
-					effect2.mAlpha = GlobalMembers.M(0f);
-					effect2.mDAlpha = GlobalMembers.M(0.1f);
-					effect2.mScale = GlobalMembers.M(140f);
-					effect2.mColor = new Color(GlobalMembers.M(255), GlobalMembers.M(140), GlobalMembers.M(48));
-					if (BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(2) != 0 || mBoard.mHyperspace != null)
+					effect2.mX = CX() + GlobalMembersUtils.GetRandFloat() * (20f);
+					effect2.mY = CY() + GlobalMembersUtils.GetRandFloat() * (20f) + (-5f);
+					effect2.mZ = (0.08f);
+					effect2.mValue[0] = (30f);
+					effect2.mValue[1] = (-0.1f);
+					effect2.mAlpha = (0f);
+					effect2.mDAlpha = (0.1f);
+					effect2.mScale = (140f);
+					effect2.mColor = new Color((255), (140), (48));
+					if (BejeweledLivePlus.Misc.Common.Rand() % (2) != 0 || mBoard.mHyperspace != null)
 					{
 						effect2.mPieceId = (uint)mId;
 					}
 					mBoard.mPostFXManager.AddEffect(effect2);
 				}
 			}
-			if (IsFlagSet(2u) && (((int)GlobalMembers.gApp.mUpdateCount + mId) % GlobalMembers.M(val) == 0 || BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(40) == 0))
+			if (IsFlagSet(2u) && (((int)GlobalMembers.gApp.mUpdateCount + mId) % (val) == 0 || BejeweledLivePlus.Misc.Common.Rand() % (40) == 0))
 			{
 				Effect effect3 = mBoard.mPostFXManager.AllocEffect(Effect.Type.TYPE_LIGHT);
 				effect3.mFlags = 2;
-				effect3.mX = CX() + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(30f);
-				effect3.mY = CY() + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(30f) + GlobalMembers.M(0f);
-				effect3.mZ = GlobalMembers.M(0.08f);
-				effect3.mValue[0] = GlobalMembers.M(30f);
-				effect3.mValue[1] = GlobalMembers.M(-0.3f);
-				effect3.mAlpha = GlobalMembers.M(0f);
-				effect3.mDAlpha = GlobalMembers.M(0.07f);
-				effect3.mScale = GlobalMembers.M(140f);
-				effect3.mColor = new Color((int)GlobalMembers.gApp.HSLToRGB(BejeweledLivePlus.Misc.Common.Rand() % 255, GlobalMembers.M(255), GlobalMembers.M(128)));
-				if (BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(2) != 0)
+				effect3.mX = CX() + GlobalMembersUtils.GetRandFloat() * (30f);
+				effect3.mY = CY() + GlobalMembersUtils.GetRandFloat() * (30f) + (0f);
+				effect3.mZ = (0.08f);
+				effect3.mValue[0] = (30f);
+				effect3.mValue[1] = (-0.3f);
+				effect3.mAlpha = (0f);
+				effect3.mDAlpha = (0.07f);
+				effect3.mScale = (140f);
+				effect3.mColor = new Color((int)GlobalMembers.gApp.HSLToRGB(BejeweledLivePlus.Misc.Common.Rand() % 255, (255), (128)));
+				if (BejeweledLivePlus.Misc.Common.Rand() % (2) != 0)
 				{
 					effect3.mPieceId = (uint)mId;
 				}
@@ -763,23 +763,23 @@ namespace BejeweledLivePlus
 				{
 					float num13 = Math.Max(1, 8 - mCounter);
 					int num14 = BejeweledLivePlus.Misc.Common.Rand() % 4;
-					int num15 = Math.Max(GlobalMembers.M(2), mCounter * GlobalMembers.M(1));
+					int num15 = Math.Max((2), mCounter * (1));
 					int num16 = 0;
-					if (num15 < GlobalMembers.M(20) && mBoard.mUpdateCnt % num15 == 0)
+					if (num15 < (20) && mBoard.mUpdateCnt % num15 == 0)
 					{
-						num16 = GlobalMembers.M(1);
+						num16 = (1);
 					}
 					while (num16-- != 0)
 					{
 						Effect effect4 = mBoard.mPostFXManager.AllocEffect(Effect.Type.TYPE_STEAM);
-						float num17 = (GlobalMembers.M(0.25f) + GlobalMembers.M(0.05f) * Math.Abs(GlobalMembersUtils.GetRandFloat())) * num13;
+						float num17 = ((0.25f) + (0.05f) * Math.Abs(GlobalMembersUtils.GetRandFloat())) * num13;
 						float num18 = (float)Math.PI / 4f + (float)num14 * (float)Math.PI / 2f;
-						effect4.mX = CX() + mShakeOfsX + (float)Math.Cos(num18) * 100f * (GlobalMembers.M(0.6f) + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.1f));
-						effect4.mY = CY() + mShakeOfsY + (float)Math.Sin(num18) * 100f * (GlobalMembers.M(0.6f) + GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.1f));
+						effect4.mX = CX() + mShakeOfsX + (float)Math.Cos(num18) * 100f * ((0.6f) + GlobalMembersUtils.GetRandFloat() * (0.1f));
+						effect4.mY = CY() + mShakeOfsY + (float)Math.Sin(num18) * 100f * ((0.6f) + GlobalMembersUtils.GetRandFloat() * (0.1f));
 						effect4.mIsAdditive = false;
-						effect4.mScale = GlobalMembers.M(0.1f);
-						effect4.mDScale = GlobalMembers.M(0.03f);
-						effect4.mMaxScale = GlobalMembers.M(2f);
+						effect4.mScale = (0.1f);
+						effect4.mDScale = (0.03f);
+						effect4.mMaxScale = (2f);
 						effect4.mDX = num17 * (float)Math.Cos(num18);
 						effect4.mDY = num17 * (float)Math.Sin(num18);
 						mBoard.mPostFXManager.AddEffect(effect4);
@@ -862,7 +862,7 @@ namespace BejeweledLivePlus
 			string theString = $"{mCounter}";
 			ImageFont imageFont = (ImageFont)GlobalMembersResources.FONT_SCORE;
 			Utils.SetFontLayerColor(imageFont, "Layer_3", new Color(0, 0, 0, 128));
-			int num = (int)((float)imageFont.StringWidth(theString) * GlobalMembers.M(1.5f));
+			int num = (int)((float)imageFont.StringWidth(theString) * (1.5f));
 			int num2 = Math.Max(GlobalMembers.S(100), imageFont.mHeight - imageFont.mAscent) + GlobalMembers.S(18);
 			if (mOverlay == null)
 			{
@@ -893,8 +893,8 @@ namespace BejeweledLivePlus
 			imageFont.PushLayerColor(1, color);
 			imageFont.PushLayerColor(2, Color.White);
 			imageFont.PushLayerColor(3, Color.White);
-			int theX = (mOverlay.mWidth - graphics.StringWidth(theString)) / 2 + GlobalMembers.MS(0);
-			int theY = mOverlay.mHeight / 2 + graphics.GetFont().mHeight - graphics.GetFont().mAscent + GlobalMembers.MS(28);
+			int theX = (mOverlay.mWidth - graphics.StringWidth(theString)) / 2 + (0);
+			int theY = mOverlay.mHeight / 2 + graphics.GetFont().mHeight - graphics.GetFont().mAscent + (28);
 			graphics.SetColor(new Color(255, 255, 255));
 			graphics.DrawString(theString, theX, theY);
 			imageFont.PopLayerColor(0);
@@ -917,7 +917,7 @@ namespace BejeweledLivePlus
 			if (mCounter <= 8)
 			{
 				float num3 = Math.Max(1, 8 - mCounter);
-				mShakeScale = num3 * GlobalMembers.M(0.15f);
+				mShakeScale = num3 * (0.15f);
 				if (mOverlayCurve.mIncRate == 0.0)
 				{
 					GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.ePIECE_OVERLAY_CURVE, mOverlayCurve);

@@ -241,14 +241,14 @@ namespace BejeweledLivePlus.Bej3Graphics
 			{
 			case Type.TYPE_STEAM:
 				mImage = GlobalMembersResourcesWP.IMAGE_FX_STEAM;
-				mGravity = GlobalMembers.MS(-0.005f);
+				mGravity = (-0.005f);
 				mAngle = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
-				mDAngle = GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.04f);
-				mAlpha = GlobalMembers.M(0.85f);
+				mDAngle = GlobalMembersUtils.GetRandFloat() * (0.04f);
+				mAlpha = (0.85f);
 				mDAlpha = 0f;
-				mValue[0] = GlobalMembers.M(0.5f);
-				mValue[1] = GlobalMembers.M(-0.02f);
-				mValue[2] = GlobalMembers.M(0.95f);
+				mValue[0] = (0.5f);
+				mValue[1] = (-0.02f);
+				mValue[2] = (0.95f);
 				break;
 			case Type.TYPE_SPARKLE_SHARD:
 				mUpdateDiv = BejeweledLivePlus.Misc.Common.Rand() % 4 + 3;
@@ -260,22 +260,22 @@ namespace BejeweledLivePlus.Bej3Graphics
 				mFrame = BejeweledLivePlus.Misc.Common.Rand() % 40;
 				mUpdateDiv = 0;
 				mAlpha = 1f;
-				mDAlpha = GlobalMembers.M(-0.005f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(-0.01f);
+				mDAlpha = (-0.005f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (-0.01f);
 				mDecel = 1f;
 				break;
 			case Type.TYPE_GLITTER_SPARK:
 				mImage = GlobalMembersResourcesWP.IMAGE_GEM_FRUIT_SPARK;
 				mIsAdditive = true;
-				mGravity = GlobalMembers.MS(0.01f);
-				mAlpha = GlobalMembers.M(1f);
-				mDAlpha = GlobalMembers.M(0f);
-				mScale = GlobalMembers.M(0.5f);
-				mDScale = GlobalMembers.M(-0.005f);
+				mGravity = (0.01f);
+				mAlpha = (1f);
+				mDAlpha = (0f);
+				mScale = (0.5f);
+				mDScale = (-0.005f);
 				break;
 			case Type.TYPE_FRUIT_SPARK:
-				mGravity = GlobalMembers.MS(0.005f);
-				mDX = GlobalMembersUtils.GetRandFloat() * GlobalMembers.MS(1f);
-				mDY = GlobalMembersUtils.GetRandFloat() * GlobalMembers.MS(1f);
+				mGravity = (0.005f);
+				mDX = GlobalMembersUtils.GetRandFloat() * (1f);
+				mDY = GlobalMembersUtils.GetRandFloat() * (1f);
 				mScale = 0.2f;
 				mAlpha = 1f;
 				mDAlpha = -0.005f;
@@ -286,36 +286,36 @@ namespace BejeweledLivePlus.Bej3Graphics
 			case Type.TYPE_EMBER:
 			case Type.TYPE_EMBER_FADEINOUT:
 				mImage = GlobalMembersResourcesWP.IMAGE_FIREPARTICLE;
-				mColor = new Color(255, BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(64) + GlobalMembers.M(64), BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(32) + GlobalMembers.M(30));
-				mGravity = GlobalMembers.M(-0f);
-				mScale = GlobalMembers.M(0.75f);
-				mDScale = GlobalMembers.M(0.005f);
+				mColor = new Color(255, BejeweledLivePlus.Misc.Common.Rand() % (64) + (64), BejeweledLivePlus.Misc.Common.Rand() % (32) + (30));
+				mGravity = (-0f);
+				mScale = (0.75f);
+				mDScale = (0.005f);
 				mAngle = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
-				mDAngle = GlobalMembers.M(0.01f);
+				mDAngle = (0.01f);
 				if (mType == Type.TYPE_EMBER_FADEINOUT || mType == Type.TYPE_EMBER_FADEINOUT_BOTTOM)
 				{
 					mAlpha = 0.01f;
-					mDAlpha = GlobalMembers.M(0.02f);
+					mDAlpha = (0.02f);
 					mStage = 0;
 				}
 				break;
 			case Type.TYPE_SMOKE_PUFF:
 				mImage = GlobalMembersResourcesWP.IMAGE_SMOKE;
-				mGravity = GlobalMembers.MS(-0.005f);
-				mAlpha = GlobalMembers.M(0.5f);
-				mDAlpha = GlobalMembers.M(-0.005f);
+				mGravity = (-0.005f);
+				mAlpha = (0.5f);
+				mDAlpha = (-0.005f);
 				break;
 			case Type.TYPE_DROPLET:
 				mImage = GlobalMembersResourcesWP.IMAGE_DRIP;
 				mDAlpha = 0f;
-				mGravity = GlobalMembers.MS(0.05f);
+				mGravity = (0.05f);
 				break;
 			case Type.TYPE_STEAM_COMET:
 				mImage = GlobalMembersResourcesWP.IMAGE_FX_STEAM;
-				mGravity = GlobalMembers.MS(-0.005f);
+				mGravity = (-0.005f);
 				mAngle = GlobalMembersUtils.GetRandFloat() * (float)Math.PI;
-				mDAngle = GlobalMembersUtils.GetRandFloat() * GlobalMembers.M(0.04f);
-				mAlpha = GlobalMembers.M(0.85f);
+				mDAngle = GlobalMembersUtils.GetRandFloat() * (0.04f);
+				mAlpha = (0.85f);
 				mDAlpha = 0f;
 				break;
 			case Type.TYPE_COUNTDOWN_SHARD:

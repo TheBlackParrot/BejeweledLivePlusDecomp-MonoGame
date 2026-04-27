@@ -134,8 +134,8 @@ namespace BejeweledLivePlus.UI
 			{
 				StopHoverText();
 			}
-			int num = GlobalMembers.MS(180);
-			int num2 = GlobalMembers.MS(180);
+			int num = (180);
+			int num2 = (180);
 			if (GlobalMembers.gApp.mBoard != null && (double)mSelectCenterPct == 1.0 && GlobalMembers.gApp.mBoard.mBackground != null && !GlobalMembers.gApp.mBoard.mBackground.mVisible && GlobalMembers.gApp.mBoard.mHyperspace == null)
 			{
 				GlobalMembers.gApp.mBoard.mBackground.mVisible = true;
@@ -149,42 +149,42 @@ namespace BejeweledLivePlus.UI
 				FPoint fPoint = default(FPoint);
 				if (m < MINIGAME_START_ID)
 				{
-					fPoint = new FPoint(GlobalMembers.MS(460), GlobalMembers.MS(250));
+					fPoint = new FPoint((460), (250));
 					if (m % 2 == 1)
 					{
 						fPoint.mX = (float)mWidth - fPoint.mX;
 					}
 					if (m >= 2)
 					{
-						fPoint.mY += GlobalMembers.MS(650);
+						fPoint.mY += (650);
 					}
-					fPoint += (fPoint - new FPoint(mWidth / 2, mHeight / 2) * GlobalMembers.M(1.25)) * (1.0 - (double)mShowPct);
+					fPoint += (fPoint - new FPoint(mWidth / 2, mHeight / 2) * (1.25)) * (1.0 - (double)mShowPct);
 				}
 				else
 				{
-					mModeButtons[m].mColor = new Color(GlobalMembers.M(16742399));
-					mModeButtons[m].mFontColor = new Color(GlobalMembers.M(2236962), GlobalMembers.M(160));
+					mModeButtons[m].mColor = new Color((16742399));
+					mModeButtons[m].mFontColor = new Color((2236962), (160));
 					int num3 = m - MINIGAME_START_ID;
-					fPoint = new FPoint(GlobalMembers.MS(711), GlobalMembers.MS(420));
+					fPoint = new FPoint((711), (420));
 					if (num3 % 2 == 1)
 					{
-						fPoint.mX = (float)mWidth - fPoint.mX + (float)GlobalMembers.MS(4);
+						fPoint.mX = (float)mWidth - fPoint.mX + (float)(4);
 					}
 					int num4;
 					int num5;
 					if (num3 >= 2)
 					{
-						fPoint.mY += GlobalMembers.MS(295);
-						num4 = GlobalMembers.M(3);
-						num5 = GlobalMembers.M(4);
+						fPoint.mY += (295);
+						num4 = (3);
+						num5 = (4);
 					}
 					else
 					{
-						num4 = GlobalMembers.M(3);
-						num5 = GlobalMembers.M(3);
+						num4 = (3);
+						num5 = (3);
 					}
-					fPoint.mX += (float)((double)num4 * (1.0 - (double)mShowPct) * (double)(fPoint.mX - (float)(mWidth / 2)) * GlobalMembers.M(1.25));
-					fPoint.mY += (float)((double)num5 * (1.0 - (double)mShowPct) * (double)(fPoint.mY - (float)(mHeight / 2)) * GlobalMembers.M(1.25));
+					fPoint.mX += (float)((double)num4 * (1.0 - (double)mShowPct) * (double)(fPoint.mX - (float)(mWidth / 2)) * (1.25));
+					fPoint.mY += (float)((double)num5 * (1.0 - (double)mShowPct) * (double)(fPoint.mY - (float)(mHeight / 2)) * (1.25));
 					int num6 = 0;
 					switch (m)
 					{
@@ -208,7 +208,7 @@ namespace BejeweledLivePlus.UI
 					mModeButtons[m].mTextIsQuestionMark = flag2;
 					mModeButtons[m].mLocked = flag2;
 					mModeButtons[m].mDoBob = false;
-					mModeButtons[m].mColor = new Color(GlobalMembers.M(11184810));
+					mModeButtons[m].mColor = new Color((11184810));
 				}
 				if (m == mSelectedMode)
 				{
@@ -250,38 +250,38 @@ namespace BejeweledLivePlus.UI
 			DeferOverlay(0);
 			for (int i = 0; i < 4; i++)
 			{
-				mModeButtons[i].mFontColor = new Color(BlendColorsForPlayMenu.BlendColors(mBaseModeFontColor, GlobalMembers.M(16711765), (float)(double)mHoverTextConnectorAlpha[i], false));
+				mModeButtons[i].mFontColor = new Color(BlendColorsForPlayMenu.BlendColors(mBaseModeFontColor, (16711765), (float)(double)mHoverTextConnectorAlpha[i], false));
 				if (mIntroTextAlpha != null && i == 0)
 				{
-					mModeButtons[i].mFontColor = new Color(BlendColorsForPlayMenu.BlendColors(mModeButtons[i].mFontColor.ToInt(), GlobalMembers.M(16736400), (0.5f + (float)Math.Cos((float)mUpdateCnt * GlobalMembers.M(0.075f)) * 0.5f) * (float)(double)mIntroTextAlpha, false));
+					mModeButtons[i].mFontColor = new Color(BlendColorsForPlayMenu.BlendColors(mModeButtons[i].mFontColor.ToInt(), (16736400), (0.5f + (float)Math.Cos((float)mUpdateCnt * (0.075f)) * 0.5f) * (float)(double)mIntroTextAlpha, false));
 				}
-				mModeButtons[i].mExtraFontScaling = (float)(double)mHoverTextConnectorAlpha[i] * GlobalMembers.M(1f);
+				mModeButtons[i].mExtraFontScaling = (float)(double)mHoverTextConnectorAlpha[i] * (1f);
 			}
 			if ((double)(float)(double)mHoverTextAlpha > 0.0 || mIntroTextAlpha != null)
 			{
-				g.SetColor(new Color(GlobalMembers.M(16777215), (int)(GlobalMembers.M(255f) * (float)(double)mHoverTextAlpha)));
+				g.SetColor(new Color((16777215), (int)((255f) * (float)(double)mHoverTextAlpha)));
 				g.SetColorizeImages(true);
-				int num = GlobalMembers.M(0);
+				int num = (0);
 				if (mHoverTextLocked)
 				{
 					g.SetFont(GlobalMembersResources.FONT_DIALOG);
-					((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("MAIN", new Color(GlobalMembers.M(16737894)));
-					((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("GLOW", new Color(GlobalMembers.M(0)));
-					((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("OUTLINE", new Color(GlobalMembers.M(0)));
-					g.WriteString(GlobalMembers._ID("SECRET GAME", 352), mWidth / 2, mHeight / 2 + GlobalMembers.MS(-40), GlobalMembers.M(0), GlobalMembers.M(0));
+					((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("MAIN", new Color((16737894)));
+					((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("GLOW", new Color((0)));
+					((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("OUTLINE", new Color((0)));
+					g.WriteString(GlobalMembers._ID("SECRET GAME", 352), mWidth / 2, mHeight / 2 + (-40), (0), (0));
 					((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("MAIN");
 					((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("GLOW");
 					((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("OUTLINE");
-					num = GlobalMembers.M(12);
+					num = (12);
 				}
 				g.SetFont(GlobalMembersResources.FONT_DIALOG);
-				((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("GLOW", new Color(GlobalMembers.M(0)));
-				((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("OUTLINE", new Color(GlobalMembers.M(0)));
-				g.WriteString(mHoverText, mWidth / 2, mHeight / 2 + GlobalMembers.S(GlobalMembers.M(10) + num), GlobalMembers.M(0), GlobalMembers.M(0));
+				((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("GLOW", new Color((0)));
+				((ImageFont)GlobalMembersResources.FONT_DIALOG).PushLayerColor("OUTLINE", new Color((0)));
+				g.WriteString(mHoverText, mWidth / 2, mHeight / 2 + GlobalMembers.S((10) + num), (0), (0));
 				if (mIntroTextAlpha != null)
 				{
 					g.SetColor(mIntroTextAlpha);
-					g.WriteString(GlobalMembers._ID("New to Bejeweled? Try Classic mode", 566), mWidth / 2, mHeight / 2 + GlobalMembers.S(GlobalMembers.M(10) + num), GlobalMembers.M(0), GlobalMembers.M(0));
+					g.WriteString(GlobalMembers._ID("New to Bejeweled? Try Classic mode", 566), mWidth / 2, mHeight / 2 + GlobalMembers.S((10) + num), (0), (0));
 				}
 				((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("GLOW");
 				((ImageFont)GlobalMembersResources.FONT_DIALOG).PopLayerColor("OUTLINE");
@@ -311,7 +311,7 @@ namespace BejeweledLivePlus.UI
 					num2 = Math.Max(num2, (float)(double)mModeButtons[k].mScale / 0.2f);
 				}
 				mModeButtons[3].mHasCrest = true;
-				GlobalMembersResourcesWP.POPANIM_ANIMS_100CREST.mColor = new Color(255, 255, 255, (int)(Math.Max(0.0, 1.0 - ((double)num2 - 1.0) * GlobalMembers.M(0.5) - (1.0 - (double)mShowPct) * GlobalMembers.M(3.0)) * 255.0));
+				GlobalMembersResourcesWP.POPANIM_ANIMS_100CREST.mColor = new Color(255, 255, 255, (int)(Math.Max(0.0, 1.0 - ((double)num2 - 1.0) * (0.5) - (1.0 - (double)mShowPct) * (3.0)) * 255.0));
 			}
 			else
 			{
@@ -362,23 +362,23 @@ namespace BejeweledLivePlus.UI
 			switch (theId)
 			{
 			case 0:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER1, 0, GlobalMembers.M(0.5), GlobalMembers.M(-4.0));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER1, 0, (0.5), (-4.0));
 				text = GlobalMembers._ID("Play the original untimed game", 365);
 				break;
 			case 1:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER2, 0, GlobalMembers.M(0.5), GlobalMembers.M(-4.0));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER2, 0, (0.5), (-4.0));
 				text = GlobalMembers._ID("Relax body and mind in this endless game", 366);
 				break;
 			case 2:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER3, 0, GlobalMembers.M(0.5), GlobalMembers.M(-4.0));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER3, 0, (0.5), (-4.0));
 				text = GlobalMembers._ID("Collect Time Gems to charge up bonus rounds", 367);
 				break;
 			case 3:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER4, 0, GlobalMembers.M(0.5), GlobalMembers.M(-4.0));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER4, 0, (0.5), (-4.0));
 				text = GlobalMembers._ID("Solve 40 different puzzling minigames", 368);
 				break;
 			case 4:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER1, 0, GlobalMembers.M(0.5));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER1, 0, (0.5));
 				if (GlobalMembers.gApp.mProfile.mEndlessModeUnlocked[0])
 				{
 					text = GlobalMembers._ID("Match gems and make your best hand", 369);
@@ -389,7 +389,7 @@ namespace BejeweledLivePlus.UI
 				num = 0;
 				break;
 			case 5:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER2, 0, GlobalMembers.M(0.5));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER2, 0, (0.5));
 				if (GlobalMembers.gApp.mProfile.mEndlessModeUnlocked[1])
 				{
 					text = GlobalMembers._ID("Collect colorful jeweled butterflies", 371);
@@ -400,7 +400,7 @@ namespace BejeweledLivePlus.UI
 				num = 1;
 				break;
 			case 6:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER3, 0, GlobalMembers.M(0.5));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER3, 0, (0.5));
 				if (GlobalMembers.gApp.mProfile.mEndlessModeUnlocked[2])
 				{
 					text = GlobalMembers._ID("Hold back the rising ice columns", 373);
@@ -411,7 +411,7 @@ namespace BejeweledLivePlus.UI
 				num = 2;
 				break;
 			case 7:
-				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER4, 0, GlobalMembers.M(0.5));
+				GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_SECRETMOUSEOVER4, 0, (0.5));
 				if (GlobalMembers.gApp.mProfile.mEndlessModeUnlocked[3])
 				{
 					text = GlobalMembers._ID("Dig deep to unearth buried treasure", 375);
@@ -535,7 +535,7 @@ namespace BejeweledLivePlus.UI
 				{
 					GlobalMembers.gApp.mQuestMenu.mBackground.mVisible = false;
 					crystalBall.mImage = GlobalMembers.gApp.mQuestMenu.mBackground.GetBackgroundImage(true, false);
-					crystalBall.mImageSrcRect = new Rect((int)(GlobalMembers.gApp.mQuestMenu.mQuestSetNumDisp * GlobalMembers.S(205.5)) + GlobalMembers.MS(0), 0, GlobalMembers.MS(480), crystalBall.mImage.mHeight);
+					crystalBall.mImageSrcRect = new Rect((int)(GlobalMembers.gApp.mQuestMenu.mQuestSetNumDisp * GlobalMembers.S(205.5)) + (0), 0, (480), crystalBall.mImage.mHeight);
 				}
 				else
 				{

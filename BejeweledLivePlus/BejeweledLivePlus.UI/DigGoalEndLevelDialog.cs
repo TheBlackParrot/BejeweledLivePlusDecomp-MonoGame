@@ -29,7 +29,7 @@ namespace BejeweledLivePlus.UI
 		public DigGoalEndLevelDialog(QuestBoard theBoard)
 			: base(theBoard)
 		{
-			NudgeButtons(GlobalMembers.MS(-40));
+			NudgeButtons((-40));
 			DoTreasureAnim();
 			for (int i = 0; i < 3; i++)
 			{
@@ -37,11 +37,11 @@ namespace BejeweledLivePlus.UI
 			}
 			foreach (KeyValuePair<int, DialogButton> mBtn in mBtns)
 			{
-				mBtn.Value.mY += GlobalMembers.MS(40);
+				mBtn.Value.mY += (40);
 			}
 			mFXManager = new EffectsManager(null);
 			AddWidget(mFXManager);
-			mFXManager.Resize(0, 0, GlobalMembers.MS(1600), GlobalMembers.MS(1200));
+			mFXManager.Resize(0, 0, (1600), (1200));
 			mFXManager.mMouseVisible = false;
 			mMouseInvisibleChildren.AddLast(mFXManager);
 		}
@@ -59,7 +59,7 @@ namespace BejeweledLivePlus.UI
 			{
 				if (mTreasureDist[i] > 0.0 && !mTreasurePct[i].HasBeenTriggered())
 				{
-					if (mTreasurePauseTicks[i] < GlobalMembers.M(50))
+					if (mTreasurePauseTicks[i] < (50))
 					{
 						mTreasurePauseTicks[i]++;
 					}
@@ -82,7 +82,7 @@ namespace BejeweledLivePlus.UI
 					};
 					if (mBarRectVector[j].Contains(mWidgetManager.mLastMouseX, mWidgetManager.mLastMouseY))
 					{
-						GlobalMembers.gApp.mTooltipManager.RequestTooltip(this, array[j], string.Format(GlobalMembers._ID("${0}", 218), SexyFramework.Common.CommaSeperate(digGoal.mTreasureEarnings[j])), new Point(mBarRectVector[j].mX + mBarRectVector[j].mWidth / 2, mBarRectVector[j].mY + GlobalMembers.MS(20)), GlobalMembers.MS(400), 1, GlobalMembers.M(25), null, null, 0, -1);
+						GlobalMembers.gApp.mTooltipManager.RequestTooltip(this, array[j], string.Format(GlobalMembers._ID("${0}", 218), SexyFramework.Common.CommaSeperate(digGoal.mTreasureEarnings[j])), new Point(mBarRectVector[j].mX + mBarRectVector[j].mWidth / 2, mBarRectVector[j].mY + (20)), (400), 1, (25), null, null, 0, -1);
 						break;
 					}
 				}
@@ -91,23 +91,23 @@ namespace BejeweledLivePlus.UI
 					if (mTreasureRectVector[k].Contains(mWidgetManager.mLastMouseX, mWidgetManager.mLastMouseY))
 					{
 						DigGoal.ArtifactData artifactData = digGoal.mArtifacts[digGoal.mCollectedArtifacts[k]];
-						GlobalMembers.gApp.mTooltipManager.RequestTooltip(this, artifactData.mName, string.Format(GlobalMembers._ID("${0}", 219), SexyFramework.Common.CommaSeperate(digGoal.mArtifactBaseValue * artifactData.mValue)), new Point(mTreasureRectVector[k].mX + mTreasureRectVector[k].mWidth / 2, mTreasureRectVector[k].mY + GlobalMembers.MS(20)), GlobalMembers.MS(400), 1, GlobalMembers.M(25), null, null, 0, -1);
+						GlobalMembers.gApp.mTooltipManager.RequestTooltip(this, artifactData.mName, string.Format(GlobalMembers._ID("${0}", 219), SexyFramework.Common.CommaSeperate(digGoal.mArtifactBaseValue * artifactData.mValue)), new Point(mTreasureRectVector[k].mX + mTreasureRectVector[k].mWidth / 2, mTreasureRectVector[k].mY + (20)), (400), 1, (25), null, null, 0, -1);
 						break;
 					}
 				}
 			}
-			if (BejeweledLivePlus.Misc.Common.Rand() % GlobalMembers.M(20000) < mDiamondRect.mWidth)
+			if (BejeweledLivePlus.Misc.Common.Rand() % (20000) < mDiamondRect.mWidth)
 			{
 				Effect effect = mFXManager.AllocEffect(Effect.Type.TYPE_SPARKLE_SHARD);
-				effect.mDY *= GlobalMembers.M(0.25f);
+				effect.mDY *= (0.25f);
 				float num = Math.Abs(GlobalMembersUtils.GetRandFloat());
 				num *= num;
 				effect.mX = mDiamondRect.mX + BejeweledLivePlus.Misc.Common.Rand() % mDiamondRect.mWidth;
 				effect.mY = mDiamondRect.mY + BejeweledLivePlus.Misc.Common.Rand() % mDiamondRect.mHeight;
-				effect.mColor = new Color(GlobalMembers.M(255), GlobalMembers.M(255), GlobalMembers.M(255), GlobalMembers.M(255));
+				effect.mColor = new Color((255), (255), (255), (255));
 				effect.mIsAdditive = true;
-				effect.mDScale = GlobalMembers.M(0.015f);
-				effect.mScale = GlobalMembers.M(0.3f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * GlobalMembers.M(0.2f);
+				effect.mDScale = (0.015f);
+				effect.mScale = (0.3f) + Math.Abs(GlobalMembersUtils.GetRandFloat()) * (0.2f);
 				mFXManager.AddEffect(effect);
 			}
 		}
@@ -117,16 +117,15 @@ namespace BejeweledLivePlus.UI
 			g.PushState();
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
-			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color(GlobalMembers.M(4210688)));
+			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color((4210688)));
 			((ImageFont)g.GetFont()).PushLayerColor("Glow", new Color(0, 0, 0, 0));
-			g.SetColor(new Color(GlobalMembers.M(16763736)));
-			g.Translate(GlobalMembers.MS(230), GlobalMembers.MS(450));
+			g.SetColor(new Color((16763736)));
+			g.Translate((230), (450));
 			string theString = GlobalMembers._ID("Max Depth", 204);
-			GlobalMembers.MS(48);
 			g.WriteString(theString, 0, 0, -1, -1);
-			g.WriteString(GlobalMembers._ID("Total Time", 205), 0, GlobalMembers.MS(48), -1, -1);
-			g.WriteString(GlobalMembers._ID("Best Move", 206), 0, GlobalMembers.MS(48) * 2, -1, -1);
-			g.WriteString(GlobalMembers._ID("Best Treasure", 207), 0, GlobalMembers.MS(48) * 3, -1, -1);
+			g.WriteString(GlobalMembers._ID("Total Time", 205), 0, (48), -1, -1);
+			g.WriteString(GlobalMembers._ID("Best Move", 206), 0, (48) * 2, -1, -1);
+			g.WriteString(GlobalMembers._ID("Best Treasure", 207), 0, (48) * 3, -1, -1);
 			((ImageFont)g.GetFont()).PopLayerColor("Outline");
 			((ImageFont)g.GetFont()).PopLayerColor("Glow");
 			g.PopState();
@@ -138,18 +137,17 @@ namespace BejeweledLivePlus.UI
 			g.PushState();
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
-			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color(GlobalMembers.M(4210688)));
+			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color((4210688)));
 			((ImageFont)g.GetFont()).PushLayerColor("Glow", new Color(0, 0, 0, 0));
-			g.SetColor(new Color(GlobalMembers.M(16763736)));
-			g.Translate(GlobalMembers.MS(545), GlobalMembers.MS(450));
+			g.SetColor(new Color((16763736)));
+			g.Translate((545), (450));
 			string theString = string.Format(GlobalMembers._ID("{0} m", 208), SexyFramework.Common.CommaSeperate(digGoal.GetGridDepth() * 10));
-			int theX = GlobalMembers.MS(220);
-			int theY = GlobalMembers.MS(0);
-			GlobalMembers.MS(48);
+			int theX = (220);
+			int theY = (0);
 			g.WriteString(theString, theX, theY, -1, 1);
 			int num = mGameStats[0];
-			g.WriteString(string.Format(GlobalMembers._ID("{0}:{1:d2}", 209), num / 60, num % 60), GlobalMembers.MS(220), GlobalMembers.MS(0) + GlobalMembers.MS(48), -1, 1);
-			g.WriteString(string.Format(GlobalMembers._ID("${0}", 210), SexyFramework.Common.CommaSeperate(mGameStats[25])), GlobalMembers.MS(220), GlobalMembers.MS(0) + GlobalMembers.MS(48) * 2, -1, 1);
+			g.WriteString(string.Format(GlobalMembers._ID("{0}:{1:d2}", 209), num / 60, num % 60), (220), (0) + (48), -1, 1);
+			g.WriteString(string.Format(GlobalMembers._ID("${0}", 210), SexyFramework.Common.CommaSeperate(mGameStats[25])), (220), (0) + (48) * 2, -1, 1);
 			int num2 = 0;
 			string arg = GlobalMembers._ID("No Treasures", 211);
 			for (int i = 0; i < Common.size(digGoal.mCollectedArtifacts); i++)
@@ -161,8 +159,8 @@ namespace BejeweledLivePlus.UI
 					num2 = digGoal.mArtifactBaseValue * artifactData.mValue;
 				}
 			}
-			g.WriteString(string.Format(GlobalMembers._ID("${0}", 212), SexyFramework.Common.CommaSeperate(num2)), GlobalMembers.MS(220), GlobalMembers.MS(0) + GlobalMembers.MS(48) * 3, -1, 1);
-			g.WriteString(string.Format(GlobalMembers._ID("({0})", 213), arg), GlobalMembers.MS(-40), GlobalMembers.MS(0) + GlobalMembers.MS(48) * 4, -1, 0);
+			g.WriteString(string.Format(GlobalMembers._ID("${0}", 212), SexyFramework.Common.CommaSeperate(num2)), (220), (0) + (48) * 3, -1, 1);
+			g.WriteString(string.Format(GlobalMembers._ID("({0})", 213), arg), (-40), (0) + (48) * 4, -1, 0);
 			((ImageFont)g.GetFont()).PopLayerColor("Outline");
 			((ImageFont)g.GetFont()).PopLayerColor("Glow");
 			g.PopState();
@@ -171,24 +169,24 @@ namespace BejeweledLivePlus.UI
 		public override void DrawFrames(Graphics g)
 		{
 			g.PushState();
-			g.DrawImageBox(new Rect(GlobalMembers.MS(195), GlobalMembers.MS(385) - GlobalMembers.MS(0), GlobalMembers.MS(600), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL.GetHeight()), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL);
-			g.DrawImage(GlobalMembersResourcesWP.IMAGE_GAMEOVER_DIG_BOX, GlobalMembers.MS(195), GlobalMembers.MS(720));
+			g.DrawImageBox(new Rect((195), (385) - (0), (600), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL.GetHeight()), GlobalMembersResourcesWP.IMAGE_GAMEOVER_SECTION_LABEL);
+			g.DrawImage(GlobalMembersResourcesWP.IMAGE_GAMEOVER_DIG_BOX, (195), (720));
 			g.PopState();
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_DIALOG);
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(8931352)));
-			((ImageFont)g.GetFont()).PushLayerColor("OUTLINE", new Color(GlobalMembers.M(16777215)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((8931352)));
+			((ImageFont)g.GetFont()).PushLayerColor("OUTLINE", new Color((16777215)));
 			((ImageFont)g.GetFont()).PushLayerColor("GLOW", new Color(0, 0, 0, 0));
-			g.WriteString(GlobalMembers._ID("Treasure Found:", 214), GlobalMembers.MS(800), GlobalMembers.MS(766));
+			g.WriteString(GlobalMembers._ID("Treasure Found:", 214), (800), (766));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("OUTLINE");
 			((ImageFont)g.GetFont()).PopLayerColor("GLOW");
 			g.PushState();
-			g.Translate(GlobalMembers.MS(0), GlobalMembers.MS(-8));
+			g.Translate((0), (-8));
 			DrawLabeledStatsFrame(g);
 			g.PopState();
 			g.PushState();
-			g.Translate(GlobalMembers.MS(0), GlobalMembers.MS(-8));
+			g.Translate((0), (-8));
 			DrawLabeledHighScores(g);
 			g.PopState();
 		}
@@ -199,21 +197,21 @@ namespace BejeweledLivePlus.UI
 			Utils.SetFontLayerColor((ImageFont)g.GetFont(), "Main", new Color(255, 255, 255, 255));
 			Utils.SetFontLayerColor((ImageFont)g.GetFont(), "OUTLINE", new Color(255, 255, 255, 255));
 			Utils.SetFontLayerColor((ImageFont)g.GetFont(), "GLOW", new Color(0, 0, 0, 0));
-			g.DrawImageBox(new Rect(GlobalMembers.MS(85), GlobalMembers.MS(0), GlobalMembers.MS(1430), GlobalMembers.MS(1200)), GlobalMembersResourcesWP.IMAGE_GAMEOVER_DIALOG);
+			g.DrawImageBox(new Rect((85), (0), (1430), (1200)), GlobalMembersResourcesWP.IMAGE_GAMEOVER_DIALOG);
 			g.DrawImage(GlobalMembersResourcesWP.IMAGE_GAMEOVER_STAMP, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_GAMEOVER_STAMP_ID) - 160f), (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_GAMEOVER_STAMP_ID) + 0f));
 			g.SetColor(new Color(-1));
 			g.SetFont(GlobalMembersResources.FONT_HEADER);
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(8931352)));
-			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color(GlobalMembers.M(15253648)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((8931352)));
+			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color((15253648)));
 			((ImageFont)g.GetFont()).PushLayerColor("LAYER_3", new Color(0, 0, 0, 0));
-			g.WriteString(string.Format(GlobalMembers._ID("Treasure Excavated:", 220)), GlobalMembers.MS(800), GlobalMembers.MS(140));
+			g.WriteString(string.Format(GlobalMembers._ID("Treasure Excavated:", 220)), (800), (140));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_2");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_3");
-			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color(GlobalMembers.M(16777215)));
-			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color(GlobalMembers.M(11558960)));
+			((ImageFont)g.GetFont()).PushLayerColor("Main", new Color((16777215)));
+			((ImageFont)g.GetFont()).PushLayerColor("LAYER_2", new Color((11558960)));
 			((ImageFont)g.GetFont()).PushLayerColor("LAYER_3", new Color(0, 0, 0, 0));
-			g.WriteString(string.Format(GlobalMembers._ID("${0}", 221), SexyFramework.Common.CommaSeperate((int)((double)mBoard.mPoints * (double)mCountupPct))), GlobalMembers.MS(800), GlobalMembers.MS(220));
+			g.WriteString(string.Format(GlobalMembers._ID("${0}", 221), SexyFramework.Common.CommaSeperate((int)((double)mBoard.mPoints * (double)mCountupPct))), (800), (220));
 			((ImageFont)g.GetFont()).PopLayerColor("Main");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_2");
 			((ImageFont)g.GetFont()).PopLayerColor("LAYER_3");
@@ -227,14 +225,14 @@ namespace BejeweledLivePlus.UI
 				num = GlobalMembers.MAX(digGoal.mTreasureEarnings[i], num);
 				num2 += digGoal.mTreasureEarnings[i];
 			}
-			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color(GlobalMembers.M(4210688)));
+			((ImageFont)g.GetFont()).PushLayerColor("Outline", new Color((4210688)));
 			((ImageFont)g.GetFont()).PushLayerColor("Glow", new Color(0, 0, 0, 0));
-			g.SetColor(new Color(GlobalMembers.M(16763736)));
+			g.SetColor(new Color((16763736)));
 			Color[] array = new Color[3]
 			{
-				new Color(GlobalMembers.M(16776960)),
-				new Color(GlobalMembers.M(11599871)),
-				new Color(GlobalMembers.M(16777215))
+				new Color((16776960)),
+				new Color((11599871)),
+				new Color((16777215))
 			};
 			Image[] array2 = new Image[3]
 			{
@@ -248,32 +246,32 @@ namespace BejeweledLivePlus.UI
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					int num3 = GlobalMembers.MS(190) + GlobalMembers.MS(760) * digGoal.mTreasureEarnings[j] / num;
+					int num3 = (190) + (760) * digGoal.mTreasureEarnings[j] / num;
 					int num4 = (int)((double)num3 * (double)mCountupPct);
 					if (j == 1)
 					{
-						mDiamondRect = new Rect(GlobalMembers.M(198), GlobalMembers.M(790) + j * GlobalMembers.M(92), (int)((float)num4 / GlobalMembers.MS(1f) - (float)GlobalMembers.M(105)), GlobalMembers.M(68));
+						mDiamondRect = new Rect((198), (790) + j * (92), (int)((float)num4 / (1f) - (float)(105)), (68));
 					}
-					g.DrawImage(array2[j], GlobalMembers.MS(198), GlobalMembers.MS(780) + j * GlobalMembers.MS(92), new Rect(array2[j].mWidth - num4, 0, num4, array2[j].mHeight));
+					g.DrawImage(array2[j], (198), (780) + j * (92), new Rect(array2[j].mWidth - num4, 0, num4, array2[j].mHeight));
 					g.SetColor(array[j]);
-					g.WriteString(string.Format(GlobalMembers._ID("${0}", 223), SexyFramework.Common.CommaSeperate(digGoal.mTreasureEarnings[j])), GlobalMembers.MS(1380), GlobalMembers.MS(840) + j * GlobalMembers.MS(92), -1, 1);
+					g.WriteString(string.Format(GlobalMembers._ID("${0}", 223), SexyFramework.Common.CommaSeperate(digGoal.mTreasureEarnings[j])), (1380), (840) + j * (92), -1, 1);
 					Color color = array[j];
-					color.mAlpha = (int)((double)color.mAlpha * GlobalMembers.MAX(0.0, GlobalMembers.MIN(1.0, (double)mCountupPct * GlobalMembers.M(2.0) - GlobalMembers.M(0.9))));
+					color.mAlpha = (int)((double)color.mAlpha * GlobalMembers.MAX(0.0, GlobalMembers.MIN(1.0, (double)mCountupPct * (2.0) - (0.9))));
 					g.SetColor(color);
-					g.WriteString(string.Format(GlobalMembers._ID("{0}%", 222), (int)((double)digGoal.mTreasureEarnings[j] * 100.0 / (double)num2 + 0.5)), GlobalMembers.MS(125) + num4, GlobalMembers.MS(840) + j * GlobalMembers.MS(92), -1, 0);
+					g.WriteString(string.Format(GlobalMembers._ID("{0}%", 222), (int)((double)digGoal.mTreasureEarnings[j] * 100.0 / (double)num2 + 0.5)), (125) + num4, (840) + j * (92), -1, 0);
 					if (j == 2 && Common.size(digGoal.mCollectedArtifacts) != 0)
 					{
 						int num5 = Common.size(digGoal.mCollectedArtifacts);
 						for (int k = 0; k < num5; k++)
 						{
 							DigGoal.ArtifactData artifactData = digGoal.mArtifacts[digGoal.mCollectedArtifacts[k]];
-							float num6 = GlobalMembers.MIN(GlobalMembers.M(0.5f), GlobalMembers.MAX(GlobalMembers.M(0.25f), GlobalMembers.M(0.75f) - (float)num5 / (float)(num3 - GlobalMembers.MS(135)) * GlobalMembers.MS(22f)));
-							int num7 = GlobalMembers.MS(210) + (int)((double)(num4 - GlobalMembers.MS(135)) * ((double)k + 0.5) / (double)num5);
-							int num8 = GlobalMembers.MS(1010);
-							if ((double)num6 < GlobalMembers.M(0.26))
+							float num6 = GlobalMembers.MIN((0.5f), GlobalMembers.MAX((0.25f), (0.75f) - (float)num5 / (float)(num3 - (135)) * (22f)));
+							int num7 = (210) + (int)((double)(num4 - (135)) * ((double)k + 0.5) / (double)num5);
+							int num8 = (1010);
+							if ((double)num6 < (0.26))
 							{
-								num7 = GlobalMembers.MS(210) + (int)((double)(num4 - GlobalMembers.MS(135)) * ((double)(k / 2) + 0.5) / (double)((num5 + 1) / 2));
-								num8 = ((k % 2 != 0) ? (num8 + GlobalMembers.MS(20)) : (num8 - GlobalMembers.MS(20)));
+								num7 = (210) + (int)((double)(num4 - (135)) * ((double)(k / 2) + 0.5) / (double)((num5 + 1) / 2));
+								num8 = ((k % 2 != 0) ? (num8 + (20)) : (num8 - (20)));
 							}
 							g.SetColorizeImages(true);
 							g.SetColor(mCountupPct);
@@ -281,12 +279,12 @@ namespace BejeweledLivePlus.UI
 							transform.Scale(num6, num6);
 							g.DrawImageTransform(GlobalMembersResourcesWP.GetImageById(artifactData.mImageId), transform, num7, num8);
 							g.SetColorizeImages(false);
-							mTreasureRectVector.Add(new Rect((int)((float)num7 - (float)GlobalMembers.MS(80) * num6), (int)((float)num8 - (float)GlobalMembers.MS(80) * num6), (int)((float)GlobalMembers.MS(160) * num6), (int)((float)GlobalMembers.MS(160) * num6)));
+							mTreasureRectVector.Add(new Rect((int)((float)num7 - (float)(80) * num6), (int)((float)num8 - (float)(80) * num6), (int)((float)(160) * num6), (int)((float)(160) * num6)));
 						}
 					}
 					else
 					{
-						mBarRectVector.Add(new Rect(GlobalMembers.MS(198), GlobalMembers.MS(790) + j * GlobalMembers.MS(92), num4 - GlobalMembers.MS(10), GlobalMembers.MS(90)));
+						mBarRectVector.Add(new Rect((198), (790) + j * (92), num4 - (10), (90)));
 					}
 				}
 			}
@@ -308,9 +306,9 @@ namespace BejeweledLivePlus.UI
 			{
 				return;
 			}
-			double num2 = GlobalMembers.M(0.1);
-			double num3 = GlobalMembers.MIN(1.0, GlobalMembers.M(0.6) + GlobalMembers.M(0.4) * num / (double)GlobalMembers.M(1000000));
-			num3 *= GlobalMembers.M(1.2);
+			double num2 = (0.1);
+			double num3 = GlobalMembers.MIN(1.0, (0.6) + (0.4) * num / (double)(1000000));
+			num3 *= (1.2);
 			for (int j = 0; j < 3; j++)
 			{
 				if ((double)digGoal.mTreasureEarnings[j] > 0.0 && (double)digGoal.mTreasureEarnings[j] / num < num2)
@@ -327,8 +325,8 @@ namespace BejeweledLivePlus.UI
 				}
 				if (mTreasureDist[k] > 0.0)
 				{
-					mTreasurePct[k].SetCurve(GlobalMembers.MP("b-0,1,0.01,1,####        J~### V~###"));
-					if (GlobalMembers.M(1) == 1)
+					mTreasurePct[k].SetCurve(("b-0,1,0.01,1,####        J~### V~###"));
+					if ((1) == 1)
 					{
 						mTreasurePct[k].mIncRate *= 1.0 / (mTreasureDist[k] / num3);
 					}

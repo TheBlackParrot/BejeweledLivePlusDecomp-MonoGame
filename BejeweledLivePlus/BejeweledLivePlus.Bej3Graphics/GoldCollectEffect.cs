@@ -159,15 +159,15 @@ namespace BejeweledLivePlus.Bej3Graphics
 				mSpline.AddPoint((float)mX, (float)mY);
 				if (mIsNugget)
 				{
-					mLayerOnTopSwitchPct = GlobalMembers.M(1f);
+					mLayerOnTopSwitchPct = (1f);
 				}
 				else if (BejeweledLivePlus.Misc.Common.Rand() % 2 == 0)
 				{
-					mLayerOnTopSwitchPct = GlobalMembers.M(0.78f);
+					mLayerOnTopSwitchPct = (0.78f);
 				}
 				else
 				{
-					mLayerOnTopSwitchPct = GlobalMembers.M(0.78f);
+					mLayerOnTopSwitchPct = (0.78f);
 				}
 				mSpline.AddPoint(mTargetPoint.mX, mTargetPoint.mY);
 				mSpline.CalculateSpline();
@@ -188,7 +188,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 			{
 				double num = Math.Atan2((double)mLastPoint.mY - mY, mX - (double)mLastPoint.mX);
 				double num2 = num - mLastRotation;
-				num2 = ((num2 < 0.0) ? (-1.0) : 1.0) * Math.Min(GlobalMembers.M(0.03), Math.Abs(num2));
+				num2 = ((num2 < 0.0) ? (-1.0) : 1.0) * Math.Min((0.03), Math.Abs(num2));
 				mLastRotation += num2;
 				mLastPoint.mX = (int)mX;
 				mLastPoint.mY = (int)mY;
@@ -199,7 +199,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 		public void Update()
 		{
 			mUpdateCnt++;
-			if (!mCentering || (mUpdateCnt > mExtraSplineTime && mSplineInterp.mInMax - mSplineInterp.mInVal <= GlobalMembers.M(0.15)))
+			if (!mCentering || (mUpdateCnt > mExtraSplineTime && mSplineInterp.mInMax - mSplineInterp.mInVal <= (0.15)))
 			{
 				mPointBlinkCv.IncInVal();
 				mStreamerMag.IncInVal();
@@ -212,17 +212,17 @@ namespace BejeweledLivePlus.Bej3Graphics
 				mY = (double)mStartPoint.mY + (double)mSplineInterp * (double)(GlobalMembers.RS(ConstantsWP.DIG_BOARD_ITEM_DEST_Y) - mStartPoint.mY);
 				double num = mSplineInterp;
 				mSplineInterp.IncInVal();
-				if (num < GlobalMembers.M(0.95) && (double)mSplineInterp >= GlobalMembers.M(0.95))
+				if (num < (0.95) && (double)mSplineInterp >= (0.95))
 				{
-					GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_ARTIFACT_SHOWCASE, 0, GlobalMembers.M(1.0));
+					GlobalMembers.gApp.PlaySample(GlobalMembersResourcesWP.SOUND_DIAMOND_MINE_ARTIFACT_SHOWCASE, 0, (1.0));
 				}
-				if (mStreamerMag.mInVal / mStreamerMag.mInMax > GlobalMembers.M(0.9))
+				if (mStreamerMag.mInVal / mStreamerMag.mInMax > (0.9))
 				{
 					mExtraSplineTime = 0;
 					GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eDIG_GOAL_SPLINE_INTERP, mSplineInterp);
 					mCentering = false;
 					mSpline.AddPoint((float)mX, (float)mY);
-					mLayerOnTopSwitchPct = GlobalMembers.M(0.75f);
+					mLayerOnTopSwitchPct = (0.75f);
 					mSpline.AddPoint(mTargetPoint.mX, mTargetPoint.mY);
 					mSpline.CalculateSpline();
 					double mOutMin = mScaleCv.mOutMin;
@@ -236,7 +236,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				mY = mSpline.GetYPoint((float)((double)mSplineInterp * (double)mSpline.GetMaxT()));
 			}
 			mLayerOnTop = mCentering || (double)mSplineInterp < (double)mLayerOnTopSwitchPct;
-			double num2 = GlobalMembers.M(0.75);
+			double num2 = (0.75);
 			if ((double)mLayerOnTopSwitchPct < 1.0)
 			{
 				num2 = mLayerOnTopSwitchPct;
@@ -246,29 +246,29 @@ namespace BejeweledLivePlus.Bej3Graphics
 				if ((double)mSplineInterp > num2 && !mCentering)
 				{
 					double num3 = ((!(num2 >= mStopGlowAtPct)) ? Math.Max(0.0, 1.0 - ((double)mSplineInterp - num2) / (mStopGlowAtPct - num2)) : 0.0);
-					mSparkles.GetLayer(GlobalMembers.M(0)).mColor = new Color(mGlowRGB, (int)(255.0 * num3));
-					mSparkles.GetLayer(GlobalMembers.M(1)).GetEmitter(0).mNumberScale = (float)num3;
+					mSparkles.GetLayer((0)).mColor = new Color(mGlowRGB, (int)(255.0 * num3));
+					mSparkles.GetLayer((1)).GetEmitter(0).mNumberScale = (float)num3;
 				}
 				else
 				{
-					mSparkles.GetLayer(GlobalMembers.M(0)).mColor = new Color(mGlowRGB);
-					mSparkles.GetLayer(GlobalMembers.M(1)).GetEmitter(0).mNumberScale = 1f;
+					mSparkles.GetLayer((0)).mColor = new Color(mGlowRGB);
+					mSparkles.GetLayer((1)).GetEmitter(0).mNumberScale = 1f;
 				}
 				if (!mUseBaseSparkles)
 				{
-					mSparkles.GetLayer(GlobalMembers.M(1)).mColor = new Color(mGlowRGB2);
+					mSparkles.GetLayer((1)).mColor = new Color(mGlowRGB2);
 				}
 				if (!mCentering)
 				{
-					mSparkles.GetLayer(GlobalMembers.M(1)).GetEmitter(0).mNumberScale *= (float)mParticleEmitOverTime.GetOutVal(mSplineInterp);
+					mSparkles.GetLayer((1)).GetEmitter(0).mNumberScale *= (float)mParticleEmitOverTime.GetOutVal(mSplineInterp);
 				}
 				if (!GlobalMembers.gApp.Is3DAccelerated())
 				{
-					mSparkles.GetLayer(GlobalMembers.M(1)).GetEmitter(0).mNumberScale *= GlobalMembers.M(0.5f);
+					mSparkles.GetLayer((1)).GetEmitter(0).mNumberScale *= (0.5f);
 				}
 				mSparkles.mEmitterTransform.LoadIdentity();
 				mSparkles.mEmitterTransform.Scale((float)GlobalMembers.S(mScaleCv), (float)GlobalMembers.S(mScaleCv));
-				mSparkles.mEmitterTransform.Translate((float)(mX + (double)GlobalMembers.M(-30)), (float)(mY + (double)GlobalMembers.M(-20)));
+				mSparkles.mEmitterTransform.Translate((float)(mX + (double)(-30)), (float)(mY + (double)(-20)));
 				mSparkles.Update();
 			}
 			if (mCentering)
@@ -285,7 +285,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				mAlphaOut.mAppUpdateCountSrc = mGoal.mUpdateCnt;
 				GlobalMembers.gApp.mCurveValCache.GetCurvedVal(PreCalculatedCurvedValManager.CURVED_VAL_ID.eDIG_GOAL_ALPHA_OUT, mAlphaOut);
 			}
-			if (!mAddedPoints && (!mSplineInterp.IsDoingCurve() || mSplineInterp.GetInVal() / mSplineInterp.mInMax > GlobalMembers.M(0.85)))
+			if (!mAddedPoints && (!mSplineInterp.IsDoingCurve() || mSplineInterp.GetInVal() / mSplineInterp.mInMax > (0.85)))
 			{
 				mGoal.GoldAnimDoPoints(mTreasureType, mVal);
 				mAddedPoints = true;
@@ -304,11 +304,11 @@ namespace BejeweledLivePlus.Bej3Graphics
 				}
 				if (mSparkles != null)
 				{
-					if (!mSparkles.IsActive() || mSparkles.mCurNumParticles == GlobalMembers.M(1))
+					if (!mSparkles.IsActive() || mSparkles.mCurNumParticles == (1))
 					{
 						mDeleteMe = true;
 					}
-					else if (mUpdateCnt > GlobalMembers.M(1000))
+					else if (mUpdateCnt > (1000))
 					{
 						mDeleteMe = true;
 					}
@@ -337,7 +337,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				DrawStreamer(g);
 				Image imageById2 = GlobalMembersResourcesWP.GetImageById(mGlowImageId);
 				g.PushState();
-				g.SetColor(new Color(GlobalMembers.M(16777215), (int)((double)GlobalMembers.M(255) * ((double)mStreamerMag / mStreamerMag.mOutMax))));
+				g.SetColor(new Color((16777215), (int)((double)(255) * ((double)mStreamerMag / mStreamerMag.mOutMax))));
 				g.SetColorizeImages(true);
 				int num = 0;
 				int num2 = 0;
@@ -360,7 +360,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				if ((double)mPointBlinkCv < 1.0)
 				{
 					g.SetColorizeImages(true);
-					g.SetColor(new Color(GlobalMembers.M(16777215), (int)((double)GlobalMembers.M(255) * (double)mPointBlinkCv)));
+					g.SetColor(new Color((16777215), (int)((double)(255) * (double)mPointBlinkCv)));
 				}
 				g.SetColor(new Color(-1));
 				g.SetFont(GlobalMembersResources.FONT_HUGE);
@@ -372,7 +372,7 @@ namespace BejeweledLivePlus.Bej3Graphics
 				string theString = $"+{SexyFramework.Common.CommaSeperate(mDisplayVal)}";
 				GlobalMembersResources.FONT_HUGE.StringWidth(theString);
 				int num4 = (int)GlobalMembers.S(mX);
-				int num5 = GlobalMembers.S(num3 + GlobalMembers.M(5)) + imageById.GetHeight() / 2;
+				int num5 = GlobalMembers.S(num3 + (5)) + imageById.GetHeight() / 2;
 				g.SetScale(ConstantsWP.DIG_BOARD_FLOATING_SCORE_SCALE, ConstantsWP.DIG_BOARD_FLOATING_SCORE_SCALE, num4, num5);
 				g.WriteString(theString, num4, num5);
 				g.mScaleX = mScaleX;
@@ -387,22 +387,22 @@ namespace BejeweledLivePlus.Bej3Graphics
 			g.PushState();
 			g.Translate((int)GlobalMembers.S(mX), (int)GlobalMembers.S(mY));
 			g.SetColorizeImages(true);
-			double num = (double)mStreamerMag * GlobalMembers.M(1.0);
-			double num2 = (double)mStreamerMag * GlobalMembers.M(1.0);
-			double num3 = 6.2831854820251465 * ((double)(mUpdateCnt % GlobalMembers.M(501)) / GlobalMembers.M(500.0));
-			double num4 = 6.2831854820251465 / GlobalMembers.M(20.0);
-			for (int i = 0; i <= GlobalMembers.M(1); i++)
+			double num = (double)mStreamerMag * (1.0);
+			double num2 = (double)mStreamerMag * (1.0);
+			double num3 = 6.2831854820251465 * ((double)(mUpdateCnt % (501)) / (500.0));
+			double num4 = 6.2831854820251465 / (20.0);
+			for (int i = 0; i <= (1); i++)
 			{
 				double num5 = 0.0;
 				Image iMAGE_QUEST_DIG_STREAK = GlobalMembersResourcesWP.IMAGE_QUEST_DIG_STREAK;
 				if (i == 0)
 				{
-					g.SetColor(new Color(GlobalMembers.M(16763904), GlobalMembers.M(255)));
-					num5 = GlobalMembers.M(0.215);
+					g.SetColor(new Color((16763904), (255)));
+					num5 = (0.215);
 				}
 				else
 				{
-					g.SetColor(new Color(GlobalMembers.M(16776960), GlobalMembers.M(255)));
+					g.SetColor(new Color((16776960), (255)));
 				}
 				int num6 = 0;
 				for (double num7 = num3; num7 < num3 + 6.2831854820251465; num7 += num4)
@@ -423,29 +423,29 @@ namespace BejeweledLivePlus.Bej3Graphics
 					float theNum8 = 0f;
 					DrawStreamer_tris[0, 0].x = GlobalMembers.S(theNum7);
 					DrawStreamer_tris[0, 0].y = GlobalMembers.S(theNum8);
-					DrawStreamer_tris[0, 0].u = GlobalMembers.M(0.5f);
-					DrawStreamer_tris[0, 0].v = GlobalMembers.M(0f);
+					DrawStreamer_tris[0, 0].u = (0.5f);
+					DrawStreamer_tris[0, 0].v = (0f);
 					DrawStreamer_tris[0, 1].x = GlobalMembers.S(theNum3);
 					DrawStreamer_tris[0, 1].y = GlobalMembers.S(theNum4);
-					DrawStreamer_tris[0, 1].u = GlobalMembers.M(0.5f);
-					DrawStreamer_tris[0, 1].v = GlobalMembers.M(1f);
+					DrawStreamer_tris[0, 1].u = (0.5f);
+					DrawStreamer_tris[0, 1].v = (1f);
 					DrawStreamer_tris[0, 2].x = GlobalMembers.S(theNum);
 					DrawStreamer_tris[0, 2].y = GlobalMembers.S(theNum2);
-					DrawStreamer_tris[0, 2].u = GlobalMembers.M(0f);
-					DrawStreamer_tris[0, 2].v = GlobalMembers.M(1f);
+					DrawStreamer_tris[0, 2].u = (0f);
+					DrawStreamer_tris[0, 2].v = (1f);
 					DrawStreamer_tris[1, 0].x = GlobalMembers.S(theNum7);
 					DrawStreamer_tris[1, 0].y = GlobalMembers.S(theNum8);
-					DrawStreamer_tris[1, 0].u = GlobalMembers.M(0.5f);
-					DrawStreamer_tris[1, 0].v = GlobalMembers.M(0f);
+					DrawStreamer_tris[1, 0].u = (0.5f);
+					DrawStreamer_tris[1, 0].v = (0f);
 					DrawStreamer_tris[1, 1].x = GlobalMembers.S(theNum3);
 					DrawStreamer_tris[1, 1].y = GlobalMembers.S(theNum4);
-					DrawStreamer_tris[1, 1].u = GlobalMembers.M(0.5f);
-					DrawStreamer_tris[1, 1].v = GlobalMembers.M(1f);
+					DrawStreamer_tris[1, 1].u = (0.5f);
+					DrawStreamer_tris[1, 1].v = (1f);
 					DrawStreamer_tris[1, 2].x = GlobalMembers.S(theNum5);
 					DrawStreamer_tris[1, 2].y = GlobalMembers.S(theNum6);
-					DrawStreamer_tris[1, 2].u = GlobalMembers.M(1f);
-					DrawStreamer_tris[1, 2].v = GlobalMembers.M(1f);
-					if (GlobalMembers.M(0) != 0)
+					DrawStreamer_tris[1, 2].u = (1f);
+					DrawStreamer_tris[1, 2].v = (1f);
+					if ((0) != 0)
 					{
 						g.PushState();
 						g.SetColor(new Color(-1));
