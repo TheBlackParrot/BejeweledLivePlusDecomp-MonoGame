@@ -108,6 +108,10 @@ public class WebSocketHandler : WebSocketBehavior
             case "swap":
                 RemoteEvents.SwapGems(commandParts[1], commandParts[2]);
                 break;
+            
+            case "diffuse":
+                GameWebSocket.Send("powerupDiffused", RemoteEvents.DiffusePowerup(commandParts[1]));
+                break;
         }
     }
 }

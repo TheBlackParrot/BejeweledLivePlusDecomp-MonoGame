@@ -40,4 +40,44 @@ public static class RemoteEvents
 
         active.TrySwap(piece, gemB.Item1, gemB.Item2, false, true);
     }
+
+    public static bool DiffusePowerup(string rawPosition)
+    {
+        rawPosition = rawPosition.ToUpper();
+        
+        Board active = Board.Active;
+        if (active == null)
+        {
+            return false;
+        }
+        
+        Console.WriteLine($"Attempting to diffuse {rawPosition}");
+        
+        if (active.mInReplay || !active.CanPlay())
+        {
+            Console.WriteLine("Can't input move, board is not allowing it");
+            return false;
+        }
+        
+        ValueTuple<int, int> position = (rawPosition[0] - 65, rawPosition[1] - 49);
+        
+        Piece piece = active.GetPieceAtRowCol(position.Item1, position.Item2);
+#if DEBUG
+        Console.WriteLine($"Gem {position} has flag value {piece.mFlags}");
+#endif
+
+        // laser (4u), hypercube (2u), flame (1u)
+        uint[] flagChecks = { 4u, 1u };
+        foreach (uint flag in flagChecks)
+        {
+            if (piece.IsFlagSet(flag))
+            {
+                piece.ClearFlag(flag);
+                piece.ClearBoundEffects();
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
