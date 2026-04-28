@@ -4658,6 +4658,8 @@ namespace BejeweledLivePlus
 			effect.mGravity = 0f;
 			effect.mOverlay = true;
 			mPostFXManager.AddEffect(effect);
+			
+			GameWebSocket.Send("hypercubeUsed");
 		}
 
 		public virtual void DoHypercube(Piece thePiece, Piece theSwappedPiece)
