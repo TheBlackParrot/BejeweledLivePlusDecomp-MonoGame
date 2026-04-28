@@ -1,7 +1,5 @@
 #nullable enable
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WebSocketSharp;
 using WebSocketSharp.Server;
@@ -30,7 +28,7 @@ public static class GameState
     {
         set
         {
-            if (_levelPercentComplete == value)
+            if (_levelPercentComplete.Approximately(value))
             {
                 return;
             }
@@ -111,8 +109,8 @@ public class WebSocketHandler : WebSocketBehavior
 
         string[] swaps = e.Data.ToUpperInvariant().Split(' ');
         
-        ValueTuple<int, int> gemA = ((int)(char)swaps[0][0] - 65, (int)(char)swaps[0][1] - 49);
-        ValueTuple<int, int> gemB = ((int)(char)swaps[1][0] - 65, (int)(char)swaps[1][1] - 49);
+        ValueTuple<int, int> gemA = (swaps[0][0] - 65, swaps[0][1] - 49);
+        ValueTuple<int, int> gemB = (swaps[1][0] - 65, swaps[1][1] - 49);
 
         Piece piece = active.GetPieceAtRowCol(gemA.Item1, gemA.Item2);
         if (!active.IsSwapLegal(piece, gemB.Item1, gemB.Item2))
@@ -148,7 +146,7 @@ internal class WebSocketMessage
 
 public static class GameWebSocket
 {
-    internal static WebSocketServer? mServer;
+    private static WebSocketServer? mServer;
 
     public static void Send(string evnt, object? message = null)
     {
