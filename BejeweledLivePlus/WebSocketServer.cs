@@ -116,6 +116,10 @@ public class WebSocketHandler : WebSocketBehavior
             case "diffuse":
                 GameWebSocket.Send("powerupDiffused", RemoteEvents.DiffusePowerup(commandParts[1]));
                 break;
+            
+            case "close":
+                GlobalMembers.gApp.WantExit = true;
+                break;
         }
     }
 }
