@@ -4003,6 +4003,7 @@ namespace BejeweledLivePlus
 			particleEffect.mPieceRel = thePiece;
 			particleEffect.SetEmitAfterTimeline(true);
 			particleEffect.mDoDrawTransform = true;
+			particleEffect.mAlpha = 0.33f;
 			mPreFXManager.AddEffect(particleEffect);
 		}
 
