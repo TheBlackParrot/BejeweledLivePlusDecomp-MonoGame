@@ -4,7 +4,7 @@ namespace BejeweledLivePlus;
 
 public static class RemoteEvents
 {
-    public static void SwapGems(string swapA, string swapB)
+    public static void SwapGems(string swapA, string swapB, bool allowIllegal = false)
     {
         swapA = swapA.ToUpper();
         swapB = swapB.ToUpper();
@@ -32,13 +32,13 @@ public static class RemoteEvents
 #endif
 
         Piece piece = active.GetPieceAtRowCol(gemA.Item1, gemA.Item2);
-        if (!active.IsSwapLegal(piece, gemB.Item1, gemB.Item2))
+        if (!active.IsSwapLegal(piece, gemB.Item1, gemB.Item2) && !allowIllegal)
         {
             Console.WriteLine($"Can't input move {swapA}{swapB}, move is invalid");
             return;
         }
 
-        active.TrySwap(piece, gemB.Item1, gemB.Item2, false, true);
+        active.TrySwap(piece, gemB.Item1, gemB.Item2, allowIllegal, true);
     }
 
     public static bool DiffusePowerup(string rawPosition)
