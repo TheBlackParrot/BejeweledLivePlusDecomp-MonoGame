@@ -601,7 +601,7 @@ namespace BejeweledLivePlus
 			if (IsFlagSet(1u))
 			{
 				bool flag = mBoard.WantsCalmEffects();
-				for (int i = 0; i < 5; i++)
+				for (int i = 0; i < 2; i++)
 				{
 					bool flag2 = Misc.Common.Rand() % 2 == 0;
 					EffectsManager effectsManager;
@@ -624,19 +624,7 @@ namespace BejeweledLivePlus
 						{
 							effect.mDScale *= (0.67f);
 						}
-						bool flag3 = mBoard.mWantsReddishFlamegems && Misc.Common.Rand() % (4) <= (0) && effectsManager == mBoard.mPreFXManager;
-						if (mColor == 3 || flag3)
-						{
-							effect.mColor = new Color((255), (128), (128));
-							if (flag3)
-							{
-								effect.mType = Effect.Type.TYPE_EMBER_FADEINOUT_BOTTOM;
-							}
-						}
-						else
-						{
-							effect.mColor = new Color((255), (255), (255));
-						}
+						effect.mColor = GlobalMembers.gGemColors[mColor];
 					}
 					else
 					{
@@ -658,20 +646,7 @@ namespace BejeweledLivePlus
 							effect.mImage = GlobalMembersResourcesWP.IMAGE_SPARKLET_FAT;
 						}
 						effect.mDY = (-0.4f) + GlobalMembersUtils.GetRandFloat() * (0.15f);
-						effect.mColor = new Color((128), Misc.Common.Rand() % (32) + (48), Misc.Common.Rand() % (24) + (24));
-						bool flag4 = mBoard.mWantsReddishFlamegems && Misc.Common.Rand() % (3) <= (0) && effectsManager == mBoard.mPreFXManager;
-						if (mColor == 3 || flag4)
-						{
-							effect.mColor = new Color((255), (0), (0));
-							if (flag4)
-							{
-								effect.mType = Effect.Type.TYPE_EMBER_BOTTOM;
-							}
-						}
-						else if (mColor == 0)
-						{
-							effect.mColor = new Color((240), (128), (64));
-						}
+						effect.mColor = GlobalMembers.gGemColors[mColor];
 					}
 					if (flag)
 					{
@@ -724,7 +699,7 @@ namespace BejeweledLivePlus
 					effect2.mAlpha = (0f);
 					effect2.mDAlpha = (0.1f);
 					effect2.mScale = (140f);
-					effect2.mColor = new Color((255), (140), (48));
+					effect2.mColor = GlobalMembers.gGemColors[mColor];
 					if (Misc.Common.Rand() % (2) != 0 || mBoard.mHyperspace != null)
 					{
 						effect2.mPieceId = (uint)mId;
