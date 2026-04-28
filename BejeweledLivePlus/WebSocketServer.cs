@@ -106,8 +106,7 @@ public class WebSocketHandler : WebSocketBehavior
         switch (commandParts[0])
         {
             case "swap":
-                string[] swaps = {commandParts[1], commandParts[2]};
-                RemoteEvents.SwapGems(swaps);
+                RemoteEvents.SwapGems(commandParts[1], commandParts[2]);
                 break;
         }
     }
