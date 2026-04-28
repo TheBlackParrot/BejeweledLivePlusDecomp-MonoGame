@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using BejeweledLivePlus;
 
 AllocConsole();
-/*
+
 if (!Directory.Exists("./logs"))
 {
     Directory.CreateDirectory("./logs");
@@ -12,7 +12,7 @@ if (!Directory.Exists("./logs"))
 StreamWriter consoleStream = new StreamWriter(File.Create($"./logs/{DateTimeOffset.Now.ToUnixTimeMilliseconds()}.txt"));
 consoleStream.AutoFlush = true;
 Console.SetOut(consoleStream);
-Console.SetError(consoleStream);*/
+Console.SetError(consoleStream);
 
 GameWebSocket.Start();
 

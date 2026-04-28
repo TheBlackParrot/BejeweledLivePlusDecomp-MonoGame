@@ -14194,7 +14194,7 @@ namespace BejeweledLivePlus
 
 		public static Image GetImageById(int theId)
 		{
-			if (theId == -1)
+			if (theId == -1 || theId > gResources.Length)
 			{
 				return null;
 			}
@@ -14203,7 +14203,7 @@ namespace BejeweledLivePlus
 
 		public static Font GetFontById(int theId)
 		{
-			if (theId == -1)
+			if (theId == -1 || theId > gResources.Length)
 			{
 				return null;
 			}
@@ -14212,7 +14212,7 @@ namespace BejeweledLivePlus
 
 		public static int GetSoundById(int theId)
 		{
-			if (theId == -1)
+			if (theId == -1 || theId > gResources.Length)
 			{
 				return -1;
 			}
@@ -14221,7 +14221,7 @@ namespace BejeweledLivePlus
 
 		public static GenericResFile GetGenericResFileById(int theId)
 		{
-			if (theId == -1)
+			if (theId == -1 || theId > gResources.Length)
 			{
 				return null;
 			}

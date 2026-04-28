@@ -140,10 +140,6 @@ namespace BejeweledLivePlus.UI
 			{
 				GlobalMembers.gApp.mBoard.mBackground.mVisible = true;
 			}
-			if (GlobalMembers.gApp.mQuestMenu != null && (double)mSelectCenterPct == 1.0 && !GlobalMembers.gApp.mQuestMenu.mBackground.mVisible && GlobalMembers.gApp.mBoard == null)
-			{
-				GlobalMembers.gApp.mQuestMenu.mBackground.mVisible = true;
-			}
 			for (int m = 0; m < 8; m++)
 			{
 				FPoint fPoint = default(FPoint);
@@ -293,16 +289,6 @@ namespace BejeweledLivePlus.UI
 		public override void DrawOverlay(Graphics g, int thePriority)
 		{
 			int num = 0;
-			for (int i = 0; i < BejeweledLivePlusAppConstants.NUM_QUEST_SETS; i++)
-			{
-				for (int j = 0; j < BejeweledLivePlusAppConstants.QUESTS_PER_SET; j++)
-				{
-					if (!GlobalMembers.gApp.mProfile.mQuestsCompleted[i, j])
-					{
-						num++;
-					}
-				}
-			}
 			if (num == 0)
 			{
 				float num2 = 0f;
@@ -533,9 +519,6 @@ namespace BejeweledLivePlus.UI
 				}
 				else if (SexyFramework.GlobalMembers.gIs3D)
 				{
-					GlobalMembers.gApp.mQuestMenu.mBackground.mVisible = false;
-					crystalBall.mImage = GlobalMembers.gApp.mQuestMenu.mBackground.GetBackgroundImage(true, false);
-					crystalBall.mImageSrcRect = new Rect((int)(GlobalMembers.gApp.mQuestMenu.mQuestSetNumDisp * GlobalMembers.S(205.5)) + (0), 0, (480), crystalBall.mImage.mHeight);
 				}
 				else
 				{

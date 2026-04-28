@@ -166,8 +166,6 @@ namespace BejeweledLivePlus
 
 		public string mClientId = string.Empty;
 
-		public Dictionary<int, PIEffect>[] mQuestObjPIEffects = new Dictionary<int, PIEffect>[BejeweledLivePlusAppConstants.NUM_QUEST_SETS];
-
 		public Image[,] mShrunkenGems = new Image[7, 15];
 
 		public Dictionary<MemoryImage, MemoryImage> mAlphaImages = new Dictionary<MemoryImage, MemoryImage>();
@@ -180,19 +178,7 @@ namespace BejeweledLivePlus
 
 		public int mMaxGamesPerDay;
 
-		public QuestDataParser mLastDataParser;
-
 		public int mLastDataParserId;
-
-		public QuestDataParser mDefaultQuestDataParser;
-
-		public QuestDataParser mQuestDataParser;
-
-		public QuestDataParser mSecretModeDataParser;
-
-		public QuestDataParser mSpeedModeDataParser;
-
-		public QuestMenu mQuestMenu;
 
 		public SecretMenu mSecretMenu;
 
@@ -632,11 +618,8 @@ namespace BejeweledLivePlus
 			GemCollectEffect.initPool();
 			LightningBarFillEffect.initPool();
 			TimeBonusEffect.initPool();
-			ButterflyEffect.initPool();
-			CoinFlyEffect.initPool();
 			PointsEffect.initPool();
 			TextNotifyEffect.initPool();
-			SpeedCollectEffect.initPool();
 			TimeBonusEffect.batchInit();
 		}
 
@@ -934,96 +917,14 @@ namespace BejeweledLivePlus
 			ConstantsWP.EDITWIDGET_HEIGHT = GlobalMembersResourcesWP.IMAGE_DIALOG_TEXTBOX.GetCelHeight();
 		}
 
-		private void DoNewBlitzGame(int theMinutes)
-		{
-		}
-
-		private void DoNewClassicGame()
-		{
-			GlobalMembers.KILL_WIDGET_NOW(mBoard);
-			mBoard = new ClassicBoard();
-			mBoard.Resize(0, 0, mWidth, mHeight);
-			mBoard.Init();
-			if (!DoSavedGameCheck())
-			{
-				DoGameDetailMenu(GameMode.MODE_CLASSIC, GameDetailMenu.GAMEDETAILMENU_STATE.STATE_PRE_GAME);
-			}
-			else
-			{
-				mNeedMusicStart = true;
-			}
-		}
-
-		private void DoNewSpeedGame(int theId)
-		{
-			mLastDataParserId = theId;
-			mLastDataParser = mSpeedModeDataParser;
-			GlobalMembers.KILL_WIDGET_NOW(mBoard);
-			mBoard = new SpeedBoard();
-			mBoard.Resize(new Rect(0, 0, mWidth, mHeight));
-			mBoard.mParams = mSpeedModeDataParser.mQuestDataVector[theId].mParams;
-			mBoard.Init();
-			if (!DoSavedGameCheck())
-			{
-				DoGameDetailMenu(GameMode.MODE_LIGHTNING, GameDetailMenu.GAMEDETAILMENU_STATE.STATE_PRE_GAME);
-			}
-			else
-			{
-				mNeedMusicStart = true;
-			}
-		}
-
 		private void DoNewZenGame()
 		{
 			mLastDataParserId = -1;
-			mLastDataParser = null;
 			GlobalMembers.KILL_WIDGET_NOW(mBoard);
 			mBoard = new ZenBoard();
 			mBoard.Resize(0, 0, mWidth, mHeight);
 			mBoard.Init();
 			StartSetupGame(true);
-		}
-
-		private void DoNewEndlessGame(EEndlessMode theId)
-		{
-			DoNewConfigGame((int)theId, mSecretModeDataParser, true);
-		}
-
-		private void DoNewConfigGame(int theId, QuestDataParser theParams, bool isPerprtual)
-		{
-			mLastDataParserId = theId;
-			mLastDataParser = theParams;
-			GlobalMembers.KILL_WIDGET(mSecretMenu);
-			GlobalMembers.KILL_WIDGET_NOW(mBoard);
-			switch (theParams.mQuestDataVector[theId].mParams["Challenge"].ToUpper())
-			{
-			case "BUTTERFLIES":
-			case "BUTTERFLY":
-				mBoard = new ButterflyBoard();
-				break;
-			case "DIG":
-				mBoard = new DigBoard();
-				break;
-			}
-			mBoard.mParams = theParams.mQuestDataVector[theId].mParams;
-			mBoard.Resize(0, 0, mWidth, mHeight);
-			QuestBoard questBoard = (QuestBoard)mBoard;
-			questBoard.mQuestId = (isPerprtual ? 1000 : 0) + theId;
-			questBoard.mIsPerpetual = isPerprtual;
-			questBoard.mShowLevelPoints = !isPerprtual;
-			mBoard.Init();
-			if (!DoSavedGameCheck())
-			{
-				DoGameDetailMenu(mCurrentGameMode, GameDetailMenu.GAMEDETAILMENU_STATE.STATE_PRE_GAME);
-			}
-			else
-			{
-				mNeedMusicStart = true;
-			}
-		}
-
-		private void DoNewQuest(int theId)
-		{
 		}
 
 		public bool HasClearedTutorial(int theTutorialFlag)
@@ -1264,10 +1165,6 @@ namespace BejeweledLivePlus
 				GlobalMembers.KILL_WIDGET_NOW(mBoard);
 				mBoard = null;
 			}
-			if (mQuestMenu != null)
-			{
-				mQuestMenu.SetVisible(true);
-			}
 			mGameInProgress = false;
 			Bej3Widget.SetOverlayType(Bej3Widget.OVERLAY_TYPE.OVERLAY_NONE);
 			mShowBackground = true;
@@ -1442,42 +1339,6 @@ namespace BejeweledLivePlus
 
 		public void LoadConfigs()
 		{
-			if (mQuestDataParser != null)
-			{
-				mQuestDataParser.Dispose();
-			}
-			if (mDefaultQuestDataParser != null)
-			{
-				mDefaultQuestDataParser.Dispose();
-			}
-			if (mSecretModeDataParser != null)
-			{
-				mSecretModeDataParser.Dispose();
-			}
-			if (mSpeedModeDataParser != null)
-			{
-				mSpeedModeDataParser.Dispose();
-			}
-			mQuestDataParser = new QuestDataParser();
-			if (!mQuestDataParser.LoadDescriptor(mResourceManager.GetLocaleFolder(true) + "properties\\quest.cfg") && !mQuestDataParser.LoadDescriptor("properties\\quest.cfg"))
-			{
-				Popup(mQuestDataParser.mError);
-			}
-			mDefaultQuestDataParser = new QuestDataParser();
-			if (!mDefaultQuestDataParser.LoadDescriptor(mResourceManager.GetLocaleFolder(true) + "properties\\defaultquest.cfg") && !mDefaultQuestDataParser.LoadDescriptor("properties\\defaultquest.cfg"))
-			{
-				Popup(mDefaultQuestDataParser.mError);
-			}
-			mSecretModeDataParser = new QuestDataParser();
-			if (!mSecretModeDataParser.LoadDescriptor(mResourceManager.GetLocaleFolder(true) + "properties\\secret.cfg") && !mSecretModeDataParser.LoadDescriptor("properties\\secret.cfg"))
-			{
-				Popup(mSecretModeDataParser.mError);
-			}
-			mSpeedModeDataParser = new QuestDataParser();
-			if (!mSpeedModeDataParser.LoadDescriptor(mResourceManager.GetLocaleFolder(true) + "properties\\speed.cfg") && !mSpeedModeDataParser.LoadDescriptor("properties\\speed.cfg"))
-			{
-				Popup(mSpeedModeDataParser.mError);
-			}
 		}
 
 		public void LoadHighscores()
@@ -1665,24 +1526,7 @@ namespace BejeweledLivePlus
 		public void DoNewGame(GameMode mode)
 		{
 			mCurrentGameMode = mode;
-			switch (mode)
-			{
-			case GameMode.MODE_CLASSIC:
-				DoNewClassicGame();
-				break;
-			case GameMode.MODE_ZEN:
-				DoNewZenGame();
-				break;
-			case GameMode.MODE_DIAMOND_MINE:
-				DoNewEndlessGame(EEndlessMode.ENDLESS_GOLDRUSH);
-				break;
-			case GameMode.MODE_LIGHTNING:
-				DoNewSpeedGame(0);
-				break;
-			case GameMode.MODE_BUTTERFLY:
-				DoNewEndlessGame(EEndlessMode.ENDLESS_BUTTERFLY);
-				break;
-			}
+			DoNewZenGame();
 		}
 
 		public void ConfirmUserMusic()

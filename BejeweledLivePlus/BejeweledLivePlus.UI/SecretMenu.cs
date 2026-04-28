@@ -24,17 +24,6 @@ namespace BejeweledLivePlus.UI
 			buttonWidget.SetFont(GlobalMembersResources.FONT_DIALOG);
 			buttonWidget.Resize(GlobalMembers.gApp.mScreenBounds.mWidth / 2 - GlobalMembers.S(100), GlobalMembers.S(1100), GlobalMembers.S(200), GlobalMembers.S(45));
 			AddWidget(buttonWidget);
-			for (int i = 0; i < GlobalMembers.gApp.mSecretModeDataParser.mQuestDataVector.Count; i++)
-			{
-				int num = (400);
-				int theX = GlobalMembers.gApp.mScreenBounds.mWidth / 2 - (200) + (i % 3 - 1) * num;
-				int theY = GlobalMembers.S(400) + i / 3 * (105);
-				buttonWidget = new ButtonWidget(i, this);
-				buttonWidget.SetFont(GlobalMembersResources.FONT_DIALOG);
-				buttonWidget.mLabel = GlobalMembers.gApp.mSecretModeDataParser.mQuestDataVector[i].mQuestName;
-				buttonWidget.Resize(theX, theY, num, GlobalMembers.S(45));
-				AddWidget(buttonWidget);
-			}
 		}
 
 		public override void Draw(Graphics g)

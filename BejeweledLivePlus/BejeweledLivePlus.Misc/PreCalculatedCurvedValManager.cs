@@ -387,32 +387,6 @@ namespace BejeweledLivePlus.Misc
 
 		private CurvedVal[] mCurvedValLookupTable = new CurvedVal[375];
 
-		private void CalculateCurvedValsFromConfigFiles()
-		{
-			Dictionary<string, string> mParams = GlobalMembers.gApp.mSecretModeDataParser.mQuestDataVector[3].mParams;
-			Dictionary<string, string> mParams2 = GlobalMembers.gApp.mSecretModeDataParser.mQuestDataVector[2].mParams;
-			Dictionary<string, string> mParams3 = GlobalMembers.gApp.mSpeedModeDataParser.mQuestDataVector[0].mParams;
-			mCurvedValLookupTable[116].SetCurve(mParams["ArtifactPossRange"]);
-			mCurvedValLookupTable[124].SetCurve(mParams["DarkRockFrequency"]);
-			mCurvedValLookupTable[125].SetCurve(mParams["MinBrickStrPerLevel"]);
-			mCurvedValLookupTable[126].SetCurve(mParams["MaxBrickStrPerLevel"]);
-			mCurvedValLookupTable[127].SetCurve(mParams["EdgeBrickStrPerLevel"]);
-			mCurvedValLookupTable[128].SetCurve(mParams["MinMineStrPerLevel"]);
-			mCurvedValLookupTable[129].SetCurve(mParams["MaxMineStrPerLevel"]);
-			mCurvedValLookupTable[130].SetCurve(mParams["MineProbPerLevel"]);
-			mCurvedValLookupTable[158].SetCurve(mParams["ArtifactSpread"]);
-			mCurvedValLookupTable[159].SetCurve(mParams["BrickStrSpread"]);
-			mCurvedValLookupTable[160].SetCurve(mParams["MineStrSpread"]);
-			mCurvedValLookupTable[230].SetCurve(mParams2["ColComboCoolDownVsCount"]);
-			mCurvedValLookupTable[235].SetCurve(mParams2["RowFireSpeed"]);
-			mCurvedValLookupTable[236].SetCurve(mParams2["LevelProgress"]);
-			mCurvedValLookupTable[237].SetCurve(mParams2["ColCountOverTime"]);
-			mCurvedValLookupTable[238].SetCurve(mParams2["ColDistribution"]);
-			mCurvedValLookupTable[239].SetCurve(mParams2["ReprieveStrVsRow"]);
-			mCurvedValLookupTable[346].SetCurve(mParams3["5SecChanceCurve"]);
-			mCurvedValLookupTable[347].SetCurve(mParams3["10SecChanceCurve"]);
-		}
-
 		private void CalculateAllCurvedVals()
 		{
 			mCurvedValLookupTable[0].SetCurve("b+0,1,0.003333,1,#### Q~###      ~~### O####");

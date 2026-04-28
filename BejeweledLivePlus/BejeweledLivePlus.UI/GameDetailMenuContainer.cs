@@ -273,62 +273,6 @@ namespace BejeweledLivePlus.UI
 				mSpecialStatsStrings[1] = string.Format(GlobalMembers._ID("x {0}", 3322), theBoard.mGameStats[18]);
 				mSpecialStatsStrings[2] = string.Format(GlobalMembers._ID("x {0}", 3323), theBoard.mGameStats[19]);
 				break;
-			case GameMode.MODE_DIAMOND_MINE:
-			{
-				DigBoard digBoard = (DigBoard)theBoard;
-				DigGoal digGoal = (DigGoal)digBoard.mQuestGoal;
-				int aTime = digBoard.mGameStats[0];
-				mStatsLabels[0].SetText(string.Format(GlobalMembers._ID("{0} m", 3324), SexyFramework.Common.CommaSeperate(digGoal.GetGridDepth() * 10)));
-				mStatsLabels[1].SetText(Utils.GetTimeString(aTime));
-				mStatsLabels[2].SetText(SexyFramework.Common.CommaSeperate(theBoard.mGameStats[25]));
-				int num = 0;
-				for (int i = 0; i < digGoal.mCollectedArtifacts.Count; i++)
-				{
-					DigGoal.ArtifactData artifactData = digGoal.mArtifacts[digGoal.mCollectedArtifacts[i]];
-					if (digGoal.mArtifactBaseValue * artifactData.mValue >= num)
-					{
-						num = digGoal.mArtifactBaseValue * artifactData.mValue;
-					}
-				}
-				mStatsLabels[3].SetText($"{SexyFramework.Common.CommaSeperate(num)}");
-				int num2 = 0;
-				int num3 = 0;
-				for (int j = 0; j < 3; j++)
-				{
-					num2 = Math.Max(digGoal.mTreasureEarnings[j], num2);
-					num3 += digGoal.mTreasureEarnings[j];
-				}
-				if (num2 > 0)
-				{
-					int num4 = (int)((double)digGoal.mTreasureEarnings[0] * 100.0 / (double)num3 + 0.5);
-					int num5 = (int)((double)digGoal.mTreasureEarnings[1] * 100.0 / (double)num3 + 0.5);
-					int num6 = (int)((double)digGoal.mTreasureEarnings[2] * 100.0 / (double)num3 + 0.5);
-					int num7 = num4 + num5 + num6;
-					if (num7 != 100)
-					{
-						num4 -= num7 - 100;
-					}
-					mSpecialStatsStrings[0] = string.Format(GlobalMembers._ID("{0}%", 3490), num4);
-					mSpecialStatsStrings[1] = string.Format(GlobalMembers._ID("{0}%", 3491), num5);
-					mSpecialStatsStrings[2] = string.Format(GlobalMembers._ID("{0}%", 3492), num6);
-				}
-				else
-				{
-					mSpecialStatsStrings[0] = string.Format(GlobalMembers._ID("{0}%", 3493), 0);
-					mSpecialStatsStrings[1] = string.Format(GlobalMembers._ID("{0}%", 3494), 0);
-					mSpecialStatsStrings[2] = string.Format(GlobalMembers._ID("{0}%", 3495), 0);
-				}
-				break;
-			}
-			case GameMode.MODE_BUTTERFLY:
-				mStatsLabels[0].SetText(SexyFramework.Common.CommaSeperate(theBoard.mGameStats[28]));
-				mStatsLabels[1].SetText(SexyFramework.Common.CommaSeperate(theBoard.mGameStats[25]));
-				mStatsLabels[2].SetText(SexyFramework.Common.CommaSeperate(theBoard.mGameStats[29]));
-				mStatsLabels[3].SetText(Utils.GetTimeString(theBoard.mGameStats[0]));
-				mSpecialStatsStrings[0] = string.Format(GlobalMembers._ID("x {0}", 3325), theBoard.mGameStats[17]);
-				mSpecialStatsStrings[1] = string.Format(GlobalMembers._ID("x {0}", 3326), theBoard.mGameStats[18]);
-				mSpecialStatsStrings[2] = string.Format(GlobalMembers._ID("x {0}", 3327), theBoard.mGameStats[19]);
-				break;
 			case GameMode.MODE_POKER:
 				throw new NotImplementedException();
 			case GameMode.MODE_LIGHTNING:

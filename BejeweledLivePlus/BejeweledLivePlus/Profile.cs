@@ -53,8 +53,6 @@ namespace BejeweledLivePlus
 
 		public int mStatsTodayYear;
 
-		public bool[,] mQuestsCompleted = new bool[BejeweledLivePlusAppConstants.NUM_QUEST_SETS, BejeweledLivePlusAppConstants.QUESTS_REQUIRED_PER_SET + BejeweledLivePlusAppConstants.QUESTS_OPTIONAL_PER_SET];
-
 		public bool[] mEndlessModeUnlocked = new bool[4];
 
 		public int mLastQuestPage;
@@ -70,8 +68,6 @@ namespace BejeweledLivePlus
 		public int mTipIdx;
 
 		public int[] mOfflineBoostCounts = new int[5];
-
-		public bool[] mQuestHelpShown = new bool[BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET];
 
 		public Dictionary<string, string> mLocalDataMap = new Dictionary<string, string>();
 
@@ -120,13 +116,6 @@ namespace BejeweledLivePlus
 			mTutorialFlags = 0uL;
 			mTipIdx = 0;
 			mNeedMoveProfileFiles = false;
-			for (int n = 0; n < BejeweledLivePlusAppConstants.NUM_QUEST_SETS; n++)
-			{
-				for (int num = 0; num < BejeweledLivePlusAppConstants.QUESTS_REQUIRED_PER_SET + BejeweledLivePlusAppConstants.QUESTS_OPTIONAL_PER_SET; num++)
-				{
-					mQuestsCompleted[n, num] = false;
-				}
-			}
 			mLocalDataMap.Clear();
 			mImageNumber = 0;
 			mAutoHint = true;
@@ -231,11 +220,11 @@ namespace BejeweledLivePlus
 				mLastQuestPage = buffer.ReadInt32();
 				mLastQuestBlink = buffer.ReadBoolean();
 			}
-			for (int num15 = 0; num15 < BejeweledLivePlusAppConstants.NUM_QUEST_SETS; num15++)
+			for (int num15 = 0; num15 < 5; num15++)
 			{
-				for (int num16 = 0; num16 < BejeweledLivePlusAppConstants.QUESTS_REQUIRED_PER_SET + BejeweledLivePlusAppConstants.QUESTS_OPTIONAL_PER_SET; num16++)
+				for (int num16 = 0; num16 < 4 + 4; num16++)
 				{
-					mQuestsCompleted[num15, num16] = buffer.ReadBoolean();
+					buffer.ReadBoolean();
 				}
 			}
 			buffer.ReadString();
@@ -282,17 +271,10 @@ namespace BejeweledLivePlus
 			if (num >= 69)
 			{
 				int num20 = buffer.ReadInt32();
-				bool flag = num20 == BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET;
+				bool flag = num20 == 5 * 8;
 				for (int num21 = 0; num21 < num20; num21++)
 				{
-					if (flag)
-					{
-						mQuestHelpShown[num21] = buffer.ReadBoolean();
-					}
-					else
-					{
-						buffer.ReadBoolean();
-					}
+					buffer.ReadBoolean();
 				}
 			}
 			buffer.ReadBoolean();
@@ -383,19 +365,11 @@ namespace BejeweledLivePlus
 
 		public void ClearQuestHelpShown()
 		{
-			for (int i = 0; i < mQuestHelpShown.Length; i++)
-			{
-				mQuestHelpShown[i] = false;
-			}
 		}
 
 		public bool WantQuestHelp(int theQuestId)
 		{
-			if (theQuestId < BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET && theQuestId >= 0)
-			{
-				return !mQuestHelpShown[theQuestId];
-			}
-			return true;
+			return false;
 		}
 
 		public void SetQuestHelpShown(int theQuestId)
@@ -405,10 +379,6 @@ namespace BejeweledLivePlus
 
 		public void SetQuestHelpShown(int theQuestId, bool theVal)
 		{
-			if (theQuestId < BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET && theQuestId >= 0)
-			{
-				mQuestHelpShown[theQuestId] = theVal;
-			}
 		}
 
 		public Profile()
@@ -677,11 +647,11 @@ namespace BejeweledLivePlus
 			buffer.WriteInt32(mTipIdx);
 			buffer.WriteInt32(mLastQuestPage);
 			buffer.WriteBoolean(mLastQuestBlink);
-			for (int n = 0; n < BejeweledLivePlusAppConstants.NUM_QUEST_SETS; n++)
+			for (int n = 0; n < 5; n++)
 			{
-				for (int num = 0; num < BejeweledLivePlusAppConstants.QUESTS_REQUIRED_PER_SET + BejeweledLivePlusAppConstants.QUESTS_OPTIONAL_PER_SET; num++)
+				for (int num = 0; num < 4 + 4; num++)
 				{
-					buffer.WriteBoolean(mQuestsCompleted[n, num]);
+					buffer.WriteBoolean(false);
 				}
 			}
 			buffer.WriteString("");
@@ -718,10 +688,10 @@ namespace BejeweledLivePlus
 			buffer.WriteBoolean(false);
 			buffer.WriteFloat(0);
 			buffer.WriteFloat(0);
-			buffer.WriteInt32(BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET);
-			for (int num3 = 0; num3 < BejeweledLivePlusAppConstants.NUM_QUEST_SETS * BejeweledLivePlusAppConstants.QUESTS_PER_SET; num3++)
+			buffer.WriteInt32(5 * 8);
+			for (int num3 = 0; num3 < 5 * 8; num3++)
 			{
-				buffer.WriteBoolean(mQuestHelpShown[num3]);
+				buffer.WriteBoolean(true);
 			}
 			buffer.WriteBoolean(false);
 			buffer.WriteBoolean(mAutoHint);

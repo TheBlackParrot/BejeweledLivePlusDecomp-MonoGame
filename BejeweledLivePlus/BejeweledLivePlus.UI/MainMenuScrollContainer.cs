@@ -42,21 +42,9 @@ namespace BejeweledLivePlus.UI
 
 		private List<CrystalBall> mButtons;
 
-		public CrystalBall mClassicButton;
-
 		public bool mIsFullGame = true; // !Guide.IsTrialMode;
-
-		private CrystalBall mButterflyButton;
-
+		
 		private CrystalBall mZenButton;
-
-		private CrystalBall mDiamondMineButton;
-
-		private CrystalBall mLightningButton;
-
-		private ArrowButton Tst1Button;
-
-		private ArrowButton Tst2Button;
 
 		private PAGE_NUM mCurrentPage;
 
@@ -75,28 +63,9 @@ namespace BejeweledLivePlus.UI
 		{
 			mButtons = new List<CrystalBall>();
 			mDoesSlideInFromBottom = (mCanAllowSlide = false);
-			mZenButton = new CrystalBall(GlobalMembers._ID("ZEN", 3366), GlobalMembers._ID("", 3367), GlobalMembers._ID("", 3368), 1, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_ZEN_SCALE + 0.1f);
+			mZenButton = new CrystalBall(GlobalMembers._ID("ZEN", 3366), GlobalMembers._ID("", 3367), GlobalMembers._ID("", 3368), 1, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_SCALE);
 			mButtons.Add(mZenButton);
 			AddWidget(mZenButton);
-			mDiamondMineButton = new CrystalBall(GlobalMembers._ID("DIAMOND", 3369), GlobalMembers._ID("MINE", 3370), GlobalMembers._ID("", 3371), 2, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_DIAMONDMINE_SCALE);
-			mButtons.Add(mDiamondMineButton);
-			AddWidget(mDiamondMineButton);
-			mClassicButton = new CrystalBall(GlobalMembers._ID("CLASSIC", 3372), GlobalMembers._ID("", 3373), GlobalMembers._ID("", 3374), 0, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_SCALE);
-			mButtons.Add(mClassicButton);
-			AddWidget(mClassicButton);
-			mLightningButton = new CrystalBall(GlobalMembers._ID("LIGHTNING", 3375), GlobalMembers._ID("", 3376), GlobalMembers._ID("", 3377), 3, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_LIGHTNING_SCALE);
-			mButtons.Add(mLightningButton);
-			AddWidget(mLightningButton);
-			mButterflyButton = new CrystalBall(GlobalMembers._ID("BUTTERFLIES", 3378), GlobalMembers._ID("", 3379), GlobalMembers._ID("", 3380), 5, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE + 0.1f);
-			mButtons.Add(mButterflyButton);
-			AddWidget(mButterflyButton);
-			Tst1Button = new ArrowButton(GlobalMembers._ID("Bonus", 3393), GlobalMembers._ID("Games", 3394), GlobalMembers._ID("", 3392), 10, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE - 0.3f);
-			Tst1Button.Resize(0, 0, 180, 180);
-			AddWidget(Tst1Button);
-			Tst2Button = new ArrowButton(GlobalMembers._ID("Help &", 3390), GlobalMembers._ID("About", 3391), GlobalMembers._ID("", 7669), 11, this, Bej3Widget.COLOR_CRYSTALBALL_FONT, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_SCALE - 0.3f);
-			Tst2Button.Resize(0, 0, 180, 180);
-			Tst2Button.IsLeft = true;
-			AddWidget(Tst2Button);
 			initButtonPosition();
 			mCurrentPage = PAGE_NUM.MAIN_PAGE;
 			mFlag = true;
@@ -121,13 +90,7 @@ namespace BejeweledLivePlus.UI
 		{
 			int num = 40;
 			int num2 = 40;
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_BLITZ_X - 75, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 470 + num, Tst2Button);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_DIAMONDMINE_X + 75, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + 470 + num, Tst1Button);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_X + 2 * ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_BUTTERFLIES_Y + num - num2, mButterflyButton);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_BLITZ_X, ConstantsWP.MAIN_MENU_BUTTON_BLITZ_Y + num, mLightningButton);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_Y + num, mClassicButton);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_DIAMONDMINE_X, ConstantsWP.MAIN_MENU_BUTTON_DIAMONDMINE_Y + num, mDiamondMineButton);
-			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_ZEN_X + 2 * ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_ZEN_Y + num + num2, mZenButton);
+			Bej3Widget.CenterWidgetAt(ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_X, ConstantsWP.MAIN_MENU_BUTTON_CLASSIC_Y + num, mZenButton);
 		}
 
 		public override void Dispose()
@@ -211,11 +174,6 @@ namespace BejeweledLivePlus.UI
 		{
 			if (mInterfaceState != 0)
 			{
-				Tst1Button.mLabel = GlobalMembers._ID("Bonus", 3393);
-				Tst1Button.mLabel2 = GlobalMembers._ID("Games", 3394);
-				Tst2Button.mLabel = GlobalMembers._ID("Help &", 3390);
-				Tst2Button.mLabel2 = GlobalMembers._ID("About", 3391);
-				Tst2Button.mLabel3 = GlobalMembers._ID("", 7669);
 				EnterMain();
 				base.Show();
 				mY = 0;
@@ -311,11 +269,6 @@ namespace BejeweledLivePlus.UI
 				{
 					if (!mSlide_Right)
 					{
-						Tst1Button.mLabel = GlobalMembers._ID("More", 3395);
-						Tst1Button.mLabel2 = GlobalMembers._ID("Games", 3396);
-						Tst2Button.mLabel = GlobalMembers._ID("Back", 3640);
-						Tst2Button.mLabel2 = "";
-						Tst2Button.mLabel3 = "";
 						mCurrentPage = PAGE_NUM.EXPEND_PAGE;
 						mFlag = true;
 						mSlide_Left = true;
@@ -331,11 +284,6 @@ namespace BejeweledLivePlus.UI
 				{
 					if (!mSlide_Left)
 					{
-						Tst1Button.mLabel = GlobalMembers._ID("Bonus", 3393);
-						Tst1Button.mLabel2 = GlobalMembers._ID("Games", 3394);
-						Tst2Button.mLabel = GlobalMembers._ID("Help &", 3390);
-						Tst2Button.mLabel2 = GlobalMembers._ID("About", 3391);
-						Tst2Button.mLabel3 = "";
 						mCurrentPage = PAGE_NUM.MAIN_PAGE;
 						mFlag = true;
 						mSlide_Right = true;
@@ -368,9 +316,7 @@ namespace BejeweledLivePlus.UI
 		public override void LinkUpAssets()
 		{
 			base.LinkUpAssets();
-			mClassicButton.LinkUpAssets();
 			mZenButton.LinkUpAssets();
-			mDiamondMineButton.LinkUpAssets();
 		}
 
 		public override int GetShowCurve()

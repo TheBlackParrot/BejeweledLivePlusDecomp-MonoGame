@@ -12294,29 +12294,11 @@ namespace BejeweledLivePlus
 			graphics.Translate(-GlobalMembers.gApp.mScreenBounds.mX, 0);
 			bool flag = GlobalMembers.gApp.mUnderDialogWidget.mVisible;
 			bool flag2 = GlobalMembers.gApp.mTooltipManager.mVisible;
-			bool flag3 = GlobalMembers.gApp.mQuestMenu != null && GlobalMembers.gApp.mQuestMenu.mVisible;
-			bool flag4 = GlobalMembers.gApp.mQuestMenu != null && GlobalMembers.gApp.mQuestMenu.mBackground.mVisible;
 			GlobalMembers.gApp.mUnderDialogWidget.mVisible = false;
 			GlobalMembers.gApp.mTooltipManager.mVisible = false;
-			if (flag3)
-			{
-				GlobalMembers.gApp.mQuestMenu.mVisible = false;
-			}
-			if (flag4)
-			{
-				GlobalMembers.gApp.mQuestMenu.mBackground.mVisible = false;
-			}
 			mWidgetManager.DrawWidgetsTo(graphics);
 			GlobalMembers.gApp.mUnderDialogWidget.mVisible = flag;
 			GlobalMembers.gApp.mTooltipManager.mVisible = flag2;
-			if (flag3)
-			{
-				GlobalMembers.gApp.mQuestMenu.mVisible = true;
-			}
-			if (flag4)
-			{
-				GlobalMembers.gApp.mQuestMenu.mBackground.mVisible = true;
-			}
 			GlobalMembers.gApp.mRestartRT.Unlock();
 			mFlattening = false;
 			mFlattenedImage = theDestImage;
