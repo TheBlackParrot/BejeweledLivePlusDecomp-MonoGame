@@ -3908,12 +3908,16 @@ namespace BejeweledLivePlus
 
 		public void StartLaserGemEffect(Piece thePiece)
 		{
-			ParticleEffect theEffect = NewBottomLaserEffect(thePiece.mColor);
-			thePiece.BindEffect(theEffect);
-			mPreFXManager.AddEffect(theEffect);
-			theEffect = NewTopLaserEffect(thePiece.mColor);
-			thePiece.BindEffect(theEffect);
-			mPostFXManager.AddEffect(theEffect);
+			for (int i = 0; i < 4; i++)
+			{
+				ParticleEffect bottomLaserEffect = NewBottomLaserEffect(thePiece.mColor);
+				thePiece.BindEffect(bottomLaserEffect);
+				mPreFXManager.AddEffect(bottomLaserEffect);
+			}
+
+			ParticleEffect topLaserEffect = NewTopLaserEffect(thePiece.mColor);
+			thePiece.BindEffect(topLaserEffect);
+			mPostFXManager.AddEffect(topLaserEffect);
 		}
 
 		public ParticleEffect NewTopLaserEffect(int theGemColor)
@@ -3921,18 +3925,25 @@ namespace BejeweledLivePlus
 			ParticleEffect particleEffect = ParticleEffect.fromPIEffect(GlobalMembersResourcesWP.PIEFFECT_STARGEM);
 			particleEffect.SetEmitAfterTimeline(true);
 			particleEffect.mDoDrawTransform = true;
+			
 			for (int i = 0; i < 7; i++)
 			{
 				PILayer layer = particleEffect.GetLayer(i + 1);
-				if (i == theGemColor)
-				{
-					layer.SetVisible(true);
-				}
-				else
-				{
-					layer.SetVisible(false);
-				}
+				layer.SetVisible(i == theGemColor);
+				layer.mColor = GlobalMembers.gGemColors[theGemColor];
 			}
+
+			PILayer visibleLayer1 = particleEffect.GetLayer("Top");
+			if (visibleLayer1 != null)
+			{
+				visibleLayer1.mColor = GlobalMembers.gGemColors[theGemColor];
+			}
+			PILayer visibleLayer2 = particleEffect.GetLayer("Stars");
+			if (visibleLayer2 != null)
+			{
+				visibleLayer2.mColor = GlobalMembers.gGemColors[theGemColor];
+			}
+
 			PILayer layer2 = particleEffect.GetLayer(theGemColor + 1);
 			layer2.GetEmitter("Glow")?.SetVisible(false);
 			return particleEffect;
@@ -3944,18 +3955,20 @@ namespace BejeweledLivePlus
 			particleEffect.SetEmitAfterTimeline(true);
 			particleEffect.mDoDrawTransform = true;
 			particleEffect.mDoubleSpeed = true;
+			
 			for (int i = 0; i < 7; i++)
 			{
 				PILayer layer = particleEffect.GetLayer(i + 1);
-				if (i == theGemColor)
-				{
-					layer.SetVisible(true);
-				}
-				else
-				{
-					layer.SetVisible(false);
-				}
+				layer.SetVisible(i == theGemColor);
+				layer.mColor = GlobalMembers.gGemColors[theGemColor];
 			}
+
+			PILayer visibleLayer = particleEffect.GetLayer("Glow");
+			if (visibleLayer != null)
+			{
+				visibleLayer.mColor = GlobalMembers.gGemColors[theGemColor];
+			}
+
 			particleEffect.GetLayer("Top").SetVisible(false);
 			PILayer layer2 = particleEffect.GetLayer(theGemColor + 1);
 			layer2.GetEmitter("Stars")?.SetVisible(false);
