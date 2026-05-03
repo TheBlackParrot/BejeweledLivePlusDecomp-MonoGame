@@ -72,13 +72,6 @@ namespace BejeweledLivePlus
 			SexyFramework.GlobalMembers.gSexyApp = theApp;
 			SexyFramework.GlobalMembers.gSexyAppBase = theApp;
 			GlobalMembers.gApp = theApp;
-			// mGamerService = new GamerServicesComponent(this);
-			// base.Components.Add(mGamerService);
-			// Guide.SimulateTrialMode = false;
-			// Guide.SimulateTrialMode = false;
-			// mAppService = PhoneApplicationService.Current;
-			// mAppService.Activated += OnServiceActivated;
-			// mAppService.Deactivated += OnServiceDeactivated;
 		}
 
 		protected override void Initialize()

@@ -41,8 +41,6 @@ namespace BejeweledLivePlus.UI
 		private int mSlide_Count;
 
 		private List<CrystalBall> mButtons;
-
-		public bool mIsFullGame = true; // !Guide.IsTrialMode;
 		
 		private CrystalBall mZenButton;
 
@@ -204,27 +202,13 @@ namespace BejeweledLivePlus.UI
 				GlobalMembers.gApp.DoNewGame(GameMode.MODE_CLASSIC);
 				break;
 			case 1:
-				if (mIsFullGame)
-				{
-					GlobalMembers.gApp.DoNewGame(GameMode.MODE_ZEN);
-				}
-				else
-				{
-					GlobalMembers.gApp.DoTrialDialog(theId);
-				}
+				GlobalMembers.gApp.DoNewGame(GameMode.MODE_ZEN);
 				break;
 			case 2:
 				GlobalMembers.gApp.DoNewGame(GameMode.MODE_DIAMOND_MINE);
 				break;
 			case 3:
-				if (mIsFullGame)
-				{
-					GlobalMembers.gApp.DoNewGame(GameMode.MODE_LIGHTNING);
-				}
-				else
-				{
-					GlobalMembers.gApp.DoTrialDialog(theId);
-				}
+				GlobalMembers.gApp.DoNewGame(GameMode.MODE_LIGHTNING);
 				break;
 			case 4:
 			{
@@ -242,27 +226,10 @@ namespace BejeweledLivePlus.UI
 				break;
 			}
 			case 7:
-				if (mIsFullGame)
-				{
-					GlobalMembers.gApp.DoHighScoresMenu();
-				}
-				else
-				{
-					GlobalMembers.gApp.DoTrialDialog(theId);
-				}
+				GlobalMembers.gApp.DoHighScoresMenu();
 				break;
 			case 8:
-				if (!mIsFullGame)
-				{
-					GlobalMembers.gApp.DoTrialDialog(theId);
-				}
-				break;
 			case 9:
-				// if (Guide.IsTrialMode)
-				// {
-				// 	GlobalMembers.gApp.BuyGame();
-				// }
-				// mIsFullGame = !Guide.IsTrialMode;
 				break;
 			case 10:
 				if (mCurrentPage == PAGE_NUM.MAIN_PAGE)

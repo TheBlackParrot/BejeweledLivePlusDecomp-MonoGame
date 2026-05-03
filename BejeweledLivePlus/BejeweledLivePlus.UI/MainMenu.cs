@@ -475,15 +475,6 @@ namespace BejeweledLivePlus.UI
 			mContainer.mScrollWidget = mScrollWidget;
 		}
 
-		public bool mIsFullGame()
-		{
-			if (mContainer != null)
-			{
-				return mContainer.mIsFullGame;
-			}
-			return false;
-		}
-
 		public void HideLogo()
 		{
 			if (mBJ3LogoShowing)

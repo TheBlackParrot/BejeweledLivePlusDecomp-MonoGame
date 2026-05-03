@@ -574,10 +574,6 @@ namespace BejeweledLivePlus
 
 		public bool mWantsReddishFlamegems;
 
-		private bool mTrialPromptShown;
-
-		private bool mBuyFullGameShown;
-
 		public bool mHyperspacePassed;
 
 		public List<DeferredSound> mDeferredSounds = new List<DeferredSound>();
@@ -1042,32 +1038,10 @@ namespace BejeweledLivePlus
 			bej3Dialog.SetTopButtonType(Bej3ButtonType.TOP_BUTTON_TYPE_CLOSED);
 		}
 
-		public void DoPrompt()
-		{
-			mTrialPromptShown = true;
-			if (GlobalMembers.gApp.mCurrentGameMode == GameMode.MODE_BUTTERFLY)
-			{
-				Bej3Dialog bej3Dialog = (Bej3Dialog)GlobalMembers.gApp.DoDialog(51, true, GlobalMembers._ID("PROMPT", 3789), string.Format(GlobalMembers._ID("In the trial version you can only reach a maximum of {0} points. Unlock the full version to enjoy the full experience.", 3797), SexyFramework.Common.CommaSeperate(95000)), "", 3);
-				bej3Dialog.mDialogListener = this;
-				((Bej3Button)bej3Dialog.mYesButton).SetLabel(GlobalMembers._ID("OK", 116));
-			}
-			else if (GlobalMembers.gApp.mCurrentGameMode == GameMode.MODE_DIAMOND_MINE)
-			{
-				Bej3Dialog bej3Dialog2 = (Bej3Dialog)GlobalMembers.gApp.DoDialog(51, true, GlobalMembers._ID("PROMPT", 3789), string.Format(GlobalMembers._ID("In the trial version you can only reach a maximum of {0} points. Unlock the full version to enjoy the full experience.", 3797), SexyFramework.Common.CommaSeperate(50000)), "", 3);
-				bej3Dialog2.mDialogListener = this;
-				((Bej3Button)bej3Dialog2.mYesButton).SetLabel(GlobalMembers._ID("OK", 116));
-			}
-			else if (GlobalMembers.gApp.mCurrentGameMode == GameMode.MODE_CLASSIC)
-			{
-				Bej3Dialog bej3Dialog3 = (Bej3Dialog)GlobalMembers.gApp.DoDialog(51, true, GlobalMembers._ID("PROMPT", 3789), GlobalMembers._ID("In the trial version you can only reach maximum Level of the 4th. Unlock the full version to enjoy the full experience.", 3800), "", 3);
-				bej3Dialog3.mDialogListener = this;
-				((Bej3Button)bej3Dialog3.mYesButton).SetLabel(GlobalMembers._ID("OK", 116));
-			}
-		}
-
 		public virtual void MainMenuRequest()
 		{
-			Bej3Dialog bej3Dialog = (GlobalMembers.gApp.mMainMenu.mIsFullGame() ? ((Bej3Dialog)GlobalMembers.gApp.DoDialog(50, true, GlobalMembers._ID("PROMPT", 3789), GlobalMembers._ID("Do you wish to go to main menu? Your game will be saved.", 3790), "", 1)) : ((Bej3Dialog)GlobalMembers.gApp.DoDialog(50, true, GlobalMembers._ID("PROMPT", 3789), GlobalMembers._ID("Do you wish to go to main menu? Your game is not saved in the trial game.", 3799), "", 1)));
+			Bej3Dialog bej3Dialog = (Bej3Dialog)GlobalMembers.gApp.DoDialog(50, true, GlobalMembers._ID("PROMPT", 3789),
+					GlobalMembers._ID("Do you wish to go to main menu? Your game will be saved.", 3790), "", 1);
 			int dIALOG_RESTART_GAME_WIDTH = ConstantsWP.DIALOG_RESTART_GAME_WIDTH;
 			bej3Dialog.Resize(GlobalMembers.S(GlobalMembers.gApp.mBoard.GetBoardCenterX()) - dIALOG_RESTART_GAME_WIDTH / 2, mHeight / 2, dIALOG_RESTART_GAME_WIDTH, bej3Dialog.GetPreferredHeight(dIALOG_RESTART_GAME_WIDTH));
 			Bej3Button bej3Button = (Bej3Button)bej3Dialog.mYesButton;
@@ -4931,51 +4905,6 @@ namespace BejeweledLivePlus
 			mMoveDataVector.Add(moveData);
 		}
 
-		private bool CheckTrialGameFinished()
-		{
-			bool result = false;
-			if (!GlobalMembers.gApp.mMainMenu.mIsFullGame())
-			{
-				switch (GlobalMembers.gApp.mCurrentGameMode)
-				{
-				case GameMode.MODE_CLASSIC:
-					if (mLevel >= 4)
-					{
-						if (!mBuyFullGameShown)
-						{
-							GlobalMembers.gApp.DoTrialDialog(0);
-							mBuyFullGameShown = true;
-						}
-						result = true;
-					}
-					break;
-				case GameMode.MODE_BUTTERFLY:
-					if (mDispPoints >= 95000)
-					{
-						if (!mBuyFullGameShown)
-						{
-							GlobalMembers.gApp.DoTrialDialog(5);
-							mBuyFullGameShown = true;
-						}
-						result = true;
-					}
-					break;
-				case GameMode.MODE_DIAMOND_MINE:
-					if (mLevelPointsTotal >= 50000)
-					{
-						if (!mBuyFullGameShown)
-						{
-							GlobalMembers.gApp.DoTrialDialog(2);
-							mBuyFullGameShown = true;
-						}
-						result = true;
-					}
-					break;
-				}
-			}
-			return result;
-		}
-
 		public virtual bool TrySwap(Piece theSelected, int theSwappedRow, int theSwappedCol, bool forceSwap, bool playerSwapped)
 		{
 			return TrySwap(theSelected, theSwappedRow, theSwappedCol, forceSwap, playerSwapped, false);
@@ -4993,10 +4922,6 @@ namespace BejeweledLivePlus
 
 		public virtual bool TrySwap(Piece theSelected, int theSwappedRow, int theSwappedCol, bool forceSwap, bool playerSwapped, bool destroyTarget)
 		{
-			if (CheckTrialGameFinished())
-			{
-				return false;
-			}
 			if (theSelected == null)
 			{
 				return false;
@@ -9415,7 +9340,6 @@ namespace BejeweledLivePlus
 			{
 				mScrambleDelayTicks--;
 			}
-			CheckTrialGameFinished();
 		}
 
 		public void DoUReplayUpdate()
@@ -10253,10 +10177,6 @@ namespace BejeweledLivePlus
 						announcement.mScale.mIncRate *= (2.0);
 						announcement.mDarkenBoard = false;
 						announcement.mTimeAnnouncement = true;
-						if (!GlobalMembers.gApp.mMainMenu.mIsFullGame() && !mTrialPromptShown)
-						{
-							DoPrompt();
-						}
 					}
 				}
 				if (mReadyDelayCount > 0 && --mReadyDelayCount == (110))
@@ -10270,10 +10190,6 @@ namespace BejeweledLivePlus
 						announcement2.mDarkenBoard = false;
 					}
 					GlobalMembers.gApp.PlayVoice(GlobalMembersResourcesWP.SOUND_VOICE_GETREADY);
-					if (!GlobalMembers.gApp.mMainMenu.mIsFullGame() && !mTrialPromptShown)
-					{
-						DoPrompt();
-					}
 				}
 				if ((((double)mTimerInflate == 0.0 && (!mWantTimeAnnouncement || mTimeAnnouncementDone)) || GetTimeLimit() == 0 || mGoDelayCount > 1) && mGoDelayCount >= 0 && --mGoDelayCount == 0)
 				{
@@ -10284,10 +10200,6 @@ namespace BejeweledLivePlus
 					announcement3.mDarkenBoard = false;
 					announcement3.mGoAnnouncement = true;
 					GlobalMembers.gApp.PlayVoice(GlobalMembersResourcesWP.SOUND_VOICE_GO);
-					if (!GlobalMembers.gApp.mMainMenu.mIsFullGame() && !mTrialPromptShown)
-					{
-						DoPrompt();
-					}
 				}
 			}
 			if (mCountdownBarPIEffect != null || mLevelCompleteCount != 0)
@@ -12328,7 +12240,7 @@ namespace BejeweledLivePlus
 			{
 				mBackground.mParent.RemoveWidget(mBackground);
 			}
-			if (mGameOverCount == 0 && GlobalMembers.gApp.mMainMenu.mIsFullGame())
+			if (mGameOverCount == 0)
 			{
 				SaveGame();
 			}
@@ -12771,10 +12683,6 @@ namespace BejeweledLivePlus
 				if (theButtonId == 1000)
 				{
 					bej3Dialog.Kill();
-					if (!GlobalMembers.gApp.mMainMenu.mIsFullGame())
-					{
-						DeleteSavedGame();
-					}
 					bej3Dialog.mCanSlideInMenus = true;
 					((PauseMenu)GlobalMembers.gApp.mMenus[7]).Collapse(false, true);
 					GlobalMembers.gApp.DoMainMenu();

@@ -300,18 +300,6 @@ namespace BejeweledLivePlus
 
 		protected void UpdateDialogGetResult(IAsyncResult result)
 		{
-			// int? num = Guide.EndShowMessageBox(result);
-			// if (num.HasValue && num.Value > 0)
-			// {
-			// 	if (Guide.IsTrialMode)
-			// 	{
-			// 		Guide.ShowMarketplace(PlayerIndex.One);
-			// 		return;
-			// 	}
-			// 	MarketplaceDetailTask val = new MarketplaceDetailTask();
-			// 	val.ContentType = (MarketplaceContentType)1;
-			// 	val.Show();
-			// }
 		}
 
 		private void dumpStringResource()
@@ -677,7 +665,7 @@ namespace BejeweledLivePlus
 				mMusicInterface.PauseAllMusic();
 				mMusicInterface.OnDeactived();
 			}
-			if (mBoard != null && GlobalMembers.gApp.mMainMenu.mIsFullGame() && !mBoard.mGameFinished)
+			if (mBoard != null && !mBoard.mGameFinished)
 			{
 				mBoard.SaveGame();
 			}
@@ -693,7 +681,7 @@ namespace BejeweledLivePlus
 			}
 			if (mBoard.mHyperspace != null || mBoard.mWantLevelup)
 			{
-				if (mBoard != null && GlobalMembers.gApp.mMainMenu.mIsFullGame() && !mBoard.mGameFinished)
+				if (mBoard != null && !mBoard.mGameFinished)
 				{
 					mBoard.SaveGame();
 				}
@@ -718,12 +706,9 @@ namespace BejeweledLivePlus
 
 		public void OnExiting()
 		{
-			if (GlobalMembers.gApp.mMainMenu.mIsFullGame())
+			if (mBoard != null && !mBoard.mGameFinished)
 			{
-				if (mBoard != null && !mBoard.mGameFinished)
-				{
-					mBoard.SaveGame();
-				}
+				mBoard.SaveGame();
 			}
 			else if (mBoard != null)
 			{
@@ -1485,10 +1470,6 @@ namespace BejeweledLivePlus
 
 		public bool DoSavedGameCheck()
 		{
-			if (!GlobalMembers.gApp.mMainMenu.mIsFullGame())
-			{
-				mBoard.DeleteSavedGame();
-			}
 			if (!mBoard.HasSavedGame())
 			{
 				return false;
@@ -1538,48 +1519,6 @@ namespace BejeweledLivePlus
 			bej3Dialog.mWidth = ConstantsWP.RESUME_DIALOG_WIDTH;
 			bej3Dialog.SizeToContent();
 			mWidgetManager.SetFocus(bej3Dialog);
-		}
-
-		public void DoTrialDialog(int theId)
-		{
-			string theDialogLines = string.Empty;
-			string theDialogHeader = GlobalMembers._ID("PROMPT", 3789);
-			string mLabel = GlobalMembers._ID("BUY FULL GAME", 3795);
-			switch (theId)
-			{
-			case 0:
-			case 2:
-			case 5:
-				theDialogLines = GlobalMembers._ID("You can't proceed in with trial game ,would you like to buy the full game?", 3792);
-				theDialogHeader = GlobalMembers._ID("End Of The Trial Version", 3796);
-				break;
-			case 1:
-			case 3:
-				theDialogLines = GlobalMembers._ID("You can't play this mode with trial game ,would you like to buy the full game?", 3793);
-				break;
-			case 8:
-				theDialogLines = GlobalMembers._ID("You can't browse the achievements with trial game ,would you like to buy the full game?", 3794);
-				break;
-			case 7:
-				theDialogLines = GlobalMembers._ID("The Leaderboards are only available in the full game.", 3801);
-				mLabel = GlobalMembers._ID("UPDATE", 3802);
-				break;
-			}
-			Bej3Dialog bej3Dialog = (Bej3Dialog)DoDialog(51, true, theDialogHeader, theDialogLines, "", 1);
-			mIgnoreSound = true;
-			bej3Dialog.mYesButton.mLabel = mLabel;
-			bej3Dialog.mNoButton.mLabel = GlobalMembers._ID("CANCEL", 3239);
-			((Bej3Button)bej3Dialog.mNoButton).SetType(Bej3ButtonType.BUTTON_TYPE_LONG_PURPLE);
-			bej3Dialog.SetButtonPosition(bej3Dialog.mYesButton, 0);
-			bej3Dialog.mWidth = ConstantsWP.RESUME_DIALOG_WIDTH;
-			bej3Dialog.SizeToContent();
-			Rect theRect = new Rect(bej3Dialog.mYesButton.mRect);
-			theRect.mWidth += 37;
-			bej3Dialog.mYesButton.Resize(theRect);
-			theRect.mY = bej3Dialog.mNoButton.mY;
-			bej3Dialog.mNoButton.Resize(theRect);
-			mWidgetManager.SetFocus(bej3Dialog);
-			mIgnoreSound = false;
 		}
 
 		public void GoToBlitz()
