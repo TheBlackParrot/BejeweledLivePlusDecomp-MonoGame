@@ -224,62 +224,21 @@ namespace BejeweledLivePlus.UI
 				mBJ3LogoAlpha.IncInVal();
 			}
 			base.Update();
-			if (Common.size(mPartnerLogos) > 0)
-			{
-				mPartnerBlackAlpha = 1f;
-				PartnerLogo partnerLogo = mPartnerLogos[0];
-				if (partnerLogo.mAlpha < 255 && partnerLogo.mTime == partnerLogo.mOrgTime)
-				{
-					partnerLogo.mAlpha += (5);
-					if (partnerLogo.mAlpha >= 255)
-					{
-						partnerLogo.mAlpha = 255;
-					}
-				}
-				else if (--partnerLogo.mTime <= 0)
-				{
-					partnerLogo.mAlpha -= (5);
-					if (partnerLogo.mAlpha <= 0)
-					{
-						partnerLogo.mImage.Dispose();
-						mPartnerLogos.RemoveAt(0);
-					}
-				}
-				MarkDirty();
-				return;
-			}
-			mPartnerBlackAlpha = Math.Max(0f, mPartnerBlackAlpha - (0.05f));
+			
 			if (mLoaded && (double)mRotation == 0.0 && !mFinishedLoadSequence)
 			{
 				mFinishedLoadSequence = true;
 				if (GlobalMembers.gApp.mHasFocus)
 				{
-					if (GlobalMembers.gApp.mProfile.mProfileName.Length == 0)
-					{
-						GlobalMembers.gApp.PlayVoice(GlobalMembersResourcesWP.SOUND_VOICE_WELCOMETOBEJEWELED);
-					}
-					else
-					{
-						GlobalMembers.gApp.PlayVoice(GlobalMembersResourcesWP.SOUND_VOICE_WELCOMEBACK);
-					}
+					GlobalMembers.gApp.PlayVoice(GlobalMembers.gApp.mProfile.mProfileName.Length == 0
+						? GlobalMembersResourcesWP.SOUND_VOICE_WELCOMETOBEJEWELED
+						: GlobalMembersResourcesWP.SOUND_VOICE_WELCOMEBACK);
 				}
 			}
 			if (mLoaded && mHasLoaderResources && (double)mLogoAlpha == 0.0)
 			{
 				BejeweledLivePlusApp.UnloadContent("Loader");
 				mHasLoaderResources = false;
-			}
-			if (mLoaded && (double)mRotation == 0.0 && GlobalMembers.gApp.mProfile.mProfileName.Length == 0 && GlobalMembers.gApp.GetDialog(1) == null)
-			{
-				if (GlobalMembers.gApp.mLastUser.Length != 0)
-				{
-					GlobalMembers.gApp.mProfile.LoadProfile(GlobalMembers.gApp.mLastUser);
-					GlobalMembers.gApp.mLastUser = "";
-				}
-				else if (GlobalMembers.gApp.mDialogMap.Count == 0)
-				{
-					GlobalMembers.gApp.DoWelcomeDialog();
-				}
 			}
 			float num = GlobalMembers.gApp.mResourceManager.GetLoadResourcesListProgress(GlobalMembers.gApp.initialLoadGroups);
 			mDispLoadPct += (num - mDispLoadPct) * ConstantsWP.LOADING_SMOOTH_STEP;
@@ -306,6 +265,7 @@ namespace BejeweledLivePlus.UI
 				{
 					GlobalMembers.gApp.ConfirmUserMusic();
 				}
+				GlobalMembers.gApp.DoNewGame(GameMode.MODE_ZEN);
 			}
 			bool mLoaded2 = mLoaded;
 			float num2 = (float)SexyFramework.GlobalMembers.gSexyApp.mScreenBounds.mWidth / (float)SexyFramework.GlobalMembers.gSexyApp.mScreenBounds.mHeight;
