@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace BejeweledLivePlus;
 
 public static class RemoteEvents
 {
-    public static void SwapGems(string swapA, string swapB, bool allowIllegal = false)
+    public static void SwapGems(string swapA, string swapB, bool allowIllegal, uint? remoteId = null)
     {
         swapA = swapA.ToUpper();
         swapB = swapB.ToUpper();
@@ -36,6 +37,17 @@ public static class RemoteEvents
         {
             Console.WriteLine($"Can't input move {swapA}{swapB}, move is invalid");
             return;
+        }
+
+        if (remoteId != null)
+        {
+            Console.WriteLine($"{remoteId} wants credit for move {Board.Active.mCurMoveCreditId}");
+            
+            GameWebSocket.Send("credit", new Dictionary<string,dynamic>
+            {
+                {"moveId", Board.Active.mCurMoveCreditId},
+                {"userId", remoteId}
+            });
         }
 
         active.TrySwap(piece, gemB.Item1, gemB.Item2, allowIllegal, true);

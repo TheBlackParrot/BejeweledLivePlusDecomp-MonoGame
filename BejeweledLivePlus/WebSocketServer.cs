@@ -106,11 +106,19 @@ public class WebSocketHandler : WebSocketBehavior
         switch (commandParts[0])
         {
             case "swap":
-                RemoteEvents.SwapGems(commandParts[1], commandParts[2]);
+                if (commandParts.Length < 4)
+                {
+                    return;
+                }
+                RemoteEvents.SwapGems(commandParts[1], commandParts[2], false, uint.Parse(commandParts[3]));
                 break;
             
             case "forceswap":
-                RemoteEvents.SwapGems(commandParts[1], commandParts[2], true);
+                if (commandParts.Length < 4)
+                {
+                    return;
+                }
+                RemoteEvents.SwapGems(commandParts[1], commandParts[2], true, uint.Parse(commandParts[3]));
                 break;
             
             case "diffuse":

@@ -3139,6 +3139,14 @@ namespace BejeweledLivePlus
 			int num2 = mPoints - num;
 			mPointsBreakdown[mPointsBreakdown.Count - 1][thePointType] += num2;
 			GameState.PointsNeededToClear = (GetLevelPointsTotal(), GetLevelPoints());
+			
+			Console.WriteLine($"(Move {theMoveCreditId}) +{thePoints}");
+			GameWebSocket.Send("movePoints", new Dictionary<string, dynamic>
+			{
+				{"moveId", theMoveCreditId},
+				{"points", thePoints}
+			});
+			
 			return result;
 		}
 
