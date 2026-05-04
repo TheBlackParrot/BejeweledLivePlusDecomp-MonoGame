@@ -168,13 +168,9 @@ namespace BejeweledLivePlus
 
 		public float mCountdownBarPct;
 
-		public int mLevelBarSizeBias;
-
 		public List<int> mBackgroundIdxSet = new List<int>();
 
 		public bool mGameFinished;
-
-		public CurvedVal mLevelBarBonusAlpha = new CurvedVal();
 
 		public int mLevelPointsTotal;
 
@@ -253,8 +249,6 @@ namespace BejeweledLivePlus
 		public PIEffect mSpeedFirePIEffect = new PIEffect();
 
 		public PIEffect[] mSpeedFireBarPIEffect = new PIEffect[2];
-
-		public PIEffect mLevelBarPIEffect = new PIEffect();
 
 		public PIEffect mCountdownBarPIEffect = new PIEffect();
 
@@ -739,7 +733,6 @@ namespace BejeweledLivePlus
 			mScrambleDelayTicks = 0;
 			mOffsetX = 0;
 			mOffsetY = 0;
-			mLevelBarSizeBias = 0;
 			mInLoadSave = false;
 			mComplementNum = -1;
 			mLastComplement = -1;
@@ -813,7 +806,6 @@ namespace BejeweledLivePlus
 			mSpeedFirePIEffect = null;
 			mSpeedFireBarPIEffect[0] = null;
 			mSpeedFireBarPIEffect[1] = null;
-			mLevelBarPIEffect = null;
 			mCountdownBarPIEffect = null;
 			mHyperspace = null;
 			mWantLevelup = false;
@@ -938,10 +930,6 @@ namespace BejeweledLivePlus
 			if (mSpeedFireBarPIEffect[1] != null)
 			{
 				mSpeedFireBarPIEffect[1].Dispose();
-			}
-			if (mLevelBarPIEffect != null)
-			{
-				mLevelBarPIEffect.Dispose();
 			}
 			if (mCountdownBarPIEffect != null)
 			{
@@ -1290,57 +1278,6 @@ namespace BejeweledLivePlus
 			mForceReleaseButterfly = false;
 			mForcedReleasedBflyPiece = null;
 			mNOfIntentionalMatchesDuringCascade = 0;
-		}
-
-		public void ConfigureBarEmitters()
-		{
-			if (WantTopLevelBar())
-			{
-				Rect levelBarRect = GetLevelBarRect();
-				mLevelBarPIEffect.mEmitAfterTimeline = true;
-				mLevelBarPIEffect.mDrawTransform.LoadIdentity();
-				mLevelBarPIEffect.mDrawTransform.Translate(levelBarRect.mX, levelBarRect.mY);
-				PILayer layer = mLevelBarPIEffect.GetLayer(0);
-				PIDeflector pIDeflector = layer.mLayerDef.mDeflectorVector[0];
-				pIDeflector.mPoints[0].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, 0f).ToXnaVector2();
-				pIDeflector.mPoints[2].mValuePoint2DVector[0].mValue = new FPoint(0f, levelBarRect.mHeight).ToXnaVector2();
-				pIDeflector.mPoints[3].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, levelBarRect.mHeight).ToXnaVector2();
-				layer = mLevelBarPIEffect.GetLayer(1);
-				pIDeflector = layer.mLayerDef.mDeflectorVector[0];
-				pIDeflector.mPoints[0].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, 0f).ToXnaVector2();
-				pIDeflector.mPoints[2].mValuePoint2DVector[0].mValue = new FPoint(0f, levelBarRect.mHeight).ToXnaVector2();
-				pIDeflector.mPoints[3].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, levelBarRect.mHeight).ToXnaVector2();
-			}
-			else
-			{
-				Rect levelBarRect = GetCountdownBarRect();
-				mCountdownBarPIEffect.mEmitAfterTimeline = true;
-				mCountdownBarPIEffect.mDrawTransform.LoadIdentity();
-				mCountdownBarPIEffect.mDrawTransform.Translate(levelBarRect.mX, levelBarRect.mY);
-				PILayer layer = mCountdownBarPIEffect.GetLayer(0);
-				PIDeflector pIDeflector = layer.mLayerDef.mDeflectorVector[0];
-				pIDeflector.mPoints[0].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, 0f).ToXnaVector2();
-				pIDeflector.mPoints[2].mValuePoint2DVector[0].mValue = new FPoint(0f, levelBarRect.mHeight).ToXnaVector2();
-				pIDeflector.mPoints[3].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, levelBarRect.mHeight).ToXnaVector2();
-				layer = mCountdownBarPIEffect.GetLayer(1);
-				pIDeflector = layer.mLayerDef.mDeflectorVector[0];
-				pIDeflector.mPoints[0].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, 0f).ToXnaVector2();
-				pIDeflector.mPoints[2].mValuePoint2DVector[0].mValue = new FPoint(0f, levelBarRect.mHeight).ToXnaVector2();
-				pIDeflector.mPoints[3].mValuePoint2DVector[0].mValue = new FPoint(levelBarRect.mWidth, levelBarRect.mHeight).ToXnaVector2();
-			}
-		}
-
-		public virtual Rect GetLevelBarRect()
-		{
-			if (WantTopLevelBar())
-			{
-				int boardCenterX = GetBoardCenterX();
-				int theNum = (int)GlobalMembersResourcesWP.ImgYOfs(1092);
-				Rect celRect = GlobalMembersResourcesWP.IMAGE_INGAMEUI_PROGRESS_BAR_BACK.GetCelRect(0);
-				celRect.Offset(GlobalMembers.S(boardCenterX) - celRect.mWidth / 2, GlobalMembers.S(theNum));
-				return celRect;
-			}
-			return new Rect(0, 0, 0, 0);
 		}
 
 		public virtual Rect GetCountdownBarRect()
@@ -1796,7 +1733,7 @@ namespace BejeweledLivePlus
 			{
 				SetupBackground();
 			}
-			ConfigureBarEmitters();
+			//ConfigureBarEmitters();
 			mHasBoardSettled = false;
 			mContinuedFromLoad = false;
 			if (WantAutoload())
@@ -2168,7 +2105,6 @@ namespace BejeweledLivePlus
 				mHasReplayData = false;
 			}
 			GlobalMembers.gApp.LogStatString($"GameLoaded Title=\"{GetLoggingGameName()}\" Level={mLevel} Misc.Points={mPoints}");
-			mLevelBarPIEffect.Update();
 			if (WantsLevelBasedBackground() && mBackgroundIdx != mLevel)
 			{
 				mBackgroundIdx = mLevel - 1;
@@ -8324,10 +8260,6 @@ namespace BejeweledLivePlus
 
 		public void UpdateLevelBar()
 		{
-			if (mLevelBarPIEffect == null)
-			{
-				return;
-			}
 			float levelPct = GetLevelPct();
 			if (mLevelBarPct < levelPct)
 			{
@@ -8344,23 +8276,9 @@ namespace BejeweledLivePlus
 			{
 				mLevelBarPct = Math.Max(levelPct, mLevelBarPct + (levelPct - mLevelBarPct) * (0.05f) - (0.0001f));
 			}
-			UpdateLevelBarEffect();
 			CheckWin();
 
 			GameState.LevelPercentComplete = levelPct;
-		}
-
-		public virtual void UpdateLevelBarEffect()
-		{
-			Rect levelBarRect = GetLevelBarRect();
-			PILayer layer = mLevelBarPIEffect.GetLayer(0);
-			PIEmitterInstance emitter = layer.GetEmitter(0);
-			emitter.mEmitterInstanceDef.mPoints[0].mValuePoint2DVector[0].mValue = new FPoint(0f, levelBarRect.mHeight / 2).ToXnaVector2();
-			emitter.mEmitterInstanceDef.mPoints[1].mValuePoint2DVector[0].mValue = new FPoint(mLevelBarPct * (float)levelBarRect.mWidth + (float)mLevelBarSizeBias, levelBarRect.mHeight / 2).ToXnaVector2();
-			layer = mLevelBarPIEffect.GetLayer(1);
-			emitter = layer.GetEmitter(0);
-			emitter.mEmitterInstanceDef.mPoints[0].mValuePoint2DVector[0].mValue = new FPoint(0f, levelBarRect.mHeight / 2).ToXnaVector2();
-			emitter.mEmitterInstanceDef.mPoints[1].mValuePoint2DVector[0].mValue = new FPoint(mLevelBarPct * (float)levelBarRect.mWidth + (float)mLevelBarSizeBias, levelBarRect.mHeight / 2).ToXnaVector2();
 		}
 
 		public void UpdateCountdownBar()
@@ -8463,11 +8381,6 @@ namespace BejeweledLivePlus
 			float num2 = (float)(num - ticksLeft) / (float)num;
 			int theAlpha = (int)(((float)Math.Sin((float)mUpdateCnt * (0.15f)) * 127f + 127f) * num2 * GetPieceAlpha());
 			return new Color(255, 0, 0, theAlpha);
-		}
-
-		public virtual bool WantTopLevelBar()
-		{
-			return GetTimeLimit() == 0;
 		}
 
 		public virtual bool WantTopFrame()
@@ -9204,14 +9117,7 @@ namespace BejeweledLivePlus
 			UpdateSpeedBonus();
 			UpdateCountPopups();
 			UpdateComplements();
-			if (WantTopLevelBar())
-			{
-				UpdateLevelBar();
-			}
-			else
-			{
-				UpdateCountdownBar();
-			}
+			UpdateLevelBar();
 			UpdateHint();
 			if (GlobalMembers.gApp.mMenus[8].GetState() == Bej3WidgetState.STATE_OUT && mGameOverCount > 0)
 			{
@@ -10010,7 +9916,6 @@ namespace BejeweledLivePlus
 			mPostFXManager.Update();
 			if (!IsGameSuspended() || mLevelCompleteCount != 0)
 			{
-				mLevelBarPIEffect.Update();
 				mCountdownBarPIEffect.Update();
 				if (mSpeedBonusNum > 0.0)
 				{
@@ -10216,10 +10121,6 @@ namespace BejeweledLivePlus
 			}
 			if (!IsGameSuspended() || mLevelCompleteCount != 0)
 			{
-				if (mLevelBarPIEffect != null)
-				{
-					mLevelBarPIEffect.Update();
-				}
 				if (mSpeedBonusNum > 0.0 && mSpeedFirePIEffect != null)
 				{
 					mSpeedFirePIEffect.Update();
@@ -11111,14 +11012,13 @@ namespace BejeweledLivePlus
 		public virtual void DrawFrame(Graphics g)
 		{
 			DrawTopFrame(g);
-			DrawBottomFrame(g);
 		}
 
 		public virtual void DrawTopFrame(Graphics g)
 		{
 			if (WantTopFrame())
 			{
-				if (WantCountdownBar() || WantTopLevelBar())
+				if (WantCountdownBar())
 				{
 					g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_PROGRESS_BAR_FRAME, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_INGAMEUI_PROGRESS_BAR_FRAME_ID) + (float)mTransBoardOffsetX), (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_INGAMEUI_PROGRESS_BAR_FRAME_ID) - (float)mTransBoardOffsetY));
 				}
@@ -11127,85 +11027,6 @@ namespace BejeweledLivePlus
 					g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME, (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME))) + (float)mTransBoardOffsetX), (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME))) - (float)mTransBoardOffsetY));
 				}
 			}
-		}
-
-		public virtual void DrawBottomFrame(Graphics g)
-		{
-			if (WantBottomFrame())
-			{
-				g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME, (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME_ID)) + (float)mTransBoardOffsetX), (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME_ID)) - (float)mTransBoardOffsetY));
-			}
-		}
-
-		public virtual void DrawLevelBar(Graphics g)
-		{
-			g.PushState();
-			g.SetDrawMode(Graphics.DrawMode.Normal);
-			g.SetColorizeImages(true);
-			float num = (float)Math.Pow(GetBoardAlpha(), 4.0);
-			g.SetColor(new Color(255, 255, 255, (int)(GetBoardAlpha() * (float)(255))));
-			Image theImage = null;
-			int num2 = 0;
-			int num3 = 0;
-			Rect levelBarRect = GetLevelBarRect();
-			levelBarRect.mX += GlobalMembers.S(mTransBoardOffsetX);
-			levelBarRect.mY -= GlobalMembers.S(mTransBoardOffsetY);
-			if (WantTopLevelBar())
-			{
-				g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_PROGRESS_BAR_BACK, (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(ResourceId.IMAGE_INGAMEUI_PROGRESS_BAR_BACK_ID) + (float)mTransBoardOffsetX), (int)GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(ResourceId.IMAGE_INGAMEUI_PROGRESS_BAR_BACK_ID) - (float)mTransBoardOffsetY));
-			}
-			g.SetColor(new Color((53), (104), (238), (int)(num * (float)(255))));
-			if (WantWarningGlow())
-			{
-				Color warningGlowColor = GetWarningGlowColor();
-				if (warningGlowColor.mAlpha > 0)
-				{
-					Color color = g.GetColor();
-					g.SetDrawMode(Graphics.DrawMode.Additive);
-					g.SetColor(warningGlowColor);
-					Utils.DrawImageCentered(g, theImage, num2, num3);
-					g.SetDrawMode(Graphics.DrawMode.Normal);
-					g.SetColor(color);
-				}
-			}
-			levelBarRect.mWidth = (int)(mLevelBarPct * (float)levelBarRect.mWidth + (float)mLevelBarSizeBias);
-			g.FillRect(levelBarRect);
-			if ((double)mLevelBarBonusAlpha > 0.0)
-			{
-				Rect levelBarRect2 = GetLevelBarRect();
-				levelBarRect2.mWidth = (int)((float)levelBarRect2.mWidth * GetLevelPct());
-				levelBarRect2.mX += mTransBoardOffsetX;
-				levelBarRect2.mY -= mTransBoardOffsetY;
-				g.SetColor(new Color((240), (255), 200, (int)((double)mLevelBarBonusAlpha * (double)(255))));
-				g.FillRect(levelBarRect2);
-			}
-			Graphics3D graphics3D = g.Get3D();
-			SexyTransform2D mDrawTransform = mLevelBarPIEffect.mDrawTransform;
-			Rect mClipRect = g.mClipRect;
-			if (graphics3D != null)
-			{
-				levelBarRect.Scale(mScale, mScale, GlobalMembers.S(960), GlobalMembers.S(600));
-				mLevelBarPIEffect.mDrawTransform.Translate(GlobalMembers.S(-960), GlobalMembers.S(-600));
-				mLevelBarPIEffect.mDrawTransform.Scale((float)(double)mScale, (float)(double)mScale);
-				mLevelBarPIEffect.mDrawTransform.Translate(GlobalMembers.S(960), GlobalMembers.S(600));
-			}
-			int num4 = (int)((double)mAlphaCurve * (double)GetAlpha() * 255.0);
-			if (num4 == 255)
-			{
-				g.SetClipRect(levelBarRect);
-				mLevelBarPIEffect.mColor = new Color(255, 255, 255, (int)(num * (float)(255)));
-				mLevelBarPIEffect.Draw(g);
-				mLevelBarPIEffect.mDrawTransform = mDrawTransform;
-				g.SetColor(new Color(255, 255, 255, (int)(num * (float)(150))));
-				if (!mWantLevelup && mHyperspace == null)
-				{
-					int num5 = GlobalMembersResourcesWP.IMAGE_LEVELBAR_ENDPIECE.mWidth / 2;
-					g.SetClipRect(levelBarRect.mX, levelBarRect.mY, levelBarRect.mWidth + num5, levelBarRect.mHeight);
-					g.DrawImage(GlobalMembersResourcesWP.IMAGE_LEVELBAR_ENDPIECE, levelBarRect.mX + levelBarRect.mWidth - num5, levelBarRect.mY);
-				}
-			}
-			g.SetClipRect(mClipRect);
-			g.PopState();
 		}
 
 		public virtual void DrawCountdownBar(Graphics g)
@@ -11232,15 +11053,7 @@ namespace BejeweledLivePlus
 					g.SetColor(color);
 				}
 			}
-			countdownBarRect.mWidth = (int)(mCountdownBarPct * (float)countdownBarRect.mWidth + (float)mLevelBarSizeBias);
 			g.FillRect(countdownBarRect);
-			if ((double)mLevelBarBonusAlpha > 0.0)
-			{
-				Rect countdownBarRect2 = GetCountdownBarRect();
-				countdownBarRect2.mWidth = (int)((float)countdownBarRect2.mWidth * GetLevelPct());
-				g.SetColor(new Color((240), (255), 200, (int)((double)mLevelBarBonusAlpha * (double)(255))));
-				g.FillRect(countdownBarRect2);
-			}
 			Graphics3D graphics3D = g.Get3D();
 			SexyTransform2D mDrawTransform = mCountdownBarPIEffect.mDrawTransform;
 			Rect mClipRect = g.mClipRect;
@@ -12134,14 +11947,7 @@ namespace BejeweledLivePlus
 			}
 			if (WantTopFrame())
 			{
-				if (WantTopLevelBar() || GetTimeLimit() > 0)
-				{
-					g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_PROGRESS_BAR_FRAME, (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_PROGRESS_BAR_FRAME))) + (float)mTransBoardOffsetX), (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_PROGRESS_BAR_FRAME))) - (float)mTransBoardOffsetY));
-				}
-				else
-				{
-					g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME, (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME))) + (float)mTransBoardOffsetX), (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME))) - (float)mTransBoardOffsetY));
-				}
+				g.DrawImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME, (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgXOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME))) + (float)mTransBoardOffsetX), (int)(GlobalMembers.S(GlobalMembersResourcesWP.ImgYOfs(GlobalMembersResourcesWP.GetIdByImage(GlobalMembersResourcesWP.IMAGE_INGAMEUI_BOARD_SEPERATOR_FRAME))) - (float)mTransBoardOffsetY));
 			}
 			if (WantBottomFrame())
 			{
@@ -12199,10 +12005,10 @@ namespace BejeweledLivePlus
 			{
 				DrawCountdownBar(g);
 			}
-			else if (WantTopLevelBar())
+			/*else if (WantTopLevelBar())
 			{
 				DrawLevelBar(g);
-			}
+			}*/
 		}
 
 		public virtual void DrawTimer(Graphics g)
@@ -12770,10 +12576,6 @@ namespace BejeweledLivePlus
 		public override void LinkUpAssets()
 		{
 			base.LinkUpAssets();
-			if (mLevelBarPIEffect == null && GlobalMembersResourcesWP.PIEFFECT_LEVELBAR != null)
-			{
-				mLevelBarPIEffect = GlobalMembersResourcesWP.PIEFFECT_LEVELBAR.Duplicate();
-			}
 			if (mCountdownBarPIEffect == null && GlobalMembersResourcesWP.PIEFFECT_COUNTDOWNBAR != null)
 			{
 				mCountdownBarPIEffect = GlobalMembersResourcesWP.PIEFFECT_COUNTDOWNBAR.Duplicate();
