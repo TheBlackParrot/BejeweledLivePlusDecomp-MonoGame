@@ -61,7 +61,7 @@ namespace BejeweledLivePlus.Misc
 
 		public CurvedVal mFlash = new CurvedVal();
 
-		public Color mColor = default(Color);
+		public Color mColor;
 
 		public string mResourceGroup = string.Empty;
 
@@ -136,7 +136,7 @@ namespace BejeweledLivePlus.Misc
 			mAllowRealign = false;
 			mAllowRescale = false;
 			mImageOverlayAlpha.SetConstant(1.0);
-			mColor = Color.White;
+			mColor = new Color(0, 0, 0, 0);
 			mNoParticles = false;
 			if (wantFlatImage)
 			{

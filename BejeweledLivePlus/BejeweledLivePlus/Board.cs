@@ -1174,8 +1174,8 @@ namespace BejeweledLivePlus
 			mMoveDataVector.Clear();
 			mQueuedMoveVector.Clear();
 			ClearAllPieces();
-			mBoardColors[0] = new Color(6, 6, 6, (160));
-			mBoardColors[1] = new Color(24, 24, 24, (160));
+			mBoardColors[0] = new Color(16, 16, 16, 128);
+			mBoardColors[1] = new Color(48, 48, 48, 128);
 			mBoardUIOffsetY = 0;
 			mGameFinished = false;
 			mGameTicks = 0;
@@ -4165,23 +4165,15 @@ namespace BejeweledLivePlus
 
 		public void DrawCheckboard(Graphics g)
 		{
-			float mTransX = g.mTransX;
-			float mTransY = g.mTransY;
 			if ((double)mSideXOff != 0.0)
 			{
-				g.Translate((int)((double)mSideXOff * (double)mSlideXScale), 0);
+				g.Translate((int)((double)mSideXOff * mSlideXScale), 0);
 			}
 			else
 			{
-				g.Translate((int)((double)GlobalMembers.S(1260) * (double)mSlideUIPct), 0);
+				g.Translate((int)(GlobalMembers.S(1260) * (double)mSlideUIPct), 0);
 			}
-			float num = mSpeedBonusFlameModePct * (float)(60);
-			Color theColor = mBoardColors[0];
-			theColor.mAlpha = (int)((float)theColor.mAlpha * GetBoardAlpha());
-			Color color = Utils.ColorLerp(theColor2: new Color((int)(180f), (int)((100f) + (float)Math.Sin(num) * (14f)), (int)((48f) + (float)Math.Sin(num) * (8f)), (int)((200f) * GetBoardAlpha())), theColor1: theColor, theT: Math.Min(1f, mSpeedBonusFlameModePct * 5f));
-			Color theColor3 = mBoardColors[1];
-			theColor3.mAlpha = (int)((float)theColor3.mAlpha * GetBoardAlpha());
-			Color color2 = Utils.ColorLerp(theColor2: new Color((int)(160f), (int)((90f) + (float)Math.Sin(num) * (12f)), (int)((40f) + (float)Math.Sin(num) * (7f)), (int)((200f) * GetBoardAlpha())), theColor1: theColor3, theT: Math.Min(1f, mSpeedBonusFlameModePct * 5f));
+			
 			int[] array = new int[9];
 			for (int i = 0; i < 9; i++)
 			{
@@ -4191,8 +4183,8 @@ namespace BejeweledLivePlus
 			{
 				g.Translate(0, GlobalMembers.S(mBoardUIOffsetY));
 			}
-			int num2 = 8;
-			for (int j = 0; j < num2; j++)
+			
+			for (int j = 0; j < 8; j++)
 			{
 				int num3 = GlobalMembers.S(GetRowScreenY(j));
 				int num4 = GlobalMembers.S(GetRowScreenY(j + 1));
@@ -4200,22 +4192,11 @@ namespace BejeweledLivePlus
 				{
 					int num5 = array[k];
 					int num6 = array[k + 1];
-					if ((j + k) % 2 == 0)
-					{
-						g.SetColor(color);
-					}
-					else
-					{
-						g.SetColor(color2);
-					}
+					g.SetColor((j + k) % 2 == 0 ? mBoardColors[0] : mBoardColors[1]);
 					g.FillRect(num5, num3, num6 - num5, num4 - num3);
 				}
 			}
-			if (g.mTransX != mTransX || g.mTransY != mTransY)
-			{
-				g.mTransX = mTransX;
-				g.mTransY = mTransY;
-			}
+			
 			g.SetColor(Color.White);
 		}
 
