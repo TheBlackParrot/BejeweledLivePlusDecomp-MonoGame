@@ -3848,18 +3848,18 @@ namespace BejeweledLivePlus
 			{
 				PILayer layer = particleEffect.GetLayer(i + 1);
 				layer.SetVisible(i == theGemColor);
-				layer.mColor = GlobalMembers.gGemColors[theGemColor];
+				layer.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[theGemColor], Color.White, 0.33f);
 			}
 
 			PILayer visibleLayer1 = particleEffect.GetLayer("Top");
 			if (visibleLayer1 != null)
 			{
-				visibleLayer1.mColor = GlobalMembers.gGemColors[theGemColor];
+				visibleLayer1.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[theGemColor], Color.White, 0.33f);
 			}
 			PILayer visibleLayer2 = particleEffect.GetLayer("Stars");
 			if (visibleLayer2 != null)
 			{
-				visibleLayer2.mColor = GlobalMembers.gGemColors[theGemColor];
+				visibleLayer2.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[theGemColor], Color.White, 0.33f);
 			}
 
 			PILayer layer2 = particleEffect.GetLayer(theGemColor + 1);
@@ -3878,13 +3878,13 @@ namespace BejeweledLivePlus
 			{
 				PILayer layer = particleEffect.GetLayer(i + 1);
 				layer.SetVisible(i == theGemColor);
-				layer.mColor = GlobalMembers.gGemColors[theGemColor];
+				layer.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[theGemColor], Color.White, 0.33f);
 			}
 
 			PILayer visibleLayer = particleEffect.GetLayer("Glow");
 			if (visibleLayer != null)
 			{
-				visibleLayer.mColor = GlobalMembers.gGemColors[theGemColor];
+				visibleLayer.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[theGemColor], Color.White, 0.33f);
 			}
 
 			particleEffect.GetLayer("Top").SetVisible(false);

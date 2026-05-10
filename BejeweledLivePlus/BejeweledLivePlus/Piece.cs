@@ -624,7 +624,6 @@ namespace BejeweledLivePlus
 						{
 							effect.mDScale *= (0.67f);
 						}
-						effect.mColor = GlobalMembers.gGemColors[mColor];
 					}
 					else
 					{
@@ -646,8 +645,10 @@ namespace BejeweledLivePlus
 							effect.mImage = GlobalMembersResourcesWP.IMAGE_SPARKLET_FAT;
 						}
 						effect.mDY = (-0.4f) + GlobalMembersUtils.GetRandFloat() * (0.15f);
-						effect.mColor = GlobalMembers.gGemColors[mColor];
 					}
+
+					effect.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[mColor], Color.White, 0.33f);
+					
 					if (flag)
 					{
 						effect.mDY *= (0.67f);
@@ -699,7 +700,7 @@ namespace BejeweledLivePlus
 					effect2.mAlpha = (0f);
 					effect2.mDAlpha = (0.1f);
 					effect2.mScale = (140f);
-					effect2.mColor = GlobalMembers.gGemColors[mColor];
+					effect2.mColor = Utils.ColorLerp(GlobalMembers.gGemColors[mColor], Color.White, 0.33f);
 					if (Misc.Common.Rand() % (2) != 0 || mBoard.mHyperspace != null)
 					{
 						effect2.mPieceId = (uint)mId;
