@@ -4440,13 +4440,25 @@ namespace BejeweledLivePlus
 
 		public bool IsPieceSwapping(Piece thePiece, bool includeIgnored, bool onlyCheckForwardSwaps)
 		{
+			if (mSwapDataVector == null)
+			{
+				return false;
+			}
+			
+			// ReSharper disable once ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
 			foreach (SwapData item in mSwapDataVector)
 			{
+				if (item == null)
+				{
+					continue;
+				}
+				
 				if ((!item.mIgnore || includeIgnored) && ((item.mForwardSwap && item.mHoldingSwap == 0) || !onlyCheckForwardSwaps) && (item.mPiece1 == thePiece || item.mPiece2 == thePiece))
 				{
 					return true;
 				}
 			}
+			
 			return false;
 		}
 
